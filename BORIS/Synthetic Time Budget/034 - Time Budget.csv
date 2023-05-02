@@ -1,0 +1,30 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,034 - NF Subways PLot - 1 crow - Baited,,,,,,,,
+Observation date,2022-08-03T07:46:00,,,,,,,,
+Description,,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.114516, -79.113412",,,,,,,,
+Environment,Community Commercial,,,,,,,,
+Number of crows,1,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present, no,,,,,,,,
+Code,34,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Sentinel Absent,,1,1199.612,1199.612,NA,NA,NA,100
+No focal subject,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Peck at Food/Bait,,18,NA,NA,NA,3.018,3.367,NA
+Individual 1,Head Up,,18,46.437,2.58,2.849,1.639,1.995,41.3
+Individual 1,Head Down,,11,14.415,1.31,1.091,3.824,3.573,12.8
+Individual 1,Moving,,16,30.728,1.92,2.056,5.973,6.727,27.3
+Individual 1,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 1,Away from Bait,,3,46.753,15.584,13.962,36.787,40.346,41.6
+Individual 1,Out of Frame,,3,1087.539,362.513,611.708,56.036,61.25,90.6
+Individual 1,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Disturbance,,0,NA,NA,NA,NA,NA,NA

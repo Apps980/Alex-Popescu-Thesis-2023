@@ -1,0 +1,9 @@
+{
+  "citationExportFormat": "csl-json",
+  "literatureNoteTitleTemplate": "{{title}}",
+  "literatureNoteFolder": "",
+  "literatureNoteContentTemplate": "title: {{title}}\nauthors: {{authorString}}\nyear: {{year}}\nspecies: \nfactor:\neffect:\n\n",
+  "markdownCitationTemplate": "[@{{citekey}}]",
+  "alternativeMarkdownCitationTemplate": "@{{citekey}}",
+  "citationExportPath": "D:\\Systematic Review\\MSC SR\\MSC Thesis SR.json"
+}

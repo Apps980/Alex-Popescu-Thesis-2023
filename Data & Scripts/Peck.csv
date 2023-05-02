@@ -1,0 +1,34 @@
+Observation.id,Number.of.occurences,ID,G.Env,Num.Rec,Baited,Sentinel,Total Duration (s),Pecks.Per.Min
+020 - FVM - 2 crows - No Bait,51,20,Green Area,2,N,N,107.493,28.46696994
+024 - FVM - 2 crows - No Bait,12,24,Green Area,2,N,N,131.152,5.489813346
+025 - FVM - 2 crows - Baited,37,25,Green Area,1,Y,N,83.445,26.60435017
+027 - FVM - 2 crows - Baited,38,27,Green Area,1,Y,N,140.19,16.2636422
+029 - FVM - 2 crows - Baited,116,29,Green Area,2,Y,N,290.478,23.96050648
+032  - Ontario St. Tim Hortons - 4 crows - No Bait,220,32,Commercial,4,N,N,614.715,21.47336571
+033 - NF Subways PLot - 2 crows - Baited,429,33,Commercial,2,Y,N,343.611,74.910291
+034 - NF Subways PLot - 1 crow - Baited,18,34,Commercial,1,Y,N,91.58,11.7929679
+036 - FVM - 2 crows - Baited,120,36,Green Area,2,Y,N,192.693,37.36513522
+037-2 - Dairy Queen PLot - 7 crows - Baited,55,37,Commercial,7,Y,N,106.192,31.07578725
+038-2 - Dairy Queen PLot - 7 crows - Baited,22,38,Commercial,7,Y,N,36.347,36.31661485
+039 - Glen Morris Dr - 2 crows - Baited,260,39,Green Area,2,Y,N,309.557,50.39459615
+040 - Dairy Queen PLot - 3 crows - Baited,23,40,Green Area,2,Y,N,63.366,21.7782407
+042 - CIBC PLot - 2 crows - Baited,110,42,Commercial,2,Y,N,214.754,30.7328385
+024 - FVM - 2 crows - No Bait,1,24,Green Area,2,N,Y,39.573,1.516185278
+026 - FVM - 2 crows - Baited,56,26,Green Area,1,Y,Y,112.468,29.87516449
+028 - FVM - 2 crows - Baited,8,28,Green Area,1,Y,Y,71.573,6.706439579
+029 - FVM - 2 crows - Baited,17,29,Green Area,2,Y,Y,57.005,17.89316727
+030 - FVM - 2 crows - Baited,27,30,Green Area,1,Y,Y,123.993,13.06525368
+031 - FVM - 2 crows - Baited,84,31,Green Area,1,Y,Y,157.903,31.91832961
+033 - NF Subways PLot - 2 crows - Baited,44,33,Commercial,2,Y,Y,111.713,23.63198553
+035 - Charles Ansell Park - 3 crows - No Bait,44,35,Green Area,3,N,Y,72.682,36.32261083
+036 - FVM - 2 crows - Baited,85,36,Green Area,2,Y,Y,269.338,18.93531548
+037 - Lancaster Park - 4 crows - No Bait,44,37,Green Area,2,N,Y,166.451,15.86052352
+037-2 - Dairy Queen PLot - 7 crows - Baited,346,37,Commercial,7,Y,Y,752.979,27.57049001
+038 - Landcaster Park - 3 crows - No Bait,64,38,Green Area,2,N,Y,191.743,20.02680672
+038-2 - Dairy Queen PLot - 7 crows - Baited,436,38,Commercial,7,Y,Y,883.9,29.59610816
+040 - Dairy Queen PLot - 3 crows - Baited,41,40,Green Area,2,Y,Y,174.896,14.06550178
+041 - FVM - 7 crows - Baited,926,41,Green Area,5,Y,Y,1108.217,50.13458555
+042 - CIBC PLot - 2 crows - Baited,19,42,Commercial,2,Y,Y,45.637,24.97973136
+043 - Ontario Bodyshop PLot - 2 crows - Baited,8,43,Commercial,2,Y,Y,40.281,11.91628808
+043-2 - Esso PLot - 25 crows - Baited,125,43,Commercial,10,Y,Y,103.777,72.27034892
+045 - Ontario Esso - 5 crows - Baited,12,45,Commercial,2,Y,Y,48.262,14.91856947

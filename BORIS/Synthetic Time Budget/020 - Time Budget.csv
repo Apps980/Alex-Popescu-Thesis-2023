@@ -1,0 +1,35 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,020 - FVM - 2 crows - No Bait,,,,,,,,
+Observation date,2022-06-25T06:20:00,,,,,,,,
+Description,,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.182620, -79.245815",,,,,,,,
+Environment,Major Green Space,,,,,,,,
+Number of crows,2,,,,,,,,
+Baited, no,,,,,,,,
+Sentinel present, no,,,,,,,,
+Code,20,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Sentinel Absent,,1,87.711,87.711,NA,NA,NA,99.9
+No focal subject,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Peck at Food/Bait,,31,NA,NA,NA,2.093,2.748,NA
+Individual 1,Head Up,,13,22.942,1.765,2.737,4.011,3.188,30.1
+Individual 1,Head Down,,14,39.764,2.84,2.444,2.534,3.252,52.1
+Individual 1,Moving,,6,13.481,2.247,2.2,12.069,20.538,17.7
+Individual 1,Out of Frame,,1,11.499,11.499,NA,NA,NA,13.1
+Individual 1,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Peck at Food/Bait,,20,NA,NA,NA,1.436,1.462,NA
+Individual 2,Head Up,,13,17.726,1.364,1.305,3.212,3.234,35.4
+Individual 2,Head Down,,9,18.773,2.086,1.17,3.219,5.002,37.4
+Individual 2,Moving,,8,13.525,1.691,1.507,6.611,7.111,27
+Individual 2,Out of Frame,,3,37.655,12.552,8.412,25.028,25.818,42.9
+Individual 2,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Disturbance,,0,NA,NA,NA,NA,NA,NA

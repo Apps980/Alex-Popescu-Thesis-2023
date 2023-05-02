@@ -1,0 +1,100 @@
+Observation.id,Behavior,Sentinel,G.Env,Number.of.Crows,Baited,sum,ID,Total Duration,Proportion
+020 - FVM - 2 crows - No Bait,HD,N,Green Area,2,N,46.025,20,107.493,0.428167416
+020 - FVM - 2 crows - No Bait,HU,N,Green Area,2,N,36.193,20,107.493,0.336700994
+020 - FVM - 2 crows - No Bait,M,N,Green Area,2,N,25.275,20,107.493,0.23513159
+024 - FVM - 2 crows - No Bait,HD,N,Green Area,2,N,29.627,24,131.152,0.225898194
+024 - FVM - 2 crows - No Bait,HD,Y,Green Area,2,N,4.223,24,39.573,0.106714174
+024 - FVM - 2 crows - No Bait,HU,N,Green Area,2,N,78.013,24,131.152,0.594828901
+024 - FVM - 2 crows - No Bait,HU,Y,Green Area,2,N,30.791,24,39.573,0.778081015
+024 - FVM - 2 crows - No Bait,M,N,Green Area,2,N,23.512,24,131.152,0.179272905
+024 - FVM - 2 crows - No Bait,M,Y,Green Area,2,N,4.559,24,39.573,0.115204811
+025 - FVM - 2 crows - Baited,HD,N,Green Area,1,Y,31.081,25,83.445,0.372472886
+025 - FVM - 2 crows - Baited,HU,N,Green Area,1,Y,29.477,25,83.445,0.353250644
+025 - FVM - 2 crows - Baited,M,N,Green Area,1,Y,22.887,25,83.445,0.27427647
+026 - FVM - 2 crows - Baited,HD,Y,Green Area,1,Y,53.355,26,112.468,0.474401608
+026 - FVM - 2 crows - Baited,HU,Y,Green Area,1,Y,48.494,26,112.468,0.431180425
+026 - FVM - 2 crows - Baited,M,Y,Green Area,1,Y,10.619,26,112.468,0.094417968
+027 - FVM - 2 crows - Baited,HD,N,Green Area,1,Y,52.181,27,140.19,0.372216278
+027 - FVM - 2 crows - Baited,HU,N,Green Area,1,Y,77.506,27,140.19,0.55286397
+027 - FVM - 2 crows - Baited,M,N,Green Area,1,Y,10.503,27,140.19,0.074919752
+028 - FVM - 2 crows - Baited,HD,Y,Green Area,1,Y,12.647,28,71.573,0.176700711
+028 - FVM - 2 crows - Baited,HU,Y,Green Area,1,Y,39.47,28,71.573,0.551464938
+028 - FVM - 2 crows - Baited,M,Y,Green Area,1,Y,19.456,28,71.573,0.271834351
+029 - FVM - 2 crows - Baited,HD,N,Green Area,2,Y,94.212,29,290.478,0.324334373
+029 - FVM - 2 crows - Baited,HD,Y,Green Area,2,Y,17.647,29,57.005,0.309569336
+029 - FVM - 2 crows - Baited,HU,N,Green Area,2,Y,130.063,29,290.478,0.44775508
+029 - FVM - 2 crows - Baited,HU,Y,Green Area,2,Y,25.946,29,57.005,0.455153057
+029 - FVM - 2 crows - Baited,M,N,Green Area,2,Y,66.203,29,290.478,0.227910547
+029 - FVM - 2 crows - Baited,M,Y,Green Area,2,Y,13.412,29,57.005,0.235277607
+030 - FVM - 2 crows - Baited,HD,Y,Green Area,1,Y,51.97,30,123.993,0.419136564
+030 - FVM - 2 crows - Baited,HU,Y,Green Area,1,Y,40.548,30,123.993,0.327018461
+030 - FVM - 2 crows - Baited,M,Y,Green Area,1,Y,31.475,30,123.993,0.253844975
+031 - FVM - 2 crows - Baited,HD,Y,Green Area,1,Y,70.252,31,157.903,0.44490605
+031 - FVM - 2 crows - Baited,HU,Y,Green Area,1,Y,64.019,31,157.903,0.405432449
+031 - FVM - 2 crows - Baited,M,Y,Green Area,1,Y,23.632,31,157.903,0.149661501
+032  - Ontario St. Tim Hortons - 4 crows - No Bait,HD,N,Commercial,4,N,193.65,32,614.715,0.315024036
+032  - Ontario St. Tim Hortons - 4 crows - No Bait,HU,N,Commercial,4,N,213.357,32,614.715,0.347082794
+032  - Ontario St. Tim Hortons - 4 crows - No Bait,M,N,Commercial,4,N,207.708,32,614.715,0.33789317
+033 - NF Subways PLot - 2 crows - Baited,HD,N,Commercial,2,Y,100.903,33,343.611,0.293654743
+033 - NF Subways PLot - 2 crows - Baited,HD,Y,Commercial,2,Y,39.706,33,111.713,0.355428643
+033 - NF Subways PLot - 2 crows - Baited,HU,N,Commercial,2,Y,88.889,33,343.611,0.258690787
+033 - NF Subways PLot - 2 crows - Baited,HU,Y,Commercial,2,Y,25.415,33,111.713,0.227502618
+033 - NF Subways PLot - 2 crows - Baited,M,N,Commercial,2,Y,153.819,33,343.611,0.44765447
+033 - NF Subways PLot - 2 crows - Baited,M,Y,Commercial,2,Y,46.592,33,111.713,0.417068739
+034 - NF Subways PLot - 1 crow - Baited,HD,N,Commercial,1,Y,14.415,34,91.58,0.157403363
+034 - NF Subways PLot - 1 crow - Baited,HU,N,Commercial,1,Y,46.437,34,91.58,0.507064861
+034 - NF Subways PLot - 1 crow - Baited,M,N,Commercial,1,Y,30.728,34,91.58,0.335531775
+035 - Charles Ansell Park - 3 crows - No Bait,HD,Y,Green Area,3,N,23.712,35,72.682,0.326243086
+035 - Charles Ansell Park - 3 crows - No Bait,HU,Y,Green Area,3,N,18.758,35,72.682,0.258083157
+035 - Charles Ansell Park - 3 crows - No Bait,M,Y,Green Area,3,N,30.212,35,72.682,0.415673757
+036 - FVM - 2 crows - Baited,HD,N,Green Area,2,Y,82.65,36,192.693,0.428920615
+036 - FVM - 2 crows - Baited,HD,Y,Green Area,2,Y,132.19,36,269.338,0.490795952
+036 - FVM - 2 crows - Baited,HU,N,Green Area,2,Y,74.573,36,192.693,0.387004198
+036 - FVM - 2 crows - Baited,HU,Y,Green Area,2,Y,75.855,36,269.338,0.281634972
+036 - FVM - 2 crows - Baited,M,N,Green Area,2,Y,35.47,36,192.693,0.184075187
+036 - FVM - 2 crows - Baited,M,Y,Green Area,2,Y,61.293,36,269.338,0.227569077
+037-2 - Dairy Queen PLot - 7 crows - Baited,HD,N,Commercial,7,Y,33.596,37,106.192,0.316370348
+037-2 - Dairy Queen PLot - 7 crows - Baited,HD,Y,Commercial,7,Y,213.301,37,752.979,0.28327616
+037-2 - Dairy Queen PLot - 7 crows - Baited,HU,N,Commercial,7,Y,42.651,37,106.192,0.401640425
+037-2 - Dairy Queen PLot - 7 crows - Baited,HU,Y,Commercial,7,Y,313.696,37,752.979,0.416606572
+037-2 - Dairy Queen PLot - 7 crows - Baited,M,N,Commercial,7,Y,29.945,37,106.192,0.281989227
+037-2 - Dairy Queen PLot - 7 crows - Baited,M,Y,Commercial,7,Y,225.982,37,752.979,0.300117268
+037 - Lancaster Park - 4 crows - No Bait,HD,Y,Green Area,2,N,67.492,37,166.451,0.405476687
+037 - Lancaster Park - 4 crows - No Bait,HU,Y,Green Area,2,N,45.477,37,166.451,0.273215541
+037 - Lancaster Park - 4 crows - No Bait,M,Y,Green Area,2,N,53.482,37,166.451,0.321307772
+038-2 - Dairy Queen PLot - 7 crows - Baited,HD,N,Commercial,7,Y,14.73,38,36.347,0.405260407
+038-2 - Dairy Queen PLot - 7 crows - Baited,HD,Y,Commercial,7,Y,295.14,38,883.9,0.333906551
+038-2 - Dairy Queen PLot - 7 crows - Baited,HU,N,Commercial,7,Y,11.993,38,36.347,0.329958456
+038-2 - Dairy Queen PLot - 7 crows - Baited,HU,Y,Commercial,7,Y,311.351,38,883.9,0.352246861
+038-2 - Dairy Queen PLot - 7 crows - Baited,M,N,Commercial,7,Y,9.624,38,36.347,0.264781137
+038-2 - Dairy Queen PLot - 7 crows - Baited,M,Y,Commercial,7,Y,277.409,38,883.9,0.313846589
+038 - Landcaster Park - 3 crows - No Bait,HD,Y,Green Area,2,N,78.579,38,191.743,0.409814178
+038 - Landcaster Park - 3 crows - No Bait,HU,Y,Green Area,2,N,37.744,38,191.743,0.196846821
+038 - Landcaster Park - 3 crows - No Bait,M,Y,Green Area,2,N,75.42,38,191.743,0.393339001
+039 - Glen Morris Dr - 2 crows - Baited,HD,N,Green Area,2,Y,184.341,39,309.557,0.595499375
+039 - Glen Morris Dr - 2 crows - Baited,HU,N,Green Area,2,Y,103.163,39,309.557,0.33326011
+039 - Glen Morris Dr - 2 crows - Baited,M,N,Green Area,2,Y,22.053,39,309.557,0.071240515
+040 - Dairy Queen PLot - 3 crows - Baited,HD,N,Green Area,2,Y,25.733,40,63.366,0.406101064
+040 - Dairy Queen PLot - 3 crows - Baited,HD,Y,Green Area,2,Y,70.532,40,174.896,0.403279663
+040 - Dairy Queen PLot - 3 crows - Baited,HU,N,Green Area,2,Y,23.971,40,63.366,0.378294353
+040 - Dairy Queen PLot - 3 crows - Baited,HU,Y,Green Area,2,Y,59.326,40,174.896,0.3392073
+040 - Dairy Queen PLot - 3 crows - Baited,M,N,Green Area,2,Y,13.662,40,63.366,0.215604583
+040 - Dairy Queen PLot - 3 crows - Baited,M,Y,Green Area,2,Y,45.038,40,174.896,0.257513036
+041 - FVM - 7 crows - Baited,HD,Y,Green Area,5,Y,500.575,41,1108.217,0.451694027
+041 - FVM - 7 crows - Baited,HU,Y,Green Area,5,Y,378.148,41,1108.217,0.341221981
+041 - FVM - 7 crows - Baited,M,Y,Green Area,5,Y,229.494,41,1108.217,0.207083992
+042 - CIBC PLot - 2 crows - Baited,HD,N,Commercial,2,Y,91.379,42,214.754,0.425505462
+042 - CIBC PLot - 2 crows - Baited,HD,Y,Commercial,2,Y,19.112,42,45.637,0.418783005
+042 - CIBC PLot - 2 crows - Baited,HU,N,Commercial,2,Y,97.427,42,214.754,0.453667918
+042 - CIBC PLot - 2 crows - Baited,HU,Y,Commercial,2,Y,24.793,42,45.637,0.543265333
+042 - CIBC PLot - 2 crows - Baited,M,N,Commercial,2,Y,25.948,42,214.754,0.12082662
+042 - CIBC PLot - 2 crows - Baited,M,Y,Commercial,2,Y,1.732,42,45.637,0.037951662
+043-2 - Esso PLot - 25 crows - Baited,HD,Y,Commercial,10,Y,29.519,43,103.777,0.284446457
+043-2 - Esso PLot - 25 crows - Baited,HU,Y,Commercial,10,Y,40.587,43,103.777,0.39109822
+043-2 - Esso PLot - 25 crows - Baited,M,Y,Commercial,10,Y,33.671,43,103.777,0.324455322
+043 - Ontario Bodyshop PLot - 2 crows - Baited,HD,Y,Commercial,2,Y,6.014,43,40.281,0.149301159
+043 - Ontario Bodyshop PLot - 2 crows - Baited,HU,Y,Commercial,2,Y,13.706,43,40.281,0.340259676
+043 - Ontario Bodyshop PLot - 2 crows - Baited,M,Y,Commercial,2,Y,20.561,43,40.281,0.510439165
+045 - Ontario Esso - 5 crows - Baited,HD,Y,Commercial,2,Y,9.002,45,48.262,0.186523559
+045 - Ontario Esso - 5 crows - Baited,HU,Y,Commercial,2,Y,20.492,45,48.262,0.424599063
+045 - Ontario Esso - 5 crows - Baited,M,Y,Commercial,2,Y,18.768,45,48.262,0.388877378

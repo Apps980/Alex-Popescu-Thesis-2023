@@ -1,0 +1,26 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,025 - FVM - 2 crows - Baited,,,,,,,,
+Observation date,2022-07-07T06:18:00,,,,,,,,
+Description,Follows 024,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.182620, -79.245815",,,,,,,,
+Environment,Major Green Space,,,,,,,,
+Number of crows,2,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present, no,,,,,,,,
+Code,025,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Sentinel Absent,,1,2110.092,2110.092,NA,NA,NA,100.000
+No focal subject,Disturbance,,5,NA,NA,NA,477.377,313.172,NA
+Individual 1,Peck at Food/Bait,,37,NA,NA,NA,1.425,1.493,NA
+Individual 1,Head Up,,21,29.477,1.404,0.993,14.580,52.375,35.200
+Individual 1,Head Down,,17,31.081,1.828,1.526,17.298,61.872,37.100
+Individual 1,Moving,,11,22.887,2.081,1.319,150.212,376.084,27.300
+Individual 1,Out of Frame,,5,2026.596,405.319,503.730,20.399,11.649,96.000

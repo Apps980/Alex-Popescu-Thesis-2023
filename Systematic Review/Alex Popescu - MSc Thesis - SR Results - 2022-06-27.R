@@ -1,0 +1,75 @@
+##### Working Directory #####
+#setwd("~/Brock U - MSc/Thesis/Systematic Review")
+setwd("D:/Systematic Review")
+
+
+##### Installation & dependencies #####
+#install.packages("BiocManager")
+#install.packages("metagear")
+#BiocManager::install("EBImage")
+
+##### Library #####
+library(metagear)
+
+##### Files #####
+#SandB<-read.csv("Alex Popescu - MSc Thesis - S + B_V2.csv", header = TRUE)
+#effort_distribute(SandB,
+                  #reviewers = "Alex 1",
+                  #initialize = TRUE,
+                  #save_split = TRUE)
+#effort_distribute(SandB,
+                  #reviewers = "Alex 2",
+                  #initialize = TRUE,
+                  #save_split = TRUE)
+#effort_distribute(SandB,
+                  #reviewers = "Alex 3",
+                  #initialize = TRUE,
+                  #save_split = TRUE)
+
+#SorVandB<-read.csv("Alex Popescu - MSc Thesis - SorV+b.csv", header = TRUE)
+#effort_distribute(SorVandB,
+                  #reviewers = c("Alex Popescu_1", "Alex Popescu_2", "Alex Popescu_3"),
+                  #initialize = TRUE,
+                  #save_split = TRUE)
+
+##### Metagear #####
+#abstract_screener("effort_Alex 1.csv", "Alex 1",
+                  #highlightKeywords=c("Sentinel", "sentinel"))
+#abstract_screener("effort_Alex 2.csv", "Alex 2",
+                  #highlightKeywords=c("Sentinel", "sentinel"))
+#abstract_screener("effort_Alex 3.csv", "Alex 3",
+                  #highlightKeywords=c("Sentinel", "sentinel"))
+
+#effort_summary(read.csv("effort_Alex 1.csv"))
+
+Effort<-read.csv("effort_Alex Combined_V2.csv")
+Effort_Yes<-read.csv("effort_Alex Yes.csv")
+effort_summary(Effort_Yes)
+effort_summary(Effort)
+
+##### Collect references #####
+#dir.create("metagear_downloads")
+PDFs_collect(aDataFrame = subset(Effort_Yes, Include = "maybe"), DOIcolumn = "DOI"
+             , FileNamecolumn = "STUDY_ID", directory = "metagear_downloads"
+             , WindowsProxy = T, randomize = T, buffer = T,)
+# SUUUUUUUCKS
+# PDFs collected manually
+
+
+
+
+
+##### PRISMA Plot #####
+phases <- c(
+  "START_PHASE: 364 studies identified via WOS on Nov 1st, 2022",
+  "START_PHASE: [Number] studies identified via [Source] on [Date]",
+  "364 studies after duplicates removed",
+  "364 studies with titles and abstracts screened",
+  "EXCLUDE_PHASE: 271 of studies excluded by title and abstract screening",
+  "93 articles assessed for eligibility",
+  "EXCLUDE_PHASE: >10 of articles excluded during full-text screening",
+  "[Number]  of articles included in subsequent synthesis",
+  "EXCLUDE_PHASE: [Number] of articles excluded for incomplete data reported",
+  "FINAL_PHASE: [Number] of articles retained for all subsequent analysis")
+
+plot_PRISMA(phases)
