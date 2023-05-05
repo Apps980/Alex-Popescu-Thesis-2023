@@ -1,0 +1,79 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,041 - FVM - 7 crows - Baited,,,,,,,,
+Observation date,2022-09-10T08:04:00,,,,,,,,
+Description,,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.180794, -79.244033",,,,,,,,
+Environment,Major Green Space,,,,,,,,
+Number of crows,7,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present,yes,,,,,,,,
+Code,41,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,Sentinel Present,,1,1366.216,1366.216,NA,NA,NA,100
+No focal subject,Away from Bait,,0,0,0,NA,-,-,0
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+No focal subject,Aggression,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Disturbance,,9,NA,NA,NA,142.884,148.241,NA
+Individual 1,Peck at Food/Bait,,534,NA,NA,NA,1.831,12.749,NA
+Individual 1,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Head Up,,184,260.78,1.417,2.171,3.948,18.971,36.2
+Individual 1,Head Down,,173,357.323,2.065,1.613,3.653,21.726,49.6
+Individual 1,Moving,,50,101.052,2.021,2.305,17.8,37.167,14
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Away from Bait,,6,166.312,27.719,31.414,153.34,94.019,23.1
+Individual 1,Out of Frame,,12,646.648,53.887,125.089,64.674,75.83,47.3
+Individual 1,Aggression,,1,NA,NA,NA,NA,NA,NA
+Individual 1,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Peck at Food/Bait,,240,NA,NA,NA,1.892,4.521,NA
+Individual 2,Peck at Ground,,27,NA,NA,NA,7.827,36.395,NA
+Individual 2,Head Up,,106,139.365,1.315,2.262,3.056,2.252,32
+Individual 2,Head Down,,99,206.717,2.088,1.544,2.525,3.743,47.5
+Individual 2,Moving,,52,88.714,1.706,1.505,6.775,8.388,20.4
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Away from Bait,,9,140.03,15.559,19.378,33.46,38.512,32.1
+Individual 2,Out of Frame,,16,930.906,58.182,225.242,28.461,29.812,68.1
+Individual 2,Aggression,,1,NA,NA,NA,NA,NA,NA
+Individual 2,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 3,Peck at Food/Bait,,75,NA,NA,NA,2.713,4.296,NA
+Individual 3,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 3,Head Up,,46,108.95,2.368,3.253,2.908,1.875,46.2
+Individual 3,Head Down,,34,88.637,2.607,1.608,3.868,5.137,37.6
+Individual 3,Moving,,20,38.026,1.901,1.684,10.79,9.345,16.1
+Individual 3,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 3,Away from Bait,,2,23.762,11.881,16.094,74.821,NA,10.1
+Individual 3,Out of Frame,,6,1130.498,188.416,429.083,47.144,35.703,82.7
+Individual 3,Aggression,,1,NA,NA,NA,NA,NA,NA
+Individual 3,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 4,Peck at Food/Bait,,72,NA,NA,NA,2.703,3.763,NA
+Individual 4,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 4,Head Up,,66,96.431,1.461,1.633,1.919,1.236,43.7
+Individual 4,Head Down,,47,84.317,1.794,1.072,2.377,3.77,38.2
+Individual 4,Moving,,29,39.54,1.363,1.211,6.621,7.385,17.9
+Individual 4,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 4,Away from Bait,,2,15.51,7.755,9.556,209.412,NA,7
+Individual 4,Out of Frame,,5,1145.782,229.156,452.916,55.109,36.188,83.8
+Individual 4,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 4,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 5,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+Individual 5,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 5,Head Up,,0,0,0,NA,-,-,0
+Individual 5,Head Down,,0,0,0,NA,-,-,0
+Individual 5,Moving,,1,1.533,1.533,NA,NA,NA,83.4
+Individual 5,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 5,Away from Bait,,1,1.533,1.533,NA,NA,NA,83.4
+Individual 5,Out of Frame,,2,1364.681,682.34,728.28,1.535,NA,99.9
+Individual 5,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 5,Disturbance,,0,NA,NA,NA,NA,NA,NA

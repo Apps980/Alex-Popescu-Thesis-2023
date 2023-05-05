@@ -9,7 +9,7 @@ Environment,Community Commercial,,,,,,,,
 Number of crows,7,,,,,,,,
 Baited,yes,,,,,,,,
 Sentinel present,yes,,,,,,,,
-Code,37,,,,,,,,
+Code,037,,,,,,,,
 ,,,,,,,,,
 Behaviors excluded from total time,Out of Frame,,,,,,,,
 ,,,,,,,,,
@@ -17,52 +17,115 @@ Behaviors excluded from total time,Out of Frame,,,,,,,,
 Time budget:,,,,,,,,,
 Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
 ,,,,,,,,,
-No focal subject,Sentinel Present,,2,557.604,278.802,112.936,42.679,NA,92.8
-No focal subject,Sentinel Absent,,1,42.677,42.677,NA,NA,NA,7.1
-Individual 1,Peck at Food/Bait,,35,NA,NA,NA,3.011,5.311,NA
-Individual 1,Head Up,,29,55.24,1.905,2.544,2.701,2.977,42.1
-Individual 1,Head Down,,22,34.049,1.548,0.971,3.42,4.934,25.9
-Individual 1,Moving,,23,41.425,1.801,1.901,3.458,4.488,31.5
-Individual 1,Away from Bait,,4,45.464,11.366,9.18,32.187,20.898,34.6
-Individual 1,Out of Frame,,2,469.495,234.748,316.089,13.277,NA,78.1
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+No focal subject,"Perched - Head Up
+",,0,0,0,NA,-,-,0
+No focal subject,Sentinel Present,,2,557.604,278.802,112.936,42.679,NA,92.800
+No focal subject,Sentinel Absent,,1,42.677,42.677,NA,NA,NA,7.100
+No focal subject,Away from Bait,,0,0,0,NA,-,-,0
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+No focal subject,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Peck at Food/Bait,,34,NA,NA,NA,3.011,5.394,NA
+Individual 1,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 1,Head Up,,29,55.240,1.905,2.544,2.701,2.977,42.100
+Individual 1,Head Down,,22,34.049,1.548,0.971,3.420,4.934,25.900
+Individual 1,Moving,,23,41.425,1.801,1.901,3.458,4.488,31.500
+Individual 1,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+Individual 1,"Perched - Head Up
+",,0,0,0,NA,-,-,0
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 1,Away from Bait,,4,45.464,11.366,9.180,32.187,20.898,34.600
+Individual 1,Out of Frame,,2,469.495,234.748,316.089,13.277,NA,78.100
 Individual 1,Aggression,,3,NA,NA,NA,27.768,1.074,NA
 Individual 2,Peck at Food/Bait,,10,NA,NA,NA,20.076,53.454,NA
-Individual 2,Head Up,,25,70.479,2.819,3.039,7.676,20.16,31.6
-Individual 2,Head Down,,11,14.01,1.274,0.929,17.992,47.95,6.3
-Individual 2,Moving,,31,83.866,2.705,2.718,5.779,9.786,37.6
-Individual 2,Away from Bait,,8,128.093,16.012,22.482,18.448,12.779,57.5
-Individual 2,Out of Frame,,6,378.075,63.013,115.789,44.442,57.255,62.9
+Individual 2,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Head Up,,25,70.479,2.819,3.039,7.676,20.160,31.600
+Individual 2,Head Down,,11,14.010,1.274,0.929,17.992,47.950,6.300
+Individual 2,Moving,,31,83.866,2.705,2.718,5.779,9.786,37.600
+Individual 2,"Perched - Head Down
+",,2,0.507,0.254,0.005,98.594,NA,0.200
+Individual 2,"Perched - Head Up
+",,6,53.266,8.878,12.751,13.923,22.790,23.900
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 2,Away from Bait,,8,128.093,16.012,22.482,18.448,12.779,57.500
+Individual 2,Out of Frame,,6,378.075,63.013,115.789,44.442,57.255,62.900
+Individual 2,Aggression,,0,NA,NA,NA,NA,NA,NA
 Individual 3,Peck at Food/Bait,,102,NA,NA,NA,3.528,8.589,NA
 Individual 3,Peck at Ground,,7,NA,NA,NA,1.922,3.368,NA
-Individual 3,Head Up,,57,218.522,3.834,5.055,3.413,4.834,55
-Individual 3,Head Down,,49,103.602,2.114,1.384,5.327,10.026,26.1
-Individual 3,Moving,,21,46.356,2.207,2.425,18.289,31.643,11.7
-Individual 3,Away from Bait,,5,55.802,11.16,15.11,89.081,98.69,14
-Individual 3,Out of Frame,,6,203.403,33.901,54.879,79.376,76.794,33.9
+Individual 3,Head Up,,57,218.522,3.834,5.055,3.413,4.834,55.000
+Individual 3,Head Down,,49,103.602,2.114,1.384,5.327,10.026,26.100
+Individual 3,Moving,,21,46.356,2.207,2.425,18.289,31.643,11.700
+Individual 3,"Perched - Head Down
+",,1,1.756,1.756,NA,NA,NA,0.400
+Individual 3,"Perched - Head Up
+",,3,26.508,8.836,4.534,35.784,39.285,6.700
+Individual 3,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 3,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 3,Away from Bait,,5,55.802,11.160,15.110,89.081,98.690,14.000
+Individual 3,Out of Frame,,6,203.403,33.901,54.879,79.376,76.794,33.900
 Individual 3,Aggression,,2,NA,NA,NA,197.694,NA,NA
 Individual 4,Peck at Food/Bait,,82,NA,NA,NA,2.001,5.113,NA
-Individual 4,Head Up,,39,80.98,2.076,3.572,2.535,2.253,44.8
-Individual 4,Head Down,,29,79.723,2.749,2.36,3.021,6.981,44.1
-Individual 4,Moving,,19,19.547,1.029,0.418,8.933,13.469,10.8
-Individual 4,Away from Bait,,2,0.758,0.379,0.173,179.578,NA,0.4
-Individual 4,Out of Frame,,2,419.945,209.973,217.483,180.338,NA,69.9
+Individual 4,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 4,Head Up,,39,80.980,2.076,3.572,2.535,2.253,44.800
+Individual 4,Head Down,,29,79.723,2.749,2.360,3.021,6.981,44.100
+Individual 4,Moving,,19,19.547,1.029,0.418,8.933,13.469,10.800
+Individual 4,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+Individual 4,"Perched - Head Up
+",,0,0,0,NA,-,-,0
+Individual 4,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 4,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 4,Away from Bait,,2,0.758,0.379,0.173,179.578,NA,0.400
+Individual 4,Out of Frame,,2,419.945,209.973,217.483,180.338,NA,69.900
 Individual 4,Aggression,,1,NA,NA,NA,NA,NA,NA
 Individual 5,Peck at Food/Bait,,45,NA,NA,NA,5.097,12.407,NA
-Individual 5,Head Up,,47,158.086,3.364,3.247,3.81,6.267,47.5
-Individual 5,Head Down,,25,41.698,1.668,1.083,8.117,12.559,12.5
-Individual 5,Moving,,40,72.436,1.811,1.269,7.51,6.976,21.8
-Individual 5,Away from Bait,,11,126.865,11.533,10.528,23.846,31.553,38.1
-Individual 5,Out of Frame,,7,267.962,38.28,57.992,55.387,34.93,44.6
+Individual 5,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 5,Head Up,,47,158.086,3.364,3.247,3.810,6.267,47.500
+Individual 5,Head Down,,25,41.698,1.668,1.083,8.117,12.559,12.500
+Individual 5,Moving,,40,72.436,1.811,1.269,7.510,6.976,21.800
+Individual 5,"Perched - Head Down
+",,7,21.466,3.067,4.491,50.425,74.038,6.400
+Individual 5,"Perched - Head Up
+",,10,38.500,3.850,5.581,32.032,54.846,11.600
+Individual 5,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 5,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 5,Away from Bait,,11,126.865,11.533,10.528,23.846,31.553,38.100
+Individual 5,Out of Frame,,7,267.962,38.280,57.992,55.387,34.930,44.600
+Individual 5,Aggression,,0,NA,NA,NA,NA,NA,NA
 Individual 6,Peck at Food/Bait,,74,NA,NA,NA,3.113,7.672,NA
-Individual 6,Head Up,,53,78.569,1.482,2.697,4.201,7.572,26.2
-Individual 6,Head Down,,50,75.215,1.504,0.832,3.342,8.819,25.1
-Individual 6,Moving,,26,75.863,2.918,2.2,9.286,8.212,25.3
-Individual 6,Away from Bait,,7,119.55,17.079,18.232,31.411,26.607,39.9
-Individual 6,Out of Frame,,4,301.508,75.377,96.022,99.592,74.246,50.2
-Individual 7,Peck at Food/Bait,,56,NA,NA,NA,1.259,1.55,NA
-Individual 7,Head Up,,23,29.486,1.282,1.324,2.024,1.101,38.3
-Individual 7,Head Down,,22,41.224,1.874,1.011,1.383,1.46,53.6
-Individual 7,Moving,,6,5.575,0.929,0.295,52.04,78.548,7.2
-Individual 7,Away from Bait,,3,1.315,0.438,0.164,132.231,80.91,1.7
-Individual 7,Out of Frame,,3,523.945,174.648,41.757,38.169,53.258,87.2
+Individual 6,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 6,Head Up,,53,78.569,1.482,2.697,4.201,7.572,26.200
+Individual 6,Head Down,,50,75.215,1.504,0.832,3.342,8.819,25.100
+Individual 6,Moving,,26,75.863,2.918,2.200,9.286,8.212,25.300
+Individual 6,"Perched - Head Down
+",,8,37.999,4.750,4.674,12.014,18.780,12.700
+Individual 6,"Perched - Head Up
+",,10,30.731,3.073,3.227,11.996,15.523,10.300
+Individual 6,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 6,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 6,Away from Bait,,7,119.550,17.079,18.232,31.411,26.607,39.900
+Individual 6,Out of Frame,,4,301.508,75.377,96.022,99.592,74.246,50.200
+Individual 6,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 7,Peck at Food/Bait,,56,NA,NA,NA,1.259,1.550,NA
+Individual 7,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 7,Head Up,,23,29.486,1.282,1.324,2.024,1.101,38.300
+Individual 7,Head Down,,22,41.224,1.874,1.011,1.383,1.460,53.600
+Individual 7,Moving,,6,5.575,0.929,0.295,52.040,78.548,7.200
+Individual 7,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+Individual 7,"Perched - Head Up
+",,0,0,0,NA,-,-,0
+Individual 7,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 7,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 7,Away from Bait,,3,1.315,0.438,0.164,132.231,80.910,1.700
+Individual 7,Out of Frame,,3,523.945,174.648,41.757,38.169,53.258,87.200
 Individual 7,Aggression,,1,NA,NA,NA,NA,NA,NA
