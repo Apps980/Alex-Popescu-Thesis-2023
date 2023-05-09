@@ -1,0 +1,37 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,039 - Glen Morris Dr - 2 crows - Baited,,,,,,,,
+Observation date,2022-09-01T08:20:00,,,,,,,,
+Description,,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.139716, -79.237330",,,,,,,,
+Environment,Minor Green space,,,,,,,,
+Number of crows,2,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present, no,,,,,,,,
+Code,039,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,Sentinel Absent,,1,574.181,574.181,NA,NA,NA,99.900
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+Individual 1,Peck at Food/Bait,,94,NA,NA,NA,1.493,2.027,NA
+Individual 1,Head Up,,22,50.196,2.282,2.381,4.312,3.559,35.200
+Individual 1,Head Down,,20,89.018,4.451,3.501,2.780,2.712,62.500
+Individual 1,Moving,,4,2.519,0.630,0.588,47.035,40.755,1.800
+Individual 1,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 1,Out of Frame,,3,432.404,144.135,247.268,65.313,83.524,75.200
+Individual 2,Peck at Food/Bait,,166,NA,NA,NA,1.572,3.881,NA
+Individual 2,Head Up,,65,78.117,1.202,1.943,2.954,4.764,33.900
+Individual 2,Head Down,,63,130.322,2.069,1.555,2.095,5.616,56.500
+Individual 2,Moving,,9,20.529,2.281,2.535,30.746,35.309,8.900
+Individual 2,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 2,Out of Frame,,5,344.325,68.865,133.697,54.678,49.690,59.900

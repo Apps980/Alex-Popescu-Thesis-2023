@@ -1,0 +1,49 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,040 - Dairy Queen PLot - 3 crows - Baited,,,,,,,,
+Observation date,2022-09-08T08:50:00,,,,,,,,
+Description,,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.178229, -79.240608",,,,,,,,
+Environment,Major Green Space,,,,,,,,
+Number of crows,3,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present,yes,,,,,,,,
+Code,40,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,Sentinel Present,,1,1150.26,1150.26,NA,NA,NA,95.9
+No focal subject,Sentinel Absent,,1,49.412,49.412,NA,NA,NA,4.1
+No focal subject,Away from Bait,,0,0,0,NA,-,-,0
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+No focal subject,Disturbance,,7,NA,NA,NA,193.067,242.737,NA
+Individual 1,Peck at Food/Bait,,27,NA,NA,NA,4.476,8.115,NA
+Individual 1,Peck at Ground,,12,NA,NA,NA,1.644,1.478,NA
+Individual 1,Head Up,,40,52.289,1.307,0.963,8.38,21.13,34.2
+Individual 1,Head Down,,29,55.529,1.915,1.207,6.435,19.028,36.4
+Individual 1,Moving,,22,44.448,2.02,1.593,16.205,29.792,29.1
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 1,Away from Bait,,9,58.669,6.519,7.5,38.774,35.138,38.4
+Individual 1,Out of Frame,,7,1047.31,149.616,295.803,22.536,19.126,87.3
+Individual 1,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Peck at Food/Bait,,37,NA,NA,NA,2.272,2.355,NA
+Individual 2,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Head Up,,24,33.513,1.396,1.53,2.197,1.747,37.4
+Individual 2,Head Down,,24,40.736,1.697,1.073,1.851,2.061,45.5
+Individual 2,Moving,,6,14.904,2.484,2.045,14.86,14.141,16.6
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 2,Away from Bait,,3,66.943,22.314,20.378,11.131,3.35,74.7
+Individual 2,Out of Frame,,1,1110.466,1110.466,NA,NA,NA,92.5
+Individual 2,Disturbance,,0,NA,NA,NA,NA,NA,NA

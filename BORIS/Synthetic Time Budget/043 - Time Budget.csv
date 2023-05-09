@@ -1,0 +1,46 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,043 - Ontario Bodyshop PLot - 2 crows - Baited,,,,,,,,
+Observation date,2022-09-28T08:05:00,,,,,,,,
+Description,Stopped because someone parked in front of me.,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.177240, -79.266689",,,,,,,,
+Environment,Arterial Commercial,,,,,,,,
+Number of crows,2,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present,yes,,,,,,,,
+Code,043,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,Sentinel Present,,1,496.986,496.986,NA,NA,NA,99.900
+No focal subject,Away from Bait,,0,0,0,NA,-,-,0
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+No focal subject,Aggression,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Disturbance,,48,NA,NA,NA,7.643,9.854,NA
+Individual 1,Peck at Food/Bait,,6,NA,NA,NA,14.816,27.706,NA
+Individual 1,Head Up,,6,9.446,1.574,0.721,2.155,2.582,29.600
+Individual 1,Head Down,,6,4.515,0.753,0.276,14.062,27.667,14.200
+Individual 1,Moving,,10,17.544,1.754,0.989,6.697,14.291,55.000
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Away from Bait,,6,16.753,2.792,3.264,12.214,18.514,52.500
+Individual 1,Out of Frame,,4,465.456,116.364,119.672,10.510,13.448,93.600
+Individual 1,Aggression,,1,NA,NA,NA,NA,NA,NA
+Individual 1,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Peck at Food/Bait,,2,NA,NA,NA,2.500,NA,NA
+Individual 2,Head Up,,6,8.504,1.417,1.019,1.002,0.707,43.900
+Individual 2,Head Down,,3,1.748,0.583,0.142,2.376,0.177,9.000
+Individual 2,Moving,,6,8.743,1.457,1.167,3.354,2.938,45.100
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Away from Bait,,4,7.256,1.814,1.669,6.086,4.887,37.400
+Individual 2,Out of Frame,,3,477.974,159.325,136.558,9.506,8.491,96.100
+Individual 2,Aggression,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Disturbance,,0,NA,NA,NA,NA,NA,NA

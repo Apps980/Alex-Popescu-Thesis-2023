@@ -17,10 +17,20 @@ Behaviors excluded from total time,Out of Frame,,,,,,,,
 Time budget:,,,,,,,,,
 Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
 ,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
 No focal subject,Peck at Ground,,1,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+No focal subject,"Perched - Head Up
+",,0,0,0,NA,-,-,0
 No focal subject,Sentinel Present,,2,114.015,57.008,55.468,898.892,NA,9.500
 No focal subject,Sentinel Absent,,2,1085.726,542.863,503.501,17.788,NA,90.500
-Individual 1,Peck at Food/Bait,,282,NA,NA,NA,3.474,18.085,NA
+No focal subject,Away from Bait,,0,0,0,NA,-,-,0
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+Individual 1,Peck at Food/Bait,,281,NA,NA,NA,3.487,18.116,NA
 Individual 1,Peck at Ground,,11,NA,NA,NA,1.121,0.711,NA
 Individual 1,Head Up,,109,101.496,0.931,0.666,8.376,64.928,11.800
 Individual 1,Head Down,,102,131.600,1.290,0.777,8.382,67.020,15.300
@@ -29,9 +39,12 @@ Individual 1,"Perched - Head Down
 ",,62,136.180,2.196,1.506,4.492,13.974,15.900
 Individual 1,"Perched - Head Up
 ",,70,334.821,4.783,13.006,3.275,4.056,39.000
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Sentinel Absent,,0,0,0,NA,-,-,0
 Individual 1,Away from Bait,,10,798.186,79.819,116.361,23.858,28.729,93.000
 Individual 1,Out of Frame,,8,341.791,42.724,66.122,118.114,131.053,28.500
 Individual 2,Peck at Food/Bait,,192,NA,NA,NA,5.660,36.102,NA
+Individual 2,Peck at Ground,,0,NA,NA,NA,NA,NA,NA
 Individual 2,Head Up,,12,13.992,1.166,0.763,98.214,312.192,3.700
 Individual 2,Head Down,,8,9.011,1.126,0.656,153.367,401.806,2.400
 Individual 2,Moving,,26,59.288,2.280,2.410,41.513,105.402,15.800
@@ -39,5 +52,7 @@ Individual 2,"Perched - Head Down
 ",,48,176.047,3.668,3.416,13.965,61.210,46.800
 Individual 2,"Perched - Head Up
 ",,54,116.042,2.149,2.313,13.675,56.346,30.900
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Sentinel Absent,,0,0,0,NA,-,-,0
 Individual 2,Away from Bait,,12,343.187,28.599,39.780,66.376,128.866,91.300
 Individual 2,Out of Frame,,13,823.986,63.384,119.611,31.313,38.327,68.700

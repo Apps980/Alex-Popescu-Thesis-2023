@@ -1,0 +1,58 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,042 - CIBC PLot - 2 crows - Baited,,,,,,,,
+Observation date,2022-09-21T09:13:00,,,,,,,,
+Description,	,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.176775, -79.242460",,,,,,,,
+Environment,Major Commercial,,,,,,,,
+Number of crows,2,,,,,,,,
+Baited,yes,,,,,,,,
+Sentinel present, no,,,,,,,,
+Code,047,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+No focal subject,"Perched - Head Up
+",,0,0,0,NA,-,-,0
+No focal subject,Sentinel Present,,2,47.409,23.704,28.039,25.280,NA,7.700
+No focal subject,Sentinel Absent,,3,568.632,189.544,160.224,23.707,28.039,92.200
+No focal subject,Away from Bait,,0,0,0,NA,-,-,0
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+No focal subject,Disturbance,,15,NA,NA,NA,32.749,24.696,NA
+Individual 1,Peck at Food/Bait,,33,NA,NA,NA,2.072,1.694,NA
+Individual 1,Head Up,,32,28.778,0.899,0.594,1.251,0.633,30.800
+Individual 1,Head Down,,29,31.970,1.102,0.596,1.297,1.245,34.200
+Individual 1,Moving,,14,12.224,0.873,0.571,6.373,5.863,13.100
+Individual 1,"Perched - Head Down
+",,3,6.009,2.003,0.871,5.383,1.245,6.400
+Individual 1,"Perched - Head Up
+",,3,13.952,4.651,1.403,2.002,0.709,14.900
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 1,Away from Bait,,2,21.949,10.975,15.178,77.820,NA,23.500
+Individual 1,Out of Frame,,4,523.028,130.757,185.329,31.006,13.351,84.800
+Individual 1,Disturbance,,0,NA,NA,NA,NA,NA,NA
+Individual 2,Peck at Food/Bait,,96,NA,NA,NA,2.062,2.521,NA
+Individual 2,Head Up,,60,96.707,1.612,1.598,1.778,1.089,48.900
+Individual 2,Head Down,,55,84.275,1.532,0.981,2.076,2.352,42.600
+Individual 2,Moving,,14,16.311,1.165,0.736,14.427,15.517,8.200
+Individual 2,"Perched - Head Down
+",,0,0,0,NA,-,-,0
+Individual 2,"Perched - Head Up
+",,0,0,0,NA,-,-,0
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Sentinel Absent,,0,0,0,NA,-,-,0
+Individual 2,Away from Bait,,1,1.241,1.241,NA,NA,NA,0.600
+Individual 2,Out of Frame,,8,418.618,52.327,94.923,28.204,16.940,67.900
+Individual 2,Disturbance,,0,NA,NA,NA,NA,NA,NA

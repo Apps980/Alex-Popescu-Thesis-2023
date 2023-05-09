@@ -224,7 +224,38 @@
 	This is the empirical study I performed in the summer of 2022. I looked at the behavior of foragers in different environments and in the presence of a sentinel.
 
 ### 3.1 Introduction
-	
+	This is where I will be introducing the core concepts used in the empirical study
+
+#### 3.1.1 Sentinel behavior
+- Re-describe sentinel behavior
+- Explain the purpose of sentinel behavior
+	- Vigilance-Foraging tradeoff
+	- Increased vigilance for foragers, cost to sentinel
+	- An example of social behavior
+- Explain (quickly) how sentinel could be affected by external factors
+	- Namely risk and presence of food
+		- Predictability of risk!
+	- Ambient noise
+	- Lines of sight
+- Explain how an urban environment could affect sentinel behavior
+	- Greater access to and predictability of food sources
+	- Urbanized predators, humans, vehicles, animals, etc
+	- More ambient noise
+		- Make sentinel harder to hear, less reliable
+		- Shorter lines of sight (more cluttered vision)
+
+#### Modified social behaviors in urban areas
+- Enter werewolf
+	- If urban areas can affect the propensity and efficacy of sentinels, then foragers may have altered behaviors to account for these changes.
+	- These modified behaviors could maintain the increase the fitness of these individuals gained from performing social behaviors.
+	- Modified social behaviors could contribute to the increased fitness and ability of social synurbic species to compete with other species living alongside them
+- Social synurbic species could be foraging with increased protection and have increased foraging efficiency in the presence of a sentinel, even if the sentinel is less reliable in urban areas than in greener areas.
+- Yet, these changes of social foraging behavior in different environments are understudied
+	- Silver bullet!
+	- Introduce model species: The American crow
+
+#### 3.1.2 Hypotheses
+
 
 ### 3.2 Methods
 	This will be split into a number of separate sections, mainly:
@@ -311,7 +342,10 @@
 	- On proportion data
 	- On peck rate
 - Pathway analysis <- Behatrix
-	- Shows lieklihood of one behavior following another
+	- Shows likelihood of one behavior following another
+	- Exported behavioral sequences from BORIS
+	- Removed sequences shorter than 2 behaviors
+	- "Out of Frame" = cut the sequence and start a new sequence.
 
 ### 3.3 Results
 	AS IT CURRENTLY STANDS! PCA and Pathway analyses not performed (yet)
@@ -401,7 +435,8 @@
 
 
 ### 3.5 Conclusion
-	
+	This is where I make my concluding statements.
+My hypotheses and predictions are 
 
 ## Chapter 4: General Discussion & Conclusions
 

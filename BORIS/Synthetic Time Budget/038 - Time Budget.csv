@@ -1,0 +1,37 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,038 - Landcaster Park - 3 crows - No Bait,,,,,,,,
+Observation date,2022-09-01T07:30:00,,,,,,,,
+Description,,,,,,,,,
+Independent variables:,,,,,,,,,
+Location,"43.178470, -79.239195",,,,,,,,
+Environment,Major Green Space,,,,,,,,
+Number of crows,3,,,,,,,,
+Baited, no,,,,,,,,
+Sentinel present,yes,,,,,,,,
+Code,038,,,,,,,,
+,,,,,,,,,
+Behaviors excluded from total time,Out of Frame,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,Peck at Food/Bait,,0,NA,NA,NA,NA,NA,NA
+No focal subject,Head Up,,0,0,0,NA,-,-,0
+No focal subject,Head Down,,0,0,0,NA,-,-,0
+No focal subject,Moving,,0,0,0,NA,-,-,0
+No focal subject,Sentinel Present,,1,235.999,235.999,NA,NA,NA,99.800
+No focal subject,Out of Frame,,0,0,0,NA,-,-,0
+Individual 1,Peck at Food/Bait,,5,NA,NA,NA,1.688,1.219,NA
+Individual 1,Head Up,,5,19.755,3.951,2.365,4.689,2.792,36.100
+Individual 1,Head Down,,7,13.230,1.890,2.822,4.378,3.832,24.200
+Individual 1,Moving,,9,21.377,2.375,1.371,4.409,6.520,39.000
+Individual 1,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 1,Out of Frame,,2,181.615,90.807,125.217,48.244,NA,76.800
+Individual 2,Peck at Food/Bait,,59,NA,NA,NA,3.072,7.839,NA
+Individual 2,Head Up,,12,17.989,1.499,1.274,14.151,11.726,11.400
+Individual 2,Head Down,,24,77.579,3.232,6.338,4.731,8.309,49.300
+Individual 2,Moving,,25,61.191,2.448,2.187,6.755,12.190,38.900
+Individual 2,Sentinel Present,,0,0,0,NA,-,-,0
+Individual 2,Out of Frame,,7,79.176,11.311,11.495,25.111,18.418,33.500
