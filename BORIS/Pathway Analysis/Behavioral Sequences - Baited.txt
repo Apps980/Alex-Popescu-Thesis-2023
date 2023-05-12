@@ -1,59 +1,3 @@
-
-# observation id: 020 - FVM - 2 crows - No Bait
-# observation description: 
-
-# Media file name: 020.MOV
-
-# Independent variables
-# Location: 43.182620, -79.245815
-# Environment: Major Green Space
-# Number of crows: 2
-# Baited:  no
-# Sentinel present:  no
-# Code: 020
-
-
-# No focal subject:
-Sentinel Absent
-
-# Individual 1 - Sentinel Absent:
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving
-
-# Individual 2 - Sentinel Absent:
-Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving
-
-Moving|Head Up|Head Down|Head Up|Moving
-
-# observation id: 024 - FVM - 2 crows - No Bait
-# observation description: 
-
-# Media file name: 024.MOV
-
-# Independent variables
-# Location: 43.182620, -79.245815
-# Environment: Major Green Space
-# Number of crows: 2
-# Baited:  no
-# Sentinel present: yes
-# Code: 024
-
-
-# No focal subject:
-Sentinel Absent|Sentinel Present|Sentinel Absent
-
-# Individual 1 - Sentinel Absent:
-Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Head Down
-
-Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down
-
-# Individual 1 - Sentinel Present:
-Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up
-
-# Individual 2 - Sentinel Absent:
-Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Moving
-
-Moving|Head Up|Head Down
-
 # observation id: 025 - FVM - 2 crows - Baited
 # observation description: Follows 024
 
@@ -68,9 +12,6 @@ Moving|Head Up|Head Down
 # Code: 025
 
 
-# No focal subject:
-Sentinel Absent
-
 # Individual 1 - Sentinel Absent:
 Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down
 
@@ -79,28 +20,6 @@ Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/B
 Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Moving|Moving|Head Up|Head Down
 
 Head Up|Moving
-
-# observation id: 026 - FVM - 2 crows - Baited
-# observation description: 
-
-# Media file name: 026.MOV
-
-# Independent variables
-# Location: 43.182620, -79.245815
-# Environment: Major Green Space
-# Number of crows: 2
-# Baited: yes
-# Sentinel present: yes
-# Code: 026
-
-
-# No focal subject:
-Sentinel Absent|Sentinel Present|Sentinel Absent
-
-# Individual 1 - Sentinel Present:
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
 
 # observation id: 027 - FVM - 2 crows - Baited
 # observation description: Period of time when Individual 1 is perched, not foraging. (not coded)
@@ -116,33 +35,10 @@ Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down
 # Code: 027
 
 
-# No focal subject:
-Sentinel Absent
-
 # Individual 1 - Sentinel Absent:
 Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Moving
 
 Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Moving
-
-# observation id: 028 - FVM - 2 crows - Baited
-# observation description: 
-
-# Media file name: 028.MOV
-
-# Independent variables
-# Location: 43.182620, -79.245815
-# Environment: Major Green Space
-# Number of crows: 2
-# Baited: yes
-# Sentinel present: yes
-# Code: 028
-
-
-# No focal subject:
-Sentinel Absent|Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving
 
 # observation id: 029 - FVM - 2 crows - Baited
 # observation description: 
@@ -158,9 +54,6 @@ Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|He
 # Code: 029
 
 
-# No focal subject:
-Sentinel Absent|Sentinel Present|Sentinel Absent
-
 # Individual 1 - Sentinel Absent:
 Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Moving
 
@@ -168,126 +61,10 @@ Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head U
 
 Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving
 
-# Individual 1 - Sentinel Present:
-Moving|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down
-
 # Individual 2 - Sentinel Absent:
 Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving
 
 Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Moving
-
-# observation id: 030 - FVM - 2 crows - Baited
-# observation description: 
-
-# Media file name: 030.MOV
-
-# Independent variables
-# Location: 43.182620, -79.245815
-# Environment: Major Green Space
-# Number of crows: 2
-# Baited: yes
-# Sentinel present: yes
-# Code: 030
-
-
-# No focal subject:
-Sentinel Absent|Sentinel Present|Sentinel Absent
-
-# Individual 1 - Sentinel Present:
-Moving|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
-
-# observation id: 031 - FVM - 2 crows - Baited
-# observation description: 
-
-# Media file name: 031.MOV
-
-# Independent variables
-# Location: 43.182620, -79.245815
-# Environment: Major Green Space
-# Number of crows: 2
-# Baited: yes
-# Sentinel present: yes
-# Code: 031
-
-
-# No focal subject:
-Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving
-
-# observation id: 032  - Ontario St. Tim Hortons - 4 crows - No Bait
-# observation description: 
-
-# Media file name: 032.MOV, 032-2.MOV
-
-# Independent variables
-# Location: 43.171783, -79.265237
-# Environment: Arterial Commercial
-# Number of crows: 4
-# Baited:  no
-# Sentinel present:  no
-# Code: 032
-
-
-# No focal subject:
-Sentinel Absent
-
-# Individual 1 - Sentinel Absent:
-Moving|Head Up|Moving|Moving|Head Up
-
-Moving|Head Down|Head Down+Peck at Food/Bait
-
-Head Up|Moving
-
-Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Up|Moving|Moving|Head Up|Moving|Head Up|Moving|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Moving|Head Down|Head Up|Moving|Moving|Head Down|Head Down+Peck at Food/Bait
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
-
-Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Moving|Moving
-
-Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
-
-Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Moving
-
-# Individual 2 - Sentinel Absent:
-Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving
-
-Head Up|Moving
-
-Moving|Head Up|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait
-
-Moving|Moving|Moving|Head Up|Moving
-
-Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Moving|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Up|Moving|Moving|Moving|Head Up|Moving|Moving|Head Up|Moving|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Moving|Head Down|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Moving
-
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Moving|Head Up|Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Moving|Moving|Moving
-
-# Individual 3 - Sentinel Absent:
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait
-
-Head Up|Moving|Moving|Moving|Moving|Moving|Head Up|Moving|Head Up|Moving|Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Moving|Moving
-
-Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Head Down
-
-Head Up|Head Down|Moving|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Moving
-
-Moving|Head Up|Moving|Head Up|Moving
-
-# Individual 4 - Sentinel Absent:
-Moving|Head Up|Moving|Head Up|Moving
-
-Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
 
 # observation id: 033 - NF Subways PLot - 2 crows - Baited
 # observation description: 
@@ -303,17 +80,7 @@ Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head 
 # Code: 033
 
 
-# No focal subject:
-Sentinel Present|Sentinel Absent|Sentinel Present|Sentinel Absent
-
-# Individual 1 - Sentinel Present:
-Head Up|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
-
-Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-# Individual 1 - Sentinel Absent
+# Individual 1 - Sentinel Absent:
 Moving|Head Down|Head Up|Moving
 
 Head Up|Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
@@ -341,42 +108,8 @@ Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head 
 # Code: 034
 
 
-# No focal subject:
-Sentinel Absent
-
 # Individual 1 - Sentinel Absent:
 Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-# observation id: 035 - Charles Ansell Park - 3 crows - No Bait
-# observation description: 
-
-# Media file name: 035.MOV
-
-# Independent variables
-# Location: 43.214244, -79.213456
-# Environment: Major Green Space
-# Number of crows: 3
-# Baited:  no
-# Sentinel present: yes
-# Code: 035
-
-
-# No focal subject:
-Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving
-
-Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-# Individual 2 - Sentinel Present:
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
 
 # observation id: 036 - FVM - 2 crows - Baited
 # observation description: 2 crows fly in and start a fight with individual 2. Not considered part of the group (Nb of crows = 2)
@@ -392,20 +125,6 @@ Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Fo
 # Code: 036
 
 
-# No focal subject:
-Sentinel Present|Sentinel Absent|Sentinel Present|Sentinel Absent
-
-# Individual 1 - Sentinel Present:
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Moving
-
-Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
-
-Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
 # Individual 1 - Sentinel Absent:
 Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
 
@@ -417,43 +136,6 @@ Moving|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head 
 Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
 
 Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Moving
-
-# observation id: 037 - Lancaster Park - 4 crows - No Bait
-# observation description: 
-
-# Media file name: 037.MOV
-
-# Independent variables
-# Location: 43.178580, -79.239173
-# Environment: Major Green Space
-# Number of crows: 4
-# Baited:  no
-# Sentinel present: yes
-# Code: 037
-
-
-# No focal subject:
-Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
-
-Head Down|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Moving
-
-Head Up|Moving|Head Up|Head Down|Head Up|Head Down
-
-Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Moving|Head Up|Head Down|Head Up
-
-# Individual 2 - Sentinel Present:
-Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving
-
-Head Up|Head Down|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
 
 # observation id: 037-2 - Dairy Queen PLot - 7 crows - Baited
 # observation description: Spooked by raptor in the area
@@ -469,118 +151,23 @@ Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head D
 # Code: 037
 
 
-# No focal subject:
-Sentinel Present|Sentinel Absent|Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Moving|Moving|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Moving|Moving|Moving
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
-
-# Individual 2 - Sentinel Present:
-Moving|Head Up|Moving|Head Up|Moving
-
-Moving|Head Up|Moving|Moving|Moving|Head Up|Moving|Head Down|Moving|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Moving
-
-Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving
-
-Moving|Head Up|Moving
-
 # Individual 2 - Sentinel Absent:
 Moving|Moving|Moving|Head Up|Moving|Head Up|Moving|Head Up
-
-# Individual 3 - Sentinel Present:
-Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Moving|Head Up|Moving
-
-Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Moving|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
-
-Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving
 
 # Individual 3 - Sentinel Absent:
 Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
 
-# Individual 4 - Sentinel Present:
-Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up
-
 # Individual 4 - Sentinel Absent:
 Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Moving
-
-# Individual 5 - Sentinel Present:
-Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up
-
-Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up
-
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Moving
-
-Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving
 
 # Individual 5 - Sentinel Absent:
 Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
 
-# Individual 6 - Sentinel Present:
-Moving|Moving|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
-
-Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving
-
-Moving|Head Up|Moving|Head Up|Moving
-
 # Individual 6 - Sentinel Absent:
 Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up
 
-# Individual 7 - Sentinel Present:
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
-
 # Individual 7 - Sentinel Absent:
 Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-# observation id: 038 - Landcaster Park - 3 crows - No Bait
-# observation description: 
-
-# Media file name: 038.MOV
-
-# Independent variables
-# Location: 43.178470, -79.239195
-# Environment: Major Green Space
-# Number of crows: 3
-# Baited:  no
-# Sentinel present: yes
-# Code: 038
-
-
-# No focal subject:
-Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Moving|Head Down|Moving
-
-Moving|Head Down|Moving|Head Down|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Moving|Head Down|Moving|Head Up|Moving    
-
-# Individual 2 - Sentinel Present:
-Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Moving|Head Down|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Moving
-
-Moving|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Moving|Head Up|Moving
-
-Moving|Head Up|Moving
 
 # observation id: 038-2 - Dairy Queen PLot - 7 crows - Baited
 # observation description: 
@@ -596,64 +183,11 @@ Moving|Head Up|Moving
 # Code: 038
 
 
-# No focal subject:
-Sentinel Present|Sentinel Absent|Sentinel Present
-
-# Individual 1 - Sentinel Present:
-Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Moving
-
-Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-Moving|Head Up
-
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving
-
-Moving|Head Down|Moving|Head Up|Moving
-
 # Individual 1 - Sentinel Absent:
 Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down
 
-# Individual 2 - Sentinel Present:
-Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving
-
-# Individual 3 - Sentinel Present:
-Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Down|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
-
 # Individual 3 - Sentinel Absent
 Head Down|Moving
-
-# Individual 4 - Sentinel Present:
-Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
-
-# Individual 5 - Sentinel Present:
-Moving|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-# Individual 7 - Sentinel Present:
-Moving|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
-
-Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
-
-Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down
-
-Head Up|Moving|Head Up|Moving
-
-Moving|Head Up|Moving
-
-Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Up|Moving
-
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Moving|Head Up|Moving|Moving
 
 # Individual 7 - Sentinel Absent:
 Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up
@@ -671,9 +205,6 @@ Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|He
 # Sentinel present:  no
 # Code: 039
 
-
-# No focal subject:
-Sentinel Absent
 
 # Individual 1 - Sentinel Absent:
 Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
@@ -705,11 +236,328 @@ Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head D
 # Code: 040
 
 
-# No focal subject:
-Sentinel Absent|Sentinel Present
-
 # Individual 1 - Sentinel Absent:
 Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving
+
+# Individual 2 - Sentinel Absent:
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
+
+# observation id: 042 - CIBC PLot - 2 crows - Baited
+# observation description: 	
+
+# Media file name: 042.MOV
+
+# Independent variables
+# Location: 43.176775, -79.242460
+# Environment: Major Commercial
+# Number of crows: 2
+# Baited: yes
+# Sentinel present:  no
+# Code: 042
+
+
+# Individual 1 - Sentinel Absent:
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
+
+Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Moving
+
+# Individual 2 - Sentinel Absent
+Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving
+
+Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up
+
+Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
+
+Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
+
+Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+# observation id: 026 - FVM - 2 crows - Baited
+# observation description: 
+
+# Media file name: 026.MOV
+
+# Independent variables
+# Location: 43.182620, -79.245815
+# Environment: Major Green Space
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 026
+
+
+# Individual 1 - Sentinel Present:
+Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
+
+# observation id: 028 - FVM - 2 crows - Baited
+# observation description: 
+
+# Media file name: 028.MOV
+
+# Independent variables
+# Location: 43.182620, -79.245815
+# Environment: Major Green Space
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 028
+
+
+# Individual 1 - Sentinel Present:
+Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving
+
+# observation id: 029 - FVM - 2 crows - Baited
+# observation description: 
+
+# Media file name: 029.MOV
+
+# Independent variables
+# Location: 43.182620, -79.245815
+# Environment: Major Green Space
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 029
+
+
+# Individual 1 - Sentinel Present:
+Moving|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down
+
+# observation id: 030 - FVM - 2 crows - Baited
+# observation description: 
+
+# Media file name: 030.MOV
+
+# Independent variables
+# Location: 43.182620, -79.245815
+# Environment: Major Green Space
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 030
+
+
+# Individual 1 - Sentinel Present:
+Moving|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
+
+# observation id: 031 - FVM - 2 crows - Baited
+# observation description: 
+
+# Media file name: 031.MOV
+
+# Independent variables
+# Location: 43.182620, -79.245815
+# Environment: Major Green Space
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 031
+
+
+# Individual 1 - Sentinel Present:
+Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving
+
+# observation id: 033 - NF Subways PLot - 2 crows - Baited
+# observation description: 
+
+# Media file name: 033.MOV
+
+# Independent variables
+# Location: 43.114516, -79.113412
+# Environment: Community Commercial
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 033
+
+
+# Individual 1 - Sentinel Present:
+Head Up|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
+
+Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+# observation id: 036 - FVM - 2 crows - Baited
+# observation description: 2 crows fly in and start a fight with individual 2. Not considered part of the group (Nb of crows = 2)
+
+# Media file name: 036.MOV
+
+# Independent variables
+# Location: 43.182620, -79.245815
+# Environment: Major Green Space
+# Number of crows: 2
+# Baited: yes
+# Sentinel present: yes
+# Code: 036
+
+# Individual 1 - Sentinel Present:
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Moving
+
+Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
+
+Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
+
+# observation id: 037-2 - Dairy Queen PLot - 7 crows - Baited
+# observation description: Spooked by raptor in the area
+
+# Media file name: 037-2.MOV
+
+# Independent variables
+# Location: 43.177786, -79.239675
+# Environment: Community Commercial
+# Number of crows: 7
+# Baited: yes
+# Sentinel present: yes
+# Code: 037
+
+
+# Individual 1 - Sentinel Present:
+Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Moving|Moving|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Moving|Moving|Moving
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
+
+# Individual 2 - Sentinel Present:
+Moving|Head Up|Moving|Head Up|Moving
+
+Moving|Head Up|Moving|Moving|Moving|Head Up|Moving|Head Down|Moving|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Moving
+
+Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving
+
+Moving|Head Up|Moving
+
+# Individual 3 - Sentinel Present:
+Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
+
+Head Up|Moving|Head Up|Moving
+
+Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Moving|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
+
+Moving|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving
+
+# Individual 4 - Sentinel Present:
+Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up
+
+# Individual 5 - Sentinel Present:
+Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up
+
+Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up
+
+Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
+
+Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Moving
+
+Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving
+
+# Individual 6 - Sentinel Present:
+Moving|Moving|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
+
+Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Moving
+
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
+
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving
+
+Moving|Head Up|Moving|Head Up|Moving
+
+# Individual 7 - Sentinel Present:
+Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
+
+# observation id: 038-2 - Dairy Queen PLot - 7 crows - Baited
+# observation description: 
+
+# Media file name: 038-2.MOV
+
+# Independent variables
+# Location: 43.177779, -79.239655
+# Environment: Community Commercial
+# Number of crows: 7
+# Baited: yes
+# Sentinel present: yes
+# Code: 038
+
+
+# Individual 1 - Sentinel Present:
+Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Moving
+
+Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
+
+Moving|Head Up
+
+Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving
+
+Moving|Head Down|Moving|Head Up|Moving
+
+# Individual 2 - Sentinel Present:
+Head Up|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
+
+Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
+
+Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Moving
+
+# Individual 3 - Sentinel Present:
+Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Moving|Head Down|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
+
+# Individual 4 - Sentinel Present:
+Moving|Moving|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving
+
+# Individual 5 - Sentinel Present:
+Moving|Head Up|Moving|Head Down|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
+
+# Individual 7 - Sentinel Present:
+Moving|Head Up|Moving|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Moving|Head Up
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down
+
+Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
+
+Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
+
+Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down
+
+Head Up|Moving|Head Up|Moving
+
+Moving|Head Up|Moving
+
+Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Moving|Head Up|Moving
+
+Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving
+
+Moving|Head Up|Moving|Moving
+
+# observation id: 040 - Dairy Queen PLot - 3 crows - Baited
+# observation description: 
+
+# Media file name: 040.MOV
+
+# Independent variables
+# Location: 43.178229, -79.240608
+# Environment: Major Green Space
+# Number of crows: 3
+# Baited: yes
+# Sentinel present: yes
+# Code: 040
+
 
 # Individual 1 - Sentinel Present:
 Moving|Head Up|Moving|Head Up|Moving|Head Up|Moving
@@ -723,9 +571,6 @@ Moving|Head Up|Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head 
 Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
 
 Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Up|Moving
-
-# Individual 2 - Sentinel Absent:
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
 
 # Individual 2 - Sentinel Present:
 Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
@@ -743,9 +588,6 @@ Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head D
 # Sentinel present: yes
 # Code: 041
 
-
-# No focal subject:
-Sentinel Present
 
 # Individual 1 - Sentinel Present:
 Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
@@ -835,16 +677,6 @@ Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/B
 # Code: 042
 
 
-# No focal subject:
-Sentinel Absent|Sentinel Present|Sentinel Absent|Sentinel Present|Sentinel Absent
-
-# Individual 1 - Sentinel Absent:
-Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
-
-Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
-
-Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Moving
-
 # Individual 1 - Sentinel Present:
 Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait
 
@@ -852,21 +684,6 @@ Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at
 Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up
 
 Head Up|Moving|Head Up
-
-# Individual 2 - Sentinel Absent
-Moving|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving
-
-Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Up
-
-Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up
-
-Head Down|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving|Head Up|Head Down|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait
-
-Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Head Up
-
-Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
 
 # observation id: 043 - Ontario Bodyshop PLot - 2 crows - Baited
 # observation description: Stopped because someone parked in front of me.
@@ -881,9 +698,6 @@ Head Up|Moving|Head Down|Head Down+Peck at Food/Bait|Head Up|Moving
 # Sentinel present: yes
 # Code: 043
 
-
-# No focal subject:
-Sentinel Present
 
 # Individual 1 - Sentinel Present:
 Moving|Head Down|Head Down+Peck at Food/Bait|Moving
@@ -906,9 +720,6 @@ Moving|Head Up|Moving|Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Ba
 # Sentinel present: yes
 # Code: 043
 
-
-# No focal subject:
-Sentinel Present
 
 # Individual 1 - Sentinel Present:
 Head Up|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving|Head Up|Head Down|Head Down+Peck at Food/Bait|Moving
@@ -977,9 +788,6 @@ Head Down|Head Down+Peck at Food/Bait|Head Up|Head Down|Head Down+Peck at Food/B
 # Sentinel present: yes
 # Code: 045
 
-
-# No focal subject:
-Sentinel Present
 
 # Individual 1 - Sentinel Present:
 Moving|Head Down|Head Down+Peck at Food/Bait|Head Down+Peck at Food/Bait|Moving|Moving|Head Up|Moving

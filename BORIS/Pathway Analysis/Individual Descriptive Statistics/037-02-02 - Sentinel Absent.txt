@@ -1,0 +1,24 @@
+Number of sequences: 1
+
+
+Statistics
+==========
+Number of different behaviours: 2
+Total number of behaviours: 6
+Number of different transitions: 2
+Total number of transitions: 5
+
+Behaviours list:
+================
+Head Up
+Moving
+
+Behaviours frequencies:
+=======================
+Head Up	0.500	3 / 6
+Moving	0.500	3 / 6
+
+Frequencies of 2-grams:
+=======================
+Head Up|Moving	0.400	2 / 5
+Moving|Head Up	0.600	3 / 5

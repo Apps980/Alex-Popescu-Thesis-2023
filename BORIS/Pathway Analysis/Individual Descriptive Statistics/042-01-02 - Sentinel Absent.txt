@@ -1,0 +1,35 @@
+Number of sequences: 7
+
+
+Statistics
+==========
+Number of different behaviours: 4
+Total number of behaviours: 148
+Number of different transitions: 9
+Total number of transitions: 141
+
+Behaviours list:
+================
+Head Down
+Head Down+Peck at Food/Bait
+Head Up
+Moving
+
+Behaviours frequencies:
+=======================
+Head Down	0.311	46 / 148
+Head Down+Peck at Food/Bait	0.270	40 / 148
+Head Up	0.338	50 / 148
+Moving	0.081	12 / 148
+
+Frequencies of 2-grams:
+=======================
+Head Down|Head Down+Peck at Food/Bait	0.284	40 / 141
+Head Down|Head Up	0.035	5 / 141
+Head Down|Moving	0.007	1 / 141
+Head Down+Peck at Food/Bait|Head Up	0.270	38 / 141
+Head Down+Peck at Food/Bait|Moving	0.007	1 / 141
+Head Up|Head Down	0.262	37 / 141
+Head Up|Moving	0.064	9 / 141
+Moving|Head Down	0.050	7 / 141
+Moving|Head Up	0.021	3 / 141
