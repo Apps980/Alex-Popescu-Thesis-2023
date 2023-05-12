@@ -1,13 +1,13 @@
 ---
-title: "R Script V4"
+title: "R Script V5"
 author: "Alex Popescu"
-date: "2023-01-23"
+date: "2023-05-12"
 output: github_document
 editor_options: 
   chunk_output_type: console
 ---
 
-V4 - Made some revisions and added plots. All colors are colorblind friendly.
+V5 - Major overhaul and data/analysis improvement.
 
 # MSC Thesis Script
 
@@ -29,6 +29,7 @@ V4 - Made some revisions and added plots. All colors are colorblind friendly.
 library("tidyverse")
 library("psych")
 library("car")
+library("ggplot2")
 library("ggpattern")
 library("lmerTest")
 library("robustlmm")
@@ -36,6 +37,8 @@ library("sjPlot")
 library("effects")
 library("glmm")
 library("doBy")
+library("FactoMineR")
+library("factoextra")
 ```
 
 ```{r Colorblind-friendly palette, include = F}
@@ -49,7 +52,12 @@ Crow<-read.csv("Crow.csv", stringsAsFactors = T)
 #Some management #
 Crow$ID<-as.factor(Crow$ID)
 Crow$Number.of.Crows<-as.numeric(Crow$Number.of.Crows)
-Crow$LDur<-log(Crow$Duration)
+Crow$CODED_BAIT<-as.numeric(Crow$CODED_BAIT)
+Crow$CODED_G.ENV<-as.numeric(Crow$CODED_G.ENV)
+Crow$CODED_NB_CROWS<-as.numeric(Crow$CODED_NB_CROWS)
+Crow$CODED_SENTINEL<-as.numeric(Crow$CODED_SENTINEL)
+Crow$CODED_BEHAVIOR<-as.numeric(Crow$CODED_BEHAVIOR)
+Crow$LDur<-log(Crow$Duration+1)
 ```
 
 ```{r Crow Double checking, echo = F}
@@ -64,7 +72,7 @@ str(Crow)
 
 ### Histogram
 
-> I first decided to look at the distribution of my durations. I set up a histogram with the distibution of durations across all behaviors. I had to log-transform the duration to get a better distribution.\
+> I first decided to look at the distribution of my durations. I set up a histogram with the distibution of durations across all behaviors. I had to log-transform the duration to get a better distribution (log(Duration+1)).\
 
 ```{r Duration Histograms Individual, include = F}
 Untransformed.Dur<-hist(Crow$Duration, breaks = 25)
@@ -118,9 +126,6 @@ Box<-ggplot(data = Crow)+
         , legend.box="vertical"
         , legend.margin=margin())
 Box
-#KMG suggestion: I'd make the hatch marks the one where sentinal is absent. They remind me of X's which makes me think there is no sentinal present. Just me, though, so not a big deal. Also a reminder to check if these are colour blind firendly-I don't think the blue and green are.
-
-#AP: I swapped the crosshatch in the figure and used a colorblind-friendly palette.
 ```
 
 ### Violin plot
@@ -144,13 +149,15 @@ Violin<-ggplot(data = Crow
 Violin
 ```
 
-> #KMG: Is there a way to group the violin plot like the boxplot? So the violins for foraging sentinal present/absent are next to each other? Will be easier to see your conclusions. Also, have you looked at plotting means and SE? Here's a plot #Kiyoko plot of means and SE. KMG: I've put the function to generate means, SE, SD, and CI in the github. With this plot, it's easier to see the differences in the commercial area where the sentinal presence increases the behaviours. It's much messier in the green areas. I wonder if it's a refuge or visibility thing?
+>These plots are nice, but it is hard to really see the underlying trends. To best visualise them, I'll next plot a dot plot.
+
+### The Dot Plot
 
 ```{r Base R Plot, include = F}
 source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
 MeanDur <- summarySE(data = Crow, measurevar = "Duration"
                      , groupvars = c("G.Env", "Behavior", "Sentinel"))
-#switching the order of groupvars will change how they are grouped.
+
 plot(x = c(1:12)
      , y = MeanDur$Duration
      , xlim = c(0,12)
@@ -200,65 +207,275 @@ DurDot<-ggplot(data = MeanDur
 DurDot
 ```
 
-> Very cool! I modified the violin and boxplot, but I think the last plot is the most informative. We can see that the presence of a sentinel increases the duration of bouts in commercial areas. In green areas, however, this effect is reduced apart from in alert behavior.
+> Very cool! I think the last plot is the most informative. We can see that the presence of a sentinel increases the duration of bouts in commercial areas. In green areas, however, this effect is not observed. In fact, the bouts of Alert behavior seem significantly reduced in green areas and in the presence of a sentinel.
 
 ## The Tests
 
+### PCAs
+```{r Bout Duration PCA packages, include=F}
+library("FactoMineR")
+library("factoextra")
+```
+```{r Bout Duration PCA Book keeping, include=F}
+PCA.Crow.Data<-Crow[,c(4,6,8,10,12:13)]
+head(PCA.Crow.Data)
+```
+```{r Bout Duration PCA, echo=F}
+PCA.Crow<-PCA(PCA.Crow.Data[,-5], ncp=5)
+```
+
+>I'm new to PCAs, so bear with me please. From what I see, presence of bait and sentinel, and the number of crows all contibute to PC1, while Generalized environment seems to be contributing to PC2. The behavior appears to contribute to PC2, but not a lot.
+
+#### Eigenvalues
+
+>Let's have a look at the eigenvalues.
+
+``` {r Bout Duration PCA eigenvalues, echo = F}
+Crow.eig.val<-get_eigenvalue(PCA.Crow)
+Crow.eig.val
+```
+
+>Pretty small values. The second column shows how much contribution each dimension has to explain the total variance in the data. Let's quickly plot that.
+
+#### Scree Plot
+
+```{r Bout Duration PCA Scree Plot, echo = F}
+fviz_eig(PCA.Crow, addlabels=T, ylim = c(0,40))
+```
+
+>Pretty cool. The first 3 PCs explain ~77% of the variance. Adding the 4th PC explains ~93% of the variation.
+
+#### Contribution of variables to Principal Components
+
+```{r Bout Duration PCA var results, include = F}
+Crow.var<-get_pca_var(PCA.Crow)
+```
+```{r Bout Duration PCA Contribution Dim 1, echo=F}
+fviz_contrib(PCA.Crow, choice="var", axes = 1, top = 20)
+```
+
+>The red dotted line represents the expected average contribution, assuming the contribution of the variables were uniform. In other words, the line is equal to 1/the number of variables; in this case 1/5 or 20%.
+
+> From this plot, I can see that, as I saw previously in the correlation circle, the number of crows, the presence of a sentinel and the presence of bait contribute the most to PC1 (Dimension 1)
+
+```{r Bout Duration PCA Contribution Dim 2, echo=F}
+fviz_contrib(PCA.Crow, choice="var", axes = 2, top = 20)
+```
+
+> The generalized environment contributes the most to PC2.
+
+```{r Bout Duration PCA Contribution Dim 3, echo=F}
+fviz_contrib(PCA.Crow, choice="var", axes = 3, top = 20)
+```
+
+>The coded behavior contributes most to PC3.
+
+```{r Bout Duration PCA Contribution Dim 4, echo=F}
+fviz_contrib(PCA.Crow, choice="var", axes = 4, top = 20)
+```
+
+>OK! Now we're getting to the interesting bits. The presence of bait and the presence of a Sentinel contribute most to PC4. This makes me curious to see if there is an interaction between the two factors.
+
+```{r Bout Duration PCA Contribution Dim 5, echo=F}
+fviz_contrib(PCA.Crow, choice="var", axes = 5, top = 20)
+```
+
+>>The presence of a sentinel and the size of the group contribute most to PC 5. I believe this would imply that the interaction between the two could be interesting to look at. Considering these two variables are also major contributors to PC1, this makes the inclusion of the interaction in the model a must.
+
+>From this, I believe I should look at the interaction between NB_Crows, Presence of a sentinel, and the presence of bait.
+
+#### Plotting with Behaviors
+
+>I'd like to plot the dimensions using the behaviors of the bouts.
+
+```{r Bout Duration PCA Plot with Behavior PC1-2, echo=F}
+fviz_pca_ind(PCA.Crow
+             , geom.ind="point"
+             , col.ind=PCA.Crow.Data$Behavior
+             , palette = cbPalette
+             , addEllipses = T
+             , legend.title = "Behaviors"
+             )
+```
+
+>Messy. The mean points of the behaviors are relatively centered.
+
+```{r Bout Duration PCA Plot with Behavior PC2-3, echo=F}
+fviz_pca_ind(PCA.Crow
+             , axes = c(2,3)
+             , geom.ind="point"
+             , col.ind=PCA.Crow.Data$Behavior
+             , palette = cbPalette
+             , addEllipses = T
+             , legend.title = "Behaviors"
+             )
+```
+
+>Very clear separation by behavior type, with 'Head Up' shifted upward, 'Head Down' shifted downward, and 'Moving' in the middle.
+
+```{r Bout Duration PCA Plot with Behavior PC1-3, echo=F}
+fviz_pca_ind(PCA.Crow
+             , axes = c(1,3)
+             , geom.ind="point"
+             , col.ind=PCA.Crow.Data$Behavior
+             , palette = cbPalette
+             , addEllipses = T
+             , legend.title = "Behaviors"
+             )
+```
+
+>Good separation, but the concentration ellipses have increased in size. Curious.
+
+#### Biplot
+
+>Finally, let's look at the biplot. From what I understand, it is essentially the correlation circle overlaid onto the data.
+
+```{r Bout Duration PCA Biplot PC1-2, echo=F}
+fviz_pca_biplot(PCA.Crow
+                ,geom.ind = "point"
+                , repel = T
+                , col.ind=PCA.Crow.Data$Behavior
+                , addEllipses = T
+                , label = "var"
+                , palette=cbPalette
+                , col.var="black"
+                , legend.title = "Behavior")
+```
+```{r Bout Duration PCA Biplot PC2-3, echo=F}
+fviz_pca_biplot(PCA.Crow
+                , axes = c(2,3)
+                , geom.ind = "point"
+                , repel = T
+                , col.ind=PCA.Crow.Data$Behavior
+                , addEllipses = T
+                , label = "var"
+                , palette=cbPalette
+                , col.var="black"
+                , legend.title = "Behavior")
+```
+```{r Bout Duration PCA Biplot PC1-3, echo=F}
+fviz_pca_biplot(PCA.Crow
+                , axes = c(1,3)
+                , geom.ind = "point"
+                , repel = T
+                , col.ind=PCA.Crow.Data$Behavior
+                , addEllipses = T
+                , label = "var"
+                , palette=cbPalette
+                , col.var="black"
+                , legend.title = "Behavior")
+```
+
+>Nice! I think I've done the PCA analysis to the best of my abilities, but I am very much open to comments and feedback!
+
+>From what I can gather, I should model the data as follows:/
+>LDur~Behavior+NB_Crows*Bait*Sentinel+G.Env+(1|ID)
+
 ### Assumption testing first
 
-> I used robustlmm::rlmer to create the models. It takes longer to run than the regular lmer test because of the computations it makes to weigh the model. I then plotted the models to test the assumptions of the model. The model I used was "log(Duration) \~ Behavior + (Sentinel\* G.Env) + Number of crows + Baited + (1\|ID)". KMG: what is the backslash?
->
+> I used robustlmm::rlmer to create the models. It takes longer to run than the regular lmer test because of the computations it makes to weigh the model. I then plotted the models to test the assumptions of the model.
+
 > Behavior is expected to be affected by both the presence of a sentinel and the environment the crows are in. I am therefore curious to see the interactions between these factors. The presence of bait and number of crows are not linked with the presence of a sentinel or the environment. Arguably, larger groups are more likely to have sentinels than not, but I don't believe the interaction to be important here.
 
 ### RLMM
 
-```{r Duration RLMM, echo=F}
-RLMM<-rlmer(LDur~Behavior+Sentinel*G.Env+Number.of.Crows + Baited + (1|ID), data = Crow)
-plot(RLMM)
+```{r Bout Duration Model Book keeping, include=F}
+Crow$CODED_NB_CROWS<-as.factor(Crow$CODED_NB_CROWS)
 ```
 
-> That took AGES to run. There's a big "cliff" on the normal Q-Q vs residuals plot. This means that there are more extreme values than would be expected if they came from a truly normal population.
+```{r Duration RLMM, echo=F}
+RLMM.Dur.I<-rlmer(LDur~Behavior+Sentinel*CODED_NB_CROWS*Baited+G.Env+ (1|ID), data = Crow)
+plot(RLMM.Dur.I)
+```
 
-### Bout Results
+> That took pretty long to run. Let's next see the results of the model. I don't see huge deviations from the assumptions. According to the error message, my fixed-effect model matrix is rank deficient. I don't believe I need to worry too much about this warning.
 
 ```{r Duration RLMM Summary, echo = F}
-summary(RLMM)
+summary(RLMM.Dur.I)
 ```
 
 > A whole lot of numbers appear and no p-values. I want it to look better.
 
 ```{r Duration Better Summary, echo = F}
-sjPlot::tab_model(RLMM
+sjPlot::tab_model(RLMM.Dur.I
                   , show.re.var = T
-                  , title = "Effects of generalized environment, bait, number of crows and the presence of a sentinel on durations of behaviors"
+                  , title = "Model Results with Interactions"
                   , dv.labels = " Effects of on duration of behaviors")
-#KMG: is baiting not in here as well?
+
 ```
 
-> Like this! This is much better! Lets try a simpler output. Curious... Removing the three-way interaction caused many factors to become significant. Number of crows remains non-significant. #KMG: Can we visualize the the baited effects on duration as well?
+>Oh fun! Adding the three-way interaction caused all but the behavior to be non-significant. Let's try removing the interactions.
+
+```{r Duration RLMM No Interactions, echo=F}
+RLMM.Dur.NoI<-rlmer(LDur~Behavior+Sentinel+CODED_NB_CROWS+Baited+G.Env+ (1|ID), data = Crow)
+sjPlot::tab_model(RLMM.Dur.NoI
+                  , show.re.var = T
+                  , title = "Model Results without Interactions"
+                  , dv.labels = " Effects of on duration of behaviors")
+```
+
+>Same result!
+
+>Let's try the good old regular lmer and see if that changes anything.
 
 ```{r Simpler output, echo = F}
-Simple.Dur<-lmer(LDur~Behavior+Sentinel*G.Env+Number.of.Crows + Baited + (1|ID), data = Crow)
-Anova(Simple.Dur)
-ranova(Simple.Dur)
+Simple.Dur.I<-lmer(LDur~Behavior+Sentinel*CODED_NB_CROWS*Baited + G.Env + (1|ID), data = Crow)
+Simple.Dur.NoI<-lmer(LDur~Behavior+Sentinel+CODED_NB_CROWS+Baited + G.Env + (1|ID), data = Crow)
+anova(Simple.Dur.NoI, Simple.Dur.I)
 ```
 
-> Simple model shows significant effects of Behavior, and the interaction between generalized environment and Behavior, and generalized environment and the presence of a sentinel.
+>Using the simple model, I looked at the AIC values. The model without interactions had the lowest AIC value, therefore is preferred.Let's actually see what removing some factors in the model does to the AIC.
+
+#### AIC Testing
+
+```{r Bout Duration Drop1,echo=F}
+drop1(Simple.Dur.NoI)
+```
+
+>Seems like dropping any of the variables will have no effect on the model's results. In other words, I can drop all factors except for 'behavior'.
+
+```{r Bout Duration AIC testing}
+Simplest.Dur<-lmer(LDur~Behavior+(1|ID), data=Crow)
+anova(Simple.Dur.NoI, Simplest.Dur)
+```
+
+>Yep! The simplest model (LDur~Behavio+(1|ID)) is preferred. Let's try subsetting the data.
+
+#### Subset Data
+```{r Bout Duration Subset, include=F}
+HU.Dur<-Crow[which(Crow$Behavior=="HU"),]
+HD.Dur<-Crow[which(Crow$Behavior=="HD"),]
+M.Dur<-Crow[which(Crow$Behavior=="M"),]
+```
+```{r Simple model on Subset HU data, echo=F}
+Simple.HU.Dur<-lmer(LDur~Sentinel+CODED_NB_CROWS+Baited + G.Env + (1|ID), data =HU.Dur)
+Anova(Simple.HU.Dur)
+```
+
+>Simple model on Head Up subset with no interactions shows no significance.
+
+```{r Simple model on Subset HD data, echo=F}
+Simple.HD.Dur<-lmer(LDur~Sentinel+CODED_NB_CROWS+Baited + G.Env + (1|ID), data =HD.Dur)
+Anova(Simple.HD.Dur)
+```
+
+>Simple model on Head Down subset shows a significant effect of foraging group size, presence of bait and generalized environment.
+
+```{r Simple model on Subset M data, echo=F}
+Simple.M.Dur<-lmer(LDur~Sentinel+CODED_NB_CROWS+Baited + G.Env + (1|ID), data =M.Dur)
+Anova(Simple.M.Dur)
+```
+
+> Simple model shows no significant effects.
 
 ### Bout Summary
 
-> I generated a plot to better see what the interaction between Generalized Environment and the presence of a sentinel. First, let's make a summary of the results.
+>Ok! Considering only the 'Head Down' subset had significant effects, let's plot those results.
 
-```{r Duration Summary, echo=F}
-MeanDur
-```
+#### Bait
 
-> There are too many combinations to effectively see any trends, let's look at the significant interactions from the models.
-
-### Bait
-
-```{r Bait effect on bout, echo = F}
-BaitPlot<- Crow %>%
+```{r Bait effect on HD bout, echo = F}
+BaitPlot<- HD.Dur %>%
   summarySE(measurevar = "Duration"
             , groupvars = "Baited") %>%
   ggplot(aes(x = Baited, y = Duration))+
@@ -274,83 +491,23 @@ BaitPlot<- Crow %>%
                 , position = position_dodge(width=.9))+
   theme_bw()+
   theme(text=element_text(size = 14))+
-  xlab("")+
-  ylab("Mean Bout Duration (s)")+
+  xlab("Presence of Bait")+
+  ylab("Mean Head Down Bout Duration (s)")+
   scale_x_discrete(labels=c("Not Baited", "Baited"))+
   theme(legend.position = 'bottom'
-        , axis.title.x = element_blank())
+        )
 BaitPlot
 ```
 
-### Plot the Interactions
+>Fun! The plot shows overlap between the standard error bars. In the presence of bait, crows will decrease the duration of their bouts of 'Head Down'.
 
-<!-- --- -->
+#### G.Env
 
-<!-- ```{r Behavior x G.Env Plot, echo = F} -->
-
-<!-- BGInteraction<-Crow %>% -->
-
-<!--   group_by(Behavior, G.Env) %>% -->
-
-<!--   summarize(mean = mean(log(Duration)) -->
-
-<!--             , se = sd(log(Duration))/sqrt(length(log(Duration))) -->
-
-<!--             , upper = mean(log(Duration))+sd(log(Duration))/sqrt(length(log(Duration))) -->
-
-<!--             , lower = mean(log(Duration))-sd(log(Duration))/sqrt(length(log(Duration))) -->
-
-<!--             , .groups = 'keep') %>% -->
-
-<!--   ggplot(aes(x = G.Env, y = mean, colour = Behavior))+ -->
-
-<!--   geom_point(position = position_dodge(width = 0.9)) + -->
-
-<!--   geom_text(aes(label = signif(mean)) -->
-
-<!--             , size = 3 -->
-
-<!--             , position=position_dodge2(width=0.9, preserve='single') -->
-
-<!--             , hjust = 1.1 -->
-
-<!--             , vjust = -.5)+ -->
-
-<!--   geom_errorbar(aes(ymin=lower, ymax=upper) -->
-
-<!--                 , width = 0.2 -->
-
-<!--                 , position = position_dodge(width=.9))+ -->
-
-<!--   theme_bw()+ -->
-
-<!--   theme(text=element_text(size = 14))+ -->
-
-<!--   labs(colour = "Behavior")+ -->
-
-<!--   xlab("")+ -->
-
-<!--   ylab("Mean log Bout Duration")+ -->
-
-<!--   scale_colour_manual(values = c("orange", "blue", "green") -->
-
-<!--                     , labels = c("Foraging", "Alert", "Moving"))+ -->
-
-<!--   scale_x_discrete(labels=c("Commercial", "Green Area"))+ -->
-
-<!--   theme(legend.position = 'bottom') -->
-
-<!-- BGInteraction -->
-
-<!-- ``` -->
-
-<!-- > The error bars here represent the standard error. It looks like in both environments, the duration of bouts of alertness are smaller than the other two behaviors. Interestingly, in Green areas, individuals decrease the durations of bouts of movement and increase the duration of bouts of foraging. Let's next check out the interaction between the presence of a sentinel and generalized environment. -->
-
-```{r Sentinel x G.Env Plot, echo = F}
-SGInteraction<- Crow %>%
+```{r G.Env effect on HD bout, echo = F}
+EnvPlot<- HD.Dur %>%
   summarySE(measurevar = "Duration"
-            , groupvars = c("G.Env", "Sentinel")) %>%
-  ggplot(aes(x = G.Env, y = Duration, colour = Sentinel))+
+            , groupvars = "G.Env") %>%
+  ggplot(aes(x = G.Env, y = Duration))+
   geom_point(position = position_dodge(width = 0.9)
              , size = 3) +
   geom_text(aes(label = signif(Duration))
@@ -363,74 +520,61 @@ SGInteraction<- Crow %>%
                 , position = position_dodge(width=.9))+
   theme_bw()+
   theme(text=element_text(size = 14))+
-  labs(colour = "Sentinel")+
-  xlab("")+
-  ylab("Mean Bout Duration (s)")+
-  scale_colour_manual(values = cbPalette
-                    , labels = c("Sentinel Absent", "Sentinel Present"))+
-  scale_x_discrete(labels=c("Commercial", "Green Area"))+
+  xlab("Generalized Environment")+
+  ylab("Mean Head Down Bout Duration (s)")+
   theme(legend.position = 'bottom'
-        , axis.title.x = element_blank())
-SGInteraction
+        )
+EnvPlot
 ```
 
-> Very cool! I believe I'm getting better at this (or I make good annotations on other scripts...). There is a difference in bout duration between foragers in the presence and absence of a sentinel. The difference is reduced in green areas. Again, the error bars are the standard error. KMG: Cool. You'll want to think about what exactly do you want to present. You can generate all sorts of figures. I personally think these means and SE plots are better. You can add the raw data in as a cloud of points, or you can add histograms sideways next to the plots as well.
+>Very nice! We can see that in Green Areas, the bout duration of head down behavior is increased. The error bars, as before, are standard error.
 
-### Effect Size
+#### Foraging Group Size
 
-> I next plotted the effect size for each effect.
-
-```{r Duration Effect Size, echo = F}
-sjPlot::plot_model(RLMM
-                   , show.values=T
-                   , show.p=T
-                   , value.offset = 0.25
-                   , value.size = 4
-                   , title = "Effects of generalized environment, number of crows and the presence of a sentinel on the duration of behaviors")
+```{r NB_Crows effect on HD bout, echo = F}
+NBPlot<- HD.Dur %>%
+  summarySE(measurevar = "Duration"
+            , groupvars = "CODED_NB_CROWS") %>%
+  ggplot(aes(x = CODED_NB_CROWS, y = Duration))+
+  geom_point(position = position_dodge(width = 0.9)
+             , size = 3) +
+  geom_text(aes(label = signif(Duration))
+            , size = 3
+            , position=position_dodge2(width=0.9, preserve='single')
+            , hjust = -0.5
+            , vjust = 0.1)+
+  geom_errorbar(aes(ymin=(Duration-se), ymax=(Duration+se))
+                , width = 0.2
+                , position = position_dodge(width=.9))+
+  theme_bw()+
+  theme(text=element_text(size = 14))+
+  xlab("Group Size")+
+  ylab("Mean Head Down Bout Duration (s)")+
+  scale_x_discrete(labels=c("Small", "Large"))+
+  theme(legend.position = 'bottom'
+        )
+NBPlot
 ```
 
-> Interesting... According to my model, Alert behavior had a significant negative effect on duration, while the presence of a sentinel and Green Areas have a significant positive effect on duration. The interaction between Moving and Green areas also had a significant negative effect on bout duration. I'm still relatively green when it comes to LMMs, so this may be evident, but I'll make my assumptions clear. From the previous figure, I see that "Head Down", G.Env[Commercial], Baited[N], etc are missing. Therefore I assume that the comparisons are made with those. #KMG: THat is correct. Therefore, I can conclude that: - Crows spend significantly less time with their head's up than down. - Crows spend significantly less time moving than with their heads down. - The duration of behaviors decreases significantly in the absence of a sentinel. - The duration of behaviors decreases significantly in Commercial areas. - The duration of behaviors decreases significantly in baited sites. KMG: When you present these kinds of things, its helpful to write in the same direction. So instead of significantly less and increases, perhaps significantly more and increases, or significantly less and decreases. - There was an interaction between the presence of a sentinel and the generalized environment. That being said, many papers start removing variables to fine tune their model. This is something I am considering in order to better identify the effects of the presence of a sentinel and the type of environment in which the individual forages in.
+>Very nice! In larger foraging groups, individuals increase their bouts of head down behavior.
 
-### What about the group size?
-
-> From the previous results, the number of crows had little effect on the individual vigilance of foragers. This is slightly unexpected, since we would assume there is safety in numbers. By that logic, and hypotheses like the 'many eyes' hypothesis, we would expect to observe a decrease in the duration of some behaviors, namely "Alert". To test this, I decided to plot the model's estimates on the duration of behavior "Alert" to see if there is any trend.
-
-```{r Effects of Group Size, echo = F}
-##### Plot estimates with data - Number of crows #####
-effects_Num<-effects::effect(term="Number.of.Crows", mod = RLMM)
-summary(effects_Num)
-Num<-as.data.frame(effects_Num)
-Num.crows<-ggplot() +
-  geom_point(data = subset(Crow, Behavior == "HU")
-             , aes(x = Number.of.Crows, y = log(Duration))
-                   , color = "black") + 
-  geom_point(data = Num
-             , aes(x = Number.of.Crows, y = fit)
-             , color = "blue") +
-  geom_line(data = Num
-            , aes( x = Number.of.Crows, y = fit, group = 1)
-            , color = "blue") +
-  geom_ribbon(data = Num
-              , aes( x = Number.of.Crows, ymin = lower, ymax = upper, group = 1)
-              , alpha = 0.3
-              , fill = "blue") + 
-  labs(x="Number of crows (centered and scaled)"
-       , y = "log Duration (s)")
-Num.crows
-```
-
-> Looks like the data does not follow the predictions from the model. I therefore conclude that the group size had no effect on the duration of alert behavior, at any group size (that I tested).
+>I can therefore make the following conclusions:
+>-Crows do not modify the duration of bouts of head up or moving
+>-Crows will modify the duration of bouts of head down behavior.
+>-In larger groups, crows will increase the duration of bouts of 'Head Down", possibly due to the many eyes hypothesis.
+>-In the presence of Bait, crows will decrease the duration of bouts of 'Head Down'. This could be due to the larger concentration of food in the patch, and therefore less time required to look for food. 
+>-In Green Areas, crows will increase the duration of bouts of 'Head Down'. 
 
 # Proportion Data
 
 ```{r Proportion setup, include = F}
-Proportion<-read.csv("Proportions.csv", stringsAsFactors = T)
-Proportion$ID<-as.factor(Proportion$ID)
-Proportion$AProp<-asin(sqrt(Proportion$Proportion))
+DATA<-read.csv("DATA.csv", stringsAsFactors = T)
+DATA$ID<-as.factor(DATA$ID)
+DATA$ASIN_PROPORTION<-asin(sqrt(DATA$BEHAVIOR_PROPORTION))
 ```
 
 ```{r Proportion Double Check, echo = F}
-str(Proportion)
+str(DATA)
 ```
 
 > All variables are correctly categorized
@@ -440,16 +584,16 @@ str(Proportion)
 > I also decided to make a stacked barplot to show the proportion of total time spent performing each behavior.
 
 ```{r Proportion Summary, echo = F}
-MeanProp<-summarySE(Proportion, "Proportion", groupvars = c("G.Env", "Behavior", "Sentinel"))
+MeanProp<-summarySE(DATA, "BEHAVIOR_PROPORTION", groupvars = c("GENERALIZED_ENVIRONMENT", "BEHAVIOR", "SENTINEL_PRESENCE"))
 MeanProp
 ```
 
 > Summary values are good, but graphs are better. Let's plot a stacked bar graph.
 
 ```{r Proportion Barplot, echo = F}
-Prop<-ggplot(MeanProp, aes(x = Sentinel, y = Proportion, fill = Behavior))+
+Prop<-ggplot(MeanProp, aes(x = SENTINEL_PRESENCE, y = BEHAVIOR_PROPORTION, fill = BEHAVIOR))+
   geom_bar(stat = 'identity', position = 'stack')+
-  geom_text(aes(label = paste0(signif(Proportion*100), "%")), position = position_stack(vjust = 0.5)
+  geom_text(aes(label = paste0(signif(BEHAVIOR_PROPORTION*100), "%")), position = position_stack(vjust = 0.5)
             , size = 3)+
   scale_y_continuous(labels = scales::percent) +
   theme_bw()+
@@ -457,13 +601,13 @@ Prop<-ggplot(MeanProp, aes(x = Sentinel, y = Proportion, fill = Behavior))+
         , axis.title.x = element_blank())+
   ylab("Proportion of time")+
   scale_x_discrete(labels=c("Sentinel Absent", "Sentinel Present"))+
-  scale_fill_manual(values = cbPalette, labels = c("Foraging", "Alert", "Moving"))+
+  scale_fill_manual(values = cbPalette, labels = c("Foraging", "Alert", "Moving"), name="Behavior")+
   theme(legend.position = "bottom")+
-  facet_grid(~G.Env)
+  facet_grid(~GENERALIZED_ENVIRONMENT)
 Prop
 ```
 
-> The proportion figure shows something interesting: crows spent longer times with their heads down in green areas than in commercial ones. Additionally, in the absence of a sentinel, individuals in green areas seemingly increased the proportion of time spent 'alert'.\
+> The proportion figure shows something interesting: crows seem to spend longer times with their heads down in green areas than in commercial ones. Additionally, in the absence of a sentinel, individuals in green areas seemingly increased the proportion of time spent 'alert'.\
 > \
 > This could be caused by food being easier to find in commercial areas. Crows in green areas need to spend more time looking for food. This reinforces the need to include "Baited" in the model. In the absence of a sentinel, individuals are expected to rely more on individual vigilance, explaining the apparent increase in the proportion of time spent alert in green areas with no sentinels.
 
@@ -472,8 +616,8 @@ Prop
 > In order to determine whether our fixed effects have significant effects on the allocation of time to each behavior, I decided to first arcsin square root transform the proportions.
 
 ```{r Proportion Histograms Individual, include = F}
-Untransformed.Prop<-hist(Proportion$Proportion)
-Transformed.Prop<-hist(Proportion$AProp, main="Transformed")
+Untransformed.Prop<-hist(DATA$BEHAVIOR_PROPORTION, breaks=25)
+Transformed.Prop<-hist(DATA$ASIN_PROPORTION, breaks=25)
 ```
 
 ```{r Proportion Histograms Combined, echo=F}
@@ -485,126 +629,216 @@ par(op)
 
 > Transformed data seems more normal than untransformed data. Will continue to use transformed data.
 
+## PCAs
+
+>Let's run another PCA
+
+```{r DATA PCA SHEET, include=F}
+PCA.DATA.SHEET<-DATA[,c(5,7,10,14,16,18,22,23,24,39)]
+head(PCA.DATA.SHEET)
+str(PCA.DATA.SHEET)
+```
+```{R DATA PCA, echo=F}
+PCA.DATA<-PCA(PCA.DATA.SHEET[,c(-8,-9)])
+```
+
+>There are many variables here. I won't bother describing them here.
+
+>Since the presence of a sentinel is not "God-Given", we'll run another PCA without that factor.
+
+```{r DATA PCA NO SENTINEL, echo=F}
+PCA.DATA.NOSENT<-PCA(PCA.DATA.SHEET[,c(-5,-8,-9)])
+```
+
+>Very similar to the one above.
+
+### Scree Plot
+
+```{r DATA PCA Scree Plot, echo = F}
+get_eigenvalue(PCA.DATA)
+fviz_eig(PCA.DATA, addlabels=T, ylim = c(0,40))
+```
+
+>The first PC covers ~40% of the variation. The first 4 PCs cover ~82% of the variation.
+
+```{r DATA PCA Scree Plot NO SENTINEL, echo = F}
+get_eigenvalue(PCA.DATA.NOSENT)
+fviz_eig(PCA.DATA.NOSENT, addlabels=T, ylim = c(0,40))
+```
+
+>Excluding sentinel, the first PC covers ~43% of the variation, and the first 4 PCs cover ~86% of the total variation.
+
+### Contribution of variables to Principal Components
+
+```{r PCA DATA var results, include = F}
+DATA.var<-get_pca_var(PCA.DATA)
+DATA.NOSENT.var<-get_pca_var(PCA.DATA.NOSENT)
+```
+```{r PCA DATA Contribution Dim 1, echo=F}
+fviz_contrib(PCA.DATA, choice="var", axes = 1, top = 12.5)
+```
+
+>Very weird, Julian Date, Decimal time, group size and generalized environment contribute greatly to PC1.
+
+```{r PCA DATA Contribution Dim 2, echo=F}
+fviz_contrib(PCA.DATA, choice="var", axes = 2, top = 12.5)
+```
+
+>Frequency of disturbances, group size (again), temperature and the presence of a sentinel contribute most to PC2.
+
+```{r PCA DATA Contribution Dim 3, echo=F}
+fviz_contrib(PCA.DATA, choice="var", axes = 3, top = 12.5)
+```
+
+>Temperature, Bait presence and decimal time contribute most to PC3.
+
+```{r PCA DATA Contribution Dim 4, echo=F}
+fviz_contrib(PCA.DATA, choice="var", axes = 4, top = 12.5)
+```
+
+>Sentinel presence, environment and frequency of disturbances contribute most to PC4.
+
+>I'm still a little unclear as to how I should interpret these results.
+
+#### No Sentinel
+
+```{r PCA DATA.NOSENT Contribution Dim 1, echo=F}
+fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 1, top = 14.29)
+```
+
+>Same 4 factors contribute the most to PC1 in the absence of the sentinel factor.
+
+```{r PCA DATA.NOSENT Contribution Dim 2, echo=F}
+fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 2, top = 14.29)
+```
+
+>Same as above, frequency of disturbances, temperature and group size contribute most to PC2 in the absence of the sentinel factor.
+
+```{r PCA DATA.NOSENT Contribution Dim 3, echo=F}
+fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 3, top = 14.29)
+```
+
+>Temperature, Bait presence and frequency of disturbances contribute the most to PC3 in the absence of a sentinel.
+
+```{r PCA DATA.NOSENT Contribution Dim 4, echo=F}
+fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 4, top = 14.29)
+```
+
+>Environment contributes most to PC4 in the absence of a sentinel.
+
+### BiPlots
+```{r DATA PCA Biplot PC1-2, echo=F}
+fviz_pca_biplot(PCA.DATA
+                ,geom.ind = "point"
+                , repel = T
+                , col.ind=PCA.DATA.SHEET$BEHAVIOR
+                , addEllipses = T
+                , label = "var"
+                , palette=cbPalette
+                , col.var="black"
+                , legend.title = "Behavior")
+```
+
+>Messy, can't see where the behaviors lie.
+
+```{r DATA PCA Biplot PC1-4, echo=F}
+fviz_pca_biplot(PCA.DATA
+                , axes = c(1,4)
+                , geom.ind = "point"
+                , repel = T
+                , col.ind=PCA.DATA.SHEET$BEHAVIOR
+                , addEllipses = T
+                , label = "var"
+                , palette=cbPalette
+                , col.var="black"
+                , legend.title = "Behavior")
+```
+
+>Still messy.
+
+```{r DATA PCA Biplot PC2-3, echo=F}
+fviz_pca_biplot(PCA.DATA
+                , axes = c(2,3)
+                , geom.ind = "point"
+                , repel = T
+                , col.ind=PCA.DATA.SHEET$BEHAVIOR
+                , addEllipses = T
+                , label = "var"
+                , palette=cbPalette
+                , col.var="black"
+                , legend.title = "Behavior")
+```
+
+>Biplots are messy if we don't include behavior.
+
+>Same is observed if we run the biplot in the absence of the sentinel factor.
+
+>I'm not sure how to interpret these results.
+
 ## Simple Model
 
-> Let's plot the simple model and test the assumptions.
+> Let's plot the simple model and test the assumptions. I'm using the same fixed effects as in the bout duration analyses. I am also adding some of the factors identified in the PCAs.
 
 ```{r Proportion Simple Assumptions, echo = F}
-Simple.Prop <-lmer(AProp~Behavior+Sentinel*G.Env+Baited+(1|ID), data = Proportion)
+Simple.Prop <-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+TOTAL_FREQUENCY_OF_DISTURBANCES+(1|ID)+(1|JULIAN_DATE)+(1|DECIMAL_TIME)+(1|TEMPERATURE), data = DATA)
 plot(Simple.Prop)
 ```
 
-```{r Is Singular?}
-isSingular(Simple.Prop)
+> Not great. The warning I got means my model could have collinearity in its fixed effects (two variables explaining the same thing). Let's try dropping fixed effects one at a time.
+
+>Let's see the results before we do anything.
+
+```{r Proportion Model Results, echo = F}
+Anova(Simple.Prop)
+ranova(Simple.Prop)
 ```
 
-> Not great. This means my model could have collinearity in its fixed effects (two variables explaining the same thing). Let's try dropping fixed effects one at a time.
+>Interesting. For one, the results are insignificant. The other, the ranova results suggest that the model without random effects is preferred.
 
 ```{r Drop one}
 drop1(Simple.Prop, test="Chisq")
 
 ```
 
-> Ah ha! Behavior completely explains the proportion of time allocated to each behavior, causing the singularity error to appear. Not sure where to proceed from here. One thing you can do is make different models and then do AIC on them to find the best fit model.
+>Removing factors has no significant effects on the model's output.
 
-## AIC
+>Let's go to an even simpler model
 
-```{r AIC}
-Simple.Prop2 <- lmer(AProp~Behavior+Sentinel*G.Env+(1|ID), data = Proportion)
-#Also, I would make a separate column for your transformed data in your dataframe. Doing the calculations inline with the functions can get confusing with all the () you have to keep track of.
-Simple.Prop3 <- lmer(asin(sqrt(Proportion))~Behavior+Sentinel +(1|ID), data = Proportion)
-Simple.Prop4 <- lmer(asin(sqrt(Proportion))~Behavior+G.Env +(1|ID), data = Proportion)
-Simple.Prop5 <- lmer(asin(sqrt(Proportion))~Behavior+(1|ID), data = Proportion)
-
-anova(Simple.Prop, Simple.Prop2, Simple.Prop3, Simple.Prop4, Simple.Prop5)
-#Don't worry about the warning if you get it. I just have to change a parameter. Basically, the model with the lowest AIC is the one with only behaviour. So you can confidently say that the type of behaviour has an effect on the proportion of time in a behaviour, and nothing else matters. Think about what this means together with duration. Why things have an effect on duration but not proportion?
+### The even simpler models
+```{r Proportion Simpler Models, echo = F}
+Simpler.Prop1 <-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+(1|ID), data = DATA)
+Simpler.Prop2 <-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+(1|ID), data = DATA)
+Simpler.Prop3 <-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+(1|ID), data = DATA)
+Simpler.Prop4 <-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+(1|ID), data = DATA)
+Simpler.Prop5 <-lmer(ASIN_PROPORTION~BEHAVIOR+(1|ID), data = DATA)
+anova(Simpler.Prop1,Simpler.Prop2,Simpler.Prop3,Simpler.Prop4,Simpler.Prop5)
 ```
 
-<!-- --- -->
+>The simplest model, the one with only behavior as a FE and ID as a RE has the lowest AIC value. Weird...
 
-<!-- ```{r Proportion Simple Model Results, include = F} -->
+```{r Proportion Simper Model 5 Results, echo = F}
+Anova(Simpler.Prop5)
+```
 
-<!-- Anova(Simple.Prop) -->
-
-<!-- ranova(Simple.Prop) -->
-
-<!-- ``` -->
-
-<!-- > Not sure how to interpret the last output. However, behavior has a significant effect. Let's use the robust LMM to fit the model. -->
-
-<!-- ```{r Robust Proportion, include = F} -->
-
-<!-- RLMM.Prop<-rlmer(asin(sqrt(Proportion))~Behavior*Sentinel*G.Env + (1|ID), data = Proportion) -->
-
-<!-- plot(RLMM.Prop) -->
-
-<!-- ``` -->
-
-<!-- > Looks... ok... Let's see the output -->
-
-<!-- ```{r Summary RLMM.Prop, include = F} -->
-
-<!-- ##### Table of results ##### -->
-
-<!-- sjPlot::tab_model(RLMM.Prop -->
-
-<!--                   , show.re.var = T -->
-
-<!--                   , title = "Effects of generalized environment, number of crows and the presence of a sentinel on the proportion of time" -->
-
-<!--                   , dv.labels = " Effects on proportion") -->
-
-<!-- ##### Effect Size ##### -->
-
-<!-- sjPlot::plot_model(RLMM.Prop -->
-
-<!--                    , show.values=T -->
-
-<!--                    , show.p=T -->
-
-<!--                    , value.offset = 0.5 -->
-
-<!--                    , wrap.title = 70 -->
-
-<!--                    , value.size = 2 -->
-
-<!--                    , title = "Effects of generalized environment, number of crows and the presence of a sentinel on the proportion of time") -->
-
-<!-- ``` -->
-
-<!-- > Curious... Contrary to the simple model, the robust LMM does not identify behavior as a significant effect. The interaction between Moving and G.Env is significant. -->
-
-<!-- --- -->
+>Behavior is still insignificant. Could this be caused by the data transformation?
 
 # Peck rate
 
 > Using the peck data can allow us to infer if crows foraging effectiveness. More pecks per minute would imply that crows forage more actively. To analyse this, I used a linear mixed model with G.Env and presence of a sentinel and its interaction as fixed effects, and observation ID as the random effect.
 >
-> I calculated the pecks per minute of each individual recorded by dividing the number of pecks by the total recorded duration (excluded time out of frame).
+> I calculated the pecks per minute of each individual recorded by dividing the number of pecks by the total head down duration (excluded time out of frame).
 
 ```{r Peck Setup, include=F}
-Peck<-read.csv("Peck.csv", stringsAsFactors = T)
-Peck$ID<-as.factor(Peck$ID)
-Peck$Sentinel<-as.factor(Peck$Sentinel)
-Peck$Num.Rec<-as.factor(Peck$Num.Rec)
-Peck<-rename(Peck, Number.of.Crows = Num.Rec)
-Peck<-rename(Peck, PPM = Pecks.Per.Min)
-Peck$LPek<-log(Peck$PPM)
+DATA$LPek<-log(DATA$PECK_RATE)
 ```
-
-```{r Peck Double Check, echo = F}
-str(Peck)
-```
-
-> Just making sure! Seems like everything is ok.
 
 ## Histogram & Transformation
 
 > First, I made a histogram and decided if transformation was appropriate.
 
 ```{r Peck Per Minute Histograms Individual, include = F}
-Untransformed.PPM<-hist(Peck$PPM, breaks = 12)
-Transformed.PPM<-hist(Peck$LPek, breaks = 12)
+Untransformed.PPM<-hist(DATA$PECK_RATE, na.rm=T, breaks = 12)
+Transformed.PPM<-hist(DATA$LPek, breaks = 12)
 ```
 
 ```{r Peck Per Minute Histograms Combined, echo=F}
@@ -621,7 +855,7 @@ par(op)
 
 ```{r Peck Summary, echo = F}
 ### Summarize
-MeanPeck<-summarySE(Peck, "PPM", c("G.Env", "Sentinel"))
+MeanPeck<-summarySE(DATA, "PECK_RATE", c("GENERALIZED_ENVIRONMENT", "SENTINEL_PRESENCE"), na.rm=T)
 MeanPeck
 ```
 
@@ -630,15 +864,15 @@ MeanPeck
 ## Peck Plot
 
 ```{r Peck Plots, echo = F}
-PeckPlot<-ggplot(MeanPeck, aes(x = G.Env, y = PPM, colour = Sentinel))+
+PeckPlot<-ggplot(MeanPeck, aes(x = GENERALIZED_ENVIRONMENT, y = PECK_RATE, colour = SENTINEL_PRESENCE))+
   geom_point(position = position_dodge(width = 0.9)
              , size = 3)+
-  geom_text(aes(label = signif(PPM))
+  geom_text(aes(label = signif(PECK_RATE))
             , size = 3
             , position=position_dodge2(width=1, preserve='single')
             , hjust = -0.5
             , vjust = 0.1)+
-  geom_errorbar(aes(ymin=(PPM-se), ymax=(PPM+se))
+  geom_errorbar(aes(ymin=(PECK_RATE-se), ymax=(PECK_RATE+se))
                 , width = 0.2
                 , position = position_dodge(.9))+
   theme_bw()+
@@ -654,62 +888,80 @@ PeckPlot<-ggplot(MeanPeck, aes(x = G.Env, y = PPM, colour = Sentinel))+
 PeckPlot
 ```
 
-> It appears that there are fewer pecks per minute in Green areas, regardless of the presence of a sentinel.
+> It appears that there more pecks per minute in commercial areas in the presence of a sentinel.
 
 ## Simple Model
 
 > At this point, let's use the model. As before, we are using the presence of a sentinel, the type of environment and their interaction as fixed effects, with the trial ID as a random effect.
 
-```{r Simple peck, echo = F}
-LMM.Peck<-lmer(LPek~Sentinel*G.Env+Baited+(1|ID), data = Peck)
+```{r Simple peck, include= F}
+DATA.PECK<-DATA[complete.cases(DATA),]
+DATA.PECK<-DATA.PECK[DATA.PECK$BEHAVIOR_PROPORTION!=0,]
+LMM.Peck<-lmer(LPek~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+(1|ID), data = DATA.PECK)
 plot(LMM.Peck)
 ```
-
-> Uhh... not good. Need to figure out why.Let's try the robust version of the linear mixed model.
-
-## Robust LMM
-
-```{r Robust Peck, echo = F}
-RLMM.Peck<-rlmer(LPek~Sentinel*G.Env+Baited+(1|ID), data = Peck)
-plot(RLMM.Peck)
-```
-
-> First graph is identical, others seem ok.
 
 ```{r Simple Peck Summary}
 Anova(LMM.Peck)
 ranova(LMM.Peck)
 ```
 
-> All not significant, including random effect. Presence of a sentinel is marginally insignificant (p.val = 0.05419). Let's try the robust model.
+> Generalized environment and bait presence are significant. Weirdly, it seems to also prefer the model without the random effect.
 
-```{r Robust Peck Summary, echo = F}
-sjPlot::tab_model(RLMM.Peck
-                  , show.re.var = T
-                  , title = "Effects of generalized environment, bait, and the presence of a sentinel on the peck rate of foraging crows"
-                  , dv.labels = " Effects on log of pecks per minute")
+## Plot time
+
+### Generalized Environment
+
+```{r G.Env effect on Peck Rate, echo = F}
+EnvPlot.PECK<- DATA.PECK %>%
+  summarySE(measurevar = "PECK_RATE"
+            , groupvars = "GENERALIZED_ENVIRONMENT") %>%
+  ggplot(aes(x = GENERALIZED_ENVIRONMENT, y = PECK_RATE))+
+  geom_point(position = position_dodge(width = 0.9)
+             , size = 3) +
+  geom_text(aes(label = signif(PECK_RATE))
+            , size = 3
+            , position=position_dodge2(width=0.9, preserve='single')
+            , hjust = -0.5
+            , vjust = 0.1)+
+  geom_errorbar(aes(ymin=(PECK_RATE-se), ymax=(PECK_RATE+se))
+                , width = 0.2
+                , position = position_dodge(width=.9))+
+  theme_bw()+
+  theme(text=element_text(size = 14))+
+  xlab("Generalized Environment")+
+  ylab("Peck Rate in Pecks per minute")+
+  theme(legend.position = 'bottom'
+        )
+EnvPlot.PECK
 ```
 
-> Interesting! Looks like there are no effects on peck rate. Let's plot it. The difference between the robust LMM and the simpler model is likely due to how the p-values are estimated, and how the robust lmm decreases the chance of committing Type I error.
+>Very cool! Peck rate is increased in commercial areas.
 
-```{r Robust Peck Effect size}
-sjPlot::plot_model(RLMM.Peck
-                   , show.values=T
-                   , show.p=T
-                   , value.offset = 0.25
-                   , value.size = 4
-                   , wrap.title = 70
-                   , title = "Effects of generalized environment, bait, and the presence of a sentinel on the peck rate of foraging crows")
+### Bait
+
+```{r Bait effect on Peck Rate, echo = F}
+BAITPlot.PECK<- DATA.PECK %>%
+  summarySE(measurevar = "PECK_RATE"
+            , groupvars = "BAIT_PRESENCE") %>%
+  ggplot(aes(x = BAIT_PRESENCE, y = PECK_RATE))+
+  geom_point(position = position_dodge(width = 0.9)
+             , size = 3) +
+  geom_text(aes(label = signif(PECK_RATE))
+            , size = 3
+            , position=position_dodge2(width=0.9, preserve='single')
+            , hjust = -0.5
+            , vjust = 0.1)+
+  geom_errorbar(aes(ymin=(PECK_RATE-se), ymax=(PECK_RATE+se))
+                , width = 0.2
+                , position = position_dodge(width=.9))+
+  theme_bw()+
+  theme(text=element_text(size = 14))+
+  xlab("Bait Presence")+
+  ylab("Peck Rate in Pecks per minute")+
+  theme(legend.position = 'bottom'
+        )
+BAITPlot.PECK
 ```
 
-KMG: Great job! I agree with your methods and conclusions. Looks like you are pretty much done with your analysis! The hard part now will be interpreting the results! For results, my suggestion is to stick with plots of effect size and means w/ SE. Make sure your stats methods parallels your results section, and in the resuts section present everything in the same way/order. It might seem redundant, but it's actually a lot harder to understand if things are in all directions. I think I commented on this above. I have tried to put all my comments with a KMG: in front. I might have forgotten a few. You can check the two most recent histories to see what changes I made.
-
-# Disturbances
-To determine whether there were more or fewer disturbances in different areas, I decided to extract the number of disturbances from across my videos, then compare across the same factors.
-
-```{r Disturbance Files, include = F}
-Distub<-read.csv("Disturbance.csv", stringsAsFactors = T)
-```
-
-```{r Disturbance Summary, echo=F}
-summary(Disturb)
+>Seems like peck rate increases significantly in the presence of bait.
