@@ -1,0 +1,5 @@
+	Head Down	Head Down+Peck at Food/Bait	Head Up	Moving
+Head Down	1.000000	0.000000	1.000000	1.000000
+Head Down+Peck at Food/Bait	1.000000	1.000000	0.000000	1.000000
+Head Up	0.000000	1.000000	1.000000	0.000000
+Moving	0.026786	1.000000	0.000000	1.000000

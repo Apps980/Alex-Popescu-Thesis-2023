@@ -18,8 +18,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "2c8b92bcc684cb1c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.2.8"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -154,6 +165,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "855b7ccb9a9fcd80",
+  "active": "2c8b92bcc684cb1c",
   "lastOpenFiles": []
 }
