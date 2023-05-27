@@ -40,7 +40,7 @@ V5 - Major overhaul and data/analysis improvement.
 > and the presence of a sentinel on the way, I made sure that the
 > headers were factors.  
 
-    ## 'data.frame':    3504 obs. of  14 variables:
+    ## 'data.frame':    3486 obs. of  14 variables:
     ##  $ Observation.id : Factor w/ 25 levels "020 - FVM - 2 crows - No Bait",..: 2 2 2 2 2 2 2 4 4 4 ...
     ##  $ Duration       : num  2.029 3.995 7.994 0.498 7.773 ...
     ##  $ ID             : Factor w/ 22 levels "20","24","25",..: 2 2 2 2 2 2 2 4 4 4 ...
@@ -103,107 +103,131 @@ V5 - Major overhaul and data/analysis improvement.
 
 ## The Tests
 
-### PCAs
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA-1.png)<!-- -->![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA-2.png)<!-- -->
-
-> I’m new to PCAs, so bear with me please. From what I see, presence of
-> bait and sentinel, and the number of crows all contibute to PC1, while
-> Generalized environment seems to be contributing to PC2. The behavior
-> appears to contribute to PC2, but not a lot.
-
-#### Eigenvalues
-
-> Let’s have a look at the eigenvalues.
-
-    ##       eigenvalue variance.percent cumulative.variance.percent
-    ## Dim.1  1.7538148        35.076297                    35.07630
-    ## Dim.2  1.1291003        22.582006                    57.65830
-    ## Dim.3  0.9968377        19.936754                    77.59506
-    ## Dim.4  0.7815291        15.630582                    93.22564
-    ## Dim.5  0.3387180         6.774361                   100.00000
-
-> Pretty small values. The second column shows how much contribution
-> each dimension has to explain the total variance in the data. Let’s
-> quickly plot that.
-
-#### Scree Plot
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Scree%20Plot-1.png)<!-- -->
-
-> Pretty cool. The first 3 PCs explain \~77% of the variance. Adding the
-> 4th PC explains \~93% of the variation.
-
-#### Contribution of variables to Principal Components
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Contribution%20Dim%201-1.png)<!-- -->
-
-> The red dotted line represents the expected average contribution,
-> assuming the contribution of the variables were uniform. In other
-> words, the line is equal to 1/the number of variables; in this case
-> 1/5 or 20%.
-
-> From this plot, I can see that, as I saw previously in the correlation
-> circle, the number of crows, the presence of a sentinel and the
-> presence of bait contribute the most to PC1 (Dimension 1)
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Contribution%20Dim%202-1.png)<!-- -->
-
-> The generalized environment contributes the most to PC2.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Contribution%20Dim%203-1.png)<!-- -->
-
-> The coded behavior contributes most to PC3.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Contribution%20Dim%204-1.png)<!-- -->
-
-> OK! Now we’re getting to the interesting bits. The presence of bait
-> and the presence of a Sentinel contribute most to PC4. This makes me
-> curious to see if there is an interaction between the two factors.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Contribution%20Dim%205-1.png)<!-- -->
-
-> > The presence of a sentinel and the size of the group contribute most
-> > to PC 5. I believe this would imply that the interaction between the
-> > two could be interesting to look at. Considering these two variables
-> > are also major contributors to PC1, this makes the inclusion of the
-> > interaction in the model a must.
-
-> From this, I believe I should look at the interaction between
-> NB_Crows, Presence of a sentinel, and the presence of bait.
-
-#### Plotting with Behaviors
-
-> I’d like to plot the dimensions using the behaviors of the bouts.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Plot%20with%20Behavior%20PC1-2-1.png)<!-- -->
-
-> Messy. The mean points of the behaviors are relatively centered.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Plot%20with%20Behavior%20PC2-3-1.png)<!-- -->
-
-> Very clear separation by behavior type, with ‘Head Up’ shifted upward,
-> ‘Head Down’ shifted downward, and ‘Moving’ in the middle.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Plot%20with%20Behavior%20PC1-3-1.png)<!-- -->
-
-> Good separation, but the concentration ellipses have increased in
-> size. Curious.
-
-#### Biplot
-
-> Finally, let’s look at the biplot. From what I understand, it is
-> essentially the correlation circle overlaid onto the data.
-
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Biplot%20PC1-2-1.png)<!-- -->
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Biplot%20PC2-3-1.png)<!-- -->
-![](MSC-R-Script_files/figure-gfm/Bout%20Duration%20PCA%20Biplot%20PC1-3-1.png)<!-- -->
-
-> Nice! I think I’ve done the PCA analysis to the best of my abilities,
-> but I am very much open to comments and feedback!
-
-> From what I can gather, I should model the data as follows:/
-> LDur\~Behavior+NB_Crows*Bait*Sentinel+G.Env+(1\|ID)
+<!-- ### PCAs -->
+<!-- ```{r Bout Duration PCA packages, include=F} -->
+<!-- library("FactoMineR") -->
+<!-- library("factoextra") -->
+<!-- ``` -->
+<!-- ```{r Bout Duration PCA Book keeping, include=F} -->
+<!-- PCA.Crow.Data<-Crow[,c(4,6,8,10,12:13)] -->
+<!-- head(PCA.Crow.Data) -->
+<!-- ``` -->
+<!-- ```{r Bout Duration PCA, echo=F} -->
+<!-- PCA.Crow<-PCA(PCA.Crow.Data[,-5], ncp=5) -->
+<!-- ``` -->
+<!-- >I'm new to PCAs, so bear with me please. From what I see, presence of bait and sentinel, and the number of crows all contibute to PC1, while Generalized environment seems to be contributing to PC2. The behavior appears to contribute to PC2, but not a lot. -->
+<!-- #### Eigenvalues -->
+<!-- >Let's have a look at the eigenvalues. -->
+<!-- ``` {r Bout Duration PCA eigenvalues, echo = F} -->
+<!-- Crow.eig.val<-get_eigenvalue(PCA.Crow) -->
+<!-- Crow.eig.val -->
+<!-- ``` -->
+<!-- >Pretty small values. The second column shows how much contribution each dimension has to explain the total variance in the data. Let's quickly plot that. -->
+<!-- #### Scree Plot -->
+<!-- ```{r Bout Duration PCA Scree Plot, echo = F} -->
+<!-- fviz_eig(PCA.Crow, addlabels=T, ylim = c(0,40)) -->
+<!-- ``` -->
+<!-- >Pretty cool. The first 3 PCs explain ~77% of the variance. Adding the 4th PC explains ~93% of the variation. -->
+<!-- #### Contribution of variables to Principal Components -->
+<!-- ```{r Bout Duration PCA var results, include = F} -->
+<!-- Crow.var<-get_pca_var(PCA.Crow) -->
+<!-- ``` -->
+<!-- ```{r Bout Duration PCA Contribution Dim 1, echo=F} -->
+<!-- fviz_contrib(PCA.Crow, choice="var", axes = 1, top = 20) -->
+<!-- ``` -->
+<!-- >The red dotted line represents the expected average contribution, assuming the contribution of the variables were uniform. In other words, the line is equal to 1/the number of variables; in this case 1/5 or 20%. -->
+<!-- > From this plot, I can see that, as I saw previously in the correlation circle, the number of crows, the presence of a sentinel and the presence of bait contribute the most to PC1 (Dimension 1) -->
+<!-- ```{r Bout Duration PCA Contribution Dim 2, echo=F} -->
+<!-- fviz_contrib(PCA.Crow, choice="var", axes = 2, top = 20) -->
+<!-- ``` -->
+<!-- > The generalized environment contributes the most to PC2. -->
+<!-- ```{r Bout Duration PCA Contribution Dim 3, echo=F} -->
+<!-- fviz_contrib(PCA.Crow, choice="var", axes = 3, top = 20) -->
+<!-- ``` -->
+<!-- >The coded behavior contributes most to PC3. -->
+<!-- ```{r Bout Duration PCA Contribution Dim 4, echo=F} -->
+<!-- fviz_contrib(PCA.Crow, choice="var", axes = 4, top = 20) -->
+<!-- ``` -->
+<!-- >OK! Now we're getting to the interesting bits. The presence of bait and the presence of a Sentinel contribute most to PC4. This makes me curious to see if there is an interaction between the two factors. -->
+<!-- ```{r Bout Duration PCA Contribution Dim 5, echo=F} -->
+<!-- fviz_contrib(PCA.Crow, choice="var", axes = 5, top = 20) -->
+<!-- ``` -->
+<!-- >>The presence of a sentinel and the size of the group contribute most to PC 5. I believe this would imply that the interaction between the two could be interesting to look at. Considering these two variables are also major contributors to PC1, this makes the inclusion of the interaction in the model a must. -->
+<!-- >From this, I believe I should look at the interaction between NB_Crows, Presence of a sentinel, and the presence of bait. -->
+<!-- #### Plotting with Behaviors -->
+<!-- >I'd like to plot the dimensions using the behaviors of the bouts. -->
+<!-- ```{r Bout Duration PCA Plot with Behavior PC1-2, echo=F} -->
+<!-- fviz_pca_ind(PCA.Crow -->
+<!--              , geom.ind="point" -->
+<!--              , col.ind=PCA.Crow.Data$Behavior -->
+<!--              , palette = cbPalette -->
+<!--              , addEllipses = T -->
+<!--              , legend.title = "Behaviors" -->
+<!--              ) -->
+<!-- ``` -->
+<!-- >Messy. The mean points of the behaviors are relatively centered. -->
+<!-- ```{r Bout Duration PCA Plot with Behavior PC2-3, echo=F} -->
+<!-- fviz_pca_ind(PCA.Crow -->
+<!--              , axes = c(2,3) -->
+<!--              , geom.ind="point" -->
+<!--              , col.ind=PCA.Crow.Data$Behavior -->
+<!--              , palette = cbPalette -->
+<!--              , addEllipses = T -->
+<!--              , legend.title = "Behaviors" -->
+<!--              ) -->
+<!-- ``` -->
+<!-- >Very clear separation by behavior type, with 'Head Up' shifted upward, 'Head Down' shifted downward, and 'Moving' in the middle. -->
+<!-- ```{r Bout Duration PCA Plot with Behavior PC1-3, echo=F} -->
+<!-- fviz_pca_ind(PCA.Crow -->
+<!--              , axes = c(1,3) -->
+<!--              , geom.ind="point" -->
+<!--              , col.ind=PCA.Crow.Data$Behavior -->
+<!--              , palette = cbPalette -->
+<!--              , addEllipses = T -->
+<!--              , legend.title = "Behaviors" -->
+<!--              ) -->
+<!-- ``` -->
+<!-- >Good separation, but the concentration ellipses have increased in size. Curious. -->
+<!-- #### Biplot -->
+<!-- >Finally, let's look at the biplot. From what I understand, it is essentially the correlation circle overlaid onto the data. -->
+<!-- ```{r Bout Duration PCA Biplot PC1-2, echo=F} -->
+<!-- fviz_pca_biplot(PCA.Crow -->
+<!--                 ,geom.ind = "point" -->
+<!--                 , repel = T -->
+<!--                 , col.ind=PCA.Crow.Data$Behavior -->
+<!--                 , addEllipses = T -->
+<!--                 , label = "var" -->
+<!--                 , palette=cbPalette -->
+<!--                 , col.var="black" -->
+<!--                 , legend.title = "Behavior") -->
+<!-- ``` -->
+<!-- ```{r Bout Duration PCA Biplot PC2-3, echo=F} -->
+<!-- fviz_pca_biplot(PCA.Crow -->
+<!--                 , axes = c(2,3) -->
+<!--                 , geom.ind = "point" -->
+<!--                 , repel = T -->
+<!--                 , col.ind=PCA.Crow.Data$Behavior -->
+<!--                 , addEllipses = T -->
+<!--                 , label = "var" -->
+<!--                 , palette=cbPalette -->
+<!--                 , col.var="black" -->
+<!--                 , legend.title = "Behavior") -->
+<!-- ``` -->
+<!-- ```{r Bout Duration PCA Biplot PC1-3, echo=F} -->
+<!-- fviz_pca_biplot(PCA.Crow -->
+<!--                 , axes = c(1,3) -->
+<!--                 , geom.ind = "point" -->
+<!--                 , repel = T -->
+<!--                 , col.ind=PCA.Crow.Data$Behavior -->
+<!--                 , addEllipses = T -->
+<!--                 , label = "var" -->
+<!--                 , palette=cbPalette -->
+<!--                 , col.var="black" -->
+<!--                 , legend.title = "Behavior") -->
+<!-- ``` -->
+<!-- >Nice! I think I've done the PCA analysis to the best of my abilities, but I am very much open to comments and feedback! -->
+<!-- >From what I can gather, I should model the data as follows:/ -->
+<!-- >LDur~Behavior+NB_Crows*Bait*Sentinel+G.Env+(1|ID) -->
 
 ### Assumption testing first
 
@@ -221,8 +245,6 @@ V5 - Major overhaul and data/analysis improvement.
 
 ### RLMM
 
-    ## fixed-effect model matrix is rank deficient so dropping 2 columns / coefficients
-
 ![](MSC-R-Script_files/figure-gfm/Duration%20RLMM-1.png)<!-- -->![](MSC-R-Script_files/figure-gfm/Duration%20RLMM-2.png)<!-- -->![](MSC-R-Script_files/figure-gfm/Duration%20RLMM-3.png)<!-- -->
 
 > That took pretty long to run. Let’s next see the results of the model.
@@ -231,51 +253,51 @@ V5 - Major overhaul and data/analysis improvement.
 > believe I need to worry too much about this warning.
 
     ## Robust linear mixed model fit by DAStau 
-    ## Formula: LDur ~ Behavior + Sentinel * CODED_NB_CROWS * Baited + G.Env +      (1 | ID) 
+    ## Formula: LDur ~ Behavior + Sentinel * G.Env + Sentinel * CODED_NB_CROWS +      Baited + Sentinel + G.Env + (1 | ID) 
     ##    Data: Crow 
     ## 
     ## Scaled residuals: 
     ##     Min      1Q  Median      3Q     Max 
-    ## -2.2318 -0.7111 -0.1264  0.6789  6.2836 
+    ## -2.0274 -0.6885 -0.1257  0.6715  6.3157 
     ## 
     ## Random effects:
     ##  Groups   Name        Variance Std.Dev.
-    ##  ID       (Intercept) 0.007118 0.08437 
-    ##  Residual             0.231790 0.48145 
-    ## Number of obs: 3504, groups: ID, 22
+    ##  ID       (Intercept) 0.004339 0.06587 
+    ##  Residual             0.229408 0.47897 
+    ## Number of obs: 3486, groups: ID, 22
     ## 
     ## Fixed effects:
     ##                           Estimate Std. Error t value
-    ## (Intercept)                1.00347    0.06664  15.059
-    ## BehaviorHU                -0.21557    0.01924 -11.204
-    ## BehaviorM                 -0.06304    0.02233  -2.823
-    ## SentinelY                 -0.04405    0.07899  -0.558
-    ## CODED_NB_CROWS1            0.07493    0.09339   0.802
-    ## BaitedY                   -0.11000    0.06703  -1.641
-    ## G.EnvGreen Area            0.04580    0.04665   0.982
-    ## SentinelY:CODED_NB_CROWS1  0.02671    0.08312   0.321
-    ## SentinelY:BaitedY          0.05484    0.08373   0.655
+    ## (Intercept)                0.96964    0.05049  19.206
+    ## BehaviorHU                -0.21559    0.01919 -11.234
+    ## BehaviorM                 -0.06476    0.02225  -2.910
+    ## SentinelY                  0.10910    0.04895   2.229
+    ## G.EnvGreen Area            0.12938    0.04750   2.724
+    ## CODED_NB_CROWS1            0.14406    0.09052   1.591
+    ## BaitedY                   -0.11227    0.04242  -2.646
+    ## SentinelY:G.EnvGreen Area -0.17058    0.05711  -2.987
+    ## SentinelY:CODED_NB_CROWS1 -0.06700    0.09020  -0.743
     ## 
     ## Correlation of Fixed Effects:
-    ##             (Intr) BhvrHU BehvrM SntnlY CODED_ BaitdY G.EnGA SY:COD
-    ## BehaviorHU  -0.161                                                 
-    ## BehaviorM   -0.170  0.464                                          
-    ## SentinelY   -0.485 -0.011 -0.007                                   
-    ## CODED_NB_CR -0.081  0.007 -0.011  0.087                            
-    ## BaitedY     -0.763 -0.003  0.035  0.640 -0.186                     
-    ## G.EnvGrenAr -0.418  0.022  0.020 -0.318  0.251 -0.064              
-    ## SY:CODED_NB -0.012 -0.012 -0.002 -0.028 -0.797  0.092  0.027       
-    ## SntnlY:BtdY  0.477  0.009  0.006 -0.926 -0.023 -0.691  0.256 -0.116
+    ##             (Intr) BhvrHU BehvrM SntnlY G.EnGA CODED_ BaitdY SY:G.A
+    ## BehaviorHU  -0.211                                                 
+    ## BehaviorM   -0.228  0.464                                          
+    ## SentinelY   -0.240 -0.012 -0.001                                   
+    ## G.EnvGrenAr -0.577  0.010  0.020  0.375                            
+    ## CODED_NB_CR -0.114  0.005 -0.011  0.283  0.311                     
+    ## BaitedY     -0.629  0.004  0.062 -0.134  0.000 -0.270              
+    ## SntnY:G.EGA  0.195  0.010 -0.004 -0.815 -0.604 -0.237  0.162       
+    ## SY:CODED_NB  0.131 -0.006 -0.002 -0.529 -0.213 -0.843  0.084  0.426
     ## 
     ## Robustness weights for the residuals: 
-    ##  2867 weights are ~= 1. The remaining 637 ones are summarized as
+    ##  2858 weights are ~= 1. The remaining 628 ones are summarized as
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   0.214   0.552   0.756   0.721   0.912   0.999 
+    ##   0.213   0.545   0.757   0.722   0.911   0.999 
     ## 
     ## Robustness weights for the random effects: 
-    ##  19 weights are ~= 1. The remaining 3 ones are
-    ##     5     9    15 
-    ## 0.950 0.934 0.776 
+    ##  20 weights are ~= 1. The remaining 2 ones are
+    ##     9    15 
+    ## 0.995 0.838 
     ## 
     ## Rho functions used for fitting:
     ##   Residuals:
@@ -319,10 +341,10 @@ p
 (Intercept)
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-1.00
+0.97
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.87 – 1.13
+0.87 – 1.07
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 <strong>\<0.001</strong>
@@ -353,7 +375,7 @@ Behavior \[M\]
 -0.11 – -0.02
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>0.005</strong>
+<strong>0.004</strong>
 </td>
 </tr>
 <tr>
@@ -361,13 +383,27 @@ Behavior \[M\]
 Sentinel \[Y\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.04
+0.11
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.20 – 0.11
+0.01 – 0.21
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.577
+<strong>0.026</strong>
+</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
+G Env \[Green Area\]
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.13
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+0.04 – 0.22
+</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
+<strong>0.006</strong>
 </td>
 </tr>
 <tr>
@@ -375,13 +411,13 @@ Sentinel \[Y\]
 CODED NB CROWS \[1\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.07
+0.14
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.11 – 0.26
+-0.03 – 0.32
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.422
+0.112
 </td>
 </tr>
 <tr>
@@ -392,24 +428,24 @@ Baited \[Y\]
 -0.11
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.24 – 0.02
+-0.20 – -0.03
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.101
+<strong>0.008</strong>
 </td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-G Env \[Green Area\]
+Sentinel \[Y\] × G Env<br>\[Green Area\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.05
+-0.17
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.05 – 0.14
+-0.28 – -0.06
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.326
+<strong>0.003</strong>
 </td>
 </tr>
 <tr>
@@ -417,27 +453,13 @@ G Env \[Green Area\]
 Sentinel \[Y\] × CODED NB<br>CROWS \[1\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.03
+-0.07
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.14 – 0.19
+-0.24 – 0.11
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.748
-</td>
-</tr>
-<tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">
-Sentinel \[Y\] × Baited \[Y\]
-</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.05
-</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.11 – 0.22
-</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.513
+0.458
 </td>
 </tr>
 <tr>
@@ -458,14 +480,14 @@ Random Effects
 τ<sub>00</sub> <sub>ID</sub>
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
-0.01
+0.00
 </td>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
 ICC
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
-0.03
+0.02
 </td>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
@@ -479,7 +501,7 @@ N <sub>ID</sub>
 Observations
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
-3504
+3486
 </td>
 </tr>
 <tr>
@@ -487,7 +509,7 @@ Observations
 Marginal R<sup>2</sup> / Conditional R<sup>2</sup>
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
-0.048 / 0.076
+0.053 / 0.071
 </td>
 </tr>
 </table>
@@ -526,10 +548,10 @@ p
 (Intercept)
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.98
+1.00
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.87 – 1.10
+0.88 – 1.12
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 <strong>\<0.001</strong>
@@ -554,13 +576,13 @@ Behavior \[HU\]
 Behavior \[M\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.06
+-0.07
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 -0.11 – -0.02
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-<strong>0.005</strong>
+<strong>0.003</strong>
 </td>
 </tr>
 <tr>
@@ -571,10 +593,10 @@ Sentinel \[Y\]
 0.01
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.05 – 0.06
+-0.05 – 0.07
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.735
+0.718
 </td>
 </tr>
 <tr>
@@ -582,13 +604,13 @@ Sentinel \[Y\]
 CODED NB CROWS \[1\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.11
+0.12
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.00 – 0.22
+0.01 – 0.24
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.054
+<strong>0.037</strong>
 </td>
 </tr>
 <tr>
@@ -596,13 +618,13 @@ CODED NB CROWS \[1\]
 Baited \[Y\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.08
+-0.10
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
--0.18 – 0.01
+-0.20 – 0.00
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.093
+0.059
 </td>
 </tr>
 <tr>
@@ -610,13 +632,13 @@ Baited \[Y\]
 G Env \[Green Area\]
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.04
+0.03
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
 -0.06 – 0.13
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">
-0.443
+0.482
 </td>
 </tr>
 <tr>
@@ -644,7 +666,7 @@ Random Effects
 ICC
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
-0.03
+0.04
 </td>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
@@ -658,7 +680,7 @@ N <sub>ID</sub>
 Observations
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">
-3504
+3486
 </td>
 </tr>
 <tr>
@@ -666,14 +688,25 @@ Observations
 Marginal R<sup>2</sup> / Conditional R<sup>2</sup>
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">
-0.048 / 0.078
+0.051 / 0.085
 </td>
 </tr>
 </table>
 
 > Same result!
 
-> Let’s try the good old regular lmer and see if that changes anything.
+``` r
+sjPlot::plot_model(RLMM.Dur.I
+                   , show.values=T
+                   , show.p=T
+                   , value.offset = 0.4
+                   , value.size = 3.5
+                   , wrap.title = 48
+                   , title = "Effects of environment, presence of a sentinel, number of crows and bait on durations of behaviors")# Looks much better
+```
+
+![](MSC-R-Script_files/figure-gfm/Effect%20Sizes-1.png)<!-- --> \>Let’s
+try the good old regular lmer and see if that changes anything.
 
     ## fixed-effect model matrix is rank deficient so dropping 2 columns / coefficients
 
@@ -683,9 +716,9 @@ Marginal R<sup>2</sup> / Conditional R<sup>2</sup>
     ## Models:
     ## Simple.Dur.NoI: LDur ~ Behavior + Sentinel + CODED_NB_CROWS + Baited + G.Env + (1 | ID)
     ## Simple.Dur.I: LDur ~ Behavior + Sentinel * CODED_NB_CROWS * Baited + G.Env + (1 | ID)
-    ##                npar    AIC    BIC  logLik deviance  Chisq Df Pr(>Chisq)
-    ## Simple.Dur.NoI    9 5652.8 5708.2 -2817.4   5634.8                     
-    ## Simple.Dur.I     11 5656.2 5724.0 -2817.1   5634.2 0.5659  2     0.7536
+    ##                npar    AIC    BIC  logLik deviance Chisq Df Pr(>Chisq)
+    ## Simple.Dur.NoI    9 5589.3 5644.8 -2785.7   5571.3                    
+    ## Simple.Dur.I     11 5593.0 5660.7 -2785.5   5571.0 0.378  2     0.8278
 
 > Using the simple model, I looked at the AIC values. The model without
 > interactions had the lowest AIC value, therefore is preferred.Let’s
@@ -698,11 +731,11 @@ Marginal R<sup>2</sup> / Conditional R<sup>2</sup>
     ## Model:
     ## LDur ~ Behavior + Sentinel + CODED_NB_CROWS + Baited + G.Env + (1 | ID)
     ##                 Sum Sq Mean Sq NumDF  DenDF F value  Pr(>F)    
-    ## Behavior       23.2096 11.6048     2 3488.8 40.0222 < 2e-16 ***
-    ## Sentinel        0.0327  0.0327     1  354.4  0.1129 0.73702    
-    ## CODED_NB_CROWS  1.7700  1.7700     1   20.7  6.1043 0.02228 *  
-    ## Baited          1.0442  1.0442     1   23.9  3.6011 0.06989 .  
-    ## G.Env           0.2298  0.2298     1   17.0  0.7924 0.38577    
+    ## Behavior       22.8977 11.4488     2 3470.3 39.8790 < 2e-16 ***
+    ## Sentinel        0.0424  0.0424     1  351.7  0.1477 0.70096    
+    ## CODED_NB_CROWS  2.0979  2.0979     1   20.2  7.3076 0.01360 *  
+    ## Baited          1.3249  1.3249     1   23.4  4.6150 0.04227 *  
+    ## G.Env           0.2329  0.2329     1   16.7  0.8114 0.38053    
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -721,9 +754,11 @@ anova(Simple.Dur.NoI, Simplest.Dur)
     ## Models:
     ## Simplest.Dur: LDur ~ Behavior + (1 | ID)
     ## Simple.Dur.NoI: LDur ~ Behavior + Sentinel + CODED_NB_CROWS + Baited + G.Env + (1 | ID)
-    ##                npar    AIC    BIC  logLik deviance  Chisq Df Pr(>Chisq)
-    ## Simplest.Dur      5 5651.6 5682.4 -2820.8   5641.6                     
-    ## Simple.Dur.NoI    9 5652.8 5708.2 -2817.4   5634.8 6.7977  4      0.147
+    ##                npar    AIC    BIC  logLik deviance  Chisq Df Pr(>Chisq)  
+    ## Simplest.Dur      5 5589.5 5620.3 -2789.8   5579.5                       
+    ## Simple.Dur.NoI    9 5589.3 5644.8 -2785.7   5571.3 8.1813  4    0.08516 .
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 > Yep! The simplest model (LDur\~Behavio+(1\|ID)) is preferred. Let’s
 > try subsetting the data.
@@ -734,10 +769,10 @@ anova(Simple.Dur.NoI, Simplest.Dur)
     ## 
     ## Response: LDur
     ##                 Chisq Df Pr(>Chisq)
-    ## Sentinel       0.6949  1     0.4045
-    ## CODED_NB_CROWS 1.5544  1     0.2125
-    ## Baited         0.7070  1     0.4004
-    ## G.Env          0.0658  1     0.7976
+    ## Sentinel       0.8612  1     0.3534
+    ## CODED_NB_CROWS 2.0723  1     0.1500
+    ## Baited         1.0262  1     0.3111
+    ## G.Env          0.0379  1     0.8456
 
 > Simple model on Head Up subset with no interactions shows no
 > significance.
@@ -746,10 +781,10 @@ anova(Simple.Dur.NoI, Simplest.Dur)
     ## 
     ## Response: LDur
     ##                  Chisq Df Pr(>Chisq)    
-    ## Sentinel        0.3516  1   0.553223    
-    ## CODED_NB_CROWS 20.0507  1  7.542e-06 ***
-    ## Baited          6.5648  1   0.010402 *  
-    ## G.Env           8.9667  1   0.002749 ** 
+    ## Sentinel        0.5011  1   0.479003    
+    ## CODED_NB_CROWS 20.7974  1  5.105e-06 ***
+    ## Baited          7.6112  1   0.005801 ** 
+    ## G.Env           9.2813  1   0.002315 ** 
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -760,10 +795,10 @@ anova(Simple.Dur.NoI, Simplest.Dur)
     ## 
     ## Response: LDur
     ##                 Chisq Df Pr(>Chisq)
-    ## Sentinel       0.0168  1     0.8968
-    ## CODED_NB_CROWS 0.1147  1     0.7348
-    ## Baited         0.0358  1     0.8500
-    ## G.Env          0.0004  1     0.9837
+    ## Sentinel       0.0084  1     0.9268
+    ## CODED_NB_CROWS 0.2692  1     0.6039
+    ## Baited         0.0975  1     0.7549
+    ## G.Env          0.0085  1     0.9265
 
 > Simple model shows no significant effects.
 
