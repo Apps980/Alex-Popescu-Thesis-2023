@@ -1,0 +1,389 @@
+---
+title: "BOUT"
+author: "Alex Popescu"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+# BOUT
+
+```{r Packages, include = F}
+library("tidyverse")
+library("psych")
+library("car")
+library("ggplot2")
+library("ggpattern")
+library("lmerTest")
+library("robustlmm")
+library("sjPlot")
+library("effects")
+library("glmm")
+library("doBy")
+```
+
+```{r Colorblind-friendly palette, include = F}
+# The palette with black:
+cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
+```
+
+## Preamble
+
+This script will deal with analysing the relationship of the duration of bouts of behavior - head down, head up, and moving - with the presence of a sentinel, the presence of bait, the foraging environment and the group size.
+
+As random effects, I've chosen the individual ID, the (julian) date, and the (decimal) time.
+
+This analysis will answer the following question:\
+Do individual vary the duration of behavioral bouts in response to their perception of risk and sentinel coverage in their foraging environment.
+
+In other words, if the proportion of time allocated to each behavior does not vary, then does the individual alter the frequency, and therefore the duration of bouts of each behavior in response to, for example, an environment with shorter lines of sight for the sentinel.
+
+To do so, I extracted the bouts of each individual using the following string in the 'advanced event filtering' tool in BORIS v.8.20.3:
+
+"No focal subject\|[Sentinel State]" & "Individual X\|[Behavior]"
+
+I then compiled a dataset and named it "BOUT"
+
+```{r Open Data}
+BOUT<-read.csv("BOUT.csv", stringsAsFactors = T)
+names(BOUT)[14]<-"DURATION"
+str(BOUT)
+```
+
+I will also remove duration values smaller than 0.01, since it is likely an artifact from coding in BORIS. Sometimes things get cut weirdly, resulting in impossibly small values.
+
+```{r Remove Small Values}
+BOUT<-BOUT[which(BOUT$DURATION>0.01),]
+```
+
+This removed 21 points, leaving me with 5070 bouts.
+
+```{r Bout Summary}
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+BOUT.MEAN <- summarySE(data = BOUT
+                      , measurevar = "DURATION"
+                      , groupvars = c("GENERALIZED_ENVIRONMENT"
+                                      , "BEHAVIOR"
+                                      , "SENTINEL_PRESENCE"
+                                      )
+                      )
+BOUT.MEAN
+```
+
+This has given me the mean duration of bouts, grouped into each combination of "main" factors of interest.
+
+Onto the analysis
+
+## To transform or not
+
+That is the question.
+
+Due to the nature of the data, the best type of transformation is a log transformation.
+
+```{r Duration Histograms Individual, include = F}
+Untransformed.Dur<-hist(BOUT$DURATION, breaks = 25)
+Transformed.Dur<-hist(log(BOUT$DURATION), breaks = 25)
+```
+
+```{r Duration Histograms Combined, echo=F}
+op <- par(mfrow = c(1,2))
+plot(Untransformed.Dur, main="Untransformed", ylab="Frequency", xlab="Duration (s)")
+plot(Transformed.Dur, main="Transformed", ylab="", xlab="Log Duration (s)")
+par(op)
+```
+
+We can clearly see that the untransformed data is right-skewed, and always positive. This is perfect for log-transformations. We see in the histogram of the transformed data, the data is now roughly normally distributed.
+
+Therefore, for the statistical analyses, we will use **LOG-Transformed** durations.
+
+```{r LOG BOUT}
+BOUT$LDURATION<-log(BOUT$DURATION)
+```
+
+Here is the histogram of the log-transformed data separated by behavior.
+
+```{r Crow Histogram, echo=F}
+HIST<-ggplot(data = BOUT) +
+  geom_histogram(aes(fill = BEHAVIOR, x = LDURATION)
+                 , alpha = 1
+                 , bins = 25)+
+  scale_fill_manual(values=cbPalette
+                    , labels = c("Foraging", "Alert", "Moving"))+
+  xlab("Log Duration (s)")+
+  ylab("Count")
+HIST
+```
+
+There is a gap in the distribution. That is unfortunate.
+
+## The Dot Plot
+
+Here's where things get beautiful.
+
+```{r BOUT Dot Plot}
+BOUT.DOT<-ggplot(data = BOUT.MEAN
+               , aes(x = BEHAVIOR
+                     , y = DURATION
+                     , color = BEHAVIOR
+                     , shape = SENTINEL_PRESENCE))+
+  geom_point(position = position_dodge2(width = 0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(DURATION-se)
+                    , ymax=(DURATION+se))
+                , width = 0.2
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Mean Bout Duration (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none") +
+  scale_shape_manual(values = c(16,17)
+                     , labels = c("Sentinel Absent"
+                                  , "Sentinel Present")
+                     , name = "") +
+  scale_x_discrete(labels = c("Foraging", "Alert", "Moving"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  facet_grid(~GENERALIZED_ENVIRONMENT)
+
+BOUT.DOT
+```
+
+> The error bars represent the standard error, while the symbols are the mean duration of bouts.
+
+Beautiful! It looks like the duration of bouts of alertness and foraging increase increases when sentinels are present in commercial areas. In green areas, this effect is reversed, with bouts of alertness and foraging having decreased duration in the presence of a sentinel. Meanwhile, bouts of movement seem affected by neither the environment nor the presence of a sentinel.
+
+Let's fit the models.
+
+## The Models
+
+Let's fit a model. We are testing principally for the effects of the presence of a sentinel and the generalized environment. However, group size and the presence of bait could also affect the duration of bouts.
+
+I originally had temperature, time and data as random effects, but the model was singular. Running rePCA showed that the random effects explained the same variance.
+
+The first model fitted will be a simple model with no interactions.
+
+```{r BOUT MODEL 1}
+BOUT.MOD1<-lmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+(1|ID), data = BOUT)
+
+sjPlot::tab_model(BOUT.MOD1
+                  , show.re.var = T
+                  , title = "Bout Model 1 Output"
+                  , dv.labels = " Effects of on duration of bouts of behaviors")
+```
+
+The simple model without interactions shows behavior and the generalized environment having significant effects on the duration of bouts.
+
+Now, we would expect to see bouts of different behaviors being different. It takes longer to manipulate food than it does to look out for sources of threat.\
+However, the presence of a sentinel and the environment could modify this effect. If a sentinel is present, then I would expect the duration of bouts of alertness to decrease, while a riskier environment should cause the duration of these bouts to increase.\
+As such, in the next model, I will include an interaction between behavior and the presence of a sentinel, as well as behavior and the generalized environment.
+
+The generalized environment has a significant effect, and this supports, at least in part, my predictions.
+
+However, the presence of a sentinel did not affect the duration of bouts. It may be that the effects of the presence of a sentinel is interactive with the type of environment. I will therefore include an interaction between the type of environment and the presence of a sentinel in the next model.
+
+Interestingly, the presence of bait and the group size did not have an effect. I would have expected the bait, a concentrated patch of food, to have an effect on the duration of behavior. It may be the case that the presence of bait only affects the duration of bouts of foraging. As a result, I will also include an interaction between the presence of bait and the behavior in the subsequent model.
+
+Group size provides antipredator benefits to the entire group. If there are many individuals, then either the individual risk of predation decreases (dilution effect) or there are more foragers capable of detecting threats (many-eyes).\
+As such, it is possible that, once again, the group size's effects occur on certain behaviors rather than others. I will include this interaction in the next model.
+
+```{r BOUT MODEL 2}
+BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+(1|ID), data = BOUT)
+
+sjPlot::tab_model(BOUT.MOD2
+                  , show.re.var = T
+                  , title = "Bout Model 2 Output"
+                  , dv.labels = " Effects of on duration of bouts of behaviors")
+```
+
+In the second model with the added interactions, the behavior, generalized environment, group size and a number of interactions are significant.
+
+The group size becoming significant is puzzling. I don't understand why now it would become significant.
+
+The interaction between the behavior type and the environment are significant. This would imply that individuals change the duration of bouts of behaviors in response to different environments, with the effect differing between behaviors.\
+
+The interaction between the presence of a sentinel and the generalized environment is also significant. As before, it could be worthwhile to also look at the three-way interaction between behavior, the presence of a sentinel and the generalized environment. This could reveal different effects caused by the presence of a sentinel and the environment on different behaviors.
+
+The interaction between behavior and group size is significant. Again, this is unexpected. I will include a three way interaction between behavior, group size and the presence of a sentinel in the next model, if the interactive effects of group size and behavior are in some way affected by sentinel behavior.
+
+Lastly, the interaction between behavior "Moving" and the presence of bait is significant. This is curious, especially since the effect size appears to be positive when bait is present. My interpretation of this is moving bout durations increase when bait is present.
+
+Let's run the final and most complex model.
+
+```{r BOUT MOD 3}
+BOUT.MOD3<-lmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+BEHAVIOR*GENERALIZED_ENVIRONMENT*SENTINEL_PRESENCE+BEHAVIOR*GROUP_SIZE*SENTINEL_PRESENCE+BEHAVIOR*BAIT_PRESENCE+(1|ID), data = BOUT)
+
+sjPlot::tab_model(BOUT.MOD3
+                  , show.re.var = T
+                  , title = "Bout Model 3 Output"
+                  , dv.labels = " Effects of on duration of bouts of behaviors")
+```
+
+Ok, so there are a number of differences. The only significant effects detected are the generalized environment, the interaction between "moving" and green areas, and the interaction between "moving" and bait presence.
+
+This is weird. Let's see what the AICs are.
+
+```{r BOUT AIC}
+anova(BOUT.MOD1,BOUT.MOD2,BOUT.MOD3)
+```
+
+Nice! The second model has the lowest AIC value and is therefore prefered.
+
+In case there are any violations in the assumptions of the linear mixed model, I will run the robust linear mixed model, using model 2's formula.
+
+```{r RLMM MOD 2}
+BOUT.RMOD2<-rlmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+(1|ID), data = BOUT)
+
+sjPlot::tab_model(BOUT.RMOD2
+                  , show.re.var = T
+                  , title = "Bout Robust Model 2 Output"
+                  , dv.labels = " Effects of on duration of bouts of behaviors")
+```
+
+Same results as MOD2, but different p-values.
+
+```{r LMM Assumptions}
+plot(BOUT.RMOD2)
+```
+
+The assumptions of the LMM do not appear to be violated.
+
+### Model Conclusions
+
+Using model 2, here are the conclusions I draw:
+
+-   Behavior, generalized environment and group size have significant effects. The former is to be expected, while the latter two are interesting, but not very informative (alone).
+-   The interaction between behavior and generalized environment are significant. The effect size appears negative for both "head up" and "moving" behavior in green areas.
+-   There is a significant interaction of sentinel presence and generalized environment.
+-   There is a significant interaction of behavior and group size for head up and moving.
+-   There is a significant interaction of "moving" and bait presence.
+
+To better visualize these results, I will plot them.
+
+#### Behavior X Generalized Environment
+
+```{r BxG.ENV BOUT Dot Plot}
+BxG.ENV.DOT<-BOUT %>%
+  summarySE(measurevar = "DURATION"
+            , groupvars = c("BEHAVIOR", "GENERALIZED_ENVIRONMENT")) %>%
+    ggplot(aes(x = BEHAVIOR
+                     , y = DURATION
+                     , color = BEHAVIOR))+
+  geom_point(position = position_dodge2(width = 0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(DURATION-se)
+                    , ymax=(DURATION+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Mean Bout Duration (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  scale_x_discrete(labels = c("Foraging", "Alert", "Moving"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  facet_grid(~GENERALIZED_ENVIRONMENT)
+
+BxG.ENV.DOT
+```
+
+Very interesting! Duration of bouts of alertness and moving remain largely the same, while the duration of foraging bout in green areas increases dramatically. \
+
+This could be explained by needing more time to locate and handle food in green areas, especially if the food is not on concrete or in a dense patch.
+
+#### Sentinel Presence X Generalized Environment
+
+```{r SPxG.ENV BOUT Dot Plot}
+SPxG.ENV.DOT<-BOUT %>%
+  summarySE(measurevar = "DURATION"
+            , groupvars = c("SENTINEL_PRESENCE", "GENERALIZED_ENVIRONMENT")) %>%
+    ggplot(aes(x = SENTINEL_PRESENCE
+                     , y = DURATION
+                     , color = SENTINEL_PRESENCE))+
+  geom_point(position = position_dodge2(width = 0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(DURATION-se)
+                    , ymax=(DURATION+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Mean Bout Duration (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  scale_x_discrete(labels = c("Sentinel Absent", "Sentinel Present"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  facet_grid(~GENERALIZED_ENVIRONMENT)
+
+SPxG.ENV.DOT
+```
+
+In the presence of a sentinel, bout durations of all behaviors remain relatively similar across environments. However, when no sentinels are present the bout duration of all behaviors increases dramatically in green areas.
+
+I will need to find a way to explain this result, especially since the duration of behaviors when no sentinel is present is much shorter in commercial areas and much longer in green areas than in the presence of a sentinel, regardless of the environment.
+
+```{r BxGS BOUT Dot Plot}
+BxGS.DOT<-BOUT %>%
+  summarySE(measurevar = "DURATION"
+            , groupvars = c("BEHAVIOR", "GROUP_SIZE")) %>%
+    ggplot(aes(x = BEHAVIOR
+               , y = DURATION
+               , color = BEHAVIOR
+               , shape = GROUP_SIZE
+               , group = BEHAVIOR))+
+  geom_point(position = position_dodge2(width = 0.5)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(DURATION-se)
+                    , ymax=(DURATION+se))
+                , width = 0.1
+                , position = position_dodge2())+
+  theme_classic() +
+  ylab("Mean Bout Duration (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  scale_x_discrete(labels = c("Foraging", "Alert", "Moving"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin())
+
+BxGS.DOT
+```
+
+GGPLOT! The error bars are not over the dots.
+
+#### Behavior x Bait Presence
+
+```{r BxBP BOUT}
+BxBP.DOT<-BOUT %>%
+  summarySE(measurevar = "DURATION"
+            , groupvars = c("BEHAVIOR", "BAIT_PRESENCE")) %>%
+    ggplot(aes(x = BEHAVIOR
+               , y = DURATION
+               , color = BEHAVIOR
+               , shape = BAIT_PRESENCE
+               , group = BEHAVIOR))+
+  geom_point(position = position_dodge2(width = 0.5)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(DURATION-se)
+                    , ymax=(DURATION+se))
+                , width = 0.1
+                , position = position_dodge2())+
+  theme_classic() +
+  ylab("Mean Bout Duration (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  scale_x_discrete(labels = c("Foraging", "Alert", "Moving"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin())
+
+BxBP.DOT
+```
