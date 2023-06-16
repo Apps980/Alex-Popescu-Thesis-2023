@@ -63,6 +63,16 @@ Crow$CODED_BEHAVIOR<-as.numeric(Crow$CODED_BEHAVIOR)
 Crow$LDur<-log(Crow$Duration+1)
 ```
 
+```{r DATA setup, include = F}
+DATA<-read.csv("DATA.csv", stringsAsFactors = T)
+DATA<-DATA[,c(-3,-4,-6)]
+DATA$ID<-as.factor(DATA$ID)
+DATA$LOG_DURATION<-log(DATA$MEAN_BOUT_DURATION)
+DATA$LOG_DURATION[is.infinite(DATA$LOG_DURATION)]<-NA
+DATA$ASIN_PROPORTION<-asin(sqrt(DATA$BEHAVIOR_PROPORTION))
+
+```
+
 ```{r Crow Double checking, echo = F}
 str(Crow)
 ```
@@ -78,8 +88,8 @@ str(Crow)
 > I first decided to look at the distribution of my durations. I set up a histogram with the distibution of durations across all behaviors. I had to log-transform the duration to get a better distribution (log(Duration+1)).\
 
 ```{r Duration Histograms Individual, include = F}
-Untransformed.Dur<-hist(Crow$Duration, breaks = 25)
-Transformed.Dur<-hist(Crow$LDur, breaks = 25)
+Untransformed.Dur<-hist(DATA$MEAN_BOUT_DURATION, breaks = 25)
+Transformed.Dur<-hist(DATA$LOG_DURATION, breaks = 25)
 ```
 
 ```{r Duration Histograms Combined, echo=F}
@@ -92,8 +102,8 @@ par(op)
 ```
 
 ```{r Crow Histogram, echo=F}
-Hist<-ggplot(data = Crow) +
-  geom_histogram(aes(fill = Behavior, x = LDur)
+Hist<-ggplot(data = DATA) +
+  geom_histogram(aes(fill = BEHAVIOR, x = LOG_DURATION)
                  , alpha = 1
                  , bins = 50)+
   scale_fill_manual(values=cbPalette
@@ -105,93 +115,93 @@ Hist
 
 > I should use a robust linear mixed model. LMMs by themselves are robust against violations of their assumptions (I found an article about this), but I will nonetheless use 'robustlmm' to make my model, since their computations for weights are apparently better.
 
-### Boxplot
+<!-- ### Boxplot -->
 
-```{r Crow boxplot, echo = F}
-Box<-ggplot(data = Crow)+
-  geom_boxplot_pattern(aes(x = G.Env, y = LDur, fill = Behavior, pattern = Sentinel)
-                       , pattern_angle = 45
-                       , pattern_size = 0.05
-                       , pattern_spacing = 0.02
-                       , color = "black")+
-  theme(legend.position = "bottom")+
-  scale_fill_manual(values = cbPalette
-                    , labels = c("Foraging", "Alert", "Moving"))+
-  scale_pattern_manual(values = c("crosshatch", "none")
-                       , labels = c("Sentinel Absent", "Sentinel Present"))+
-  guides(pattern = guide_legend(title = "Presence of a sentinel"
-                                , override.aes = list(fill = c("white")))
-         , fill = guide_legend(override.aes = list(pattern = "none")))+
-  xlab("Generalized Environment")+
-  ylab("Log Duration(s)") +
-  theme(axis.title.x = element_blank()
-        , legend.position = "bottom"
-        , legend.box="vertical"
-        , legend.margin=margin())
-Box
-```
+<!-- ```{r Crow boxplot, echo = F} -->
+<!-- Box<-ggplot(data = Crow)+ -->
+<!--   geom_boxplot_pattern(aes(x = G.Env, y = LDur, fill = Behavior, pattern = Sentinel) -->
+<!--                        , pattern_angle = 45 -->
+<!--                        , pattern_size = 0.05 -->
+<!--                        , pattern_spacing = 0.02 -->
+<!--                        , color = "black")+ -->
+<!--   theme(legend.position = "bottom")+ -->
+<!--   scale_fill_manual(values = cbPalette -->
+<!--                     , labels = c("Foraging", "Alert", "Moving"))+ -->
+<!--   scale_pattern_manual(values = c("crosshatch", "none") -->
+<!--                        , labels = c("Sentinel Absent", "Sentinel Present"))+ -->
+<!--   guides(pattern = guide_legend(title = "Presence of a sentinel" -->
+<!--                                 , override.aes = list(fill = c("white"))) -->
+<!--          , fill = guide_legend(override.aes = list(pattern = "none")))+ -->
+<!--   xlab("Generalized Environment")+ -->
+<!--   ylab("Log Duration(s)") + -->
+<!--   theme(axis.title.x = element_blank() -->
+<!--         , legend.position = "bottom" -->
+<!--         , legend.box="vertical" -->
+<!--         , legend.margin=margin()) -->
+<!-- Box -->
+<!-- ``` -->
 
-### Violin plot
+<!-- ### Violin plot -->
 
-```{r Crow Violin plot, echo = F}
-Violin<-ggplot(data = Crow
-               , aes(x = Behavior, y = LDur, fill = Sentinel))+
-  geom_violin()+
-  theme_bw()+
-  theme(legend.position = "bottom")+
-  scale_fill_manual(values = cbPalette
-                    , labels = c("Sentinel Absent", "Sentinel Present"))+
-  scale_x_discrete(labels=c("Foraging", "Alert", "Moving"))+
-  xlab("Generalized Environment")+
-  ylab("Log Duration(s)")+
-  facet_grid(~G.Env)+
-  stat_summary(fun = "mean"
-               , geom = "crossbar"
-               , position = "dodge"
-               , color = "red")
-Violin
-```
+<!-- ```{r Crow Violin plot, echo = F} -->
+<!-- Violin<-ggplot(data = Crow -->
+<!--                , aes(x = Behavior, y = LDur, fill = Sentinel))+ -->
+<!--   geom_violin()+ -->
+<!--   theme_bw()+ -->
+<!--   theme(legend.position = "bottom")+ -->
+<!--   scale_fill_manual(values = cbPalette -->
+<!--                     , labels = c("Sentinel Absent", "Sentinel Present"))+ -->
+<!--   scale_x_discrete(labels=c("Foraging", "Alert", "Moving"))+ -->
+<!--   xlab("Generalized Environment")+ -->
+<!--   ylab("Log Duration(s)")+ -->
+<!--   facet_grid(~G.Env)+ -->
+<!--   stat_summary(fun = "mean" -->
+<!--                , geom = "crossbar" -->
+<!--                , position = "dodge" -->
+<!--                , color = "red") -->
+<!-- Violin -->
+<!-- ``` -->
 
->These plots are nice, but it is hard to really see the underlying trends. To best visualise them, I'll next plot a dot plot.
+<!-- >These plots are nice, but it is hard to really see the underlying trends. To best visualise them, I'll next plot a dot plot. -->
 
 ### The Dot Plot
 
-```{r Base R Plot, include = F}
-source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
-MeanDur <- summarySE(data = Crow, measurevar = "Duration"
-                     , groupvars = c("G.Env", "Behavior", "Sentinel"))
+<!-- ```{r Base R Plot, include = F} -->
+<!-- source("./Calculate Summary Table with SE, SD, CI by grouping variables.R") -->
+<!-- MeanDur <- summarySE(data = Crow, measurevar = "Duration" -->
+<!--                      , groupvars = c("G.Env", "Behavior", "Sentinel")) -->
 
-plot(x = c(1:12)
-     , y = MeanDur$Duration
-     , xlim = c(0,12)
-     , ylim = c(1,3)
-     , type = "n"
-     , ylab = "Duration (seconds)", xlab = "Generalized Environment")
-arrows(c(1:12), MeanDur$Duration - MeanDur$se
-       , c(1:12), MeanDur$Duration + MeanDur$se
-       , length = 0.1, angle = 90, code = 3, lwd = 2)
-points(x = c(1:12), y = MeanDur$Duration
-       , pch = c(rep(c(16, 17), 3)), cex = 2
-       , col = c("orange", "orange", "blue", "blue", "green", "green"))
-legend(x = "bottomright", c("Sentinel Absent", "Sentinal Present", "Foraging", "Alert", "Moving")
-       , bty = "o", cex = 1.05, bg = "white"
-       , pch = c(16, 17, 15, 15, 15), col = c("black", "black", "orange", "blue", "green"))
-#KMG: I'm not going to fix the X-axis labels and those kinds of things right now. I can do that if you like this plot or things it's informative. I think it's easier to see the differences. left side is commercial, right side is green. Legend should be correct.
-```
+<!-- plot(x = c(1:12) -->
+<!--      , y = MeanDur$Duration -->
+<!--      , xlim = c(0,12) -->
+<!--      , ylim = c(1,3) -->
+<!--      , type = "n" -->
+<!--      , ylab = "Duration (seconds)", xlab = "Generalized Environment") -->
+<!-- arrows(c(1:12), MeanDur$Duration - MeanDur$se -->
+<!--        , c(1:12), MeanDur$Duration + MeanDur$se -->
+<!--        , length = 0.1, angle = 90, code = 3, lwd = 2) -->
+<!-- points(x = c(1:12), y = MeanDur$Duration -->
+<!--        , pch = c(rep(c(16, 17), 3)), cex = 2 -->
+<!--        , col = c("orange", "orange", "blue", "blue", "green", "green")) -->
+<!-- legend(x = "bottomright", c("Sentinel Absent", "Sentinal Present", "Foraging", "Alert", "Moving") -->
+<!--        , bty = "o", cex = 1.05, bg = "white" -->
+<!--        , pch = c(16, 17, 15, 15, 15), col = c("black", "black", "orange", "blue", "green")) -->
+<!-- #KMG: I'm not going to fix the X-axis labels and those kinds of things right now. I can do that if you like this plot or things it's informative. I think it's easier to see the differences. left side is commercial, right side is green. Legend should be correct. -->
+<!-- ``` -->
 
 ```{r Dot Plot V2, echo = F}
 source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
-MeanDur <- summarySE(data = Crow, measurevar = "Duration"
-                     , groupvars = c("G.Env", "Behavior", "Sentinel"))
+MeanDur <- summarySE(data = DATA, measurevar = "MEAN_BOUT_DURATION"
+                     , groupvars = c("GENERALIZED_ENVIRONMENT", "BEHAVIOR", "SENTINEL_PRESENCE"))
 DurDot<-ggplot(data = MeanDur
-               , aes(x = Behavior
-                     , y = Duration
-                     , color = Behavior
-                     , shape = Sentinel))+
+               , aes(x = BEHAVIOR
+                     , y = MEAN_BOUT_DURATION
+                     , color = BEHAVIOR
+                     , shape = SENTINEL_PRESENCE))+
   geom_point(position = position_dodge2(width = 0.9)
              , size = 3) +
-  geom_errorbar(aes(ymin=(Duration-se)
-                    , ymax=(Duration+se))
+  geom_errorbar(aes(ymin=(MEAN_BOUT_DURATION-se)
+                    , ymax=(MEAN_BOUT_DURATION+se))
                 , width = 0.2
                 , position = position_dodge(width=0.9))+
   theme_classic() +
@@ -206,7 +216,7 @@ DurDot<-ggplot(data = MeanDur
         , legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin()) +
-  facet_grid(~G.Env)
+  facet_grid(~GENERALIZED_ENVIRONMENT)
 
 
 DurDot
@@ -393,6 +403,11 @@ RLMM.Dur.I<-rlmer(LDur~Behavior+Sentinel*G.Env+Sentinel*CODED_NB_CROWS+Baited+Se
 plot(RLMM.Dur.I)
 ```
 
+```{r DATA Duration RLMM, echo=F}
+RLMM.Dur.DATA<-rlmer(LOG_DURATION~BEHAVIOR+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GROUP_SIZE+BAIT_PRESENCE+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+(1|ID), data = DATA)
+plot(RLMM.Dur.DATA)
+```
+
 > That took pretty long to run. Let's next see the results of the model. I don't see huge deviations from the assumptions. According to the error message, my fixed-effect model matrix is rank deficient. I don't believe I need to worry too much about this warning.
 
 ```{r Duration RLMM Summary, echo = F}
@@ -402,11 +417,10 @@ summary(RLMM.Dur.I)
 > A whole lot of numbers appear and no p-values. I want it to look better.
 
 ```{r Duration Better Summary, echo = F}
-sjPlot::tab_model(RLMM.Dur.I
+sjPlot::tab_model(RLMM.Dur.DATA
                   , show.re.var = T
                   , title = "Model Results with Interactions"
-                  , dv.labels = " Effects of on duration of behaviors"
-                  , file="Tab_Dur_Model.html")
+                  , dv.labels = " Effects of on duration of behaviors")
 
 ```
 
@@ -577,12 +591,6 @@ NBPlot
 
 # Proportion Data
 
-```{r Proportion setup, include = F}
-DATA<-read.csv("DATA.csv", stringsAsFactors = T)
-DATA$ID<-as.factor(DATA$ID)
-DATA$ASIN_PROPORTION<-asin(sqrt(DATA$BEHAVIOR_PROPORTION))
-```
-
 ```{r Proportion Double Check, echo = F}
 str(DATA)
 ```
@@ -642,149 +650,149 @@ par(op)
 
 ## PCAs
 
->Let's run another PCA
+<!-- >Let's run another PCA -->
 
-```{r DATA PCA SHEET, include=F}
-PCA.DATA.SHEET<-DATA[,c(5,7,10,14,16,18,22,23,24,39)]
-head(PCA.DATA.SHEET)
-str(PCA.DATA.SHEET)
-```
-```{R DATA PCA, echo=F}
-PCA.DATA<-PCA(PCA.DATA.SHEET[,c(-8,-9)])
-```
+<!-- ```{r DATA PCA SHEET, include=F} -->
+<!-- PCA.DATA.SHEET<-DATA[,c(5,7,10,14,16,18,22,23,24,39)] -->
+<!-- head(PCA.DATA.SHEET) -->
+<!-- str(PCA.DATA.SHEET) -->
+<!-- ``` -->
+<!-- ```{R DATA PCA, echo=F} -->
+<!-- PCA.DATA<-PCA(PCA.DATA.SHEET[,c(-8,-9)]) -->
+<!-- ``` -->
 
->There are many variables here. I won't bother describing them here.
+<!-- >There are many variables here. I won't bother describing them here. -->
 
->Since the presence of a sentinel is not "God-Given", we'll run another PCA without that factor.
+<!-- >Since the presence of a sentinel is not "God-Given", we'll run another PCA without that factor. -->
 
-```{r DATA PCA NO SENTINEL, echo=F}
-PCA.DATA.NOSENT<-PCA(PCA.DATA.SHEET[,c(-5,-8,-9)])
-```
+<!-- ```{r DATA PCA NO SENTINEL, echo=F} -->
+<!-- PCA.DATA.NOSENT<-PCA(PCA.DATA.SHEET[,c(-5,-8,-9)]) -->
+<!-- ``` -->
 
->Very similar to the one above.
+<!-- >Very similar to the one above. -->
 
-### Scree Plot
+<!-- ### Scree Plot -->
 
-```{r DATA PCA Scree Plot, echo = F}
-get_eigenvalue(PCA.DATA)
-fviz_eig(PCA.DATA, addlabels=T, ylim = c(0,40))
-```
+<!-- ```{r DATA PCA Scree Plot, echo = F} -->
+<!-- get_eigenvalue(PCA.DATA) -->
+<!-- fviz_eig(PCA.DATA, addlabels=T, ylim = c(0,40)) -->
+<!-- ``` -->
 
->The first PC covers ~40% of the variation. The first 4 PCs cover ~82% of the variation.
+<!-- >The first PC covers ~40% of the variation. The first 4 PCs cover ~82% of the variation. -->
 
-```{r DATA PCA Scree Plot NO SENTINEL, echo = F}
-get_eigenvalue(PCA.DATA.NOSENT)
-fviz_eig(PCA.DATA.NOSENT, addlabels=T, ylim = c(0,40))
-```
+<!-- ```{r DATA PCA Scree Plot NO SENTINEL, echo = F} -->
+<!-- get_eigenvalue(PCA.DATA.NOSENT) -->
+<!-- fviz_eig(PCA.DATA.NOSENT, addlabels=T, ylim = c(0,40)) -->
+<!-- ``` -->
 
->Excluding sentinel, the first PC covers ~43% of the variation, and the first 4 PCs cover ~86% of the total variation.
+<!-- >Excluding sentinel, the first PC covers ~43% of the variation, and the first 4 PCs cover ~86% of the total variation. -->
 
-### Contribution of variables to Principal Components
+<!-- ### Contribution of variables to Principal Components -->
 
-```{r PCA DATA var results, include = F}
-DATA.var<-get_pca_var(PCA.DATA)
-DATA.NOSENT.var<-get_pca_var(PCA.DATA.NOSENT)
-```
-```{r PCA DATA Contribution Dim 1, echo=F}
-fviz_contrib(PCA.DATA, choice="var", axes = 1, top = 12.5)
-```
+<!-- ```{r PCA DATA var results, include = F} -->
+<!-- DATA.var<-get_pca_var(PCA.DATA) -->
+<!-- DATA.NOSENT.var<-get_pca_var(PCA.DATA.NOSENT) -->
+<!-- ``` -->
+<!-- ```{r PCA DATA Contribution Dim 1, echo=F} -->
+<!-- fviz_contrib(PCA.DATA, choice="var", axes = 1, top = 12.5) -->
+<!-- ``` -->
 
->Very weird, Julian Date, Decimal time, group size and generalized environment contribute greatly to PC1.
+<!-- >Very weird, Julian Date, Decimal time, group size and generalized environment contribute greatly to PC1. -->
 
-```{r PCA DATA Contribution Dim 2, echo=F}
-fviz_contrib(PCA.DATA, choice="var", axes = 2, top = 12.5)
-```
+<!-- ```{r PCA DATA Contribution Dim 2, echo=F} -->
+<!-- fviz_contrib(PCA.DATA, choice="var", axes = 2, top = 12.5) -->
+<!-- ``` -->
 
->Frequency of disturbances, group size (again), temperature and the presence of a sentinel contribute most to PC2.
+<!-- >Frequency of disturbances, group size (again), temperature and the presence of a sentinel contribute most to PC2. -->
 
-```{r PCA DATA Contribution Dim 3, echo=F}
-fviz_contrib(PCA.DATA, choice="var", axes = 3, top = 12.5)
-```
+<!-- ```{r PCA DATA Contribution Dim 3, echo=F} -->
+<!-- fviz_contrib(PCA.DATA, choice="var", axes = 3, top = 12.5) -->
+<!-- ``` -->
 
->Temperature, Bait presence and decimal time contribute most to PC3.
+<!-- >Temperature, Bait presence and decimal time contribute most to PC3. -->
 
-```{r PCA DATA Contribution Dim 4, echo=F}
-fviz_contrib(PCA.DATA, choice="var", axes = 4, top = 12.5)
-```
+<!-- ```{r PCA DATA Contribution Dim 4, echo=F} -->
+<!-- fviz_contrib(PCA.DATA, choice="var", axes = 4, top = 12.5) -->
+<!-- ``` -->
 
->Sentinel presence, environment and frequency of disturbances contribute most to PC4.
+<!-- >Sentinel presence, environment and frequency of disturbances contribute most to PC4. -->
 
->I'm still a little unclear as to how I should interpret these results.
+<!-- >I'm still a little unclear as to how I should interpret these results. -->
 
-#### No Sentinel
+<!-- #### No Sentinel -->
 
-```{r PCA DATA.NOSENT Contribution Dim 1, echo=F}
-fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 1, top = 14.29)
-```
+<!-- ```{r PCA DATA.NOSENT Contribution Dim 1, echo=F} -->
+<!-- fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 1, top = 14.29) -->
+<!-- ``` -->
 
->Same 4 factors contribute the most to PC1 in the absence of the sentinel factor.
+<!-- >Same 4 factors contribute the most to PC1 in the absence of the sentinel factor. -->
 
-```{r PCA DATA.NOSENT Contribution Dim 2, echo=F}
-fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 2, top = 14.29)
-```
+<!-- ```{r PCA DATA.NOSENT Contribution Dim 2, echo=F} -->
+<!-- fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 2, top = 14.29) -->
+<!-- ``` -->
 
->Same as above, frequency of disturbances, temperature and group size contribute most to PC2 in the absence of the sentinel factor.
+<!-- >Same as above, frequency of disturbances, temperature and group size contribute most to PC2 in the absence of the sentinel factor. -->
 
-```{r PCA DATA.NOSENT Contribution Dim 3, echo=F}
-fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 3, top = 14.29)
-```
+<!-- ```{r PCA DATA.NOSENT Contribution Dim 3, echo=F} -->
+<!-- fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 3, top = 14.29) -->
+<!-- ``` -->
 
->Temperature, Bait presence and frequency of disturbances contribute the most to PC3 in the absence of a sentinel.
+<!-- >Temperature, Bait presence and frequency of disturbances contribute the most to PC3 in the absence of a sentinel. -->
 
-```{r PCA DATA.NOSENT Contribution Dim 4, echo=F}
-fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 4, top = 14.29)
-```
+<!-- ```{r PCA DATA.NOSENT Contribution Dim 4, echo=F} -->
+<!-- fviz_contrib(PCA.DATA.NOSENT, choice="var", axes = 4, top = 14.29) -->
+<!-- ``` -->
 
->Environment contributes most to PC4 in the absence of a sentinel.
+<!-- >Environment contributes most to PC4 in the absence of a sentinel. -->
 
-### BiPlots
-```{r DATA PCA Biplot PC1-2, echo=F}
-fviz_pca_biplot(PCA.DATA
-                ,geom.ind = "point"
-                , repel = T
-                , col.ind=PCA.DATA.SHEET$BEHAVIOR
-                , addEllipses = T
-                , label = "var"
-                , palette=cbPalette
-                , col.var="black"
-                , legend.title = "Behavior")
-```
+<!-- ### BiPlots -->
+<!-- ```{r DATA PCA Biplot PC1-2, echo=F} -->
+<!-- fviz_pca_biplot(PCA.DATA -->
+<!--                 ,geom.ind = "point" -->
+<!--                 , repel = T -->
+<!--                 , col.ind=PCA.DATA.SHEET$BEHAVIOR -->
+<!--                 , addEllipses = T -->
+<!--                 , label = "var" -->
+<!--                 , palette=cbPalette -->
+<!--                 , col.var="black" -->
+<!--                 , legend.title = "Behavior") -->
+<!-- ``` -->
 
->Messy, can't see where the behaviors lie.
+<!-- >Messy, can't see where the behaviors lie. -->
 
-```{r DATA PCA Biplot PC1-4, echo=F}
-fviz_pca_biplot(PCA.DATA
-                , axes = c(1,4)
-                , geom.ind = "point"
-                , repel = T
-                , col.ind=PCA.DATA.SHEET$BEHAVIOR
-                , addEllipses = T
-                , label = "var"
-                , palette=cbPalette
-                , col.var="black"
-                , legend.title = "Behavior")
-```
+<!-- ```{r DATA PCA Biplot PC1-4, echo=F} -->
+<!-- fviz_pca_biplot(PCA.DATA -->
+<!--                 , axes = c(1,4) -->
+<!--                 , geom.ind = "point" -->
+<!--                 , repel = T -->
+<!--                 , col.ind=PCA.DATA.SHEET$BEHAVIOR -->
+<!--                 , addEllipses = T -->
+<!--                 , label = "var" -->
+<!--                 , palette=cbPalette -->
+<!--                 , col.var="black" -->
+<!--                 , legend.title = "Behavior") -->
+<!-- ``` -->
 
->Still messy.
+<!-- >Still messy. -->
 
-```{r DATA PCA Biplot PC2-3, echo=F}
-fviz_pca_biplot(PCA.DATA
-                , axes = c(2,3)
-                , geom.ind = "point"
-                , repel = T
-                , col.ind=PCA.DATA.SHEET$BEHAVIOR
-                , addEllipses = T
-                , label = "var"
-                , palette=cbPalette
-                , col.var="black"
-                , legend.title = "Behavior")
-```
+<!-- ```{r DATA PCA Biplot PC2-3, echo=F} -->
+<!-- fviz_pca_biplot(PCA.DATA -->
+<!--                 , axes = c(2,3) -->
+<!--                 , geom.ind = "point" -->
+<!--                 , repel = T -->
+<!--                 , col.ind=PCA.DATA.SHEET$BEHAVIOR -->
+<!--                 , addEllipses = T -->
+<!--                 , label = "var" -->
+<!--                 , palette=cbPalette -->
+<!--                 , col.var="black" -->
+<!--                 , legend.title = "Behavior") -->
+<!-- ``` -->
 
->Biplots are messy if we don't include behavior.
+<!-- >Biplots are messy if we don't include behavior. -->
 
->Same is observed if we run the biplot in the absence of the sentinel factor.
+<!-- >Same is observed if we run the biplot in the absence of the sentinel factor. -->
 
->I'm not sure how to interpret these results.
+<!-- >I'm not sure how to interpret these results. -->
 
 ## Simple Model
 
@@ -977,3 +985,11 @@ BAITPlot.PECK
 ```
 
 >Seems like peck rate increases significantly in the presence of bait.
+
+# Sentinel Presence
+
+I'll try to use a correlation test to determine if the presence of a sentinel (Yes/No, binary data) is correlated with the type of environment, the frequency of disturbances and the group size.
+
+```{r Correlation test}
+cor(DATA[, c("CODED_SENTINEL_PRESENCE", "CODED_ENV", "CODED_GROUP_SIZE", "TOTAL_FREQUENCY_OF_DISTURBANCES")])
+```
