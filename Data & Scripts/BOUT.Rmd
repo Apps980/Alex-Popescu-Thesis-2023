@@ -165,7 +165,7 @@ I originally had temperature, time and data as random effects, but the model was
 The first model fitted will be a simple model with no interactions.
 
 ```{r BOUT MODEL 1}
-BOUT.MOD1<-lmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|ID), data = BOUT)
+BOUT.MOD1<-lmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD1
                   , show.re.var = T
@@ -191,7 +191,7 @@ As such, it is possible that, once again, the group size's effects occur on cert
 Finally, the frequency of disturbances had a significant effect. I will include an interaction between this factor and generalized environment, as well as with sentinel presence, and behavior.
 
 ```{r BOUT MODEL 2}
-BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|ID)+(1|VIDEO_ID), data = BOUT)
+BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD2
                   , show.re.var = T
@@ -199,9 +199,7 @@ sjPlot::tab_model(BOUT.MOD2
                   , dv.labels = " Effects of on duration of bouts of behaviors")
 ```
 
-In the second model with the added interactions, the behavior, generalized environment, group size and a number of interactions are significant.
-
-The group size becoming significant is puzzling. I don't understand why now it would become significant.
+In the second model with the added interactions, the behavior, generalized environment and a number of interactions are significant. The interaction between behavior and generalized environment is significant, as well as the interaction between the presence of a sentinel and generalized environment. The interaction between behavior and group size is significant. Lastly, moving and bait presence were significant.
 
 The interaction between the behavior type and the environment are significant. This would imply that individuals change the duration of bouts of behaviors in response to different environments, with the effect differing between behaviors.\
 
@@ -216,7 +214,7 @@ By adding the interactions, the frequency of disturbances, whether alone or inte
 Let's run the final and most complex model.
 
 ```{r BOUT MOD 3}
-BOUT.MOD3<-lmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+BEHAVIOR*GENERALIZED_ENVIRONMENT*SENTINEL_PRESENCE+BEHAVIOR*GROUP_SIZE*SENTINEL_PRESENCE+BEHAVIOR*BAIT_PRESENCE+(1|ID), data = BOUT)
+BOUT.MOD3<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD3
                   , show.re.var = T
@@ -232,17 +230,17 @@ This is weird. Let's see what the AICs are.
 anova(BOUT.MOD1,BOUT.MOD2,BOUT.MOD3)
 ```
 
-Nice! The second model has the lowest AIC value and is therefore prefered.
+Nice! The second model has the lowest AIC value and is therefore preferred.
 
 In case there are any violations in the assumptions of the linear mixed model, I will run the robust linear mixed model, using model 2's formula.
 
 ```{r RLMM MOD 2}
-BOUT.RMOD2<-rlmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|ID), data = BOUT)
+BOUT.RMOD2<-rlmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.RMOD2
                   , show.re.var = T
                   , title = "Bout Robust Model 2 Output"
-                  , dv.labels = " Effects of on duration of bouts of behaviors")
+                  , dv.labels = " Effects on duration of bouts of behaviors")
 ```
 
 Same results as MOD2, but different p-values.
@@ -268,12 +266,12 @@ Using model 2, here are the conclusions I draw:
 -   Behavior, generalized environment and group size have significant effects. The former is to be expected, while the latter two are interesting, but not very informative (alone).
 -   The interaction between behavior and generalized environment are significant. The effect size appears negative for both "head up" and "moving" behavior in green areas.
 -   There is a significant interaction of sentinel presence and generalized environment.
--   There is a significant interaction of behavior and group size for head up and moving.
+-   There is a significant interaction of behavior and group size
 -   There is a significant interaction of "moving" and bait presence.
 
 To better visualize these results, I will plot them.
 
-#### Behavior X Generalized Environment
+### Behavior X Generalized Environment
 
 ```{r BxG.ENV BOUT Dot Plot}
 BxG.ENV.DOT<-BOUT %>%
@@ -302,11 +300,11 @@ BxG.ENV.DOT<-BOUT %>%
 BxG.ENV.DOT
 ```
 
-Very interesting! Duration of bouts of alertness and moving remain largely the same, while the duration of foraging bout in green areas increases dramatically. \
+Very interesting! Duration of bouts of alertness and moving remain largely the same, while the duration of foraging bout in green areas increases dramatically.\
 
 This could be explained by needing more time to locate and handle food in green areas, especially if the food is not on concrete or in a dense patch.
 
-#### Sentinel Presence X Generalized Environment
+### Sentinel Presence X Generalized Environment
 
 ```{r SPxG.ENV BOUT Dot Plot}
 SPxG.ENV.DOT<-BOUT %>%
@@ -339,6 +337,8 @@ In the presence of a sentinel, bout durations of all behaviors remain relatively
 
 I will need to find a way to explain this result, especially since the duration of behaviors when no sentinel is present is much shorter in commercial areas and much longer in green areas than in the presence of a sentinel, regardless of the environment.
 
+It could be that sentinels have a stabilizing effect on the duration of bouts
+
 ```{r BxGS BOUT Dot Plot}
 BxGS.DOT<-BOUT %>%
   summarySE(measurevar = "DURATION"
@@ -369,7 +369,7 @@ BxGS.DOT
 
 GGPLOT! The error bars are not over the dots.
 
-#### Behavior x Bait Presence
+### Behavior x Bait Presence
 
 ```{r BxBP BOUT}
 BxBP.DOT<-BOUT %>%
