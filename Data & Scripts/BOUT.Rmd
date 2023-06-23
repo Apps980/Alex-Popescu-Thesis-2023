@@ -7,8 +7,6 @@ output:
     keep_md: yes
 ---
 
-# BOUT
-
 ```{r Packages, include = F}
 library("tidyverse")
 library("psych")
@@ -21,6 +19,7 @@ library("sjPlot")
 library("effects")
 library("glmm")
 library("doBy")
+library("emmeans")
 ```
 
 ```{r Colorblind-friendly palette, include = F}
@@ -30,12 +29,12 @@ cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2",
 
 ## Preamble
 
-This script will deal with analysing the relationship of the duration of bouts of behavior - head down, head up, and moving - with the presence of a sentinel, the presence of bait, the foraging environment and the group size.
+This script will deal with analyzing the relationship of the duration of bouts of behavior - head down, head up, and moving - with the presence of a sentinel, the presence of bait, the foraging environment, the group size and the frequency of disturbances.
 
-As random effects, I've chosen the individual ID, the (julian) date, and the (decimal) time.
+As random effects, I've chosen the video and individual ID
 
 This analysis will answer the following question:\
-Do individual vary the duration of behavioral bouts in response to their perception of risk and sentinel coverage in their foraging environment.
+Do individual vary the duration of behavioral bouts in response to their perception of risk and sentinel coverage in their foraging environment?
 
 In other words, if the proportion of time allocated to each behavior does not vary, then does the individual alter the frequency, and therefore the duration of bouts of each behavior in response to, for example, an environment with shorter lines of sight for the sentinel.
 
@@ -102,8 +101,8 @@ BOUT$LDURATION<-log(BOUT$DURATION)
 
 Here is the histogram of the log-transformed data separated by behavior.
 
-```{r Crow Histogram, echo=F}
-HIST<-ggplot(data = BOUT) +
+```{r BOUT Histogram, echo=F}
+BOUT.HIST<-ggplot(data = BOUT) +
   geom_histogram(aes(fill = BEHAVIOR, x = LDURATION)
                  , alpha = 1
                  , bins = 25)+
@@ -111,7 +110,7 @@ HIST<-ggplot(data = BOUT) +
                     , labels = c("Foraging", "Alert", "Moving"))+
   xlab("Log Duration (s)")+
   ylab("Count")
-HIST
+BOUT.HIST
 ```
 
 There is a gap in the distribution. That is unfortunate.
@@ -191,7 +190,7 @@ As such, it is possible that, once again, the group size's effects occur on cert
 Finally, the frequency of disturbances had a significant effect. I will include an interaction between this factor and generalized environment, as well as with sentinel presence, and behavior.
 
 ```{r BOUT MODEL 2}
-BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
+BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD2
                   , show.re.var = T
@@ -235,7 +234,7 @@ Nice! The second model has the lowest AIC value and is therefore preferred.
 In case there are any violations in the assumptions of the linear mixed model, I will run the robust linear mixed model, using model 2's formula.
 
 ```{r RLMM MOD 2}
-BOUT.RMOD2<-rlmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BEHAVIOR*GROUP_SIZE+BEHAVIOR*BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
+BOUT.RMOD2<-rlmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.RMOD2
                   , show.re.var = T
@@ -249,15 +248,27 @@ Same results as MOD2, but different p-values.
 plot(BOUT.RMOD2)
 ```
 
-The assumptions of the LMM do not appear to be violated.
+There's a horizontal line on the Q-Q vs. random effects. In the outputs of the models, the videoID alone does not account for any variation.
 
 #### Post Hoc testing
 
-```{r Post Hoc}
-DIFF<-emmeans::emmeans(BOUT.MOD2, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BAIT_PRESENCE,by = "BEHAVIOR", adjust = "fdr",pbkrtest.limit = 5070)
-PAIRS<-emmeans::contrast(DIFF, "pairwise", adjust="fdr")
-PAIRS
+```{r BOUT Post Hoc}
+BOUT.DIFF<-emmeans(BOUT.MOD2, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+test(pairs(BOUT.DIFF, by= "BEHAVIOR"), adjust="fdr")
 ```
+Very cool! These are the results of pairwise comparisons averaged over the levels of group size and bait presence (**Not disturbance frequency**).
+
+These pairwise comparisons show there are no significant differences in the bout duration of 'moving' or 'head up' between each combination of 'sentinel_presence' and 'generalized_environment'.
+
+However, there are differences in the bout duration of 'head down' behavior. There are differences caused by the presence of a sentinel in commercial areas. There are significant differences between bout durations in commercial areas without a sentinel and bout durations in green areas, in both the presence and absence of a sentinel.
+
+Let's quickly have a look at that:
+
+```{r Pairwise comparisons}
+BOUT.DOT
+```
+
+Huh... I would have expected that there would be significant differences in bouts of 'head up' behavior. 
 
 ### Model Conclusions
 
@@ -280,7 +291,7 @@ BxG.ENV.DOT<-BOUT %>%
     ggplot(aes(x = BEHAVIOR
                      , y = DURATION
                      , color = BEHAVIOR))+
-  geom_point(position = "dodge"
+  geom_point(position = position_dodge(width=0.9)
              , size = 3) +
   geom_errorbar(aes(ymin=(DURATION-se)
                     , ymax=(DURATION+se))
@@ -367,7 +378,7 @@ BxGS.DOT<-BOUT %>%
 BxGS.DOT
 ```
 
-GGPLOT! The error bars are not over the dots.
+Ok, we see that smaller group sizes lead to shorter bout durations.
 
 ### Behavior x Bait Presence
 
@@ -398,6 +409,8 @@ BxBP.DOT<-BOUT %>%
 BxBP.DOT
 ```
 
+The presence of bait has the effect of decreasing the duration of 'head down' and 'head up' behavior, yet increased the duration of bouts of movement.
+
 #### Disturbance Frequency
 
 ```{r Disturb}
@@ -405,14 +418,15 @@ DF.DOT<-BOUT %>%
     ggplot(aes(x = DISTURBANCE_FREQUENCY
                , y = DURATION
                , color = BEHAVIOR))+
-  geom_point(position = "jitter"
-             , size = 3) +
+  geom_point(size = 3) +
   theme_classic() +
-  ylab("Mean Bout Duration (s)") +
-  scale_colour_manual(values = cbPalette
-                      , guide="none")+
-  theme(axis.title.x = element_text("Disturbance per Minute")
-        , legend.position = "bottom")
+  labs(x="Mean Bout Duration (s)", y="Disturbances per Minute", color= "Behavior") +
+  scale_colour_manual(values = cbPalette, labels = c("Foraging", "Alert", "Moving"))+
+  scale_x_continuous(n.breaks=14)
+  theme(legend.position = "bottom")
+  
 
 DF.DOT
 ```
+
+Finally, it seems like as the frequency of disturbances increases, the duration of bouts decreases.

@@ -1,0 +1,236 @@
+---
+title: "PROP"
+author: "Alex Popescu"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r Packages, include = F}
+library("tidyverse")
+library("psych")
+library("car")
+library("ggplot2")
+library("ggpattern")
+library("lmerTest")
+library("robustlmm")
+library("sjPlot")
+library("effects")
+library("glmm")
+library("doBy")
+library("emmeans")
+```
+
+```{r Colorblind-friendly palette, include = F}
+# The palette with black:
+cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
+```
+
+## Preamble
+
+This script will deal with analyzing the relationship of the proportion of time allocated to each behavior - head down, head up, and moving - with the presence of a sentinel, the presence of bait, the foraging environment, group size and the frequency of disturbances.
+
+As random effects, I've chosen the video and individual ID
+
+This analysis will answer the following question:\
+Do individual vary the proportion of time allocated to each behavioral in response to their perception of risk and sentinel coverage in their foraging environment?
+
+To accomplish this, I extracted the summaries from the videos is BORIS and compiled a data table named "DATA".
+
+```{r Open Data}
+PROP<-read.csv("DATA.csv", stringsAsFactors = T)
+
+str(PROP)
+```
+```{r Bout Summary}
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+PROP.MEAN <- summarySE(data = PROP
+                      , measurevar = "BEHAVIOR_PROPORTION"
+                      , groupvars = c("GENERALIZED_ENVIRONMENT"
+                                      , "BEHAVIOR"
+                                      , "SENTINEL_PRESENCE"
+                                      )
+                      )
+PROP.MEAN
+```
+
+We now have a summary of the proportion data. 
+
+Onto the analysis.
+
+## To transform or not
+
+In order to determine whether our fixed effects have significant effects on the allocation of time to each behavior, I decided to first arcsin square root transform the proportions.
+
+```{r Proportion Histograms Individual, include = F}
+Untransformed.Prop<-hist(PROP$BEHAVIOR_PROPORTION, breaks=25)
+Transformed.Prop<-hist(asin(sqrt(PROP$BEHAVIOR_PROPORTION)), breaks=25)
+```
+
+```{r Proportion Histograms Combined, echo=F}
+op <- par(mfrow = c(1,2))
+plot(Untransformed.Prop, main="Untransformed", ylab="Frequency", xlab="Proportion")
+plot(Transformed.Prop, main="Transformed", ylab="", xlab="Asin(Sqrt(Proportion)")
+par(op)
+```
+
+Transformed data seems more normal than untransformed data. Will continue to use transformed data.
+
+```{r Data Transformation}
+PROP$ASIN_PROPORTION<-asin(sqrt(PROP$BEHAVIOR_PROPORTION))
+```
+
+Here is the histogram of the log-transformed data separated by behavior.
+
+```{r PROP Histogram, echo=F}
+PROP.HIST<-ggplot(data = PROP) +
+  geom_histogram(aes(fill = BEHAVIOR, x = ASIN_PROPORTION)
+                 , alpha = 1
+                 , bins = 25)+
+  scale_fill_manual(values=cbPalette
+                    , labels = c("Foraging", "Alert", "Moving"))+
+  xlab("Transformed Proportion")+
+  ylab("Count")
+PROP.HIST
+```
+
+There are some gaps in the distribution.
+
+## Stacked barplot
+
+GGPlot time
+
+```{r Proportion Barplot}
+PROP.BAR<-ggplot(PROP.MEAN
+                 , aes(x = SENTINEL_PRESENCE
+                       , y = BEHAVIOR_PROPORTION
+                       , fill = BEHAVIOR))+
+  geom_bar(stat = 'identity'
+           , position = 'stack')+
+  geom_text(aes(label = paste0(formattable::digits(BEHAVIOR_PROPORTION*100, dig=2)
+                               , "%"))
+            , position = position_stack(vjust = 0.5)
+            , size = 3) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_classic()+
+  theme(text=element_text(size = 10)
+        , axis.title.x = element_blank())+
+  ylab("Proportion of time")+
+  scale_x_discrete(labels=c("Sentinel Absent"
+                            , "Sentinel Present"))+
+  scale_fill_manual(values = cbPalette, labels = c("Foraging"
+                                                   , "Alert"
+                                                   , "Moving")
+                    , name="Behavior")+
+  theme(legend.position = "bottom")+
+  facet_grid(~GENERALIZED_ENVIRONMENT)
+PROP.BAR
+```
+
+Ok, so we can see that there are a couple of differences between the proportions.
+
+It seems that the presence of a sentinel increases the proportion of 'moving' behavior. \
+It seems like 'Alert' behavior remains relatively consistent across environments, with the presence of a sentinel decreasing the proportion of time allocated to that behavior.
+Lastly, it seems like 'foraging' behavior remains consistent throughout environments and the presence of a sentinel.
+
+Let's fit some models.
+
+## The Models
+
+Let's fit the models. We are principally testing for the effects of the presence of a sentinel and the generalized environment. In addition to those, we will include the presence of bait, group size and the frequency of disturbances as fixed effects.
+
+As for the random effects, I will use VIDEO_ID/ID. The ID is nested within the VIDEO ID, explaining the structure.
+
+Let's fit the simplest model.
+
+```{r PROP MODEL 1}
+PROP.MOD1<-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = PROP)
+
+sjPlot::tab_model(PROP.MOD1
+                  , show.re.var = T
+                  , title = "Proportion Model 1 Output"
+                  , dv.labels = " Effects of on the proportion of behaviors")
+```
+
+huh, seems like the model is singular. This could mean that the model is overfitted.
+
+Let's look at the results.
+
+```{r Proportion Model Results, echo = F}
+Anova(PROP.MOD1)
+ranova(PROP.MOD1)
+```
+
+Ok, so none of the factors are significant, and the results of the ranova suggest that the model without random effects is preferred. Let's improve the model with some interactions. We will use the same formula for MOD2 as the one used in the BOUT data.
+
+```{r PROP MODEL 2}
+PROP.MOD2<-lmer(ASIN_PROPORTION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = PROP)
+
+sjPlot::tab_model(PROP.MOD2
+                  , show.re.var = T
+                  , title = "Proportion Model 2 Output"
+                  , dv.labels = " Effects on proportion of behaviors")
+```
+
+Like MOD1, none of the factors have an effect. 
+
+Maybe I'm not using the correct approach. Instead of performing a LMM on transformed data, I'll instead use a quasibinomial GLM for proportion data. Since the random effects in the previous models explained none of the variance, we can, in this case, omit them.
+
+```{r PROP MODEL 3}
+PROP.MOD3<-glm(BEHAVIOR_PROPORTION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY, family=quasibinomial, data = PROP)
+
+sjPlot::tab_model(PROP.MOD3
+                  , show.re.var = T
+                  , title = "Proportion Model 3 Output"
+                  , dv.labels = " Effects on proportion of behaviors")
+```
+
+All factors are non-significant apart from the interaction between the proportion of 'moving' and the generalized environment.
+
+I believe this may be the best approach since I am unable to use the quasibinomial family in a glmm.
+
+Let's look at the comparisons between groups.
+
+```{r PROP Post Hoc}
+PROP.DIFF<-emmeans(PROP.MOD3, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+test(pairs(PROP.DIFF, by= "BEHAVIOR"), adjust="fdr")
+```
+
+None of the groups are significantly different from one another when comparing within each behavior. Next, let's look at the differences throughout behaviors.
+
+```{r PROP Post Hoc 2}
+PROP.DIFF2<-emmeans(PROP.MOD3, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+PROP.PWISE<-test(pairs(PROP.DIFF2), adjust="fdr")
+PROP.PWISE
+```
+
+Ok! Across behaviors we have few significant and marginally significant results.
+
+```{r PROP PWISE}
+PROP.PWISE[which(PROP.PWISE$p.value<0.1),]
+```
+Very cool! These are the results of pairwise comparisons averaged over the levels of group size and bait presence (**not disturbance frequency**).
+
+There do not appear to be any differences across environments or the presence of a sentinel, but between proportions of behaviors.
+
+Let's have another look at it.
+
+```{r Proportion Pairwise}
+PROP.BAR
+```
+
+Indeed, there is a difference between Moving and Alert proportions in commercial areas in the absence of a sentinel.
+Likewise, there are differences in the proportion of time allocated to head up/down and moving behaviors in green spaces in the absence of a sentinel.
+Possibly the most interesting comparison is the difference between the proportion of time allocated to 'alert' behavior and 'moving' in the absence of a sentinel and across the two environments.
+
+Yet, these differences are marginally significant, apart from 'HU NO Green Area - M NO Green Area'
+
+## Conclusions
+
+It seems that the proportion of time allocated to each behavior remains relatively consistent, and not affected by the presence of a sentinel, nor the environment in which the individual forages in. \
+However, the differences appear between the proportion of behaviors, suggesting that the allocation of time to each behavior is relatively dependent on the type of behavior. \
+
+This would suggest that if the presence of a sentinel and the environment were to affect the behavior of foragers, the effects would be seen in the frequency of behaviors. In other words, instead of changing the overall proportion of time allocated to each behavior, they instead change the duration of bouts of their behaviors to provide better coverage over time (more, but shorter gaps between instances of vigilance).
+
+
