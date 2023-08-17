@@ -1,0 +1,277 @@
+---
+title: "PCA"
+author: "Alex Popescu"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+---
+
+```{r Packages, include = F}
+library("tidyverse")
+library("psych")
+library("car")
+library("ggplot2")
+library("ggpattern")
+library("lmerTest")
+library("robustlmm")
+library("sjPlot")
+library("effects")
+library("glmm")
+library("doBy")
+library("emmeans")
+library("factoextra")
+library("FactoMineR")
+library("corrr")
+library("ggcorrplot")
+```
+
+```{r Colorblind-friendly palette, include = F}
+# The palette with black:
+cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
+```
+
+## Preamble
+
+This script will cover the pathway analysis. I've already performed a random permutation test in BORIS, but I would like to look at the individual level. 
+
+To do this, I've extracted the frequencies of one behavior following another (Head Down => Head Up) and will perform a pca to reduce the number of models I need to run.
+
+That being said, I would, at most, need to run 9 models. However, I believe that certain transitions can be grouped together (e.g. transitions to 'alert' state).
+
+To do this, I exported the behavioral sequences in BORIS, then calculated the frequencies of each transition, per individual, and compiled the 'PTWY' dataset.
+
+```{r Open PTWY}
+PCA<-read.csv("DATA.SR.csv", stringsAsFactors = T)
+str(PCA)
+```
+
+Visualizing the data will be difficult in R, but the summaries and their visualizations can be found in Alex-Popescu-Thesis-2023\BORIS\Pathway Analysis\Flow Diagrams.
+
+## Data distribution
+
+```{r Data prep}
+PCA.DATA<-PCA[1:81,c(2, 13, 31:34, 36:39, 41:44, 47, 50, 53, 56, 59, 62, 65, 68, 71, 74)]
+PCA.DATA$HU_RATE<-PCA.DATA$HU_NUMBER_OF_BOUTS/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HD_RATE<-PCA.DATA$HD_NUMBER_OF_BOUTS/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$M_RATE<-PCA.DATA$M_NUMBER_OF_BOUTS/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HD.HDP_RATE<-PCA.DATA$NB_HD.HDP/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HD.HU_RATE<-PCA.DATA$NB_HD.HU/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HD.M_RATE<-PCA.DATA$NB_HD.M/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HDP.HU_RATE<-PCA.DATA$NB_HDP.HU/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HDP.M_RATE<-PCA.DATA$NB_HDP.M/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HU.HD_RATE<-PCA.DATA$NB_HU.HD/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$HU.M_RATE<-PCA.DATA$NB_HU.M/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$M.HD_RATE<-PCA.DATA$NB_M.HD/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA$M.HU_RATE<-PCA.DATA$NB_M.HU/(PCA.DATA$RECORDED_DURATION/60)
+PCA.DATA<-PCA.DATA[1:81,c(1,4:6,8:10,12:15,25:36)]
+```
+```{r Distribution RAW}
+PCA.DATA.LONG<-na.omit(pivot_longer(PCA.DATA, -ID))
+
+ggplot(PCA.DATA.LONG
+       , aes(x=value)) +
+  geom_histogram() +
+  geom_vline(data=PCA.DATA.LONG
+       , aes(xintercept=mean(value), color="red")) +
+  geom_vline(data=PCA.DATA.LONG
+       , aes(xintercept=median(value), color="blue"))+
+  facet_wrap(~name)
+```
+
+```{r Distribution LOG, include = F}
+LOG<-as.data.frame(sapply(PCA.DATA[,-1], function(x) {log(x+0.01)}))
+LOG.LONGER<-na.omit(pivot_longer(LOG, 1:22))
+
+
+ggplot(LOG.LONGER
+       , aes(x=value)) +
+  geom_histogram() +
+  geom_vline(data=LOG.LONGER
+       , aes(xintercept=mean(value), color="red")) +
+  geom_vline(data=LOG.LONGER
+       , aes(xintercept=median(value), color="blue")) +
+  facet_wrap(~name)
+```
+
+```{r Distribution ASIN SCALED}
+SC.LOG<-as.data.frame(scale(LOG))
+SC.LOG<-na.omit(SC.LOG)
+SC.LOG.LONG<-pivot_longer(SC.LOG, 1:22)
+
+ID = "ID."
+ggplot(SC.LOG.LONG
+       , aes(x=value)) +
+  geom_histogram() +
+  geom_vline(data=SC.LOG.LONG
+       , aes(xintercept=mean(value), color="red")) +
+  geom_vline(data=SC.LOG.LONG
+       , aes(xintercept=median(value), color="blue")) +
+  facet_wrap(~name)
+```
+
+## PCA
+
+```{r PTWY pca}
+#Computing correlation matrix
+corr_matrix <- cor(na.omit(SC.LOG))
+
+#Showing the correlation matrix
+ggcorrplot(corr_matrix)
+
+```
+
+Pretty interesting. Redder = most positively correlated. Bluer = most negatively correlated. Let's apply the PCA.
+
+```{r PCA scores}
+#Computing the PCA
+pca.data<-prcomp(SC.LOG)
+
+#Show the results
+summary(pca.data)
+```
+
+Pretty interesting. 
+The first principal component explains 25.32% of the total variance. 
+The second principal component explains 16.80% of the total variance. 
+The third principal component explains 12.14% of the total variance.
+The fourth principal component explains 9.74% of the total variance.
+The fifth principal component explains 8.76% of the total variance.
+The sixth principal component explains 7.54% of the total variance.
+The seventh principal component explains 5.94% of the total variance.
+The eighth principal component explains 4.86% of the total variance.
+
+Let's visualize this with a scree plot.
+
+```{r pca scree}
+#The Scree plot to show how much of the variance each PC explains
+fviz_eig(pca.data, addlabels = T, ylim = c(0,50))
+
+```
+The first eight PCs explain 91.11% of the variation!
+
+## Graph of individuals
+
+```{r PCA ind}
+fviz_pca_ind(pca.data,
+             col.ind = "cos2", # Color by the quality of representation
+             gradient.cols = cbPalette[1:3],
+             repel = TRUE     # Avoid text overlapping
+             )
+```
+
+## Graph of Variables
+
+```{r PCA var}
+fviz_pca_var(pca.data,
+             col.var = "contrib", # Color by the quality of representation
+             gradient.cols = cbPalette[1:3],
+             repel = TRUE     # Avoid text overlapping
+             )
+```
+
+## Eigenvalues
+
+```{r PCA eig}
+eig.val <- get_eigenvalue(pca.data)
+eig.val
+
+mean(eig.val$eigenvalue)
+```
+
+OK! Using the Kaiser-Guttman criterion, we end up retaining 8 PCs (mean eigenvalue = 0.4430, anything with an eigenvalue < 0.4430 is rejected). Let's look at how each factor fits into each principal component using their loadings.
+
+```{r pca loadings}
+-1*pca.data$rotation[,1:8]
+
+#Criterion for "large" values
+sqrt(1/ncol(SC.LOG)) #0.2132
+```
+Using the criterion for "large" results (=0.2132), we find that "peck rate", "HU Rate", "HU>HD Rate", and "HU.M Rate" do not fall into any PCs we've kept.
+
+Should I remove them? Yes. Let's do that.
+
+```{r remove columns}
+colnames(SC.LOG)
+SC.LOG2<-SC.LOG[,c(-10,-11,-19,-20)]
+```
+
+And now we re-run the PCA
+
+## PCA2
+
+```{r PTWY pca2}
+#Computing correlation matrix
+corr_matrix2 <- cor(na.omit(SC.LOG2))
+
+#Showing the correlation matrix
+ggcorrplot(corr_matrix2)
+
+```
+
+```{r PCA2 scores}
+#Computing the PCA
+pca.data2<-prcomp(SC.LOG2)
+
+#Show the results
+summary(pca.data2)
+```
+
+Nice!
+
+The first 8 PCs explain a total of 92.11% of the variation, slightly more than the first PCA.
+
+As before, let's plot a scree plot.
+
+```{r PCA2 scree}
+#The Scree plot to show how much of the variance each PC explains
+fviz_eig(pca.data2, addlabels = T, ylim = c(0,50))
+
+```
+
+Generally, the PCs explain more variation that in the first PCA.
+
+## Graph of individuals 2
+
+```{r PCA ind}
+fviz_pca_ind(pca.data2,
+             col.ind = "cos2", # Color by the quality of representation
+             gradient.cols = cbPalette[1:3],
+             repel = TRUE     # Avoid text overlapping
+             )
+```
+
+## Graph of Variables 2
+
+```{r PCA var}
+fviz_pca_var(pca.data2,
+             col.var = "contrib", # Color by the quality of representation
+             gradient.cols = cbPalette[1:3],
+             repel = TRUE     # Avoid text overlapping
+             )
+```
+
+## Eigenvalues 2
+
+```{r PCA eig}
+eig.val <- get_eigenvalue(pca.data2)
+eig.val
+
+mean(eig.val$eigenvalue)
+```
+
+The mean eigenvalue is 0.5208. As a result, we keep 7 PCs. These PCs explain 87.17% of the total variation.
+
+Let's look at the loadings again.
+
+```{r pca loadings}
+-1*pca.data2$rotation[,1:7]
+
+#Criterion for "large" values
+sqrt(1/ncol(SC.LOG2)) #0.2357
+```
+
+The magic number this time is 0.2357. All factors are included in the PCs. The next question is can I make this better? Is there any way for me to explain how these factors fit into each PC? Can I reduce the number of PCs?
+
+RUN A MANOVA!!!
+

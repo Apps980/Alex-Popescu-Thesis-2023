@@ -1,0 +1,77 @@
+---
+title: "PTWY"
+author: "Alex Popescu"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    keep_md: yes
+---
+```{r Libraries}
+library("lavaan")
+library("lavaanPlot")
+```
+
+```{r Open DATA.SR}
+PTWY<-read.csv("DATA.SR.csv", stringsAsFactors = T)
+str(PTWY)
+```
+```{r PTWY Analysis}
+PTWY.ENV <- ' 
+
+# measurement model 
+
+ENVIRONMENT =~ CODED_ENV + CODED_BAIT + DECIMAL_TIME + TOTAL_FREQUENCY_OF_DISTURBANCES 
+
+# intercepts 
+
+CODED_ENV ~ 1
+CODED_BAIT ~ 1
+DECIMAL_TIME ~ 1
+TOTAL_FREQUENCY_OF_DISTURBANCES ~ 1
+' 
+
+PTWY.Fit.ENV <- sem(PTWY.ENV, data = PTWY) 
+
+summary(PTWY.Fit.ENV, fit.measures = TRUE, standardized = TRUE)
+```
+
+```{r PTWY.SOC Analysis}
+PTWY.Mod.SOC <- ' 
+
+# measurement model 
+SOCIAL =~ CODED_GROUP_SIZE 
+
+# intercepts
+CODED_GROUP_SIZE ~ 1
+' 
+
+PTWY.Fit.SOC <- sem(PTWY.Mod.SOC, data = PTWY) 
+
+summary(PTWY.Fit.SOC, fit.measures = TRUE, standardized = TRUE)
+```
+
+```{r PTWY Analysis}
+PTWY.Mod <- ' 
+
+# measurement model 
+
+ENVIRONMENT =~ CODED_ENV + CODED_BAIT + DECIMAL_TIME + TEMPERATURE + TOTAL_FREQUENCY_OF_DISTURBANCES 
+
+VIGILANCE =~ PTWY_HDP.HU + PTWY_HD.HU + PTWY_M.HU 
+
+FORAGING =~ PTWY_HD.HDP + PTWY_HU.HD + PTWY_M.HD 
+
+ 
+
+# regressions 
+
+VIGILANCE ~ ENVIRONMENT + CODED_GROUP_SIZE + CODED_SENTINEL_PRESENCE
+
+FORAGING ~ ENVIRONMENT + VIGILANCE + CODED_GROUP_SIZE + CODED_SENTINEL_PRESENCE
+
+' 
+
+PTWY.Fit <- sem(PTWY.Mod, data = PTWY) 
+
+summary(PTWY.Fit, fit.measures = TRUE, standardized = TRUE)
+```

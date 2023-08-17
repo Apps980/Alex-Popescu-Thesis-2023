@@ -1,0 +1,219 @@
+---
+title: "Sentinel Likelihood"
+author: "Alex Popescu"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    keep_md: yes
+---
+```{r Packages, include = F}
+library("tidyverse")
+library("psych")
+library("car")
+library("ggplot2")
+library("robustlmm")
+library("sjPlot")
+library("effects")
+library("glmm")
+library("doBy")
+library("emmeans")
+```
+
+```{r Colorblind-friendly palette, include = F}
+# The palette with black:
+cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
+```
+
+# Preamble
+This script will deal with determining if different environmental factors affect the likelihood of a sentinel being present in the area. These factors will include group size, temperature, time of day, and disturbance frequency to name a few.
+
+The main test we will be implementing is the binary logistic regression to determine the relationship between a binary target variable (sentinel presence) and a set of independent variables.
+
+We will be reusing the 'Single Row' dataset for this script.
+
+```{r Open SENT}
+SENT<-read.csv("DATA.SR.csv", stringsAsFactors = T)
+SENT<-SENT[1:81,]
+str(SENT)
+```
+Next, we will subset the dataframe to include only the variables we want to keep.
+
+```{r SENT Subset}
+SENT<-SENT[1:81,c(1,2,7,10,11,15,17,22,30,31)]
+str(SENT)
+dim(SENT)
+```
+81 observations across 9 variables. BUT that's with all the individuals. Let's remove those replicates.
+
+```{r Selecting unique observations}
+SENT<- SENT[,-2] %>%
+  distinct()
+str(SENT)
+```
+33 observations across 8 variables. This includes the videos where a transition in sentinel presence occurred.
+
+## Fit the model
+
+```{r SENT model - Simple}
+SENT.mod1<-glm(SENTINEL_PRESENCE~GENERALIZED_ENVIRONMENT+GROUP_SIZE+TOTAL_FREQUENCY_OF_DISTURBANCES+DECIMAL_TIME+TEMPERATURE
+              , family = binomial()
+              , data = SENT)
+
+summary(SENT.mod1)
+```
+
+OOF. By removing the duplicates, we now have no significant effects of any variable.
+Next, let's try and see if we can run a glmm and include the video ID as a random effect.
+
+```{r SENT GLMM}
+SENT.mod2<-glmer(SENTINEL_PRESENCE~GENERALIZED_ENVIRONMENT+TOTAL_FREQUENCY_OF_DISTURBANCES+DECIMAL_TIME+TEMPERATURE+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod2)
+```
+Ok, the model is singular. Let's see if we can improve the model by reducing the number of factors.
+
+```{r AIC testing}
+drop1(SENT.mod2, tests = "F")
+```
+From the results of the drop1 function, we see that the removal of temperature and decimal time would improve the model fit. Let's do that next.
+
+```{r SENT GLMM2}
+SENT.mod3<-glmer(SENTINEL_PRESENCE~GENERALIZED_ENVIRONMENT+TOTAL_FREQUENCY_OF_DISTURBANCES+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod3)
+```
+Still singular. It seems like my sample size is too small to determine any significant effects. Let's see if we can remove additional variables.
+
+```{r AIC testing2}
+drop1(SENT.mod3, tests = "F")
+```
+Removing Generalized Environment would improve the model. Let's fit the final model.
+
+```{r SENT GLMM3}
+SENT.mod4<-glmer(SENTINEL_PRESENCE~TOTAL_FREQUENCY_OF_DISTURBANCES+(1|TEMPERATURE)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod4)
+```
+Bummer... Still singular. I will need to look into bootstrapping or something else to improve the sample size. As it stands, the total frequency of disturbances appears to have the greatest effect on the likelihood of a sentinel being present. Next, I will run another 'simple' glm.
+
+```{r SENT model - Simple 2}
+SENT.mod5<-glm(SENTINEL_PRESENCE~TOTAL_FREQUENCY_OF_DISTURBANCES
+              , family = binomial()
+              , data = SENT)
+
+summary(SENT.mod5)
+```
+
+Same results as the glmm. Let's quickly try code I found on R-bloggers (https://www.r-bloggers.com/2015/08/bootstrap-with-logistic-regression/)
+
+```{r Bootstrapped model}
+library(boot)
+logit_test <- function(d,indices) {  
+d <- d[indices,]  
+fit <- glmer(SENTINEL_PRESENCE~TOTAL_FREQUENCY_OF_DISTURBANCES+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = d
+                       ) 
+return(coef(fit))  
+}
+boot_fit <- boot(  
+   data = SENT, 
+   statistic = logit_test, 
+   R = 1e5
+) 
+```
+
+Ok, still singular and the bootstrap failed. It is possible that there are too many levels in the frequency of disturbances. Let's try to simplify by binning the disturbance frequencies.
+
+```{r SENT GLMM 4}
+SENT.mod6<-glmer(SENTINEL_PRESENCE~GENERALIZED_ENVIRONMENT+DISTURBANCE_FREQUENCY+DECIMAL_TIME+TEMPERATURE+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod6)
+```
+
+Still singular. Let's remove some factors using drop 1.
+
+```{r AIC testing3}
+drop1(SENT.mod6, tests = "F")
+```
+
+We can remove TEMPERATURE.
+
+```{r SENT GLMM 5}
+SENT.mod7<-glmer(SENTINEL_PRESENCE~GENERALIZED_ENVIRONMENT+DISTURBANCE_FREQUENCY+DECIMAL_TIME+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod7)
+drop1(SENT.mod7) #remove decimal time
+```
+
+```{r SENT GLMM 6}
+SENT.mod8<-glmer(SENTINEL_PRESENCE~GENERALIZED_ENVIRONMENT+DISTURBANCE_FREQUENCY+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod8)
+drop1(SENT.mod8) #remove environment
+```
+
+```{r SENT GLMM 7}
+SENT.mod9<-glmer(SENTINEL_PRESENCE~DISTURBANCE_FREQUENCY+(1|VIDEO_ID.)
+                , family = binomial()       
+                , data = SENT
+                       )
+
+summary(SENT.mod9)
+drop1(SENT.mod9)
+```
+
+Still singular. Let's try removing the random effect and running yet another simple model.
+
+```{r SENT model - Simple 3}
+SENT.mod10<-glm(SENTINEL_PRESENCE~DISTURBANCE_FREQUENCY
+              , family = binomial()
+              , data = SENT)
+
+summary(SENT.mod10)
+```
+
+Disturbance frequency is not significant. What about another bootstrap?
+
+```{r Bootstrapped model 2}
+library(boot)
+logit_test <- function(d,indices, formula) {  
+d <- d[indices,]  
+fit <- glm(formula
+           , family = binomial()
+           , data = d
+           ) 
+return(coef(fit))  
+}
+
+boot_fit <- boot(
+   data = SENT
+   , statistic = logit_test
+   , R = 1000
+   , formula=SENTINEL_PRESENCE~DISTURBANCE_FREQUENCY
+   )
+
+
+```
+
+RUN A CHI SQUARED!!!
+
+

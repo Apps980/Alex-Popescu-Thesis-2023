@@ -39,13 +39,13 @@ Do individual vary the proportion of time allocated to each behavioral in respon
 To accomplish this, I extracted the summaries from the videos is BORIS and compiled a data table named "DATA".
 
 ```{r Open Data}
-PROP<-read.csv("DATA.csv", stringsAsFactors = T)
+DATA<-read.csv("DATA.csv", stringsAsFactors = T)
 
-str(PROP)
+str(DATA)
 ```
 ```{r Bout Summary}
 source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
-PROP.MEAN <- summarySE(data = PROP
+PROP.MEAN <- summarySE(data = DATA
                       , measurevar = "BEHAVIOR_PROPORTION"
                       , groupvars = c("GENERALIZED_ENVIRONMENT"
                                       , "BEHAVIOR"
@@ -64,8 +64,8 @@ Onto the analysis.
 In order to determine whether our fixed effects have significant effects on the allocation of time to each behavior, I decided to first arcsin square root transform the proportions.
 
 ```{r Proportion Histograms Individual, include = F}
-Untransformed.Prop<-hist(PROP$BEHAVIOR_PROPORTION, breaks=25)
-Transformed.Prop<-hist(asin(sqrt(PROP$BEHAVIOR_PROPORTION)), breaks=25)
+Untransformed.Prop<-hist(DATA$BEHAVIOR_PROPORTION, breaks=25)
+Transformed.Prop<-hist(asin(sqrt(DATA$BEHAVIOR_PROPORTION)), breaks=25)
 ```
 
 ```{r Proportion Histograms Combined, echo=F}
@@ -78,13 +78,13 @@ par(op)
 Transformed data seems more normal than untransformed data. Will continue to use transformed data.
 
 ```{r Data Transformation}
-PROP$ASIN_PROPORTION<-asin(sqrt(PROP$BEHAVIOR_PROPORTION))
+DATA$ASIN_PROPORTION<-asin(sqrt(DATA$BEHAVIOR_PROPORTION))
 ```
 
 Here is the histogram of the log-transformed data separated by behavior.
 
 ```{r PROP Histogram, echo=F}
-PROP.HIST<-ggplot(data = PROP) +
+PROP.HIST<-ggplot(data = DATA) +
   geom_histogram(aes(fill = BEHAVIOR, x = ASIN_PROPORTION)
                  , alpha = 1
                  , bins = 25)+
@@ -145,7 +145,7 @@ As for the random effects, I will use VIDEO_ID/ID. The ID is nested within the V
 Let's fit the simplest model.
 
 ```{r PROP MODEL 1}
-PROP.MOD1<-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = PROP)
+PROP.MOD1<-lmer(ASIN_PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = DATA)
 
 sjPlot::tab_model(PROP.MOD1
                   , show.re.var = T
@@ -153,7 +153,7 @@ sjPlot::tab_model(PROP.MOD1
                   , dv.labels = " Effects of on the proportion of behaviors")
 ```
 
-huh, seems like the model is singular. This could mean that the model is overfitted.
+huh, seems like the model is singular. This could mean that the model is over fitted.
 
 Let's look at the results.
 
@@ -165,7 +165,7 @@ ranova(PROP.MOD1)
 Ok, so none of the factors are significant, and the results of the ranova suggest that the model without random effects is preferred. Let's improve the model with some interactions. We will use the same formula for MOD2 as the one used in the BOUT data.
 
 ```{r PROP MODEL 2}
-PROP.MOD2<-lmer(ASIN_PROPORTION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = PROP)
+PROP.MOD2<-lmer(ASIN_PROPORTION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = DATA)
 
 sjPlot::tab_model(PROP.MOD2
                   , show.re.var = T
@@ -173,12 +173,12 @@ sjPlot::tab_model(PROP.MOD2
                   , dv.labels = " Effects on proportion of behaviors")
 ```
 
-Like MOD1, none of the factors have an effect. 
+Like MOD1, none of the factors have an effect. Still singular.
 
 Maybe I'm not using the correct approach. Instead of performing a LMM on transformed data, I'll instead use a quasibinomial GLM for proportion data. Since the random effects in the previous models explained none of the variance, we can, in this case, omit them.
 
 ```{r PROP MODEL 3}
-PROP.MOD3<-glm(BEHAVIOR_PROPORTION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY, family=quasibinomial, data = PROP)
+PROP.MOD3<-glm(BEHAVIOR_PROPORTION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY, family=quasibinomial, data = DATA)
 
 sjPlot::tab_model(PROP.MOD3
                   , show.re.var = T
@@ -193,14 +193,14 @@ I believe this may be the best approach since I am unable to use the quasibinomi
 Let's look at the comparisons between groups.
 
 ```{r PROP Post Hoc}
-PROP.DIFF<-emmeans(PROP.MOD3, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+PROP.DIFF<-emmeans(PROP.MOD3, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT)
 test(pairs(PROP.DIFF, by= "BEHAVIOR"), adjust="fdr")
 ```
 
 None of the groups are significantly different from one another when comparing within each behavior. Next, let's look at the differences throughout behaviors.
 
 ```{r PROP Post Hoc 2}
-PROP.DIFF2<-emmeans(PROP.MOD3, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+PROP.DIFF2<-emmeans(PROP.MOD3, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT)
 PROP.PWISE<-test(pairs(PROP.DIFF2), adjust="fdr")
 PROP.PWISE
 ```

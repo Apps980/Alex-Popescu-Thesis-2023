@@ -125,7 +125,7 @@ BOUT.DOT<-ggplot(data = BOUT.MEAN
                      , y = DURATION
                      , color = BEHAVIOR
                      , shape = SENTINEL_PRESENCE))+
-  geom_point(position = position_dodge2(width = 0.9)
+  geom_point(position = position_dodge(width = 0.9)
              , size = 3) +
   geom_errorbar(aes(ymin=(DURATION-se)
                     , ymax=(DURATION+se))
@@ -420,9 +420,9 @@ DF.DOT<-BOUT %>%
                , color = BEHAVIOR))+
   geom_point(size = 3) +
   theme_classic() +
-  labs(x="Mean Bout Duration (s)", y="Disturbances per Minute", color= "Behavior") +
+  labs(y="Mean Bout Duration (s)", x="Disturbances per Minute", color= "Behavior")+
   scale_colour_manual(values = cbPalette, labels = c("Foraging", "Alert", "Moving"))+
-  scale_x_continuous(n.breaks=14)
+  scale_x_continuous(n.breaks=14)+
   theme(legend.position = "bottom")
   
 
