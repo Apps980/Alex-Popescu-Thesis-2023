@@ -9,7 +9,7 @@ In cooperatively breeding species, some individuals forgo breeding in favor of h
 Why helpers exist is a very good questions. Traditional theory of natural selection is based on competition between individuals; helping should not be evolutionarily stable.
 
 Contributions of helpers to cooperative activities are conditional on the sex, age, weight, condition and recent foraging success of helpers <- again, supported by [[Bednekoff's Model]]
-Social modifiers to individual contributions include group size, age/sex composition of the group and the ratio of helpers to depedent juveniles.
+Social modifiers to individual contributions include group size, age/sex composition of the group and the ratio of helpers to dependent juveniles.
 Yet, there exists individual variation not explained by the usual modifiers.
 
 All group members contribute to a range of cooperative behaviors. Includes non-breeding and breeding individuals.

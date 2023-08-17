@@ -1,6 +1,6 @@
 {
   "collapse-filter": false,
-  "search": "",
+  "search": "males",
   "showTags": true,
   "showAttachments": false,
   "hideUnresolved": false,
@@ -47,5 +47,5 @@
   "linkStrength": 0.746527777777778,
   "linkDistance": 30,
   "scale": 0.10096557691793487,
-  "close": true
+  "close": false
 }

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+                "file": "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
                 "mode": "source",
                 "source": false
               }
@@ -23,9 +23,11 @@
             "id": "7a0928f3428dd1ec",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.2.7"
+                "file": "Bednekoff's Model.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -104,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+                "file": "Bednekoff's Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+                "file": "Bednekoff's Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md"
+                "file": "Bednekoff's Model.md"
               }
             }
           },
@@ -160,30 +162,39 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "7a0928f3428dd1ec",
   "lastOpenFiles": [
-    "Adaptive, flexible responses towards avian predation threat by Arabian Babblers Turdoides squamiceps living at a migratory hotspot.md",
+    "Sex.md",
+    "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
+    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
     "Bednekoff's Model.md",
+    "Intrasexual competition.md",
+    "Interspecific signalling between mutualists_ food-thieving drongos use a cooperative sentinel call to manipulate foraging partners.md",
+    "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
+    "contact calls.md",
+    "Contributions of genetic and nongenetic sources to variation in cooperative behavior in a cooperative mammal.md",
+    "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md",
+    "A Study of the Behaviour of the Chacma Baboon, Papio Ursinus.md",
+    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
+    "Sentinel dominance status influences forager use of social information.md",
+    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
+    "Adaptive, flexible responses towards avian predation threat by Arabian Babblers Turdoides squamiceps living at a migratory hotspot.md",
     "Anti-predator behaviour of captive Grey partridges (Perdix perdix).md",
     "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
-    "A Study of the Behaviour of the Chacma Baboon, Papio Ursinus.md",
-    "Sex.md",
     "COMPOSITION AND STRUCTURE OF AVIAN MIXED-SPECIES FLOCKS IN A HIGH-ANDEAN POLYLEPIS FOREST IN BOLIVIA.md",
-    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
     "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
     "Biparental care and obligate monogamy in the rock-haunting possum, Petropseudes dahli, from tropical Australia.md",
     "Group size effects in social evolution.md",
@@ -191,11 +202,6 @@
     "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
     "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
     "Rank.md",
-    "Selfish Sentinels in Cooperative Mammals.md",
-    "Common Raven and Starling Reliance on Sentinel Common Crows.md",
-    "Call of duty_ Variation in use of the watchman's song by sentinel dwarf mongooses, Helogale parvula.md",
-    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
-    "Florida Scrub-Jays Compensate for the Sentinel Behavior of Flockmates.md",
-    "Raptors and _campo-cerrado_ bird mixed flock led by Cypsnagra Hirundinacea (Emberizidae_Thraupinae).md"
+    "Selfish Sentinels in Cooperative Mammals.md"
   ]
 }

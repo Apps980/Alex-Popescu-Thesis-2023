@@ -5,7 +5,7 @@ species: White-browed sparrow weavers
 factor: [[Rank]] [[Sex]]
 effect: Dominant males had greater sentinel contributions than any other individuals in the group, suggesting sentinel behavior may play a role in [[Intrasexual competition]].
 
-Sentinel behavior as one individual who watches from an elevated porision while other group member forage.
+Sentinel behavior as one individual who watches from an elevated position while other group member forage.
 
 Sentinel behavior could provide benefits to the sentinel by providing a vantage point from which to detect and respond to same-sex competitors. Supported by findings that males sentinel more than females, suggesting differential benefits to males other than just mitigation of predation risk.
 
