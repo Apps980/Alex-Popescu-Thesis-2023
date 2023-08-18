@@ -6,72 +6,172 @@ output:
   html_document: 
     keep_md: yes
 ---
-```{r Libraries}
-library("lavaan")
-library("lavaanPlot")
+```{r Libraries, include = F}
+library("MANOVA.RM")
+library("dplyr")
+library("ggplot2")
+```
+
+```{r Colorblind-friendly palette, include = F}
+# The palette with black:
+cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
 ```
 
 ```{r Open DATA.SR}
-PTWY<-read.csv("DATA.SR.csv", stringsAsFactors = T)
-str(PTWY)
-```
-```{r PTWY Analysis}
-PTWY.ENV <- ' 
-
-# measurement model 
-
-ENVIRONMENT =~ CODED_ENV + CODED_BAIT + DECIMAL_TIME + TOTAL_FREQUENCY_OF_DISTURBANCES 
-
-# intercepts 
-
-CODED_ENV ~ 1
-CODED_BAIT ~ 1
-DECIMAL_TIME ~ 1
-TOTAL_FREQUENCY_OF_DISTURBANCES ~ 1
-' 
-
-PTWY.Fit.ENV <- sem(PTWY.ENV, data = PTWY) 
-
-summary(PTWY.Fit.ENV, fit.measures = TRUE, standardized = TRUE)
+PTWY.raw<-read.csv("DATA.SR.csv", stringsAsFactors = T)
+str(PTWY.raw)
 ```
 
-```{r PTWY.SOC Analysis}
-PTWY.Mod.SOC <- ' 
+Nice, it opened as it should. Let's subset the dataset to only contain what we want.
 
-# measurement model 
-SOCIAL =~ CODED_GROUP_SIZE 
+```{r Subsetting PTWY}
+PTWY<- PTWY.raw %>%
+  dplyr::select(VIDEO_ID.,ID., DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_FREQUENCY_OF_DISTURBANCES, DISTURBANCE_FREQUENCY | starts_with("PTWY"))
 
-# intercepts
-CODED_GROUP_SIZE ~ 1
-' 
-
-PTWY.Fit.SOC <- sem(PTWY.Mod.SOC, data = PTWY) 
-
-summary(PTWY.Fit.SOC, fit.measures = TRUE, standardized = TRUE)
 ```
 
-```{r PTWY Analysis}
-PTWY.Mod <- ' 
-
-# measurement model 
-
-ENVIRONMENT =~ CODED_ENV + CODED_BAIT + DECIMAL_TIME + TEMPERATURE + TOTAL_FREQUENCY_OF_DISTURBANCES 
-
-VIGILANCE =~ PTWY_HDP.HU + PTWY_HD.HU + PTWY_M.HU 
-
-FORAGING =~ PTWY_HD.HDP + PTWY_HU.HD + PTWY_M.HD 
-
+Next, let's group together the transitions to vigilance, and transitions to vulnerability.
  
+```{r PTWY group}
+Vulnerable<-cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)
+Vigilant<-cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)
+# This does not work
 
-# regressions 
-
-VIGILANCE ~ ENVIRONMENT + CODED_GROUP_SIZE + CODED_SENTINEL_PRESENCE
-
-FORAGING ~ ENVIRONMENT + VIGILANCE + CODED_GROUP_SIZE + CODED_SENTINEL_PRESENCE
-
-' 
-
-PTWY.Fit <- sem(PTWY.Mod, data = PTWY) 
-
-summary(PTWY.Fit, fit.measures = TRUE, standardized = TRUE)
 ```
+
+Seems like it worked. Let's try fitting the model.
+
+## Vulnerable
+
+```{r MANOVA Vulnerable}
+PTWY.vuln<-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = PTWY, subject = "ID.", iter=1000)
+summary(PTWY.vuln)
+```
+
+Interesting... While Sentinel presence and the interaction of sentinel presence and generalized environment had no significant effects, generalized environment had an effect on the frequency of transitions to vulnerability.
+
+**Figure out if you need to recalculate PTWY data to only include those 4 transitions. **
+
+Let's perform a pairwise comparison.
+
+### Post Hoc
+
+```{r PTWY CR Vuln}
+simCI(PTWY.vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "GENERALIZED_ENVIRONMENT")
+
+```
+
+HMMMM... Very weird... Now its not significant... Let's compute univariate comparisons.
+
+```{r PTWY Vulnerable univar}
+PTWY.HD.HDP<-MANOVA.wide(PTWY_HD.HDP~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
+PTWY.HU.HD<-MANOVA.wide(PTWY_HU.HD~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.HD.HDP$resampling[,1], PTWY.HU.HD$resampling[,1]), method = "bonferroni")
+#using the parametric bootstrap Wald-type statistic
+
+```
+
+Very cool! Turns out that only the transitions from head up to head down is significantly affected by the generalized environment. This is only if we use the Wald-type statistic and not the modified ANOVA-type statistic.
+
+### Plots
+
+```{r PTWY plots}
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+G.ENV.PTWY<-PTWY %>%
+  summarySE(measurevar = "PTWY_HU.HD"
+            , groupvars = "GENERALIZED_ENVIRONMENT") %>%
+    ggplot(aes(x = GENERALIZED_ENVIRONMENT
+                     , y = PTWY_HU.HD
+                     , color = GENERALIZED_ENVIRONMENT))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HU.HD-se)
+                    , ymax=(PTWY_HU.HD+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Head Up to Head Down (%)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin())
+
+G.ENV.PTWY
+
+```
+
+## Vigilance
+
+```{r MANOVA Vigilance}
+PTWY.vigil<-MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = PTWY, subject = "ID.", iter=1000)
+summary(PTWY.vigil)
+```
+
+The results of this test suggest that no transitions to vigilance are significantly affected by either the presence of a sentinel or the generalized environment.
+
+**Figure out what to do with factors such as bait presence, group size and disturbance frequency**
+
+<!-- # Old code below -->
+<!-- # ```{r PTWY Analysis} -->
+<!-- # PTWY.ENV <- '  -->
+<!-- #  -->
+<!-- # # measurement model  -->
+<!-- #  -->
+<!-- # ENVIRONMENT =~ CODED_ENV + CODED_BAIT + DECIMAL_TIME + TOTAL_FREQUENCY_OF_DISTURBANCES  -->
+<!-- #  -->
+<!-- # # intercepts  -->
+<!-- #  -->
+<!-- # CODED_ENV ~ 1 -->
+<!-- # CODED_BAIT ~ 1 -->
+<!-- # DECIMAL_TIME ~ 1 -->
+<!-- # TOTAL_FREQUENCY_OF_DISTURBANCES ~ 1 -->
+<!-- # '  -->
+<!-- #  -->
+<!-- # PTWY.Fit.ENV <- sem(PTWY.ENV, data = PTWY)  -->
+<!-- #  -->
+<!-- # summary(PTWY.Fit.ENV, fit.measures = TRUE, standardized = TRUE) -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # ```{r PTWY.SOC Analysis} -->
+<!-- # PTWY.Mod.SOC <- '  -->
+<!-- #  -->
+<!-- # # measurement model  -->
+<!-- # SOCIAL =~ CODED_GROUP_SIZE  -->
+<!-- #  -->
+<!-- # # intercepts -->
+<!-- # CODED_GROUP_SIZE ~ 1 -->
+<!-- # '  -->
+<!-- #  -->
+<!-- # PTWY.Fit.SOC <- sem(PTWY.Mod.SOC, data = PTWY)  -->
+<!-- #  -->
+<!-- # summary(PTWY.Fit.SOC, fit.measures = TRUE, standardized = TRUE) -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # ```{r PTWY Analysis} -->
+<!-- # PTWY.Mod <- '  -->
+<!-- #  -->
+<!-- # # measurement model  -->
+<!-- #  -->
+<!-- # ENVIRONMENT =~ CODED_ENV + CODED_BAIT + DECIMAL_TIME + TEMPERATURE + TOTAL_FREQUENCY_OF_DISTURBANCES  -->
+<!-- #  -->
+<!-- # VIGILANCE =~ PTWY_HDP.HU + PTWY_HD.HU + PTWY_M.HU  -->
+<!-- #  -->
+<!-- # FORAGING =~ PTWY_HD.HDP + PTWY_HU.HD + PTWY_M.HD  -->
+<!-- #  -->
+<!-- #   -->
+<!-- #  -->
+<!-- # # regressions  -->
+<!-- #  -->
+<!-- # VIGILANCE ~ ENVIRONMENT + CODED_GROUP_SIZE + CODED_SENTINEL_PRESENCE -->
+<!-- #  -->
+<!-- # FORAGING ~ ENVIRONMENT + VIGILANCE + CODED_GROUP_SIZE + CODED_SENTINEL_PRESENCE -->
+<!-- #  -->
+<!-- # '  -->
+<!-- #  -->
+<!-- # PTWY.Fit <- sem(PTWY.Mod, data = PTWY)  -->
+<!-- #  -->
+<!-- # summary(PTWY.Fit, fit.measures = TRUE, standardized = TRUE) -->
+<!-- # ``` -->

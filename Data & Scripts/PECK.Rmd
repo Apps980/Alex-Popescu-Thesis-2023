@@ -49,7 +49,7 @@ str(DATA)
 Next, we'll compile the means of the peck rate by sentinel presence and generalized environment.
 
 ```{r Peck Summary, echo = F}
-### Summarize
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
 PECK.MEAN<-summarySE(DATA, "PECK_RATE", c("GENERALIZED_ENVIRONMENT", "SENTINEL_PRESENCE"), na.rm=T)
 PECK.MEAN
 ```
@@ -156,9 +156,9 @@ PECK.MOD0<-lm(PECK_RATE~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAI
 anova(PECK.MOD1,PECK.MOD2,PECK.MOD0)
 ```
 
-VERY WEIRD. Model 1 without the interactions is perferred over Model 2. However, the simple MOD0 is preferred. Let's see the outputs of that model.
+VERY WEIRD. Model 1 without the interactions is preferred over Model 2. However, the simple MOD0 is preferred. Let's see the outputs of that model.
 
-```{r Robust PECK MODEL 2}
+```{r Robust PECK MODEL 0}
 sjPlot::tab_model(PECK.MOD0
                   , show.re.var = T
                   , title = "Robust Peck Rate Model 0 Output"
@@ -173,7 +173,7 @@ Let's plot these results
 
 ### Disturbance Frequency
 
-```{r PECK Disturb}
+```{r PECK Disturb 1}
 PK.DF.DOT1<-DATA %>%
     ggplot(aes(x = DISTURBANCE_FREQUENCY
                , y = PECK_RATE))+
@@ -202,7 +202,7 @@ Won't you look at that! When I remove points with time spent foraging is greater
 
 Let's plot this again.
 
-```{r PECK Disturb}
+```{r PECK Disturb 2}
 PK.DF.DOT2<-DATA[which(DATA$BEHAVIOR == "HD" & DATA$BEHAVIOR_DURATION > 0),] %>%
     ggplot(aes(x = DISTURBANCE_FREQUENCY
                , y = PECK_RATE)) +
@@ -218,7 +218,7 @@ PK.DF.DOT2
 
 ```
 
-Very nice! We can see that as the disturbance frequency increases, so does the peck rate. I believe this can be explained by a sense of 'urgency' in higher-risk environments.
+Very nice! While it is not the prettiest of results, it roughly appears that as the disturbance frequency increases, so does the peck rate. I believe this can be explained by a sense of 'urgency' in higher-risk environments. Greater sample sizes would be required to make conclusive statements.
 
 ### Bait Presence
 
