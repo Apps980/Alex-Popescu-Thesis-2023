@@ -114,6 +114,26 @@ The results of this test suggest that no transitions to vigilance are significan
 
 **Figure out what to do with factors such as bait presence, group size and disturbance frequency**
 
+## The other variables
+
+We still have bait presence, group size and disturbance frequency to look at. I want to try and make a quick function to run all the tests.
+
+```{r PTWY Vulnerable function}
+PTWY.vuln.all<-lapply(PTWY[,c("SENTINEL_PRESENCE"
+                              ,"GENERALIZED_ENVIRONMENT"
+                              , "GROUP_SIZE"
+                              , "BAIT_PRESENCE"
+                              , "DISTURBANCE_FREQUENCY")
+                              ]
+                         , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~x, data = PTWY, iter = 1000)
+                         )
+PTWY.SENT<-summary(PTWY.vuln.all$SENTINEL_PRESENCE)
+PTWY.GENV<-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)
+PTWY.GS<-summary(PTWY.vuln.all$GROUP_SIZE)
+PTWY.BP<-summary(PTWY.vuln.all$BAIT_PRESENCE)
+PTWY.DF<-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)
+```
+
 <!-- # Old code below -->
 <!-- # ```{r PTWY Analysis} -->
 <!-- # PTWY.ENV <- '  -->

@@ -31,7 +31,7 @@ cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2",
 
 This script will deal with analyzing the relationship of the duration of bouts of behavior - head down, head up, and moving - with the presence of a sentinel, the presence of bait, the foraging environment, the group size and the frequency of disturbances.
 
-As random effects, I've chosen the video and individual ID
+As random effects, I've chosen the individual ID nested within Video ID.
 
 This analysis will answer the following question:\
 Do individual vary the duration of behavioral bouts in response to their perception of risk and sentinel coverage in their foraging environment?
@@ -190,7 +190,7 @@ As such, it is possible that, once again, the group size's effects occur on cert
 Finally, the frequency of disturbances had a significant effect. I will include an interaction between this factor and generalized environment, as well as with sentinel presence, and behavior.
 
 ```{r BOUT MODEL 2}
-BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
+BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD2
                   , show.re.var = T

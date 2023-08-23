@@ -29,7 +29,7 @@ This script will deal with determining if different environmental factors affect
 
 The main test we will be implementing is the binary logistic regression to determine the relationship between a binary target variable (sentinel presence) and a set of independent variables.
 
-We will be reusing the 'Single Row' dataset for this script.
+We will be reusing the 'Single Row' data set for this script.
 
 ```{r Open SENT}
 SENT<-read.csv("DATA.SR.csv", stringsAsFactors = T)
@@ -39,7 +39,7 @@ str(SENT)
 Next, we will subset the dataframe to include only the variables we want to keep.
 
 ```{r SENT Subset}
-SENT<-SENT[1:81,c(1,2,7,10,11,15,17,20,22,30,31)]
+SENT<-SENT[1:81,c(1,2,7,10,11,15,17,19,20,22,30,31)]
 str(SENT)
 dim(SENT)
 ```
@@ -58,8 +58,9 @@ str(SENT)
 library(descr)
 library(MASS)
 CHISQ<-lapply(SENT[,c("GENERALIZED_ENVIRONMENT"
-                                 , "GROUP_SIZE"
-                                 , "DISTURBANCE_FREQUENCY")
+                      , "GROUP_SIZE"
+                      , "DISTURBANCE_FREQUENCY"
+                      , "BAIT_PRESENCE")
                               ]
                          , function(x) CrossTable(x,SENT$SENTINEL_PRESENCE
                                                   , fisher = T

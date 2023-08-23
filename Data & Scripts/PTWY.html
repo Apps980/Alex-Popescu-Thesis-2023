@@ -481,9 +481,9 @@ summary(PTWY.vuln)</code></pre>
 ## 
 ## p-values resampling:
 ##                                           paramBS (WTS) paramBS (MATS)
-## SENTINEL_PRESENCE                         &quot;0.784&quot;       &quot;0.873&quot;       
-## GENERALIZED_ENVIRONMENT                   &quot;0.035&quot;       &quot;0.156&quot;       
-## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.177&quot;       &quot;0.13&quot;</code></pre>
+## SENTINEL_PRESENCE                         &quot;0.777&quot;       &quot;0.879&quot;       
+## GENERALIZED_ENVIRONMENT                   &quot;0.028&quot;       &quot;0.137&quot;       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.182&quot;       &quot;0.168&quot;</code></pre>
 <p>Interesting… While Sentinel presence and the interaction of sentinel
 presence and generalized environment had no significant effects,
 generalized environment had an effect on the frequency of transitions to
@@ -503,19 +503,19 @@ include those 4 transitions. </strong></p>
 ##  #------Multivariate post-hoc comparisons: p-values -----# 
 ##  
 ##                  contrast p.value
-## 1 Green Area - Commercial   0.523
+## 1 Green Area - Commercial   0.502
 ## 
 ##  #-----------Confidence intervals for summary effects-------------# 
 ##  
 ##                         Estimate      Lower     Upper
-## Green Area - Commercial    0.063 -0.1379454 0.2639454</code></pre>
+## Green Area - Commercial    0.063 -0.1162875 0.2422875</code></pre>
 <p>HMMMM… Very weird… Now its not significant… Let’s compute univariate
 comparisons.</p>
 <pre class="r"><code>PTWY.HD.HDP&lt;-MANOVA.wide(PTWY_HD.HDP~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
 PTWY.HU.HD&lt;-MANOVA.wide(PTWY_HU.HD~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
 
 p.adjust(c(PTWY.HD.HDP$resampling[,1], PTWY.HU.HD$resampling[,1]), method = &quot;bonferroni&quot;)</code></pre>
-<pre><code>## [1] 0.768 0.098</code></pre>
+<pre><code>## [1] 0.760 0.088</code></pre>
 <pre class="r"><code>#using the parametric bootstrap Wald-type statistic</code></pre>
 <p>Very cool! Turns out that only the transitions from head up to head
 down is significantly affected by the generalized environment. This is
@@ -589,14 +589,134 @@ summary(PTWY.vigil)</code></pre>
 ## 
 ## p-values resampling:
 ##                                           paramBS (WTS) paramBS (MATS)
-## SENTINEL_PRESENCE                         &quot;0.88&quot;        &quot;0.903&quot;       
-## GENERALIZED_ENVIRONMENT                   &quot;0.639&quot;       &quot;0.562&quot;       
-## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.249&quot;       &quot;0.173&quot;</code></pre>
+## SENTINEL_PRESENCE                         &quot;0.867&quot;       &quot;0.905&quot;       
+## GENERALIZED_ENVIRONMENT                   &quot;0.59&quot;        &quot;0.532&quot;       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.227&quot;       &quot;0.16&quot;</code></pre>
 <p>The results of this test suggest that no transitions to vigilance are
 significantly affected by either the presence of a sentinel or the
 generalized environment.</p>
 <p><strong>Figure out what to do with factors such as bait presence,
 group size and disturbance frequency</strong></p>
+</div>
+<div id="the-other-variables" class="section level2">
+<h2>The other variables</h2>
+<p>We still have bait presence, group size and disturbance frequency to
+look at. I want to try and make a quick function to run all the
+tests.</p>
+<pre class="r"><code>PTWY.vuln.all&lt;-lapply(PTWY[,c(&quot;SENTINEL_PRESENCE&quot;
+                              ,&quot;GENERALIZED_ENVIRONMENT&quot;
+                              , &quot;GROUP_SIZE&quot;
+                              , &quot;BAIT_PRESENCE&quot;
+                              , &quot;DISTURBANCE_FREQUENCY&quot;)
+                              ]
+                         , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~x, data = PTWY, iter = 1000)
+                         )
+PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
+## &lt;environment: 0x0000014c3602ca10&gt;
+## 
+## Descriptive:
+##     x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
+## 1  NO 32            0.747            0.575
+## 2 YES 49            0.782            0.554
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;1.052&quot;        &quot;2&quot; &quot;0.591&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          0.511
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.615&quot;       &quot;0.767&quot;</code></pre>
+<pre class="r"><code>PTWY.GENV&lt;-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
+## &lt;environment: 0x0000014c3e908508&gt;
+## 
+## Descriptive:
+##            x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
+## 1 Commercial 48            0.787            0.517
+## 2 Green Area 33            0.740            0.627
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;9.816&quot;        &quot;2&quot; &quot;0.007&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          4.957
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.012&quot;       &quot;0.096&quot;</code></pre>
+<pre class="r"><code>PTWY.GS&lt;-summary(PTWY.vuln.all$GROUP_SIZE)</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
+## &lt;environment: 0x0000014c42b6d2c0&gt;
+## 
+## Descriptive:
+##       x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
+## 1 LARGE 36            0.790            0.513
+## 2 SMALL 45            0.751            0.601
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;5.268&quot;        &quot;2&quot; &quot;0.072&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          2.839
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.097&quot;       &quot;0.256&quot;</code></pre>
+<pre class="r"><code>PTWY.BP&lt;-summary(PTWY.vuln.all$BAIT_PRESENCE)</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
+## &lt;environment: 0x0000014c41b09428&gt;
+## 
+## Descriptive:
+##     x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
+## 1  NO 15            0.638            0.510
+## 2 YES 66            0.798            0.574
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;6.214&quot;        &quot;2&quot; &quot;0.045&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x           7.54
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.075&quot;       &quot;0.041&quot;</code></pre>
+<pre class="r"><code>PTWY.DF&lt;-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
+## &lt;environment: 0x0000014c3c828ed0&gt;
+## 
+## Descriptive:
+##        x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
+## 1   HIGH 20            0.859            0.510
+## 2    LOW 38            0.716            0.559
+## 3 MEDIUM 23            0.776            0.613
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;13.982&quot;       &quot;4&quot; &quot;0.007&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x           9.27
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.015&quot;       &quot;0.091&quot;</code></pre>
 <!-- # Old code below -->
 <!-- # ```{r PTWY Analysis} -->
 <!-- # PTWY.ENV <- '  -->
