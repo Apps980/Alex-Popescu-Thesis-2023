@@ -39,11 +39,11 @@ Vigilant<-cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)
 
 ```
 
-Seems like it worked. Let's try fitting the model.
+Let's try fitting the model.
 
 ## Vulnerable
 
-```{r MANOVA Vulnerable}
+```{r PTWY MANOVA Vulnerable}
 PTWY.vuln<-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = PTWY, subject = "ID.", iter=1000)
 summary(PTWY.vuln)
 ```
@@ -56,7 +56,7 @@ Let's perform a pairwise comparison.
 
 ### Post Hoc
 
-```{r PTWY CR Vuln}
+```{r PTWY CR Vuln GENV}
 simCI(PTWY.vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "GENERALIZED_ENVIRONMENT")
 
 ```
@@ -114,7 +114,7 @@ The results of this test suggest that no transitions to vigilance are significan
 
 **Figure out what to do with factors such as bait presence, group size and disturbance frequency**
 
-## The other variables
+## The other variables - Vulnerability
 
 We still have bait presence, group size and disturbance frequency to look at. I want to try and make a quick function to run all the tests.
 
@@ -127,12 +127,194 @@ PTWY.vuln.all<-lapply(PTWY[,c("SENTINEL_PRESENCE"
                               ]
                          , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~x, data = PTWY, iter = 1000)
                          )
-PTWY.SENT<-summary(PTWY.vuln.all$SENTINEL_PRESENCE)
-PTWY.GENV<-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)
-PTWY.GS<-summary(PTWY.vuln.all$GROUP_SIZE)
-PTWY.BP<-summary(PTWY.vuln.all$BAIT_PRESENCE)
-PTWY.DF<-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)
 ```
+```{r PTWY Vulnerable summaries, echo = F}
+PTWY.vuln.SENT<-summary(PTWY.vuln.all$SENTINEL_PRESENCE)
+PTWY.vuln.GENV<-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)
+PTWY.vuln.GS<-summary(PTWY.vuln.all$GROUP_SIZE)
+PTWY.vuln.BP<-summary(PTWY.vuln.all$BAIT_PRESENCE)
+PTWY.vuln.DF<-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)
+```
+```{r PTWY Vulnerable Results}
+Factor<-c("Sentinel Presence", "Generalized Environment", "Group Size", "Bait Presence", "Disturbance Frequency")
+Results.vuln<-cbind(Factor, rbind(PTWY.vuln.SENT, PTWY.vuln.GENV, PTWY.vuln.GS, PTWY.vuln.BP, PTWY.vuln.DF))
+Results.vuln
+```
+
+As seen above, Gen. env has a  significant effect (p-value = 0.007). Interestingly,  group size (p-value ~ 0.072), bait presence (p-value ~ 0.06), and disturbance frequency (p-value ~ 0.01) are have either significant or marginally significant effects on the frequency of pathways to vulnerability.
+
+### Post Hoc - Disturbance Frequency
+
+```{r PTWY CR Vuln DF}
+PTWY.DF.Vuln<-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+simCI(PTWY.DF.Vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "DISTURBANCE_FREQUENCY")
+
+```
+
+HMMMMM... Not significant... Univariate analysis time.
+
+```{r PTWY.DF Vulnerable univar}
+PTWY.DF.HD.HDP<-MANOVA.wide(PTWY_HD.HDP~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+PTWY.DF.HU.HD<-MANOVA.wide(PTWY_HU.HD~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.DF.HD.HDP$resampling[,1], PTWY.DF.HU.HD$resampling[,1]), method = "bonferroni")
+#using the parametric bootstrap Wald-type statistic
+
+```
+
+Curious... the frequency of the pathway HD>HDPeck is marginally significant. Let's quickly plot it.
+
+### Plots
+
+```{r PTWY.DF.vuln plots}
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+DF.PTWY.vuln<-PTWY %>%
+  summarySE(measurevar = "PTWY_HD.HDP"
+            , groupvars = "DISTURBANCE_FREQUENCY") %>%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+                     , y = PTWY_HD.HDP
+                     , color = DISTURBANCE_FREQUENCY))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HD.HDP-se)
+                    , ymax=(PTWY_HD.HDP+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Head Down to Head Down + Peck (%)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  scale_x_discrete(limits = c("LOW", "MEDIUM", "HIGH"))
+
+DF.PTWY.vuln
+
+```
+
+THATS UNEXPECTED... well.. not that unexpected. It mirrors the results of the peck data! As disturbance frequency increases, so does the peck rate, and therefore the frequency of head down to head down + peck. It could be a sense of urgency.
+
+## The other variables - Vulnerability
+
+We still have bait presence, group size and disturbance frequency to look at. I want to try and make a quick function to run all the tests.
+
+```{r PTWY Vigilant function}
+PTWY.vigil.all<-lapply(PTWY[,c("SENTINEL_PRESENCE"
+                              ,"GENERALIZED_ENVIRONMENT"
+                              , "GROUP_SIZE"
+                              , "BAIT_PRESENCE"
+                              , "DISTURBANCE_FREQUENCY")
+                              ]
+                         , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~x, data = PTWY, iter = 1000)
+                         )
+```
+```{r PTWY Vigilant summaries, echo = F}
+PTWY.vigil.SENT<-summary(PTWY.vigil.all$SENTINEL_PRESENCE)
+PTWY.vigil.GENV<-summary(PTWY.vigil.all$GENERALIZED_ENVIRONMENT)
+PTWY.vigil.GS<-summary(PTWY.vigil.all$GROUP_SIZE)
+PTWY.vigil.BP<-summary(PTWY.vigil.all$BAIT_PRESENCE)
+PTWY.vigil.DF<-summary(PTWY.vigil.all$DISTURBANCE_FREQUENCY)
+```
+```{r PTWY Vigilant Results}
+Results.vigil<-cbind(Factor, rbind(PTWY.vigil.SENT, PTWY.vigil.GENV, PTWY.vigil.GS, PTWY.vigil.BP, PTWY.vigil.DF))
+Results.vigil
+```
+
+Another interesting result! Disturbance frequency is marginally significant for transitions to vigilance. Same workflow as above.
+
+```{r PTWY DF CR Vigil}
+PTWY.DF.Vigil<-MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+simCI(PTWY.DF.Vigil, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "DISTURBANCE_FREQUENCY")
+
+```
+
+Pairwise comparisons for medium - high is marginally significant.
+
+```{r PTWY.DF Vigil univar}
+PTWY.DF.HD.HU<-MANOVA.wide(PTWY_HD.HU~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+PTWY.DF.HDP.HU<-MANOVA.wide(PTWY_HDP.HU~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.DF.HD.HU$resampling[,1], PTWY.DF.HDP.HU$resampling[,1]), method = "bonferroni")
+#using the parametric bootstrap Wald-type statistic
+
+```
+
+Disturbance frequency has a marginally significant effect on transitions from Head Down + Peck to Head Up. Plot time!
+
+```{r PTWY.DF.vigil plots}
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+DF.PTWY.vigil<-PTWY %>%
+  summarySE(measurevar = "PTWY_HDP.HU"
+            , groupvars = "DISTURBANCE_FREQUENCY") %>%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+                     , y = PTWY_HDP.HU
+                     , color = DISTURBANCE_FREQUENCY))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HDP.HU-se)
+                    , ymax=(PTWY_HDP.HU+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Head Down + Peck to Head Up  (%)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  scale_x_discrete(limits = c("LOW", "MEDIUM", "HIGH"))
+
+DF.PTWY.vigil
+
+```
+
+# Frequency
+
+We'll be fitting another manova on the frequency data.
+
+```{r Subsetting FREQ}
+FREQ<- PTWY.raw %>%
+  dplyr::select(VIDEO_ID.,ID., DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_FREQUENCY_OF_DISTURBANCES, DISTURBANCE_FREQUENCY | starts_with("FREQ"))
+
+```
+
+Let's try fitting the model.
+
+## Vulnerable
+
+```{r FREQ MANOVA Vulnerable}
+FREQ.vuln<-MANOVA.wide(cbind(FREQ$FREQ_HD.HDP, FREQ$FREQ_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = FREQ, subject = "ID.", iter=1000)
+summary(FREQ.vuln)
+```
+
+Same as with the PTWY data, only the generalized environment had a significant effect, and that only with the Wald-type statistic. Weird... 
+
+### Post Hoc
+
+```{r FREQ CR Vuln}
+simCI(FREQ.vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "GENERALIZED_ENVIRONMENT")
+
+```
+
+Womp womp. Not significant. :/
+However, this still follows the same pattern as the PTWY analysis. Let's perform a univariate analysis to confirm.
+
+```{r FREQ Vulnerable univar}
+FREQ.HD.HDP<-MANOVA.wide(FREQ_HD.HDP~GENERALIZED_ENVIRONMENT, data = FREQ, iter = 1000)
+FREQ.HU.HD<-MANOVA.wide(FREQ_HU.HD~GENERALIZED_ENVIRONMENT, data = FREQ, iter = 1000)
+
+p.adjust(c(FREQ.HD.HDP$resampling[,1], FREQ.HU.HD$resampling[,1]), method = "bonferroni")
+#using the parametric bootstrap Wald-type statistic
+
+```
+
+Cool! HU>HD is marginally insignificant with a p-value of ~0.08.
+Onto vigilance!
+
+
 
 <!-- # Old code below -->
 <!-- # ```{r PTWY Analysis} -->

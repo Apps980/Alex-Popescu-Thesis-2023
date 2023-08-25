@@ -11,7 +11,7 @@
 
 <meta name="author" content="Alex Popescu" />
 
-<meta name="date" content="2023-08-18" />
+<meta name="date" content="2023-08-24" />
 
 <title>PTWY</title>
 
@@ -352,7 +352,7 @@ display: none;
 
 <h1 class="title toc-ignore">PTWY</h1>
 <h4 class="author">Alex Popescu</h4>
-<h4 class="date">2023-08-18</h4>
+<h4 class="date">2023-08-24</h4>
 
 </div>
 
@@ -446,7 +446,7 @@ transitions to vulnerability.</p>
 <pre class="r"><code>Vulnerable&lt;-cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)
 Vigilant&lt;-cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)
 # This does not work</code></pre>
-<p>Seems like it worked. Let’s try fitting the model.</p>
+<p>Let’s try fitting the model.</p>
 <div id="vulnerable" class="section level2">
 <h2>Vulnerable</h2>
 <pre class="r"><code>PTWY.vuln&lt;-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = PTWY, subject = &quot;ID.&quot;, iter=1000)
@@ -481,9 +481,9 @@ summary(PTWY.vuln)</code></pre>
 ## 
 ## p-values resampling:
 ##                                           paramBS (WTS) paramBS (MATS)
-## SENTINEL_PRESENCE                         &quot;0.777&quot;       &quot;0.879&quot;       
-## GENERALIZED_ENVIRONMENT                   &quot;0.028&quot;       &quot;0.137&quot;       
-## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.182&quot;       &quot;0.168&quot;</code></pre>
+## SENTINEL_PRESENCE                         &quot;0.784&quot;       &quot;0.884&quot;       
+## GENERALIZED_ENVIRONMENT                   &quot;0.035&quot;       &quot;0.126&quot;       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.193&quot;       &quot;0.154&quot;</code></pre>
 <p>Interesting… While Sentinel presence and the interaction of sentinel
 presence and generalized environment had no significant effects,
 generalized environment had an effect on the frequency of transitions to
@@ -503,19 +503,19 @@ include those 4 transitions. </strong></p>
 ##  #------Multivariate post-hoc comparisons: p-values -----# 
 ##  
 ##                  contrast p.value
-## 1 Green Area - Commercial   0.502
+## 1 Green Area - Commercial   0.515
 ## 
 ##  #-----------Confidence intervals for summary effects-------------# 
 ##  
 ##                         Estimate      Lower     Upper
-## Green Area - Commercial    0.063 -0.1162875 0.2422875</code></pre>
+## Green Area - Commercial    0.063 -0.1219257 0.2479257</code></pre>
 <p>HMMMM… Very weird… Now its not significant… Let’s compute univariate
 comparisons.</p>
 <pre class="r"><code>PTWY.HD.HDP&lt;-MANOVA.wide(PTWY_HD.HDP~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
 PTWY.HU.HD&lt;-MANOVA.wide(PTWY_HU.HD~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
 
 p.adjust(c(PTWY.HD.HDP$resampling[,1], PTWY.HU.HD$resampling[,1]), method = &quot;bonferroni&quot;)</code></pre>
-<pre><code>## [1] 0.760 0.088</code></pre>
+<pre><code>## [1] 0.762 0.092</code></pre>
 <pre class="r"><code>#using the parametric bootstrap Wald-type statistic</code></pre>
 <p>Very cool! Turns out that only the transitions from head up to head
 down is significantly affected by the generalized environment. This is
@@ -589,17 +589,17 @@ summary(PTWY.vigil)</code></pre>
 ## 
 ## p-values resampling:
 ##                                           paramBS (WTS) paramBS (MATS)
-## SENTINEL_PRESENCE                         &quot;0.867&quot;       &quot;0.905&quot;       
-## GENERALIZED_ENVIRONMENT                   &quot;0.59&quot;        &quot;0.532&quot;       
-## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.227&quot;       &quot;0.16&quot;</code></pre>
+## SENTINEL_PRESENCE                         &quot;0.866&quot;       &quot;0.893&quot;       
+## GENERALIZED_ENVIRONMENT                   &quot;0.603&quot;       &quot;0.543&quot;       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.257&quot;       &quot;0.177&quot;</code></pre>
 <p>The results of this test suggest that no transitions to vigilance are
 significantly affected by either the presence of a sentinel or the
 generalized environment.</p>
 <p><strong>Figure out what to do with factors such as bait presence,
 group size and disturbance frequency</strong></p>
 </div>
-<div id="the-other-variables" class="section level2">
-<h2>The other variables</h2>
+<div id="the-other-variables---vulnerability" class="section level2">
+<h2>The other variables - Vulnerability</h2>
 <p>We still have bait presence, group size and disturbance frequency to
 look at. I want to try and make a quick function to run all the
 tests.</p>
@@ -610,11 +610,10 @@ tests.</p>
                               , &quot;DISTURBANCE_FREQUENCY&quot;)
                               ]
                          , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~x, data = PTWY, iter = 1000)
-                         )
-PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
+                         )</code></pre>
 <pre><code>## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## &lt;environment: 0x0000014c3602ca10&gt;
+## &lt;environment: 0x0000018a223eaf80&gt;
 ## 
 ## Descriptive:
 ##     x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -631,11 +630,10 @@ PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x &quot;0.615&quot;       &quot;0.767&quot;</code></pre>
-<pre class="r"><code>PTWY.GENV&lt;-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)</code></pre>
+## x &quot;0.603&quot;       &quot;0.756&quot;</code></pre>
 <pre><code>## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## &lt;environment: 0x0000014c3e908508&gt;
+## &lt;environment: 0x0000018a2aa106b0&gt;
 ## 
 ## Descriptive:
 ##            x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -652,11 +650,10 @@ PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x &quot;0.012&quot;       &quot;0.096&quot;</code></pre>
-<pre class="r"><code>PTWY.GS&lt;-summary(PTWY.vuln.all$GROUP_SIZE)</code></pre>
+## x &quot;0.014&quot;       &quot;0.089&quot;</code></pre>
 <pre><code>## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## &lt;environment: 0x0000014c42b6d2c0&gt;
+## &lt;environment: 0x0000018a2ee4ab00&gt;
 ## 
 ## Descriptive:
 ##       x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -673,11 +670,10 @@ PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x &quot;0.097&quot;       &quot;0.256&quot;</code></pre>
-<pre class="r"><code>PTWY.BP&lt;-summary(PTWY.vuln.all$BAIT_PRESENCE)</code></pre>
+## x &quot;0.084&quot;       &quot;0.253&quot;</code></pre>
 <pre><code>## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## &lt;environment: 0x0000014c41b09428&gt;
+## &lt;environment: 0x0000018a2dfb3618&gt;
 ## 
 ## Descriptive:
 ##     x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -694,11 +690,10 @@ PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x &quot;0.075&quot;       &quot;0.041&quot;</code></pre>
-<pre class="r"><code>PTWY.DF&lt;-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)</code></pre>
+## x &quot;0.066&quot;       &quot;0.034&quot;</code></pre>
 <pre><code>## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## &lt;environment: 0x0000014c3c828ed0&gt;
+## &lt;environment: 0x0000018a28330bc8&gt;
 ## 
 ## Descriptive:
 ##        x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -716,7 +711,342 @@ PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x &quot;0.015&quot;       &quot;0.091&quot;</code></pre>
+## x &quot;0.011&quot;       &quot;0.098&quot;</code></pre>
+<pre class="r"><code>Factor&lt;-c(&quot;Sentinel Presence&quot;, &quot;Generalized Environment&quot;, &quot;Group Size&quot;, &quot;Bait Presence&quot;, &quot;Disturbance Frequency&quot;)
+Results.vuln&lt;-cbind(Factor, rbind(PTWY.vuln.SENT, PTWY.vuln.GENV, PTWY.vuln.GS, PTWY.vuln.BP, PTWY.vuln.DF))
+Results.vuln</code></pre>
+<pre><code>##   Factor                    paramBS (WTS) paramBS (MATS)
+## x &quot;Sentinel Presence&quot;       &quot;0.603&quot;       &quot;0.756&quot;       
+## x &quot;Generalized Environment&quot; &quot;0.014&quot;       &quot;0.089&quot;       
+## x &quot;Group Size&quot;              &quot;0.084&quot;       &quot;0.253&quot;       
+## x &quot;Bait Presence&quot;           &quot;0.066&quot;       &quot;0.034&quot;       
+## x &quot;Disturbance Frequency&quot;   &quot;0.011&quot;       &quot;0.098&quot;</code></pre>
+<p>As seen above, Gen. env has a significant effect (p-value = 0.007).
+Interestingly, group size (p-value ~ 0.072), bait presence (p-value ~
+0.06), and disturbance frequency (p-value ~ 0.01) are have either
+significant or marginally significant effects on the frequency of
+pathways to vulnerability.</p>
+<div id="post-hoc---disturbance-frequency" class="section level3">
+<h3>Post Hoc - Disturbance Frequency</h3>
+<pre class="r"><code>PTWY.DF.Vuln&lt;-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+simCI(PTWY.DF.Vuln, contrast = &quot;pairwise&quot;, type = &quot;Tukey&quot;, interaction  = F, factor = &quot;DISTURBANCE_FREQUENCY&quot;)</code></pre>
+<pre><code>## 
+##  #------ Call -----# 
+##  
+##  - Contrast:  Tukey 
+##  - Confidence level: 95 % 
+## 
+##  #------Multivariate post-hoc comparisons: p-values -----# 
+##  
+##        contrast p.value
+## 1    LOW - HIGH   0.814
+## 2 MEDIUM - HIGH   0.989
+## 3  MEDIUM - LOW   0.710
+## 
+##  #-----------Confidence intervals for summary effects-------------# 
+##  
+##               Estimate      Lower     Upper
+## LOW - HIGH      -0.094 -0.4479027 0.2599027
+## MEDIUM - HIGH    0.020 -0.3443450 0.3843450
+## MEDIUM - LOW     0.114 -0.2172126 0.4452126</code></pre>
+<p>HMMMMM… Not significant… Univariate analysis time.</p>
+<pre class="r"><code>PTWY.DF.HD.HDP&lt;-MANOVA.wide(PTWY_HD.HDP~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+PTWY.DF.HU.HD&lt;-MANOVA.wide(PTWY_HU.HD~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.DF.HD.HDP$resampling[,1], PTWY.DF.HU.HD$resampling[,1]), method = &quot;bonferroni&quot;)</code></pre>
+<pre><code>## [1] 0.06 0.84</code></pre>
+<pre class="r"><code>#using the parametric bootstrap Wald-type statistic</code></pre>
+<p>Curious… the frequency of the pathway HD&gt;HDPeck is marginally
+significant. Let’s quickly plot it.</p>
+</div>
+<div id="plots-1" class="section level3">
+<h3>Plots</h3>
+<pre class="r"><code>source(&quot;./Calculate Summary Table with SE, SD, CI by grouping variables.R&quot;)
+DF.PTWY.vuln&lt;-PTWY %&gt;%
+  summarySE(measurevar = &quot;PTWY_HD.HDP&quot;
+            , groupvars = &quot;DISTURBANCE_FREQUENCY&quot;) %&gt;%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+                     , y = PTWY_HD.HDP
+                     , color = DISTURBANCE_FREQUENCY))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HD.HDP-se)
+                    , ymax=(PTWY_HD.HDP+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab(&quot;Head Down to Head Down + Peck (%)&quot;) +
+  scale_colour_manual(values = cbPalette
+                      , guide=&quot;none&quot;)+
+  theme(axis.title.x = element_blank()
+        , legend.position = &quot;bottom&quot;
+        , legend.box=&quot;vertical&quot;
+        , legend.margin=margin()) +
+  scale_x_discrete(limits = c(&quot;LOW&quot;, &quot;MEDIUM&quot;, &quot;HIGH&quot;))
+
+DF.PTWY.vuln</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAMAAABNUi8GAAAA4VBMVEUAAAAAADoAAGYAOpAAZrYzMzM6AAA6AGY6kNtNTU1NTW5NTY5NbqtNjshWtOlmAABmADpmAGZmtv9uTU1uTW5uTY5ubo5ubqtujqtujshuq8huq+SOTU2OTW6OTY6Obm6ObquOjm6Ojo6OjsiOyP+QOgCQOmaQkNuQ2/+rbk2rbm6rbo6rjqurq46ryKur5P+2ZgC2///Ijk3Ijm7IyI7I5KvI/+TI///MeafbkDrb/7bb///kq27kq47k/8jk/+Tk///mnwD/tmb/yI7/25D/5Kv//7b//8j//9v//+T///8sANbmAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAPcklEQVR4nO3dC3fa2BWGYU8Tp8aXuHXiplPbaTvF7ThpB8bTFnuGttgEY/T/f1AlIdCFm7RjNh/ofdaaGKs+K0r65kg6INgLAGF7m94BYBkChTQChTQChTQChbQlgQ4vG8e9+NHgXeOok90AOFkc6OimGXRPokfDy/DRcS/dsHwg8HIWdzb82AkG5+HEGQw+9ILhVSvdsHwg8HIWd5ZkmT5KN+yHCBQeFnfWP570GB/iD1vphuUDgZdTZgaNLpL+8Ckzgy4fCLycMuegyXecg8Lfsqv4i8lVfDhtho/SDcsHAi9n5TpoNGf2G/ECaG4dlEDhwdwZgcIDgUIagUIagUIagUIagUIagUIagUIagUIagUIagUIagUIagWKxh1neu0CgKMG9yykCRQkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmkECmUPDxsrlECxysPYZn5zAsUqBAplDw+bLJRAsQKBQhqBQhvnoJBGoBDHOii08UwSpBEopBEopBEopBEopBEopBEopEkGOrxsHPfiR4N3jaNOEHQbjfjrqoHYOYqBjm6aQfckejS8agXdsNXbZqmB2D2KgQ4/doLBeTRhDj70ou9Gn1qlBmL3KAYaZ3kVNZnMoOEh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" /><!-- --></p>
+<p>THATS UNEXPECTED… well.. not that unexpected. It mirrors the results
+of the peck data! As disturbance frequency increases, so does the peck
+rate, and therefore the frequency of head down to head down + peck. It
+could be a sense of urgency.</p>
+</div>
+</div>
+<div id="the-other-variables---vulnerability-1" class="section level2">
+<h2>The other variables - Vulnerability</h2>
+<p>We still have bait presence, group size and disturbance frequency to
+look at. I want to try and make a quick function to run all the
+tests.</p>
+<pre class="r"><code>PTWY.vigil.all&lt;-lapply(PTWY[,c(&quot;SENTINEL_PRESENCE&quot;
+                              ,&quot;GENERALIZED_ENVIRONMENT&quot;
+                              , &quot;GROUP_SIZE&quot;
+                              , &quot;BAIT_PRESENCE&quot;
+                              , &quot;DISTURBANCE_FREQUENCY&quot;)
+                              ]
+                         , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~x, data = PTWY, iter = 1000)
+                         )</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## &lt;environment: 0x0000018a34b32ef8&gt;
+## 
+## Descriptive:
+##     x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1  NO 32           0.148             0.861
+## 2 YES 49           0.150             0.826
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;0.345&quot;        &quot;2&quot; &quot;0.841&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          0.293
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.832&quot;       &quot;0.845&quot;</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## &lt;environment: 0x0000018a2e0ae788&gt;
+## 
+## Descriptive:
+##            x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1 Commercial 48           0.138             0.809
+## 2 Green Area 33           0.166             0.886
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;2.002&quot;        &quot;2&quot; &quot;0.367&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          2.388
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.383&quot;       &quot;0.312&quot;</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## &lt;environment: 0x0000018a220c89b0&gt;
+## 
+## Descriptive:
+##       x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1 LARGE 36           0.116             0.792
+## 2 SMALL 45           0.176             0.879
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;4.136&quot;        &quot;2&quot; &quot;0.126&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          5.041
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.13&quot;        &quot;0.088&quot;</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## &lt;environment: 0x0000018a2a39e688&gt;
+## 
+## Descriptive:
+##     x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1  NO 15           0.230             0.864
+## 2 YES 66           0.131             0.835
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;3.356&quot;        &quot;2&quot; &quot;0.187&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x           3.59
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.215&quot;       &quot;0.181&quot;</code></pre>
+<pre><code>## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## &lt;environment: 0x0000018a2a583758&gt;
+## 
+## Descriptive:
+##        x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1   HIGH 20           0.105             0.660
+## 2    LOW 38           0.162             0.889
+## 3 MEDIUM 23           0.167             0.916
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x &quot;10.253&quot;       &quot;4&quot; &quot;0.036&quot;
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x         10.716
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x &quot;0.068&quot;       &quot;0.061&quot;</code></pre>
+<pre class="r"><code>Results.vigil&lt;-cbind(Factor, rbind(PTWY.vigil.SENT, PTWY.vigil.GENV, PTWY.vigil.GS, PTWY.vigil.BP, PTWY.vigil.DF))
+Results.vigil</code></pre>
+<pre><code>##   Factor                    paramBS (WTS) paramBS (MATS)
+## x &quot;Sentinel Presence&quot;       &quot;0.832&quot;       &quot;0.845&quot;       
+## x &quot;Generalized Environment&quot; &quot;0.383&quot;       &quot;0.312&quot;       
+## x &quot;Group Size&quot;              &quot;0.13&quot;        &quot;0.088&quot;       
+## x &quot;Bait Presence&quot;           &quot;0.215&quot;       &quot;0.181&quot;       
+## x &quot;Disturbance Frequency&quot;   &quot;0.068&quot;       &quot;0.061&quot;</code></pre>
+<p>Another interesting result! Disturbance frequency is marginally
+significant for transitions to vigilance. Same workflow as above.</p>
+<pre class="r"><code>PTWY.DF.Vigil&lt;-MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+simCI(PTWY.DF.Vigil, contrast = &quot;pairwise&quot;, type = &quot;Tukey&quot;, interaction  = F, factor = &quot;DISTURBANCE_FREQUENCY&quot;)</code></pre>
+<pre><code>## 
+##  #------ Call -----# 
+##  
+##  - Contrast:  Tukey 
+##  - Confidence level: 95 % 
+## 
+##  #------Multivariate post-hoc comparisons: p-values -----# 
+##  
+##        contrast p.value
+## 1    LOW - HIGH   0.088
+## 2 MEDIUM - HIGH   0.052
+## 3  MEDIUM - LOW   0.931
+## 
+##  #-----------Confidence intervals for summary effects-------------# 
+##  
+##               Estimate        Lower     Upper
+## LOW - HIGH       0.286 -0.028869806 0.6008698
+## MEDIUM - HIGH    0.318 -0.001957442 0.6379574
+## MEDIUM - LOW     0.032 -0.186979252 0.2509793</code></pre>
+<p>Pairwise comparisons for medium - high is marginally significant.</p>
+<pre class="r"><code>PTWY.DF.HD.HU&lt;-MANOVA.wide(PTWY_HD.HU~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+PTWY.DF.HDP.HU&lt;-MANOVA.wide(PTWY_HDP.HU~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.DF.HD.HU$resampling[,1], PTWY.DF.HDP.HU$resampling[,1]), method = &quot;bonferroni&quot;)</code></pre>
+<pre><code>## [1] 0.522 0.050</code></pre>
+<pre class="r"><code>#using the parametric bootstrap Wald-type statistic</code></pre>
+<p>Disturbance frequency has a marginally significant effect on
+transitions from Head Down + Peck to Head Up. Plot time!</p>
+<pre class="r"><code>source(&quot;./Calculate Summary Table with SE, SD, CI by grouping variables.R&quot;)
+DF.PTWY.vigil&lt;-PTWY %&gt;%
+  summarySE(measurevar = &quot;PTWY_HDP.HU&quot;
+            , groupvars = &quot;DISTURBANCE_FREQUENCY&quot;) %&gt;%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+                     , y = PTWY_HDP.HU
+                     , color = DISTURBANCE_FREQUENCY))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HDP.HU-se)
+                    , ymax=(PTWY_HDP.HU+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab(&quot;Head Down + Peck to Head Up  (%)&quot;) +
+  scale_colour_manual(values = cbPalette
+                      , guide=&quot;none&quot;)+
+  theme(axis.title.x = element_blank()
+        , legend.position = &quot;bottom&quot;
+        , legend.box=&quot;vertical&quot;
+        , legend.margin=margin()) +
+  scale_x_discrete(limits = c(&quot;LOW&quot;, &quot;MEDIUM&quot;, &quot;HIGH&quot;))
+
+DF.PTWY.vigil</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="frequency" class="section level1">
+<h1>Frequency</h1>
+<p>We’ll be fitting another manova on the frequency data.</p>
+<pre class="r"><code>FREQ&lt;- PTWY.raw %&gt;%
+  dplyr::select(VIDEO_ID.,ID., DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_FREQUENCY_OF_DISTURBANCES, DISTURBANCE_FREQUENCY | starts_with(&quot;FREQ&quot;))</code></pre>
+<p>Let’s try fitting the model.</p>
+<div id="vulnerable-1" class="section level2">
+<h2>Vulnerable</h2>
+<pre class="r"><code>FREQ.vuln&lt;-MANOVA.wide(cbind(FREQ$FREQ_HD.HDP, FREQ$FREQ_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = FREQ, subject = &quot;ID.&quot;, iter=1000)
+summary(FREQ.vuln)</code></pre>
+<pre><code>## Call: 
+## cbind(FREQ$FREQ_HD.HDP, FREQ$FREQ_HU.HD) ~ SENTINEL_PRESENCE * 
+##     GENERALIZED_ENVIRONMENT
+## 
+## Descriptive:
+##   SENTINEL_PRESENCE GENERALIZED_ENVIRONMENT  n FREQ$FREQ_HD.HDP
+## 1                NO              Commercial 18            0.205
+## 2                NO              Green Area 14            0.228
+## 3               YES              Commercial 30            0.230
+## 4               YES              Green Area 19            0.208
+##    FREQ$FREQ_HU.HD
+## 1            0.178
+## 2            0.232
+## 3            0.170
+## 4            0.197
+## 
+## Wald-Type Statistic (WTS):
+##                                           Test statistic df  p-value
+## SENTINEL_PRESENCE                         &quot;2.465&quot;        &quot;2&quot; &quot;0.292&quot;
+## GENERALIZED_ENVIRONMENT                   &quot;7.348&quot;        &quot;2&quot; &quot;0.025&quot;
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;1.428&quot;        &quot;2&quot; &quot;0.49&quot; 
+## 
+## modified ANOVA-Type Statistic (MATS):
+##                                           Test statistic
+## SENTINEL_PRESENCE                                  1.119
+## GENERALIZED_ENVIRONMENT                            3.967
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT          1.890
+## 
+## p-values resampling:
+##                                           paramBS (WTS) paramBS (MATS)
+## SENTINEL_PRESENCE                         &quot;0.284&quot;       &quot;0.503&quot;       
+## GENERALIZED_ENVIRONMENT                   &quot;0.031&quot;       &quot;0.153&quot;       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT &quot;0.528&quot;       &quot;0.386&quot;</code></pre>
+<p>Same as with the PTWY data, only the generalized environment had a
+significant effect, and that only with the Wald-type statistic.
+Weird…</p>
+<div id="post-hoc-1" class="section level3">
+<h3>Post Hoc</h3>
+<pre class="r"><code>simCI(FREQ.vuln, contrast = &quot;pairwise&quot;, type = &quot;Tukey&quot;, interaction  = F, factor = &quot;GENERALIZED_ENVIRONMENT&quot;)</code></pre>
+<pre><code>## 
+##  #------ Call -----# 
+##  
+##  - Contrast:  Tukey 
+##  - Confidence level: 95 % 
+## 
+##  #------Multivariate post-hoc comparisons: p-values -----# 
+##  
+##                  contrast p.value
+## 1 Green Area - Commercial   0.308
+## 
+##  #-----------Confidence intervals for summary effects-------------# 
+##  
+##                         Estimate      Lower     Upper
+## Green Area - Commercial    0.034 -0.0357299 0.1037299</code></pre>
+<p>Womp womp. Not significant. :/ However, this still follows the same
+pattern as the PTWY analysis. Let’s perform a univariate analysis to
+confirm.</p>
+<pre class="r"><code>FREQ.HD.HDP&lt;-MANOVA.wide(FREQ_HD.HDP~GENERALIZED_ENVIRONMENT, data = FREQ, iter = 1000)
+FREQ.HU.HD&lt;-MANOVA.wide(FREQ_HU.HD~GENERALIZED_ENVIRONMENT, data = FREQ, iter = 1000)
+
+p.adjust(c(FREQ.HD.HDP$resampling[,1], FREQ.HU.HD$resampling[,1]), method = &quot;bonferroni&quot;)</code></pre>
+<pre><code>## [1] 1.000 0.074</code></pre>
+<pre class="r"><code>#using the parametric bootstrap Wald-type statistic</code></pre>
+<p>Cool! HU&gt;HD is marginally insignificant with a p-value of ~0.08.
+Onto vigilance!</p>
 <!-- # Old code below -->
 <!-- # ```{r PTWY Analysis} -->
 <!-- # PTWY.ENV <- '  -->
@@ -778,6 +1108,8 @@ PTWY.SENT&lt;-summary(PTWY.vuln.all$SENTINEL_PRESENCE)</code></pre>
 <!-- #  -->
 <!-- # summary(PTWY.Fit, fit.measures = TRUE, standardized = TRUE) -->
 <!-- # ``` -->
+</div>
+</div>
 </div>
 
 

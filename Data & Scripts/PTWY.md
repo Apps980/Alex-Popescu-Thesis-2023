@@ -1,7 +1,7 @@
 ---
 title: "PTWY"
 author: "Alex Popescu"
-date: "2023-08-18"
+date: "2023-08-24"
 output: 
   html_document: 
     keep_md: yes
@@ -114,7 +114,7 @@ Vigilant<-cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)
 # This does not work
 ```
 
-Seems like it worked. Let's try fitting the model.
+Let's try fitting the model.
 
 ## Vulnerable
 
@@ -155,9 +155,9 @@ summary(PTWY.vuln)
 ## 
 ## p-values resampling:
 ##                                           paramBS (WTS) paramBS (MATS)
-## SENTINEL_PRESENCE                         "0.777"       "0.879"       
-## GENERALIZED_ENVIRONMENT                   "0.028"       "0.137"       
-## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT "0.182"       "0.168"
+## SENTINEL_PRESENCE                         "0.784"       "0.884"       
+## GENERALIZED_ENVIRONMENT                   "0.035"       "0.126"       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT "0.193"       "0.154"
 ```
 
 Interesting... While Sentinel presence and the interaction of sentinel presence and generalized environment had no significant effects, generalized environment had an effect on the frequency of transitions to vulnerability.
@@ -183,12 +183,12 @@ simCI(PTWY.vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor
 ##  #------Multivariate post-hoc comparisons: p-values -----# 
 ##  
 ##                  contrast p.value
-## 1 Green Area - Commercial   0.502
+## 1 Green Area - Commercial   0.515
 ## 
 ##  #-----------Confidence intervals for summary effects-------------# 
 ##  
 ##                         Estimate      Lower     Upper
-## Green Area - Commercial    0.063 -0.1162875 0.2422875
+## Green Area - Commercial    0.063 -0.1219257 0.2479257
 ```
 
 HMMMM... Very weird... Now its not significant... Let's compute univariate comparisons.
@@ -202,7 +202,7 @@ p.adjust(c(PTWY.HD.HDP$resampling[,1], PTWY.HU.HD$resampling[,1]), method = "bon
 ```
 
 ```
-## [1] 0.760 0.088
+## [1] 0.762 0.092
 ```
 
 ```r
@@ -298,16 +298,16 @@ summary(PTWY.vigil)
 ## 
 ## p-values resampling:
 ##                                           paramBS (WTS) paramBS (MATS)
-## SENTINEL_PRESENCE                         "0.867"       "0.905"       
-## GENERALIZED_ENVIRONMENT                   "0.59"        "0.532"       
-## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT "0.227"       "0.16"
+## SENTINEL_PRESENCE                         "0.866"       "0.893"       
+## GENERALIZED_ENVIRONMENT                   "0.603"       "0.543"       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT "0.257"       "0.177"
 ```
 
 The results of this test suggest that no transitions to vigilance are significantly affected by either the presence of a sentinel or the generalized environment.
 
 **Figure out what to do with factors such as bait presence, group size and disturbance frequency**
 
-## The other variables
+## The other variables - Vulnerability
 
 We still have bait presence, group size and disturbance frequency to look at. I want to try and make a quick function to run all the tests.
 
@@ -321,13 +321,12 @@ PTWY.vuln.all<-lapply(PTWY[,c("SENTINEL_PRESENCE"
                               ]
                          , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~x, data = PTWY, iter = 1000)
                          )
-PTWY.SENT<-summary(PTWY.vuln.all$SENTINEL_PRESENCE)
 ```
 
 ```
 ## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## <environment: 0x0000014c3602ca10>
+## <environment: 0x0000018a223eaf80>
 ## 
 ## Descriptive:
 ##     x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -344,17 +343,13 @@ PTWY.SENT<-summary(PTWY.vuln.all$SENTINEL_PRESENCE)
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x "0.615"       "0.767"
-```
-
-```r
-PTWY.GENV<-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)
+## x "0.603"       "0.756"
 ```
 
 ```
 ## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## <environment: 0x0000014c3e908508>
+## <environment: 0x0000018a2aa106b0>
 ## 
 ## Descriptive:
 ##            x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -371,17 +366,13 @@ PTWY.GENV<-summary(PTWY.vuln.all$GENERALIZED_ENVIRONMENT)
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x "0.012"       "0.096"
-```
-
-```r
-PTWY.GS<-summary(PTWY.vuln.all$GROUP_SIZE)
+## x "0.014"       "0.089"
 ```
 
 ```
 ## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## <environment: 0x0000014c42b6d2c0>
+## <environment: 0x0000018a2ee4ab00>
 ## 
 ## Descriptive:
 ##       x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -398,17 +389,13 @@ PTWY.GS<-summary(PTWY.vuln.all$GROUP_SIZE)
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x "0.097"       "0.256"
-```
-
-```r
-PTWY.BP<-summary(PTWY.vuln.all$BAIT_PRESENCE)
+## x "0.084"       "0.253"
 ```
 
 ```
 ## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## <environment: 0x0000014c41b09428>
+## <environment: 0x0000018a2dfb3618>
 ## 
 ## Descriptive:
 ##     x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -425,17 +412,13 @@ PTWY.BP<-summary(PTWY.vuln.all$BAIT_PRESENCE)
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x "0.075"       "0.041"
-```
-
-```r
-PTWY.DF<-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)
+## x "0.066"       "0.034"
 ```
 
 ```
 ## Call: 
 ## cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD) ~ x
-## <environment: 0x0000014c3c828ed0>
+## <environment: 0x0000018a28330bc8>
 ## 
 ## Descriptive:
 ##        x  n PTWY$PTWY_HD.HDP  PTWY$PTWY_HU.HD
@@ -453,8 +436,442 @@ PTWY.DF<-summary(PTWY.vuln.all$DISTURBANCE_FREQUENCY)
 ## 
 ## p-values resampling:
 ##   paramBS (WTS) paramBS (MATS)
-## x "0.015"       "0.091"
+## x "0.011"       "0.098"
 ```
+
+```r
+Factor<-c("Sentinel Presence", "Generalized Environment", "Group Size", "Bait Presence", "Disturbance Frequency")
+Results.vuln<-cbind(Factor, rbind(PTWY.vuln.SENT, PTWY.vuln.GENV, PTWY.vuln.GS, PTWY.vuln.BP, PTWY.vuln.DF))
+Results.vuln
+```
+
+```
+##   Factor                    paramBS (WTS) paramBS (MATS)
+## x "Sentinel Presence"       "0.603"       "0.756"       
+## x "Generalized Environment" "0.014"       "0.089"       
+## x "Group Size"              "0.084"       "0.253"       
+## x "Bait Presence"           "0.066"       "0.034"       
+## x "Disturbance Frequency"   "0.011"       "0.098"
+```
+
+As seen above, Gen. env has a  significant effect (p-value = 0.007). Interestingly,  group size (p-value ~ 0.072), bait presence (p-value ~ 0.06), and disturbance frequency (p-value ~ 0.01) are have either significant or marginally significant effects on the frequency of pathways to vulnerability.
+
+### Post Hoc - Disturbance Frequency
+
+
+```r
+PTWY.DF.Vuln<-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+simCI(PTWY.DF.Vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "DISTURBANCE_FREQUENCY")
+```
+
+```
+## 
+##  #------ Call -----# 
+##  
+##  - Contrast:  Tukey 
+##  - Confidence level: 95 % 
+## 
+##  #------Multivariate post-hoc comparisons: p-values -----# 
+##  
+##        contrast p.value
+## 1    LOW - HIGH   0.814
+## 2 MEDIUM - HIGH   0.989
+## 3  MEDIUM - LOW   0.710
+## 
+##  #-----------Confidence intervals for summary effects-------------# 
+##  
+##               Estimate      Lower     Upper
+## LOW - HIGH      -0.094 -0.4479027 0.2599027
+## MEDIUM - HIGH    0.020 -0.3443450 0.3843450
+## MEDIUM - LOW     0.114 -0.2172126 0.4452126
+```
+
+HMMMMM... Not significant... Univariate analysis time.
+
+
+```r
+PTWY.DF.HD.HDP<-MANOVA.wide(PTWY_HD.HDP~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+PTWY.DF.HU.HD<-MANOVA.wide(PTWY_HU.HD~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.DF.HD.HDP$resampling[,1], PTWY.DF.HU.HD$resampling[,1]), method = "bonferroni")
+```
+
+```
+## [1] 0.06 0.84
+```
+
+```r
+#using the parametric bootstrap Wald-type statistic
+```
+
+Curious... the frequency of the pathway HD>HDPeck is marginally significant. Let's quickly plot it.
+
+### Plots
+
+
+```r
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+DF.PTWY.vuln<-PTWY %>%
+  summarySE(measurevar = "PTWY_HD.HDP"
+            , groupvars = "DISTURBANCE_FREQUENCY") %>%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+                     , y = PTWY_HD.HDP
+                     , color = DISTURBANCE_FREQUENCY))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HD.HDP-se)
+                    , ymax=(PTWY_HD.HDP+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Head Down to Head Down + Peck (%)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  scale_x_discrete(limits = c("LOW", "MEDIUM", "HIGH"))
+
+DF.PTWY.vuln
+```
+
+![](PTWY_files/figure-html/PTWY.DF.vuln plots-1.png)<!-- -->
+
+THATS UNEXPECTED... well.. not that unexpected. It mirrors the results of the peck data! As disturbance frequency increases, so does the peck rate, and therefore the frequency of head down to head down + peck. It could be a sense of urgency.
+
+## The other variables - Vulnerability
+
+We still have bait presence, group size and disturbance frequency to look at. I want to try and make a quick function to run all the tests.
+
+
+```r
+PTWY.vigil.all<-lapply(PTWY[,c("SENTINEL_PRESENCE"
+                              ,"GENERALIZED_ENVIRONMENT"
+                              , "GROUP_SIZE"
+                              , "BAIT_PRESENCE"
+                              , "DISTURBANCE_FREQUENCY")
+                              ]
+                         , function(x) MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~x, data = PTWY, iter = 1000)
+                         )
+```
+
+```
+## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## <environment: 0x0000018a34b32ef8>
+## 
+## Descriptive:
+##     x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1  NO 32           0.148             0.861
+## 2 YES 49           0.150             0.826
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x "0.345"        "2" "0.841"
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          0.293
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x "0.832"       "0.845"
+```
+
+```
+## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## <environment: 0x0000018a2e0ae788>
+## 
+## Descriptive:
+##            x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1 Commercial 48           0.138             0.809
+## 2 Green Area 33           0.166             0.886
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x "2.002"        "2" "0.367"
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          2.388
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x "0.383"       "0.312"
+```
+
+```
+## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## <environment: 0x0000018a220c89b0>
+## 
+## Descriptive:
+##       x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1 LARGE 36           0.116             0.792
+## 2 SMALL 45           0.176             0.879
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x "4.136"        "2" "0.126"
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x          5.041
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x "0.13"        "0.088"
+```
+
+```
+## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## <environment: 0x0000018a2a39e688>
+## 
+## Descriptive:
+##     x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1  NO 15           0.230             0.864
+## 2 YES 66           0.131             0.835
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x "3.356"        "2" "0.187"
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x           3.59
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x "0.215"       "0.181"
+```
+
+```
+## Call: 
+## cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU) ~ x
+## <environment: 0x0000018a2a583758>
+## 
+## Descriptive:
+##        x  n PTWY$PTWY_HD.HU  PTWY$PTWY_HDP.HU
+## 1   HIGH 20           0.105             0.660
+## 2    LOW 38           0.162             0.889
+## 3 MEDIUM 23           0.167             0.916
+## 
+## Wald-Type Statistic (WTS):
+##   Test statistic df  p-value
+## x "10.253"       "4" "0.036"
+## 
+## modified ANOVA-Type Statistic (MATS):
+##   Test statistic
+## x         10.716
+## 
+## p-values resampling:
+##   paramBS (WTS) paramBS (MATS)
+## x "0.068"       "0.061"
+```
+
+```r
+Results.vigil<-cbind(Factor, rbind(PTWY.vigil.SENT, PTWY.vigil.GENV, PTWY.vigil.GS, PTWY.vigil.BP, PTWY.vigil.DF))
+Results.vigil
+```
+
+```
+##   Factor                    paramBS (WTS) paramBS (MATS)
+## x "Sentinel Presence"       "0.832"       "0.845"       
+## x "Generalized Environment" "0.383"       "0.312"       
+## x "Group Size"              "0.13"        "0.088"       
+## x "Bait Presence"           "0.215"       "0.181"       
+## x "Disturbance Frequency"   "0.068"       "0.061"
+```
+
+Another interesting result! Disturbance frequency is marginally significant for transitions to vigilance. Same workflow as above.
+
+
+```r
+PTWY.DF.Vigil<-MANOVA.wide(cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+simCI(PTWY.DF.Vigil, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "DISTURBANCE_FREQUENCY")
+```
+
+```
+## 
+##  #------ Call -----# 
+##  
+##  - Contrast:  Tukey 
+##  - Confidence level: 95 % 
+## 
+##  #------Multivariate post-hoc comparisons: p-values -----# 
+##  
+##        contrast p.value
+## 1    LOW - HIGH   0.088
+## 2 MEDIUM - HIGH   0.052
+## 3  MEDIUM - LOW   0.931
+## 
+##  #-----------Confidence intervals for summary effects-------------# 
+##  
+##               Estimate        Lower     Upper
+## LOW - HIGH       0.286 -0.028869806 0.6008698
+## MEDIUM - HIGH    0.318 -0.001957442 0.6379574
+## MEDIUM - LOW     0.032 -0.186979252 0.2509793
+```
+
+Pairwise comparisons for medium - high is marginally significant.
+
+
+```r
+PTWY.DF.HD.HU<-MANOVA.wide(PTWY_HD.HU~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+PTWY.DF.HDP.HU<-MANOVA.wide(PTWY_HDP.HU~DISTURBANCE_FREQUENCY, data = PTWY, iter = 1000)
+
+p.adjust(c(PTWY.DF.HD.HU$resampling[,1], PTWY.DF.HDP.HU$resampling[,1]), method = "bonferroni")
+```
+
+```
+## [1] 0.522 0.050
+```
+
+```r
+#using the parametric bootstrap Wald-type statistic
+```
+
+Disturbance frequency has a marginally significant effect on transitions from Head Down + Peck to Head Up. Plot time!
+
+
+```r
+source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
+DF.PTWY.vigil<-PTWY %>%
+  summarySE(measurevar = "PTWY_HDP.HU"
+            , groupvars = "DISTURBANCE_FREQUENCY") %>%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+                     , y = PTWY_HDP.HU
+                     , color = DISTURBANCE_FREQUENCY))+
+  geom_point(position = position_dodge(width=0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PTWY_HDP.HU-se)
+                    , ymax=(PTWY_HDP.HU+se))
+                , width = 0.1
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Head Down + Peck to Head Up  (%)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none")+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  scale_x_discrete(limits = c("LOW", "MEDIUM", "HIGH"))
+
+DF.PTWY.vigil
+```
+
+![](PTWY_files/figure-html/PTWY.DF.vigil plots-1.png)<!-- -->
+
+# Frequency
+
+We'll be fitting another manova on the frequency data.
+
+
+```r
+FREQ<- PTWY.raw %>%
+  dplyr::select(VIDEO_ID.,ID., DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_FREQUENCY_OF_DISTURBANCES, DISTURBANCE_FREQUENCY | starts_with("FREQ"))
+```
+
+Let's try fitting the model.
+
+## Vulnerable
+
+
+```r
+FREQ.vuln<-MANOVA.wide(cbind(FREQ$FREQ_HD.HDP, FREQ$FREQ_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = FREQ, subject = "ID.", iter=1000)
+summary(FREQ.vuln)
+```
+
+```
+## Call: 
+## cbind(FREQ$FREQ_HD.HDP, FREQ$FREQ_HU.HD) ~ SENTINEL_PRESENCE * 
+##     GENERALIZED_ENVIRONMENT
+## 
+## Descriptive:
+##   SENTINEL_PRESENCE GENERALIZED_ENVIRONMENT  n FREQ$FREQ_HD.HDP
+## 1                NO              Commercial 18            0.205
+## 2                NO              Green Area 14            0.228
+## 3               YES              Commercial 30            0.230
+## 4               YES              Green Area 19            0.208
+##    FREQ$FREQ_HU.HD
+## 1            0.178
+## 2            0.232
+## 3            0.170
+## 4            0.197
+## 
+## Wald-Type Statistic (WTS):
+##                                           Test statistic df  p-value
+## SENTINEL_PRESENCE                         "2.465"        "2" "0.292"
+## GENERALIZED_ENVIRONMENT                   "7.348"        "2" "0.025"
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT "1.428"        "2" "0.49" 
+## 
+## modified ANOVA-Type Statistic (MATS):
+##                                           Test statistic
+## SENTINEL_PRESENCE                                  1.119
+## GENERALIZED_ENVIRONMENT                            3.967
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT          1.890
+## 
+## p-values resampling:
+##                                           paramBS (WTS) paramBS (MATS)
+## SENTINEL_PRESENCE                         "0.284"       "0.503"       
+## GENERALIZED_ENVIRONMENT                   "0.031"       "0.153"       
+## SENTINEL_PRESENCE:GENERALIZED_ENVIRONMENT "0.528"       "0.386"
+```
+
+Same as with the PTWY data, only the generalized environment had a significant effect, and that only with the Wald-type statistic. Weird... 
+
+### Post Hoc
+
+
+```r
+simCI(FREQ.vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "GENERALIZED_ENVIRONMENT")
+```
+
+```
+## 
+##  #------ Call -----# 
+##  
+##  - Contrast:  Tukey 
+##  - Confidence level: 95 % 
+## 
+##  #------Multivariate post-hoc comparisons: p-values -----# 
+##  
+##                  contrast p.value
+## 1 Green Area - Commercial   0.308
+## 
+##  #-----------Confidence intervals for summary effects-------------# 
+##  
+##                         Estimate      Lower     Upper
+## Green Area - Commercial    0.034 -0.0357299 0.1037299
+```
+
+Womp womp. Not significant. :/
+However, this still follows the same pattern as the PTWY analysis. Let's perform a univariate analysis to confirm.
+
+
+```r
+FREQ.HD.HDP<-MANOVA.wide(FREQ_HD.HDP~GENERALIZED_ENVIRONMENT, data = FREQ, iter = 1000)
+FREQ.HU.HD<-MANOVA.wide(FREQ_HU.HD~GENERALIZED_ENVIRONMENT, data = FREQ, iter = 1000)
+
+p.adjust(c(FREQ.HD.HDP$resampling[,1], FREQ.HU.HD$resampling[,1]), method = "bonferroni")
+```
+
+```
+## [1] 1.000 0.074
+```
+
+```r
+#using the parametric bootstrap Wald-type statistic
+```
+
+Cool! HU>HD is marginally insignificant with a p-value of ~0.08.
+Onto vigilance!
+
+
 
 <!-- # Old code below -->
 <!-- # ```{r PTWY Analysis} -->

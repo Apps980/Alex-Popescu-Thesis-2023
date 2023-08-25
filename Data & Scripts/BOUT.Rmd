@@ -157,6 +157,22 @@ Let's fit the models.
 
 ## The Models
 
+```{r Model Labels}
+pl<-c(
+  '(Intercept)' = "Intercept"
+  , BEHAVIORHU = "Behavior"
+  , SENTINEL_PRESENCEYES = "Sentinel Presence"
+  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
+  , GROUP_SIZESMALL = "Group Size"
+  , BAIT_PRESENCEYES = "Bait Presence"
+  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
+  , 'BEHAVIORHU:SENTINEL_PRESENCEYES' = "Behavior: Sentinel Presence"
+  , 'BEHAVIORHU:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Generalized Environment"
+  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  , 'BEHAVIORHU:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Sentinel Presence: Generalized Environment"
+)
+```
+
 Let's fit a model. We are testing principally for the effects of the presence of a sentinel and the generalized environment. However, group size and the presence of bait could also affect the duration of bouts.
 
 I originally had temperature, time and data as random effects, but the model was singular. Running rePCA showed that the random effects explained the same variance.
@@ -167,6 +183,11 @@ The first model fitted will be a simple model with no interactions.
 BOUT.MOD1<-lmer(LDURATION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD1
+                  , pred.labels = pl
+                  , rm.terms = c("BEHAVIORM"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES"
+                                 , "BEHAVIORM:GENERALIZED_ENVIRONMENTGreen Area"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area")
                   , show.re.var = T
                   , title = "Bout Model 1 Output"
                   , dv.labels = " Effects of on duration of bouts of behaviors")
@@ -190,15 +211,20 @@ As such, it is possible that, once again, the group size's effects occur on cert
 Finally, the frequency of disturbances had a significant effect. I will include an interaction between this factor and generalized environment, as well as with sentinel presence, and behavior.
 
 ```{r BOUT MODEL 2}
-BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
+BOUT.MOD2<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD2
+                  , pred.labels = pl
+                  , rm.terms = c("BEHAVIORM"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES"
+                                 , "BEHAVIORM:GENERALIZED_ENVIRONMENTGreen Area"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area")
                   , show.re.var = T
                   , title = "Bout Model 2 Output"
                   , dv.labels = " Effects of on duration of bouts of behaviors")
 ```
 
-In the second model with the added interactions, the behavior, generalized environment and a number of interactions are significant. The interaction between behavior and generalized environment is significant, as well as the interaction between the presence of a sentinel and generalized environment. The interaction between behavior and group size is significant. Lastly, moving and bait presence were significant.
+In the second model with the added interactions, the behavior, generalized environment and a number of interactions are significant. The interaction between behavior and generalized environment is significant, as well as the interaction between the presence of a sentinel and generalized environment. The interaction between behavior and group size is significant. Lastly, moving and bait presence were significant (removed Moving from output).
 
 The interaction between the behavior type and the environment are significant. This would imply that individuals change the duration of bouts of behaviors in response to different environments, with the effect differing between behaviors.\
 
@@ -216,6 +242,11 @@ Let's run the final and most complex model.
 BOUT.MOD3<-lmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD3
+                  , pred.labels = pl
+                  , rm.terms = c("BEHAVIORM"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES"
+                                 , "BEHAVIORM:GENERALIZED_ENVIRONMENTGreen Area"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area")
                   , show.re.var = T
                   , title = "Bout Model 3 Output"
                   , dv.labels = " Effects of on duration of bouts of behaviors")
@@ -237,6 +268,11 @@ In case there are any violations in the assumptions of the linear mixed model, I
 BOUT.RMOD2<-rlmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.RMOD2
+                  , pred.labels = pl
+                  , rm.terms = c("BEHAVIORM"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES"
+                                 , "BEHAVIORM:GENERALIZED_ENVIRONMENTGreen Area"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area")
                   , show.re.var = T
                   , title = "Bout Robust Model 2 Output"
                   , dv.labels = " Effects on duration of bouts of behaviors")
