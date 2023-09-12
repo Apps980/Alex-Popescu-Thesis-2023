@@ -1,51 +1,30 @@
 {
   "collapse-filter": false,
-  "search": "males",
-  "showTags": true,
+  "search": "",
+  "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "tag:#Reject",
+      "query": "tag:#GroupSize",
       "color": {
         "a": 1,
         "rgb": 14701138
-      }
-    },
-    {
-      "query": "tag:#Avian",
-      "color": {
-        "a": 1,
-        "rgb": 5404128
-      }
-    },
-    {
-      "query": "tag:#Mongoose",
-      "color": {
-        "a": 1,
-        "rgb": 11657298
-      }
-    },
-    {
-      "query": "tag:#Primate",
-      "color": {
-        "a": 1,
-        "rgb": 14570208
       }
     }
   ],
   "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": 0.9,
-  "nodeSizeMultiplier": 2.00555555555556,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
   "collapse-forces": true,
-  "centerStrength": 0.399305555555556,
-  "repelStrength": 20,
-  "linkStrength": 0.746527777777778,
-  "linkDistance": 30,
-  "scale": 0.10096557691793487,
-  "close": false
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.3175886727739796,
+  "close": true
 }

@@ -23,12 +23,8 @@
             "id": "7a0928f3428dd1ec",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Bednekoff's Model.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ],
@@ -106,7 +102,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Bednekoff's Model.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +118,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Bednekoff's Model.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,9 +139,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Bednekoff's Model.md"
-              }
+              "state": {}
             }
           },
           {
@@ -178,9 +170,13 @@
   "active": "7a0928f3428dd1ec",
   "lastOpenFiles": [
     "Sex.md",
+    "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
     "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
-    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+    "Biparental care and obligate monogamy in the rock-haunting possum, Petropseudes dahli, from tropical Australia.md",
+    "Florida Scrub-Jays Compensate for the Sentinel Behavior of Flockmates.md",
+    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
     "Bednekoff's Model.md",
+    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
     "Intrasexual competition.md",
     "Interspecific signalling between mutualists_ food-thieving drongos use a cooperative sentinel call to manipulate foraging partners.md",
     "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
@@ -195,13 +191,9 @@
     "Anti-predator behaviour of captive Grey partridges (Perdix perdix).md",
     "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
     "COMPOSITION AND STRUCTURE OF AVIAN MIXED-SPECIES FLOCKS IN A HIGH-ANDEAN POLYLEPIS FOREST IN BOLIVIA.md",
-    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
-    "Biparental care and obligate monogamy in the rock-haunting possum, Petropseudes dahli, from tropical Australia.md",
     "Group size effects in social evolution.md",
     "Florida Scrub-Jays (Aphelocoma coerulescens) are Sentinels More When Well-Fed (Even with no Kin Nearby).md",
     "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
-    "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
-    "Rank.md",
-    "Selfish Sentinels in Cooperative Mammals.md"
+    "Rank.md"
   ]
 }
