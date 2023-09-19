@@ -171,6 +171,16 @@ pl<-c(
   , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
   , 'BEHAVIORHU:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Sentinel Presence: Generalized Environment"
 )
+
+pl2<-c(
+  '(Intercept)' = "Intercept"
+  , SENTINEL_PRESENCEYES = "Sentinel Presence"
+  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
+  , GROUP_SIZESMALL = "Group Size"
+  , BAIT_PRESENCEYES = "Bait Presence"
+  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
+  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+)
 ```
 
 Let's fit a model. We are testing principally for the effects of the presence of a sentinel and the generalized environment. However, group size and the presence of bait could also affect the duration of bouts.
@@ -276,6 +286,20 @@ sjPlot::tab_model(BOUT.RMOD2
                   , show.re.var = T
                   , title = "Bout Robust Model 2 Output"
                   , dv.labels = " Effects on duration of bouts of behaviors")
+sjPlot::plot_model(BOUT.RMOD2
+                  , axis.labels = pl
+                  , rm.terms = c("BEHAVIORM"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES"
+                                 , "BEHAVIORM:GENERALIZED_ENVIRONMENTGreen Area"
+                                 ,"BEHAVIORM:SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area")
+                  , show.values=T
+                  , show.p=T
+                  , value.offset = 0.4
+                  , value.size = 3.5
+                  , wrap.title = 48
+                  , show.re.var = T
+                  , title = "Bout Robust Model 2 Output"
+                  , dv.labels = " Effects on duration of bouts of behaviors")
 ```
 
 Same results as MOD2, but different p-values.
@@ -286,35 +310,122 @@ plot(BOUT.RMOD2)
 
 There's a horizontal line on the Q-Q vs. random effects. In the outputs of the models, the videoID alone does not account for any variation.
 
+#### Separate behaviors
+
+I want to determine the effects of my variables within each behavior (excluding 'Moving', since it is not of use to us) to better ascertain the direction of the effects. I will reuse Model 2's formula, removing the behavior from the formula.
+
+```{r BOUT.Mod2 - Separate behavior}
+BOUT.MOD2.HD<-rlmer(LDURATION~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = subset(BOUT, BEHAVIOR == "HD"))
+
+BOUT.MOD2.HU<-rlmer(LDURATION~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = subset(BOUT, BEHAVIOR == "HU"))
+
+sjPlot::tab_model(BOUT.MOD2.HD
+                  , pred.labels = pl2
+                  , show.re.var = T
+                  , title = ""
+                  , dv.labels = " Effects on duration of bouts with head down")
+sjPlot::tab_model(BOUT.MOD2.HU
+                  , pred.labels = pl2
+                  , show.re.var = T
+                  , title = ""
+                  , dv.labels = " Effects on duration of bouts with head up")
+
+```
+
+OK! Very interesting! When I separate the behaviors (i.e. not looking at the fixed effects on all behaviors), we get different results.
+
+For head down:
+- Sentinel presence is not significant.
+- Generalized environment is significant, with increased duration of bouts with head down in green areas.
+- Group size is significant, with shorter duration in smaller groups
+- The presence of bait increased duration of bouts with head down
+- The increased disturbance frequency decreased the duration of bouts with head down
+- The interaction between sentinel presence and generalized environment decreased the duration of bouts with head down
+
+For head up:
+- All fixed effects not significant
+- The interaction between sentinel presence and generalized environment significantly decreased the duration of bouts with head up. 
+
+These results differ from those in BOUT.MOD2. This is to be expected since we are now looking at the effects on the separate behaviors.
+
+Let's plot the effect sizes:
+
+```{r Effect sizes - Separate behaviors}
+sjPlot::plot_model(BOUT.MOD2.HD
+                  , axis.labels = pl2
+                  , show.values=T
+                  , show.p=T
+                  , value.offset = 0.4
+                  , value.size = 3.5
+                  , wrap.title = 48
+                  , show.re.var = T
+                  , title = "Effects on head down bout duration")
+
+sjPlot::plot_model(BOUT.MOD2.HU
+                  , axis.labels = pl2
+                  , show.values=T
+                  , show.p=T
+                  , value.offset = 0.4
+                  , value.size = 3.5
+                  , wrap.title = 48
+                  , show.re.var = T
+                  , title = "Effects on head up bout duration")
+```
 #### Post Hoc testing
 
 ```{r BOUT Post Hoc}
-BOUT.DIFF<-emmeans(BOUT.MOD2, ~BEHAVIOR*SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+BOUT.DIFF<-emmeans(BOUT.MOD2, ~BEHAVIOR+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
 test(pairs(BOUT.DIFF, by= "BEHAVIOR"), adjust="fdr")
 ```
 Very cool! These are the results of pairwise comparisons averaged over the levels of group size and bait presence (**Not disturbance frequency**).
 
 These pairwise comparisons show there are no significant differences in the bout duration of 'moving' or 'head up' between each combination of 'sentinel_presence' and 'generalized_environment'.
 
-However, there are differences in the bout duration of 'head down' behavior. There are differences caused by the presence of a sentinel in commercial areas. There are significant differences between bout durations in commercial areas without a sentinel and bout durations in green areas, in both the presence and absence of a sentinel.
+However, there are differences in the bout duration of 'head down' behavior. There are differences caused by the presence of a sentinel in commercial areas. There are significant differences between bout duration in commercial areas without a sentinel and bout duration in green areas, in both the presence and absence of a sentinel.
 
 Let's quickly have a look at that:
 
-```{r Pairwise comparisons}
-BOUT.DOT
-```
+```{r BOUT Dot Plot2}
+BOUT.DOT2<-ggplot(data = BOUT.MEAN
+               , aes(x = GENERALIZED_ENVIRONMENT
+                     , y = DURATION
+                     , color = GENERALIZED_ENVIRONMENT
+                     , shape = SENTINEL_PRESENCE))+
+  geom_point(position = position_dodge(width = 0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(DURATION-se)
+                    , ymax=(DURATION+se))
+                , width = 0.2
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Mean Bout Duration (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none") +
+  scale_shape_manual(values = c(16,17)
+                     , labels = c("Sentinel Absent"
+                                  , "Sentinel Present")
+                     , name = "") +
+  scale_x_discrete(labels = c("Commercial", "Green Area"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  facet_grid(~BEHAVIOR)
 
-Huh... I would have expected that there would be significant differences in bouts of 'head up' behavior. 
+BOUT.DOT2
+```
 
 ### Model Conclusions
 
 Using model 2, here are the conclusions I draw:
 
 -   Behavior, generalized environment and group size have significant effects. The former is to be expected, while the latter two are interesting, but not very informative (alone).
--   The interaction between behavior and generalized environment are significant. The effect size appears negative for both "head up" and "moving" behavior in green areas.
--   There is a significant interaction of sentinel presence and generalized environment.
--   There is a significant interaction of behavior and group size
--   There is a significant interaction of "moving" and bait presence.
+
+When separating by behavior type, we get more information about the effects of generalized environment and sentinel presence
+- Sentinel presence had no effect on the duration of bouts of head down and head up, this is unexpected!
+- Generalized environment increased the duration of bout of head down behavior, but not head up. Also unexpected but explainable. Green areas require more time spent with head down to look for and manipulate food, especially when in grass.
+- Duration of bouts of head up were not significantly affected by any fixed effects, apart from the interaction between sentinel presence and generalized environment. This decreased the duration of bouts of head up.
+- Bouts of head down behavior were also affected by the interaction of sentinel behavior and generalized environment (which decreased the duration), but also group size (smaller = shorter duration), bait presence (yes = shorter duration), and disturbance frequency (higher = shorter duration)
 
 To better visualize these results, I will plot them.
 
@@ -356,10 +467,10 @@ This could be explained by needing more time to locate and handle food in green 
 ```{r SPxG.ENV BOUT Dot Plot}
 SPxG.ENV.DOT<-BOUT %>%
   summarySE(measurevar = "DURATION"
-            , groupvars = c("SENTINEL_PRESENCE", "GENERALIZED_ENVIRONMENT")) %>%
+            , groupvars = c("SENTINEL_PRESENCE", "GENERALIZED_ENVIRONMENT", "BEHAVIOR")) %>%
     ggplot(aes(x = SENTINEL_PRESENCE
                      , y = DURATION
-                     , color = SENTINEL_PRESENCE))+
+                     , color = GENERALIZED_ENVIRONMENT))+
   geom_point(position = position_dodge(width = 0.9)
              , size = 3) +
   geom_errorbar(aes(ymin=(DURATION-se)
@@ -369,13 +480,15 @@ SPxG.ENV.DOT<-BOUT %>%
   theme_classic() +
   ylab("Mean Bout Duration (s)") +
   scale_colour_manual(values = cbPalette
-                      , guide="none")+
-  scale_x_discrete(labels = c("Sentinel Absent", "Sentinel Present"))+
-  theme(axis.title.x = element_blank()
-        , legend.position = "bottom"
+                      , labels = c("Commercial", "Green")
+                      , "Generalized Environment")+
+  xlab("Sentinel Presence") +
+  scale_x_discrete(labels = c("Absent", "Present")
+                   )+
+  theme(legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin()) +
-  facet_grid(~GENERALIZED_ENVIRONMENT)
+  facet_grid(~BEHAVIOR)
 
 SPxG.ENV.DOT
 ```
@@ -450,14 +563,13 @@ The presence of bait has the effect of decreasing the duration of 'head down' an
 #### Disturbance Frequency
 
 ```{r Disturb}
-DF.DOT<-BOUT %>%
+DF.DOT<-BOUT[which(BOUT$BEHAVIOR == "HD"),] %>%
     ggplot(aes(x = DISTURBANCE_FREQUENCY
                , y = DURATION
-               , color = BEHAVIOR))+
-  geom_point(size = 3) +
+               ))+
+  geom_point(size = 2, colour = 'red') +
   theme_classic() +
-  labs(y="Mean Bout Duration (s)", x="Disturbances per Minute", color= "Behavior")+
-  scale_colour_manual(values = cbPalette, labels = c("Foraging", "Alert", "Moving"))+
+  labs(y="Mean Head Down Bout Duration (s)", x="Disturbances per Minute")+
   scale_x_continuous(n.breaks=14)+
   theme(legend.position = "bottom")
   
