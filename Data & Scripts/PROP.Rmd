@@ -81,7 +81,7 @@ Transformed data seems more normal than untransformed data. Will continue to use
 DATA$ASIN_PROPORTION<-asin(sqrt(DATA$BEHAVIOR_PROPORTION))
 ```
 
-Here is the histogram of the log-transformed data separated by behavior.
+Here is the histogram of the arcsine squared-transformed data separated by behavior.
 
 ```{r PROP Histogram, echo=F}
 PROP.HIST<-ggplot(data = DATA) +

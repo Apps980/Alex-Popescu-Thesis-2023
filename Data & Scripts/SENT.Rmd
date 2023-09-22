@@ -17,6 +17,7 @@ library("effects")
 library("glmm")
 library("doBy")
 library("emmeans")
+library("descr")
 ```
 
 ```{r Colorblind-friendly palette, include = F}
@@ -55,8 +56,8 @@ str(SENT)
 ## Chi Square Time
 
 ```{r Chi Square}
-library(descr)
-library(MASS)
+library("descr")
+library("MASS")
 CHISQ<-lapply(SENT[,c("GENERALIZED_ENVIRONMENT"
                       , "GROUP_SIZE"
                       , "DISTURBANCE_FREQUENCY"
@@ -76,6 +77,21 @@ CHISQ<-lapply(SENT[,c("GENERALIZED_ENVIRONMENT"
 CHISQ
 ```
 
+```{r Sent Barplot}
+ggplot(SENT, aes(x=GENERALIZED_ENVIRONMENT
+                 , fill = SENTINEL_PRESENCE)) + 
+  geom_bar(width=.5, position = "dodge") +
+  theme_classic() +
+  xlab("Generalized Environment") +
+  scale_fill_manual("Sentinel Presence"
+                      , values = cbPalette
+                      ) +
+  theme(legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin())
+  
+```
+
 Hmm... The results of the chi square test suggest that none of the factors, either generalized environment, group size, or disturbance frequency have a significant effect.
 
 # The continuous variables
@@ -92,8 +108,8 @@ SENT %>%
          , "Decimal Time" = "DECIMAL_TIME"
          , "Disturbance Frequency (per min)" = "TOTAL_FREQUENCY_OF_DISTURBANCES"
          , "Number of Crows" = "NUMBER_OF_CROWS_RECORDED") %>%
-  pivot_longer(., cols = c("Temperature (deg. C)"
-                           , "Decimal Time"
+  pivot_longer(., cols = c(#"Temperature (deg. C)"
+                           # , "Decimal Time"
                            , "Number of Crows"
                            , "Disturbance Frequency (per min)")
                , names_to = "Var"
