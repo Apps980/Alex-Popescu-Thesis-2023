@@ -242,32 +242,98 @@
 ### 2.1 Introduction
 	Introduce the ways in which sentinel behavior can be altered, which factors have been identified and how they affect sentinel behavior. Introduction here serves as a literature review, with the methods, results and discussion describing the scoping review and the meta-analysis.
 - Redefine sentinel behavior
+	- Plays a role in Lima's foraging-vigilance tradeoff
+		- Two mutually exclusive behaviors
+		- the need to eat, and the need to not be eaten
+		- Too much is like not enough
 	- Perched area, exposed
+		- Long lines of sight to identify threats
+		- Alarm calling when threat detected
 	- Sentinel loses foraging opportunities
+		- Obviously cannot forage when in a tree
+		- Yet cost to sentinel behavior may not be as costly as we imagine
 	- Foragers gain from constant vigilance from sentinel
+		- Increased foraging efficiency
+		- Decreased risk of predation
 	- Coordination as defining feature
+		- Bednekoff has identified coordination as a 'defining' feature of sentinel behavior as making alarm calls and occupying an exposed, prominent position is not unique to sentinel behavior
+		- Unfortunately, and as outlined by Bednekoff, the coordination of sentinel behavior is oft not reported and difficult to test
 	- Examples in other species
+		- Obvious examples being birds and meerkats
+		- Less obvious examples include fish
 - Explain how sentinel behavior can be altered
 	- Sentinel initiation or propensity to participate in sentinel behavior
-	- Sentinel effort or how long and how early a sentinel goes up
+		- How long after the start of foraging does a sentinel go up?
+		- How often does an individual perform sentinel behavior
+	- Sentinel effort or how long does an individual sentinel for in one particular bout of sentinel behavior
+	- These metrics can vary substantially in response to a number of factors
+		- Sex
+		- Dominance
+		- Predation risk
+		- Group size
+		- Individual satiation
+- Bring in the main objective: determine how extrinsic/environmental factors could affect the social behavior of individuals
+	- Urbanization has an immense effect on wildlife
+	- Urbanization is predicted to increase substantially in the 21st century
+		- 50% of human pop in urban areas, with 65% projected by the UN by 2050
+	- Some species will adapt to the new conditions offered by the changing environment
+		- Behavioral
+	- Were some species to adapt their social behavior, they could be doing so to increase their fitness
+		- Reduce if not needed
+		- increase if required
+	- Therefore its important to look at how the environment could affect social behaviors
+	- Sentinel behavior being a decently well-researched behavior, yet not much has been done to look at how urbanization could affect the behavior
+
+- Objective statement
+	- I seek to determine which factors have the most impact on the sentinel decision-making of terrestrial social species, and relate them to how urbanization can affect the behavior
+- Hypothesis and predictions
+	- I hypothesize that sentinel decision-making could be significantly affected by extrinsic factors that may be altered by urbanization, in addition to intrinsic factors that will alter how individuals will respond to these changes.
+
 - Sex
 	- Males generally sentinel more, and for longer than females.
+		- Examples include the fairy wren, red-winged blackbirds, etc
+		- Not always the case though, since sometimes females will sentinel as well
 	- Could be explained by a different need/use of energy
 		- Males could need to defend territory or mates, therefore sentinel behavior is both an antipredator and a mate/nest guarding behavior
 		- Females need to spend more time on the nest during reproductive periods. More energy lost to reproduction when making eggs.
 - Dominance
 	- Dominant individuals could be better foragers, or lose less foraging opportunities to theft
 	- More dominant individual tend to be larger than subordinates
+	- Theory of sentinel behavior as a 'display'
+		- largely disproven
+	- Sentinel behavior as a way to monitor group-members or other groups in the vicinity
+		- Dominant males exposed to foreign male scents will sentinel longer
+		- Dominant individuals need to keep an eye on potential rivals within the group
+	- Therefore sentinel behavior may have other roles apart from anti-predator vigilance
+	- Urbanization can decrease the home range of species while also increasing the abundance of certain species
+		- Therefore more group in the same area
+		- Dominant individuals may want to 'keep tabs' on the other species, potentially increasing the sentinel efforts of dominant individuals in proximity to neighboring groups
 - Predation Risk
 	- Increased predation risk inherently leads to increased need for vigilance, and therefore an increased presence of threat leads to an increased frequency of sentinel behavior
+		- More risk = more vigilance
+	- Urbanization increases the proximity of humans to wildlife
+		- Increased tolerance of humans
+		- More cars, pets and other species that could be threatening
+	- Urbanized predators could be problematic, especially if non-native
+		- Species may need to greatly increase their vigilance if at risk of being predated by non-native predators such as cats
 - Group size
 	- As group size increases, then an individual's contribution to the group's total sentinel effort is diluted by the presence of other sentinels.
 		- More sentinels = less costly behavior for the individual
 		- Relative fitness gains increased
+	- Opposite may also be true, as with increased group size you get other benefits
+		- many eyes
+		- prey dilution
+	- Yet we see less sentinel effort/individual when group size increases, but greater overall sentinel coverage
+		- More individuals participating, decreasing the individual costs
+	- Answer the question: does group size increase in urban areas?
+		- Smaller home ranges, but potentially greater abundance
 - Satiation
 	- Presence of more food, more nutritious or caloric foods leads to earlier and longer sentinel bouts.
 		- Energetic threshold met faster
 		- Costs of lost foraging opportunities minimized
+	- Other individuals compensate for fed conspecifics
+		- Decreased sentinel effort when mate is fed
+		- in response, the fed individual increases sentinel efforts
 - Bednekoff's model
 	- Stable selfish individual state-dependent decisions
 	- Based on Lima's foraging-vigilance tradeoff
@@ -277,22 +343,16 @@
 		- Safe refuges do not exist, therefore the sentinel's post is the safest place to be if the alternative is foraging without a sentinel
 	- Can explain how the other factors affect sentinel behavior, if sentinel behavior is entirely dependent on the energetic state of the individual.
 	- Can be determined in empirical studies using the body mass/energetic reserves of an individual
-- Objective statement
-	- I seek to determine which factors have the most impact on the sentinel decision-making of terrestrial social species.
-	- To accomplish this endeavor, I performed a scoping review and meta-analysis of the currently available literature.
-- Hypothesis and predictions
-	- I hypothesize that sentinel decision-making will be significantly affected by sex, dominance, group size and predation risk.
-		- Males > Females
-		- Dominant > Subordinate
-		- Big group < Small group
-		- Riskier > Safer
-
 ### 2.2 Methods
 - Creation of search string
 	- Search string used
+		- "Sentinel & Behavior"
 	- Filters
+		- Removed irrelevant journals and topics (e.g. remote sensing & sleep)
 - Database search
 	- Databases searched
+		- Web of Science Complete
+		- BIOSIS
 - Screening
 	- Inclusion/exclusion criteria
 	- Metagear
@@ -301,32 +361,50 @@
 	- Search strings used
 	- Screening
 - Full-text screening
-	- Note taking
+	- Note taking in Obsidian
 	- Factor identification
-- Data extraction
-	- Inclusion/Exclusion criteria
-	- Measurements collected
-	- JuicR
-- Statistical analysis
-	- Metafor
-	- Hedge's G for effect sizes
 
 ### 2.3 Results
 - Provide the numbers for the search, screening, full-text screening, articles selected using Elicit, and articles included in the meta analysis as per ROSES guidelines
-- Provide a table describing the articles for the meta analysis
-	- Species
-	- Type of experiment
-	- Sample size
-	- Main effect detected
-	- Whether coordination was included in the definition
-- Provide and describe the figure generated to compare the factors identified.
-	- Proportion of time with sentinel
-	- Duration of sentinel bout
-
+- How many articles were collected at each stage of the search
+- How many articles were added by searching with Elicit
+- How many articles discussed which aspect primarily
+- How many articles mention coordination
+	- Bring back Bednekoff's ideal definition of sentinel behavior including coordination
 ### 2.4 Discussion
 - Explain the results you've collected by tying them into the concepts outlined in the introduction section of the chapter
+	- Sex and Dominance are relatively intrinsic factors that do not change over time
+		- Sex unchanged, dominance can change but does not fluctuate greatly over time unless individuals die or are ejected from the group
+	- Group size can change an individuals sentinel efforts
+		- Smaller group size =  greater individual sentinel effort
+			- Foraging without a sentinel is unsafe
+			- Individuals will increased the duration of sentinel bouts to ensure safety
+		- Larger group size = Lesser individuals sentinel efforts
+			- More individuals capable of sentineling
+			- Other social effects such as 'many eyes' and 'prey dilution'
+			- Individuals could have fewer, shorter bouts, with coordinated switches between sentinels
+		- Could be hard to disentangle the effects
 - Explicitly mention how hard it is to measure body mass changes in many species
+	- Need to train test subjects to stand on a scale or similar device to weigh their mass before and after sentinel bouts to determine weight/energetic loss from sentinel behavior
+	- Can be done with less timid species (smaller passerines, some mammals), but much harder to do with larger or more timid species
+	- Additionally, larger individuals could loose comparatively less mass than smaller individuals, would then need to look at more 'physiological' markers of energetic loss (blood sugar?).
 - Cohesively explain all facets of sentinel decision-making.
+	- The mass/energy-related explanation for an individuals sentinel effort makes the most sense and can explain the other factors identified in literature
+		- Males have a different energetic investment in reproduction, explaining the difference in sentinel effort among the sexes
+		- More dominant individuals tend to weigh more and in certain cases forage more effectively, either by receiving 'gifts' from subordinates, or moving subordinates away from good foraging patches
+		- The effect of group size can likewise be explained through the lens of a state-dependent model.
+			- More individuals in a group = more individuals capable of sentineling
+			- Results in shorter individual bouts, but greater overall sentinel coverage, since there are more individuals capable of sentineling.
+				- Again, repeat the assumption that being sentinel is safer than foraging without a sentinel
+			- Conversely, the smaller the group size, the longer the bouts to ensure safe foraging.
+				- Not necessarily for the group, but overall
+		- The effects of satiation and resource quality are directly related to sentinel efforts, as more energetically dense food will result in individuals reaching the theoretical threshold for sentinel behavior sooner.
+			- Especially true in environments where there is a lot of high-energy food, such as urban environments.
+	- Therefore, we should further develop the methods to determine the energetic cost of being sentinel, as what we could see as 'altruistic' behavior may in fact not be so altruistic after all.
+		- Social behavior as a result of individual 'selfish' behaviors
+		- Not transactional, merely self-interest
+	- This would better our knowledge of the mechanisms behind other social behaviors, especially those that could be seen as energetically expensive
+
 
 ### 2.4.1 Conclusion
 - Cohesively outline the factors identified in the review
