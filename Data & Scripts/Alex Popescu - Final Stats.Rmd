@@ -17,12 +17,10 @@ library("tidyverse")
 library("psych")
 library("car")
 library("ggplot2")
-library("ggpattern")
 library("lmerTest")
 library("robustlmm")
 library("sjPlot")
 library("effects")
-library("glmm")
 library("doBy")
 library("emmeans")
 library("formattable")
@@ -30,6 +28,8 @@ library("dplyr")
 library("descr")
 library("MASS")
 library("jmv")
+library("webshot")
+library("kableExtra")
 source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
 ```
 
@@ -38,7 +38,7 @@ source("./Calculate Summary Table with SE, SD, CI by grouping variables.R")
 cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
 ```
 
-```{r Labels}
+```{r Labels, include = F}
 labs.prop<-c(
   '(Intercept)' = "Intercept"
   , SENTINEL_PRESENCEYES = "Sentinel Presence"
@@ -51,25 +51,25 @@ labs.prop<-c(
 
 labs.bout.1<-c(
   '(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Absent' = "Sentinel Presence"
   , BEHAVIORHU = "Behavior"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , GROUP_SIZESMALL = "Group Size"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
   , 'BEHAVIORHU:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Generalized Environment"
-  , 'BEHAVIORHU:SENTINEL_PRESENCEYES' = "Behavior: Sentinel Presence"
-  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  , 'BEHAVIORHU:SENTINEL_PRESENCESentinel Absent' = "Behavior: Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Absent:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
 )
 
 labs.bout.2<-c(
   '(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Absent' = "Sentinel Presence"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , GROUP_SIZESMALL = "Group Size"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  ,'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  ,'SENTINEL_PRESENCESentinel Absent:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
   )
 
 labs.peck<-c(
@@ -84,11 +84,11 @@ labs.peck<-c(
   )
 
 labs.ptwy<-c('(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Absent' = "Sentinel Presence"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  , 'SENTINEL_PRESENCESentinel Absent:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
   )
 ```
 
@@ -166,8 +166,8 @@ PROP.BARPLOT<-ggplot(PROP.SUMMARY
   scale_y_continuous(labels = scales::percent) +
   theme_classic()+
   ylab("Proportion of time")+
-  scale_x_discrete(labels=c("Commercial Area"
-                            , "Green Area"))+
+  scale_x_discrete(labels=c("Commercial"
+                            , "Green"))+
   scale_fill_manual(values = cbPalette, labels = c("Foraging"
                                                    , "Alert"
                                                    , "Moving")
@@ -194,8 +194,12 @@ sjPlot::tab_model(PROP.MOD
                   , show.se = T
                   , digits = 4
                   , show.re.var = T
-                  , title = "Proportion Model Output"
-                  , dv.labels = " Effects on the proportion of behaviors")
+                  , title = ""
+                  , dv.labels = " Effects on the proportion of behaviors"
+                  , file = "Proportion_Table.html")
+```
+```{r Save PROP Table, include = F}
+webshot("Proportion_Table.html", "Proportion_Table.png")
 ```
 
 A linear model was performed. While all behaviors were included in the
@@ -216,7 +220,10 @@ BOUT<-BOUT.raw %>%
   filter(.
          , DURATION > 0.01) %>% #Remove impossibly small values
   filter(.
-         , BEHAVIOR != "M") #Remove "M"
+         , BEHAVIOR != "M") %>% #Remove "M"
+  mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
+                         , 'YES' = "Sentinel Present"
+                         , 'NO' = "Sentinel Absent"))
 BOUT$LDURATION<-log(BOUT$DURATION) #Transform data for normality
 str(BOUT)
 ```
@@ -269,7 +276,7 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
   scale_colour_manual(values = cbPalette
                       , labels = c("Sentinel Absent", "Sentinel Present")
                       , name = "") +
-  scale_x_discrete(labels = c("Commercial Area", "Green Area"))+
+  scale_x_discrete(labels = c("Commercial", "Green"))+
   theme(axis.title.x = element_blank()
         , legend.position = "bottom"
         , legend.box="vertical"
@@ -348,7 +355,12 @@ increased.
 
 ```{r BOUT Post Hoc - All Behaviors}
 BOUT.DIFF.ALL_BEHAVIORS<-emmeans(BOUT.MOD, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
-test(pairs(BOUT.DIFF.ALL_BEHAVIORS), adjust="fdr")
+kbl(test(pairs(BOUT.DIFF.ALL_BEHAVIORS), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Bout post hoc - All behaviors", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
+  kable_classic(html_font = "Times New Roman") %>%
+  save_kable(file = "Bout_PH_All Behaviors.html", self_contained = T)
+```
+```{r Save Bout Post Hoc - All Behaviors, include = F}
+webshot("Bout_PH_All Behaviors.html", "Bout_PH_All Behaviors.png")
 ```
 
 RESULTS Post-hoc pairwise testing revealed significant differences in
@@ -364,6 +376,29 @@ significant effect, shortening foraging bouts in green areas and in the
 presence of a sentinel (Estimate = -0.157, SE = 0.0720, z-ratio =
 -2.117, p = 0.0589). All other comparisons were not significant (p \<
 0.3430)
+
+```{r BOUT - DISTURBANCES Figure}
+BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
+           ggplot(.
+               , aes(x = DISTURBANCE_FREQUENCY
+                     , y = DURATION
+                     ))+
+  geom_point(size = 2
+             , colour = cbPalette[1]
+             , alpha = 0.5
+             )+
+  geom_smooth(method = "lm"
+              , se = F
+              , colour = cbPalette [2]) +
+  theme_classic() +
+  xlab("Disturbance Frequency (per minute)") +
+  ylab("Bout Duration (s)") +
+  theme(legend.position = "none"
+        , text = element_text(size = 18)
+        )
+
+BOUT.DOTPLOT.DISTURBANCES
+```
 
 ##BOUT Model - Head Down
 
@@ -413,6 +448,16 @@ Increasing disturbance frequency significantly decreased the duration of
 foraging bouts (Estimate = -0.1075, SE = 0.0301, t-stat = -3.5664, p =
 \<0.001).
 
+```{r BOUT Post Hoc - Foraging}
+BOUT.DIFF.HD<-emmeans(BOUT.MOD.HD, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+kbl(test(pairs(BOUT.DIFF.HD), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Bout post hoc - Foraging", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
+  kable_classic(html_font = "Times New Roman") %>%
+  save_kable(file = "Bout_PH_HD.html", self_contained = T)
+```
+```{r Save Bout Post Hoc - Foraging, include = F}
+webshot("Bout_PH_HD.html", "Bout_PH_HD.png")
+```
+
 ```{r BOUT HD - Group Size Figure}
 BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
@@ -435,7 +480,7 @@ BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
             , show.legend = F) +
   theme_classic() +
   xlab("Group Size") +
-  ylab("Mean Bout Duration (s)") +
+  ylab("Mean Foraging Bout Duration (s)") +
   scale_color_manual(values = cbPalette) +
   scale_x_discrete(labels = c("Small Group"
                                   , "Large Group")
@@ -471,7 +516,7 @@ BOUT.DOTPLOT.BAIT<-BOUT %>%
             , size = 6
             , show.legend = F) +
   theme_classic() +
-  ylab("Mean Bout Duration (s)") +
+  ylab("Mean Foraging Bout Duration (s)") +
   scale_color_manual(values = cbPalette) +
   scale_x_discrete(labels = c("Bait Absent"
                                   , "Bait Present")) +
@@ -486,7 +531,7 @@ BOUT.DOTPLOT.BAIT
 ```
 
 ```{r BOUT HD - DISTURBANCES Figure}
-BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
+BOUT.DOTPLOT.DISTURBANCES.HD<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
            ggplot(.
                , aes(x = DISTURBANCE_FREQUENCY
@@ -501,12 +546,12 @@ BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
               , colour = cbPalette [2]) +
   theme_classic() +
   xlab("Disturbance Frequency (per minute)") +
-  ylab("Mean Bout Duration (s)") +
+  ylab("Foraging Bout Duration (s)") +
   theme(legend.position = "none"
         , text = element_text(size = 18)
         )
 
-BOUT.DOTPLOT.DISTURBANCES
+BOUT.DOTPLOT.DISTURBANCES.HD
 ```
 
 ## BOUT Model - Head Up
@@ -546,6 +591,26 @@ However, the interaction between sentinel behavior and generalized
 environment was significant (Estimate = -0.2736, SE = 0.1352, t-stat =
 -2.0243, p = 0.043).
 
+```{r Save BOUT Tables, include = F}
+sjPlot::tab_model(c(BOUT.MOD, BOUT.MOD.HD, BOUT.MOD.HU)
+                  , pred.labels = labs.bout.1
+                  , show.re.var = T
+                  , show.se = T
+                  , show.stat = T
+                  , digits = 4
+                  , order.terms = c(1,3,4,5,6,7,10,2,8,9)
+                  , title = ""
+                  , dv.labels = c("Bouts of all behaviors"
+                                  , "Bouts of foraging behavior"
+                                  , "Bouts of alert behavior")
+                  , file = "Bout_Table.html"
+                  )
+webshot("Bout_Table.html", "Bout_Table.png")
+
+
+
+```
+
 #Peck Rate
 
 ```{r Open PECK}
@@ -582,17 +647,18 @@ PECK.DOTPLOT<-ggplot(data = PECK.SUMMARY
                     , ymax=(PECK_RATE+se))
                 , width = 0.1
                 , position = position_dodge(width=0.9))+
-  geom_text(aes(label = round(PECK_RATE, 2))
+  geom_text(aes(label = scales::label_number(accuracy=0.01)(PECK_RATE))
             , position = position_dodge(width = 0.4)
             , size = 6
-            , show.legend = F) +
+            , show.legend = F
+            ) +
   theme_classic() +
   ylab("Mean Peck Rate (per min)") +
   scale_colour_manual(values = cbPalette
                       , labels = c("Sentinel Absent", "Sentinel Present")
                       , name = "")+
-  scale_x_discrete(labels = c("Commercial Area"
-                                  , "Green Area")) +
+  scale_x_discrete(labels = c("Commercial"
+                                  , "Green")) +
   theme(axis.title.x = element_blank()
         , legend.position = "bottom"
         , legend.box="vertical"
@@ -619,8 +685,10 @@ sjPlot::tab_model(PECK.MOD
                   , show.se = T
                   , show.stat = T
                   , digits = 4
-                  , title = "Robust Peck Rate Model Output"
-                  , dv.labels = " Effects on peck rate")
+                  , title = ""
+                  , dv.labels = " Effects on peck rate (per min)"
+                  , file = "Peck_Table.html")
+
 sjPlot::plot_model(PECK.MOD
                   , axis.labels = labs.peck
                   , show.values=T
@@ -629,7 +697,10 @@ sjPlot::plot_model(PECK.MOD
                   , value.size = 3.5
                   , wrap.title = 48
                   , show.re.var = T
-                  , title = "Effects on peck rate" )
+                  , title = "Effects on peck rate (per min)" )
+```
+```{r Save Peck Table, include = F}
+webshot("Peck_Table.html", "Peck_Table.png")
 ```
 
 RESULTS Neither the presence of a sentinel nor the generalized
@@ -671,21 +742,24 @@ RESULTS Green areas appear to have much fewer disturbances than
 commercial areas.
 
 ```{r PECK Dot Plot - Bait Presence}
-PECK.DOTPLOT.BAIT<-summarySE(PECK
-                             , measurevar = "PECK_RATE"
-                             , groupvars = "BAIT_PRESENCE") %>%
-  ggplot(., aes(x = BAIT_PRESENCE
+PECK.DOTPLOT.BAIT<-PECK %>%
+  summarySE(.
+            , measurevar = "PECK_RATE"
+            , groupvars = "BAIT_PRESENCE") %>%
+  ggplot(.
+         , aes(x = BAIT_PRESENCE
                      , y = PECK_RATE
-                     , color = BAIT_PRESENCE))+
-  geom_point(position = position_dodge(width = 0.9)
+                     , colour = BAIT_PRESENCE
+               ))+
+  geom_point(position = position_dodge(width = 0.1)
              , size = 3
              ) +
   geom_errorbar(aes(ymin=(PECK_RATE-se)
                     , ymax=(PECK_RATE+se))
                 , width = 0.1
-                , position = position_dodge(width=0.9))+
+                , position = position_dodge(width=0.1))+
   geom_text(aes(label = round(PECK_RATE, 2))
-            , position = position_dodge(width = 0.9)
+            , hjust = -0.2
             , size = 6
             , show.legend = F) +
   theme_classic() +
@@ -740,8 +814,8 @@ SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
                     , values = cbPalette
                     , labels = c("Sentinel Absent", "Sentinel Present")
                       ) +
-  scale_x_discrete(labels = c("Commercial Area"
-                              , "Green Area"))
+  scale_x_discrete(labels = c("Commercial"
+                              , "Green")) +
   theme(axis.title.x = element_blank()
         , text = element_text(size = 18)
         , legend.position = "bottom"
@@ -822,7 +896,10 @@ total number of transitions from that behavior.
 ```{r Subsetting PTWY}
 PTWY<- DATA.SR %>%
   dplyr::select(VIDEO_ID,ID, DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_NB_TRANSITIONS, TOTAL_FREQUENCY_OF_DISTURBANCES | starts_with("NB_")) %>%
-  rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES")
+  rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES") %>%
+  mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
+                         , 'YES' = "Sentinel Present"
+                         , 'NO' = "Sentinel Absent"))
 
 ```
 
@@ -830,14 +907,15 @@ PTWY<- DATA.SR %>%
 
 ```{r PTWY Plots}
 PTWY.SUMMARY<-PTWY %>%
-  rename("Head Down to Peck" = "NB_HD.HDP"
-         , "Head Up to Head Down" = "NB_HU.HD"
-         , "Head Down to Head Up" = "NB_HD.HU"
-         , "Peck to Head Up" = "NB_HDP.HU") %>%
-  pivot_longer(., cols = c("Head Down to Peck"
-                           , "Head Up to Head Down"
-                           , "Head Down to Head Up"
-                           , "Peck to Head Up"
+  rename("Foraging to Peck" = "NB_HD.HDP"
+         , "Alert to Foraging" = "NB_HU.HD"
+         , "Foraging to Alert" = "NB_HD.HU"
+         , "Peck to Alert" = "NB_HDP.HU"
+         ) %>%
+  pivot_longer(., cols = c("Foraging to Peck"
+                           , "Alert to Foraging"
+                           , "Foraging to Alert"
+                           , "Peck to Alert"
                            )
                , names_to = "TRANSITION"
                , values_to = "PTWY") %>%
@@ -848,14 +926,15 @@ PTWY.SUMMARY<-PTWY %>%
                             , "GENERALIZED_ENVIRONMENT"))
 
 PTWY.BOXPLOT<-PTWY %>%
-  rename("Head Down to Peck" = "NB_HD.HDP"
-         , "Head Up to Head Down" = "NB_HU.HD"
-         , "Head Down to Head Up" = "NB_HD.HU"
-         , "Peck to Head Up" = "NB_HDP.HU") %>%
-  pivot_longer(., cols = c("Head Down to Peck"
-                           , "Head Up to Head Down"
-                           , "Head Down to Head Up"
-                           , "Peck to Head Up"
+  rename("Foraging to Peck" = "NB_HD.HDP"
+         , "Alert to Foraging" = "NB_HU.HD"
+         , "Foraging to Alert" = "NB_HD.HU"
+         , "Peck to Alert" = "NB_HDP.HU"
+         ) %>%
+  pivot_longer(., cols = c("Foraging to Peck"
+                           , "Alert to Foraging"
+                           , "Foraging to Alert"
+                           , "Peck to Alert"
                            )
                , names_to = "TRANSITION"
                , values_to = "PTWY") %>%
@@ -864,14 +943,18 @@ PTWY.BOXPLOT<-PTWY %>%
                  , y = PTWY
                  , colour = SENTINEL_PRESENCE)) +
   geom_boxplot(outlier.shape = NA) +
-  geom_jitter(position = position_dodge(width = 0.9)) +
+  geom_jitter(aes(x = GENERALIZED_ENVIRONMENT
+                  , group = SENTINEL_PRESENCE)
+              , position = position_jitterdodge(jitter.width = 0.5)
+              , alpha = 0.25
+              ) +
   geom_point(data = PTWY.SUMMARY
              , aes( x = GENERALIZED_ENVIRONMENT
                     , y = PTWY
                     , group = SENTINEL_PRESENCE)
              , size = 2
              , colour = "black"
-             , position = position_dodge(width = 0.9)) +
+             , position = position_dodge(width = 0.75)) +
   geom_errorbar(data = PTWY.SUMMARY
                 , aes(ymin=(PTWY-se)
                     , ymax=(PTWY+se)
@@ -879,7 +962,8 @@ PTWY.BOXPLOT<-PTWY %>%
                     , x = GENERALIZED_ENVIRONMENT)
                 , width = 0.2
                 , colour = "black"
-                , position = position_dodge(width=0.9)) +
+                , position = position_dodge(width=0.75
+                                            )) +
   theme_classic() +
   ylab("Number of Transitions") +
   scale_colour_manual(values = cbPalette
@@ -927,17 +1011,28 @@ tab_model(PTWY.MODELS
                   , show.se = T
                   , show.stat = T
                   , digits = 4
-                  , title = "Transitions GLMM output"
-                  , dv.labels = c("Head Down to Head Up"
-                                  , "Head Down to Peck"
-                                  , "Head Up to Head Down"
-                                  , "Peck to Head Up"))
+                  , title = ""
+                  , dv.labels = c("Foraging to Alert"
+                                  , "Foraging to Peck"
+                                  , "Alert to Foraging"
+                                  , "Peck to Alert")
+          , file = "PTWY_Table.html")
+
+```
+```{r Save PTWY Table, include = F}
+webshot("PTWY_Table.html", "PTWY_Table.png")
 ```
 
 ```{r PTWY Post Hoc}
 PTWY.DIFF<-emmeans(PTWY.MODELS$NB_HD.HU, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT)
-test(pairs(PTWY.DIFF), adjust="fdr")
+kbl(test(pairs(PTWY.DIFF), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Pathway analysis post hoc", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
+  kable_classic(html_font = "Times New Roman") %>%
+  save_kable(file = "PTWY_PH.html", self_contained = T)
 ```
+```{r Save PTWY} Post Hoc - Foraging, include = F}
+webshot("PTWY_PH.html", "PTWY_PH.png")
+```
+
 
 RESULTS Transitions from head down to pecking were significantly
 affected by the presence of bait, with more transitions occuring in the
@@ -971,15 +1066,15 @@ alert behavior when in the presence of a sentinel (Estimate = -1.124, SE
 
 ```{r PTWY Figures - Bait Presence}
 PTWY.DOTPLOT.BAIT<-PTWY %>%
-  rename("Head Down to Peck" = "NB_HD.HDP"
-         , "Head Up to Head Down" = "NB_HU.HD"
-         , "Head Down to Head Up" = "NB_HD.HU"
-         , "Peck to Head Up" = "NB_HDP.HU"
+  rename("Foraging to Peck" = "NB_HD.HDP"
+         , "Alert to Foraging" = "NB_HU.HD"
+         , "Foraging to Alert" = "NB_HD.HU"
+         , "Peck to Alert" = "NB_HDP.HU"
          ) %>%
-  pivot_longer(., cols = c("Head Down to Peck"
-                           , "Head Up to Head Down"
-                           , "Head Down to Head Up"
-                           , "Peck to Head Up"
+  pivot_longer(., cols = c("Foraging to Peck"
+                           , "Alert to Foraging"
+                           , "Foraging to Alert"
+                           , "Peck to Alert"
                            )
                , names_to = "TRANSITION"
                , values_to = "PTWY"
@@ -1001,18 +1096,19 @@ PTWY.DOTPLOT.BAIT<-PTWY %>%
                     , ymax=(PTWY+se)
                     )
                 , width = 0.2
-                , position = position_dodge(width=0.9)
                 ) +
-    geom_text(aes(label = round(PTWY, 2))
-            , position = position_dodge2(width = 0.9)
+    geom_text(aes(label = scales::label_number(accuracy = 0.01)(PTWY)
+                  , x = BAIT_PRESENCE
+                  , colour = BAIT_PRESENCE)
+            , hjust = -0.1
             , show.legend = F) +
   theme_classic() +
   ylab("Number of Transitions") +
+  xlab("Bait Presence") +
   scale_color_manual(values = cbPalette) +
-  scale_x_discrete(labels = c("Bait Absent"
-                              , "Bait Present")) +
-  theme(axis.title.x = element_blank()
-        , legend.position = "none"
+  scale_x_discrete(labels = c("Absent"
+                              , "Present")) +
+  theme(legend.position = "none"
         , legend.box="vertical"
         , legend.margin=margin()
         , text = element_text(size = 12)

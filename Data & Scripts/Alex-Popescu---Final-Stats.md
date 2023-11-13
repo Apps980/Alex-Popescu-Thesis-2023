@@ -1,7 +1,7 @@
 ---
 title: "Alex Popescu - Final Stats"
 author: "Alex Popescu"
-date: "2023-10-20"
+date: "2023-11-13"
 output: 
   html_document: 
     keep_md: yes
@@ -17,59 +17,6 @@ editor_options:
 
 
 
-```r
-labs.prop<-c(
-  '(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
-  , BEHAVIORHU = "Behavior"
-  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
-  , GROUP_SIZESMALL = "Group Size"
-  , BAIT_PRESENCEYES = "Bait Presence"
-  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  )
-
-labs.bout.1<-c(
-  '(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
-  , BEHAVIORHU = "Behavior"
-  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
-  , GROUP_SIZESMALL = "Group Size"
-  , BAIT_PRESENCEYES = "Bait Presence"
-  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  , 'BEHAVIORHU:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Generalized Environment"
-  , 'BEHAVIORHU:SENTINEL_PRESENCEYES' = "Behavior: Sentinel Presence"
-  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
-)
-
-labs.bout.2<-c(
-  '(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
-  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
-  , GROUP_SIZESMALL = "Group Size"
-  , BAIT_PRESENCEYES = "Bait Presence"
-  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  ,'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
-  )
-
-labs.peck<-c(
-  '(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
-  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
-  , GROUP_SIZESMALL = "Group Size"
-  , BAIT_PRESENCEYES = "Bait Presence"
-  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  , 'GENERALIZED_ENVIRONMENTGreen Area:DISTURBANCE_FREQUENCY' = "Generalized Environment: Disturbance Frequency"
-  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
-  )
-
-labs.ptwy<-c('(Intercept)' = "Intercept"
-  , SENTINEL_PRESENCEYES = "Sentinel Presence"
-  , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
-  , BAIT_PRESENCEYES = "Bait Presence"
-  , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  , 'SENTINEL_PRESENCEYES:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
-  )
-```
 
 
 ```r
@@ -147,21 +94,21 @@ PROP.SUMMARY
 
 ```
 ## # A tibble: 12 × 8
-##    GENERALIZED_ENVIRONMENT BEHAVIOR SENTINEL…¹     N PROPO…²    sd     se     ci
-##    <fct>                   <chr>    <fct>      <dbl>   <dbl> <dbl>  <dbl>  <dbl>
-##  1 Commercial              HD       Sentinel …    16   0.338 0.174 0.0434 0.0925
-##  2 Commercial              HD       Sentinel …    29   0.331 0.151 0.0280 0.0573
-##  3 Commercial              HU       Sentinel …    16   0.411 0.180 0.0450 0.0959
-##  4 Commercial              HU       Sentinel …    29   0.365 0.118 0.0219 0.0448
-##  5 Commercial              M        Sentinel …    16   0.251 0.181 0.0453 0.0965
-##  6 Commercial              M        Sentinel …    29   0.304 0.163 0.0302 0.0618
-##  7 Green Area              HD       Sentinel …    13   0.412 0.136 0.0376 0.0820
-##  8 Green Area              HD       Sentinel …    19   0.383 0.112 0.0258 0.0542
-##  9 Green Area              HU       Sentinel …    13   0.424 0.104 0.0289 0.0630
-## 10 Green Area              HU       Sentinel …    19   0.367 0.145 0.0333 0.0700
-## 11 Green Area              M        Sentinel …    13   0.164 0.108 0.0299 0.0651
-## 12 Green Area              M        Sentinel …    19   0.249 0.103 0.0237 0.0498
-## # … with abbreviated variable names ¹​SENTINEL_PRESENCE, ²​PROPORTION
+##    GENERALIZED_ENVIRONMENT BEHAVIOR SENTINEL_PRESENCE     N PROPORTION    sd
+##    <fct>                   <chr>    <fct>             <dbl>      <dbl> <dbl>
+##  1 Commercial              HD       Sentinel Absent      16      0.338 0.174
+##  2 Commercial              HD       Sentinel Present     29      0.331 0.151
+##  3 Commercial              HU       Sentinel Absent      16      0.411 0.180
+##  4 Commercial              HU       Sentinel Present     29      0.365 0.118
+##  5 Commercial              M        Sentinel Absent      16      0.251 0.181
+##  6 Commercial              M        Sentinel Present     29      0.304 0.163
+##  7 Green Area              HD       Sentinel Absent      13      0.412 0.136
+##  8 Green Area              HD       Sentinel Present     19      0.383 0.112
+##  9 Green Area              HU       Sentinel Absent      13      0.424 0.104
+## 10 Green Area              HU       Sentinel Present     19      0.367 0.145
+## 11 Green Area              M        Sentinel Absent      13      0.164 0.108
+## 12 Green Area              M        Sentinel Present     19      0.249 0.103
+## # ℹ 2 more variables: se <dbl>, ci <dbl>
 ```
 
 ## PROP Stacked barplot
@@ -181,8 +128,8 @@ PROP.BARPLOT<-ggplot(PROP.SUMMARY
   scale_y_continuous(labels = scales::percent) +
   theme_classic()+
   ylab("Proportion of time")+
-  scale_x_discrete(labels=c("Commercial Area"
-                            , "Green Area"))+
+  scale_x_discrete(labels=c("Commercial"
+                            , "Green"))+
   scale_fill_manual(values = cbPalette, labels = c("Foraging"
                                                    , "Alert"
                                                    , "Moving")
@@ -212,12 +159,13 @@ sjPlot::tab_model(PROP.MOD
                   , show.se = T
                   , digits = 4
                   , show.re.var = T
-                  , title = "Proportion Model Output"
-                  , dv.labels = " Effects on the proportion of behaviors")
+                  , title = ""
+                  , dv.labels = " Effects on the proportion of behaviors"
+                  , file = "Proportion_Table.html")
 ```
 
 <table style="border-collapse:collapse; border:none;">
-<caption style="font-weight: bold; text-align:left;">Proportion Model Output</caption>
+<caption style="font-weight: bold; text-align:left;"></caption>
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
 <th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; "> Effects on the proportion of behaviors</th>
@@ -273,6 +221,7 @@ sjPlot::tab_model(PROP.MOD
 
 </table>
 
+
 A linear model was performed. While all behaviors were included in the
 model, "Moving" behavior was omitted from analysis, as not all bouts of
 movement were recorded in their entirety.
@@ -292,7 +241,10 @@ BOUT<-BOUT.raw %>%
   filter(.
          , DURATION > 0.01) %>% #Remove impossibly small values
   filter(.
-         , BEHAVIOR != "M") #Remove "M"
+         , BEHAVIOR != "M") %>% #Remove "M"
+  mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
+                         , 'YES' = "Sentinel Present"
+                         , 'NO' = "Sentinel Absent"))
 BOUT$LDURATION<-log(BOUT$DURATION) #Transform data for normality
 str(BOUT)
 ```
@@ -310,7 +262,7 @@ str(BOUT)
 ##  $ GROUP_SIZE             : Factor w/ 2 levels "LARGE","SMALL": 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ BAIT_PRESENCE          : Factor w/ 2 levels "NO","YES": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ GENERALIZED_ENVIRONMENT: Factor w/ 2 levels "Commercial","Green Area": 2 2 2 2 2 2 2 2 2 2 ...
-##  $ SENTINEL_PRESENCE      : Factor w/ 2 levels "NO","YES": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ SENTINEL_PRESENCE      : Factor w/ 2 levels "Sentinel Present",..: 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ DISTURBANCE_FREQUENCY  : num  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ BEHAVIOR               : Factor w/ 3 levels "HD","HU","M": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ DURATION               : num  2.38 2.51 3.51 1.75 10.5 ...
@@ -344,23 +296,23 @@ BOUT.SUMMARY
 
 ```
 ##   GENERALIZED_ENVIRONMENT BEHAVIOR SENTINEL_PRESENCE   N DURATION       sd
-## 1              Commercial Foraging                NO 336 1.500423 1.136791
-## 2              Commercial Foraging               YES 503 1.760944 1.283057
-## 3              Commercial    Alert                NO 422 1.431455 1.611098
-## 4              Commercial    Alert               YES 627 1.781003 2.173001
-## 5              Green Area Foraging                NO 275 2.272862 1.882358
-## 6              Green Area Foraging               YES 673 2.010571 1.919007
-## 7              Green Area    Alert                NO 324 1.993713 2.949379
-## 8              Green Area    Alert               YES 737 1.484700 2.025277
+## 1              Commercial Foraging  Sentinel Present 503 1.760944 1.283057
+## 2              Commercial Foraging   Sentinel Absent 336 1.500423 1.136791
+## 3              Commercial    Alert  Sentinel Present 627 1.781003 2.173001
+## 4              Commercial    Alert   Sentinel Absent 422 1.431455 1.611098
+## 5              Green Area Foraging  Sentinel Present 673 2.010571 1.919007
+## 6              Green Area Foraging   Sentinel Absent 275 2.272862 1.882358
+## 7              Green Area    Alert  Sentinel Present 737 1.484700 2.025277
+## 8              Green Area    Alert   Sentinel Absent 324 1.993713 2.949379
 ##           se        ci
-## 1 0.06201706 0.1219919
-## 2 0.05720870 0.1123980
-## 3 0.07842704 0.1541574
-## 4 0.08678130 0.1704177
-## 5 0.11351045 0.2234634
-## 6 0.07397229 0.1452446
-## 7 0.16385436 0.3223565
-## 8 0.07460204 0.1464582
+## 1 0.05720870 0.1123980
+## 2 0.06201706 0.1219919
+## 3 0.08678130 0.1704177
+## 4 0.07842704 0.1541574
+## 5 0.07397229 0.1452446
+## 6 0.11351045 0.2234634
+## 7 0.07460204 0.1464582
+## 8 0.16385436 0.3223565
 ```
 
 ## BOUT Dot Plot
@@ -388,7 +340,7 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
   scale_colour_manual(values = cbPalette
                       , labels = c("Sentinel Absent", "Sentinel Present")
                       , name = "") +
-  scale_x_discrete(labels = c("Commercial Area", "Green Area"))+
+  scale_x_discrete(labels = c("Commercial", "Green"))+
   theme(axis.title.x = element_blank()
         , legend.position = "bottom"
         , legend.box="vertical"
@@ -437,35 +389,35 @@ sjPlot::tab_model(BOUT.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3330</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1032</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1307&nbsp;&ndash;&nbsp;0.5354</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">3.2263</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.5304</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0942</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3457&nbsp;&ndash;&nbsp;0.7151</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.6294</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2557</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0511</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3559&nbsp;&ndash;&nbsp;-0.1555</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;5.0024</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3366</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0445</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4239&nbsp;&ndash;&nbsp;-0.2494</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;7.5589</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1974</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1974</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0720</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0562&nbsp;&ndash;&nbsp;0.3385</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.7406</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3385&nbsp;&ndash;&nbsp;-0.0562</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.7406</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.006</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3534</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0873</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1823&nbsp;&ndash;&nbsp;0.5245</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.0482</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1010</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0802</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0561&nbsp;&ndash;&nbsp;0.2582</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2601</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.208</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
@@ -493,10 +445,10 @@ sjPlot::tab_model(BOUT.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior: Sentinel<br>Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0810</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0810</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0563</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1913&nbsp;&ndash;&nbsp;0.0294</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.4382</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0294&nbsp;&ndash;&nbsp;0.1913</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4382</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.150</td>
 </tr>
 <tr>
@@ -509,10 +461,10 @@ sjPlot::tab_model(BOUT.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2524</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2524</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0882</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4251&nbsp;&ndash;&nbsp;-0.0796</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.8630</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0796&nbsp;&ndash;&nbsp;0.4251</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.8630</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.004</strong></td>
 </tr>
 <tr>
@@ -600,21 +552,11 @@ increased.
 
 ```r
 BOUT.DIFF.ALL_BEHAVIORS<-emmeans(BOUT.MOD, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
-test(pairs(BOUT.DIFF.ALL_BEHAVIORS), adjust="fdr")
+kbl(test(pairs(BOUT.DIFF.ALL_BEHAVIORS), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Bout post hoc - All behaviors", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
+  kable_classic(html_font = "Times New Roman") %>%
+  save_kable(file = "Bout_PH_All Behaviors.html", self_contained = T)
 ```
 
-```
-##  contrast                         estimate     SE  df z.ratio p.value
-##  NO Commercial - YES Commercial  -1.57e-01 0.0653 Inf  -2.402  0.0489
-##  NO Commercial - NO Green Area   -2.52e-01 0.0821 Inf  -3.074  0.0127
-##  NO Commercial - YES Green Area  -1.57e-01 0.0720 Inf  -2.177  0.0589
-##  YES Commercial - NO Green Area  -9.54e-02 0.0893 Inf  -1.067  0.3430
-##  YES Commercial - YES Green Area  9.98e-05 0.0744 Inf   0.001  0.9989
-##  NO Green Area - YES Green Area   9.55e-02 0.0664 Inf   1.439  0.2254
-## 
-## Results are averaged over the levels of: BEHAVIOR, GROUP_SIZE, BAIT_PRESENCE 
-## P value adjustment: fdr method for 6 tests
-```
 
 RESULTS Post-hoc pairwise testing revealed significant differences in
 the duration of all bouts. The following results are averaged over the
@@ -629,6 +571,36 @@ significant effect, shortening foraging bouts in green areas and in the
 presence of a sentinel (Estimate = -0.157, SE = 0.0720, z-ratio =
 -2.117, p = 0.0589). All other comparisons were not significant (p \<
 0.3430)
+
+
+```r
+BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
+           ggplot(.
+               , aes(x = DISTURBANCE_FREQUENCY
+                     , y = DURATION
+                     ))+
+  geom_point(size = 2
+             , colour = cbPalette[1]
+             , alpha = 0.5
+             )+
+  geom_smooth(method = "lm"
+              , se = F
+              , colour = cbPalette [2]) +
+  theme_classic() +
+  xlab("Disturbance Frequency (per minute)") +
+  ylab("Bout Duration (s)") +
+  theme(legend.position = "none"
+        , text = element_text(size = 18)
+        )
+
+BOUT.DOTPLOT.DISTURBANCES
+```
+
+```
+## `geom_smooth()` using formula = 'y ~ x'
+```
+
+![](Alex-Popescu---Final-Stats_files/figure-html/BOUT - DISTURBANCES Figure-1.png)<!-- -->
 
 ##BOUT Model - Head Down
 
@@ -662,27 +634,27 @@ sjPlot::tab_model(BOUT.MOD.HD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.4370</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0929</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2548&nbsp;&ndash;&nbsp;0.6192</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.7017</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.5289</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0832</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3658&nbsp;&ndash;&nbsp;0.6920</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.3562</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0919</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0919</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0718</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0488&nbsp;&ndash;&nbsp;0.2327</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2799</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2327&nbsp;&ndash;&nbsp;0.0488</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.2799</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.201</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3826</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0778</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2302&nbsp;&ndash;&nbsp;0.5351</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.9194</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1555</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0665</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0251&nbsp;&ndash;&nbsp;0.2858</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.3371</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.019</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
@@ -710,10 +682,10 @@ sjPlot::tab_model(BOUT.MOD.HD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2272</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2272</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0914</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4063&nbsp;&ndash;&nbsp;-0.0480</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.4849</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0480&nbsp;&ndash;&nbsp;0.4063</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.4849</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.013</strong></td>
 </tr>
 <tr>
@@ -785,6 +757,15 @@ foraging bouts (Estimate = -0.1075, SE = 0.0301, t-stat = -3.5664, p =
 
 
 ```r
+BOUT.DIFF.HD<-emmeans(BOUT.MOD.HD, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
+kbl(test(pairs(BOUT.DIFF.HD), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Bout post hoc - Foraging", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
+  kable_classic(html_font = "Times New Roman") %>%
+  save_kable(file = "Bout_PH_HD.html", self_contained = T)
+```
+
+
+
+```r
 BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
   summarySE(., measurevar = "DURATION", groupvar = "GROUP_SIZE") %>%
@@ -806,7 +787,7 @@ BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
             , show.legend = F) +
   theme_classic() +
   xlab("Group Size") +
-  ylab("Mean Bout Duration (s)") +
+  ylab("Mean Foraging Bout Duration (s)") +
   scale_color_manual(values = cbPalette) +
   scale_x_discrete(labels = c("Small Group"
                                   , "Large Group")
@@ -845,7 +826,7 @@ BOUT.DOTPLOT.BAIT<-BOUT %>%
             , size = 6
             , show.legend = F) +
   theme_classic() +
-  ylab("Mean Bout Duration (s)") +
+  ylab("Mean Foraging Bout Duration (s)") +
   scale_color_manual(values = cbPalette) +
   scale_x_discrete(labels = c("Bait Absent"
                                   , "Bait Present")) +
@@ -863,7 +844,7 @@ BOUT.DOTPLOT.BAIT
 
 
 ```r
-BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
+BOUT.DOTPLOT.DISTURBANCES.HD<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
            ggplot(.
                , aes(x = DISTURBANCE_FREQUENCY
@@ -878,12 +859,12 @@ BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
               , colour = cbPalette [2]) +
   theme_classic() +
   xlab("Disturbance Frequency (per minute)") +
-  ylab("Mean Bout Duration (s)") +
+  ylab("Foraging Bout Duration (s)") +
   theme(legend.position = "none"
         , text = element_text(size = 18)
         )
 
-BOUT.DOTPLOT.DISTURBANCES
+BOUT.DOTPLOT.DISTURBANCES.HD
 ```
 
 ```
@@ -924,27 +905,27 @@ sjPlot::tab_model(BOUT.MOD.HU
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0165</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1530</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2833&nbsp;&ndash;&nbsp;0.3163</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1078</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.914</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1645</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1409</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1116&nbsp;&ndash;&nbsp;0.4406</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.1678</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.243</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1480</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1480</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1005</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0489&nbsp;&ndash;&nbsp;0.3450</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4733</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3450&nbsp;&ndash;&nbsp;0.0489</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.4733</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.141</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1619</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1258</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0847&nbsp;&ndash;&nbsp;0.4085</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2866</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.198</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1117</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1148</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3367&nbsp;&ndash;&nbsp;0.1133</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.9729</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.331</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
@@ -972,10 +953,10 @@ sjPlot::tab_model(BOUT.MOD.HU
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2736</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2736</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1352</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.5385&nbsp;&ndash;&nbsp;-0.0087</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.0243</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0087&nbsp;&ndash;&nbsp;0.5385</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.0243</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.043</strong></td>
 </tr>
 <tr>
@@ -1034,6 +1015,8 @@ However, the interaction between sentinel behavior and generalized
 environment was significant (Estimate = -0.2736, SE = 0.1352, t-stat =
 -2.0243, p = 0.043).
 
+
+
 #Peck Rate
 
 
@@ -1091,17 +1074,18 @@ PECK.DOTPLOT<-ggplot(data = PECK.SUMMARY
                     , ymax=(PECK_RATE+se))
                 , width = 0.1
                 , position = position_dodge(width=0.9))+
-  geom_text(aes(label = round(PECK_RATE, 2))
+  geom_text(aes(label = scales::label_number(accuracy=0.01)(PECK_RATE))
             , position = position_dodge(width = 0.4)
             , size = 6
-            , show.legend = F) +
+            , show.legend = F
+            ) +
   theme_classic() +
   ylab("Mean Peck Rate (per min)") +
   scale_colour_manual(values = cbPalette
                       , labels = c("Sentinel Absent", "Sentinel Present")
                       , name = "")+
-  scale_x_discrete(labels = c("Commercial Area"
-                                  , "Green Area")) +
+  scale_x_discrete(labels = c("Commercial"
+                                  , "Green")) +
   theme(axis.title.x = element_blank()
         , legend.position = "bottom"
         , legend.box="vertical"
@@ -1131,15 +1115,16 @@ sjPlot::tab_model(PECK.MOD
                   , show.se = T
                   , show.stat = T
                   , digits = 4
-                  , title = "Robust Peck Rate Model Output"
-                  , dv.labels = " Effects on peck rate")
+                  , title = ""
+                  , dv.labels = " Effects on peck rate (per min)"
+                  , file = "Peck_Table.html")
 ```
 
 <table style="border-collapse:collapse; border:none;">
-<caption style="font-weight: bold; text-align:left;">Robust Peck Rate Model Output</caption>
+<caption style="font-weight: bold; text-align:left;"></caption>
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
-<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; "> Effects on peck rate</th>
+<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; "> Effects on peck rate (per min)</th>
 </tr>
 <tr>
 <td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
@@ -1253,10 +1238,11 @@ sjPlot::plot_model(PECK.MOD
                   , value.size = 3.5
                   , wrap.title = 48
                   , show.re.var = T
-                  , title = "Effects on peck rate" )
+                  , title = "Effects on peck rate (per min)" )
 ```
 
 ![](Alex-Popescu---Final-Stats_files/figure-html/PECK Model-1.png)<!-- -->
+
 
 RESULTS Neither the presence of a sentinel nor the generalized
 environment alone had a significant effect on the peck rate of foragers
@@ -1305,21 +1291,24 @@ commercial areas.
 
 
 ```r
-PECK.DOTPLOT.BAIT<-summarySE(PECK
-                             , measurevar = "PECK_RATE"
-                             , groupvars = "BAIT_PRESENCE") %>%
-  ggplot(., aes(x = BAIT_PRESENCE
+PECK.DOTPLOT.BAIT<-PECK %>%
+  summarySE(.
+            , measurevar = "PECK_RATE"
+            , groupvars = "BAIT_PRESENCE") %>%
+  ggplot(.
+         , aes(x = BAIT_PRESENCE
                      , y = PECK_RATE
-                     , color = BAIT_PRESENCE))+
-  geom_point(position = position_dodge(width = 0.9)
+                     , colour = BAIT_PRESENCE
+               ))+
+  geom_point(position = position_dodge(width = 0.1)
              , size = 3
              ) +
   geom_errorbar(aes(ymin=(PECK_RATE-se)
                     , ymax=(PECK_RATE+se))
                 , width = 0.1
-                , position = position_dodge(width=0.9))+
+                , position = position_dodge(width=0.1))+
   geom_text(aes(label = round(PECK_RATE, 2))
-            , position = position_dodge(width = 0.9)
+            , hjust = -0.2
             , size = 6
             , show.legend = F) +
   theme_classic() +
@@ -1406,42 +1395,14 @@ SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
                     , values = cbPalette
                     , labels = c("Sentinel Absent", "Sentinel Present")
                       ) +
-  scale_x_discrete(labels = c("Commercial Area"
-                              , "Green Area"))
+  scale_x_discrete(labels = c("Commercial"
+                              , "Green")) +
   theme(axis.title.x = element_blank()
         , text = element_text(size = 18)
         , legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin())
-```
-
-```
-## List of 5
-##  $ text           :List of 11
-##   ..$ family       : NULL
-##   ..$ face         : NULL
-##   ..$ colour       : NULL
-##   ..$ size         : num 18
-##   ..$ hjust        : NULL
-##   ..$ vjust        : NULL
-##   ..$ angle        : NULL
-##   ..$ lineheight   : NULL
-##   ..$ margin       : NULL
-##   ..$ debug        : NULL
-##   ..$ inherit.blank: logi FALSE
-##   ..- attr(*, "class")= chr [1:2] "element_text" "element"
-##  $ axis.title.x   : list()
-##   ..- attr(*, "class")= chr [1:2] "element_blank" "element"
-##  $ legend.margin  : 'margin' num [1:4] 0points 0points 0points 0points
-##   ..- attr(*, "unit")= int 8
-##  $ legend.position: chr "bottom"
-##  $ legend.box     : chr "vertical"
-##  - attr(*, "class")= chr [1:2] "theme" "gg"
-##  - attr(*, "complete")= logi FALSE
-##  - attr(*, "validate")= logi TRUE
-```
-
-```r
+  
 SENT.BARPLOT
 ```
 
@@ -1705,7 +1666,10 @@ total number of transitions from that behavior.
 ```r
 PTWY<- DATA.SR %>%
   dplyr::select(VIDEO_ID,ID, DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_NB_TRANSITIONS, TOTAL_FREQUENCY_OF_DISTURBANCES | starts_with("NB_")) %>%
-  rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES")
+  rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES") %>%
+  mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
+                         , 'YES' = "Sentinel Present"
+                         , 'NO' = "Sentinel Absent"))
 ```
 
 ### PTWY Plots
@@ -1713,14 +1677,15 @@ PTWY<- DATA.SR %>%
 
 ```r
 PTWY.SUMMARY<-PTWY %>%
-  rename("Head Down to Peck" = "NB_HD.HDP"
-         , "Head Up to Head Down" = "NB_HU.HD"
-         , "Head Down to Head Up" = "NB_HD.HU"
-         , "Peck to Head Up" = "NB_HDP.HU") %>%
-  pivot_longer(., cols = c("Head Down to Peck"
-                           , "Head Up to Head Down"
-                           , "Head Down to Head Up"
-                           , "Peck to Head Up"
+  rename("Foraging to Peck" = "NB_HD.HDP"
+         , "Alert to Foraging" = "NB_HU.HD"
+         , "Foraging to Alert" = "NB_HD.HU"
+         , "Peck to Alert" = "NB_HDP.HU"
+         ) %>%
+  pivot_longer(., cols = c("Foraging to Peck"
+                           , "Alert to Foraging"
+                           , "Foraging to Alert"
+                           , "Peck to Alert"
                            )
                , names_to = "TRANSITION"
                , values_to = "PTWY") %>%
@@ -1731,14 +1696,15 @@ PTWY.SUMMARY<-PTWY %>%
                             , "GENERALIZED_ENVIRONMENT"))
 
 PTWY.BOXPLOT<-PTWY %>%
-  rename("Head Down to Peck" = "NB_HD.HDP"
-         , "Head Up to Head Down" = "NB_HU.HD"
-         , "Head Down to Head Up" = "NB_HD.HU"
-         , "Peck to Head Up" = "NB_HDP.HU") %>%
-  pivot_longer(., cols = c("Head Down to Peck"
-                           , "Head Up to Head Down"
-                           , "Head Down to Head Up"
-                           , "Peck to Head Up"
+  rename("Foraging to Peck" = "NB_HD.HDP"
+         , "Alert to Foraging" = "NB_HU.HD"
+         , "Foraging to Alert" = "NB_HD.HU"
+         , "Peck to Alert" = "NB_HDP.HU"
+         ) %>%
+  pivot_longer(., cols = c("Foraging to Peck"
+                           , "Alert to Foraging"
+                           , "Foraging to Alert"
+                           , "Peck to Alert"
                            )
                , names_to = "TRANSITION"
                , values_to = "PTWY") %>%
@@ -1747,14 +1713,18 @@ PTWY.BOXPLOT<-PTWY %>%
                  , y = PTWY
                  , colour = SENTINEL_PRESENCE)) +
   geom_boxplot(outlier.shape = NA) +
-  geom_jitter(position = position_dodge(width = 0.9)) +
+  geom_jitter(aes(x = GENERALIZED_ENVIRONMENT
+                  , group = SENTINEL_PRESENCE)
+              , position = position_jitterdodge(jitter.width = 0.5)
+              , alpha = 0.25
+              ) +
   geom_point(data = PTWY.SUMMARY
              , aes( x = GENERALIZED_ENVIRONMENT
                     , y = PTWY
                     , group = SENTINEL_PRESENCE)
              , size = 2
              , colour = "black"
-             , position = position_dodge(width = 0.9)) +
+             , position = position_dodge(width = 0.75)) +
   geom_errorbar(data = PTWY.SUMMARY
                 , aes(ymin=(PTWY-se)
                     , ymax=(PTWY+se)
@@ -1762,7 +1732,8 @@ PTWY.BOXPLOT<-PTWY %>%
                     , x = GENERALIZED_ENVIRONMENT)
                 , width = 0.2
                 , colour = "black"
-                , position = position_dodge(width=0.9)) +
+                , position = position_dodge(width=0.75
+                                            )) +
   theme_classic() +
   ylab("Number of Transitions") +
   scale_colour_manual(values = cbPalette
@@ -1813,21 +1784,22 @@ tab_model(PTWY.MODELS
                   , show.se = T
                   , show.stat = T
                   , digits = 4
-                  , title = "Transitions GLMM output"
-                  , dv.labels = c("Head Down to Head Up"
-                                  , "Head Down to Peck"
-                                  , "Head Up to Head Down"
-                                  , "Peck to Head Up"))
+                  , title = ""
+                  , dv.labels = c("Foraging to Alert"
+                                  , "Foraging to Peck"
+                                  , "Alert to Foraging"
+                                  , "Peck to Alert")
+          , file = "PTWY_Table.html")
 ```
 
 <table style="border-collapse:collapse; border:none;">
-<caption style="font-weight: bold; text-align:left;">Transitions GLMM output</caption>
+<caption style="font-weight: bold; text-align:left;"></caption>
 <tr>
 <th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
-<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Head Down to Head Up</th>
-<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Head Down to Peck</th>
-<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Head Up to Head Down</th>
-<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Peck to Head Up</th>
+<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Foraging to Alert</th>
+<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Foraging to Peck</th>
+<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Alert to Foraging</th>
+<th colspan="5" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Peck to Alert</th>
 </tr>
 <tr>
 <td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
@@ -1854,72 +1826,72 @@ tab_model(PTWY.MODELS
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.9323</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.0694</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4348&nbsp;&ndash;&nbsp;5.9927</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.9499</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.003</strong></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">6.4572</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">1.6785</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">3.8796&nbsp;&ndash;&nbsp;10.7474</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">7.1755</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.7964</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.8305</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.7259&nbsp;&ndash;&nbsp;4.4455</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2671</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.205</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">7.6065</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">2.4531</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">4.0426&nbsp;&ndash;&nbsp;14.3120</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">6.2913</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"><strong>&lt;0.001</strong></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">6.6979</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">1.8151</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">3.9380&nbsp;&ndash;&nbsp;11.3923</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">7.0179</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">7.1517</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">2.4310</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">3.6735&nbsp;&ndash;&nbsp;13.9234</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">5.7878</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"><strong>&lt;0.001</strong></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">5.5098</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">1.5181</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">3.2108&nbsp;&ndash;&nbsp;9.4549</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">6.1938</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">4.7911</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">1.6690</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">2.4205&nbsp;&ndash;&nbsp;9.4832</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">4.4975</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.6126</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2216</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3015&nbsp;&ndash;&nbsp;1.2448</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.3546</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.6323</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.5905</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.8033&nbsp;&ndash;&nbsp;3.3168</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.3546</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.176</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">1.1780</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">0.2477</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">0.7801&nbsp;&ndash;&nbsp;1.7788</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">0.7790</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">0.8489</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">0.1785</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">0.5622&nbsp;&ndash;&nbsp;1.2819</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">&#45;0.7790</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.436</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">1.0677</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">0.2402</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.6870&nbsp;&ndash;&nbsp;1.6595</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">0.2914</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">0.9366</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">0.2107</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.6026&nbsp;&ndash;&nbsp;1.4556</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">&#45;0.2914</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6">0.771</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">0.8696</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.1960</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.5590&nbsp;&ndash;&nbsp;1.3525</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">&#45;0.6201</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">1.1500</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.2592</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.7393&nbsp;&ndash;&nbsp;1.7888</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">0.6201</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.535</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.4213</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1569</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2031&nbsp;&ndash;&nbsp;0.8741</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.3214</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.020</strong></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">1.1775</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">0.2213</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">0.8147&nbsp;&ndash;&nbsp;1.7018</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">0.8693</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.385</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">1.0616</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">0.2081</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.7230&nbsp;&ndash;&nbsp;1.5589</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">0.3051</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6">0.760</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">1.0304</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.2028</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.7006&nbsp;&ndash;&nbsp;1.5155</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">0.1522</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.879</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.1154</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.7689</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.0376&nbsp;&ndash;&nbsp;4.3130</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.0615</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.039</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">1.1428</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">0.2964</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">0.6873&nbsp;&ndash;&nbsp;1.9000</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">0.5144</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.607</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">1.3039</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">0.3515</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.7687&nbsp;&ndash;&nbsp;2.2118</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">0.9844</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6">0.325</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">1.3895</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.3848</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.8075&nbsp;&ndash;&nbsp;2.3909</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">1.1878</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.235</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Disturbance Frequency</td>
@@ -1969,25 +1941,25 @@ tab_model(PTWY.MODELS
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.0212</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.4571</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.9243&nbsp;&ndash;&nbsp;13.1019</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">3.2977</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1992</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0975</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0763&nbsp;&ndash;&nbsp;0.5197</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;3.2976</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">0.9705</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">0.2696</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">0.5630&nbsp;&ndash;&nbsp;1.6730</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">&#45;0.1077</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">1.0304</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">0.2863</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">0.5977&nbsp;&ndash;&nbsp;1.7761</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">0.1077</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.914</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">1.2282</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">0.3596</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.6919&nbsp;&ndash;&nbsp;2.1803</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">0.7021</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">0.8142</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3">0.2384</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.4586&nbsp;&ndash;&nbsp;1.4453</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">&#45;0.7021</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6">0.483</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">1.3485</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.3998</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.7542&nbsp;&ndash;&nbsp;2.4111</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">1.0083</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">0.7416</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.2199</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.4147&nbsp;&ndash;&nbsp;1.3260</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">&#45;1.0083</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.313</td>
 </tr>
 <tr>
@@ -2040,24 +2012,15 @@ tab_model(PTWY.MODELS
 </table>
 
 
+
 ```r
 PTWY.DIFF<-emmeans(PTWY.MODELS$NB_HD.HU, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT)
-test(pairs(PTWY.DIFF), adjust="fdr")
+kbl(test(pairs(PTWY.DIFF), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Pathway analysis post hoc", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
+  kable_classic(html_font = "Times New Roman") %>%
+  save_kable(file = "PTWY_PH.html", self_contained = T)
 ```
 
-```
-##  contrast                        estimate    SE  df z.ratio p.value
-##  NO Commercial - YES Commercial     0.490 0.362 Inf   1.355  0.2633
-##  NO Commercial - NO Green Area      0.864 0.372 Inf   2.321  0.0608
-##  NO Commercial - YES Green Area    -0.259 0.348 Inf  -0.746  0.4557
-##  YES Commercial - NO Green Area     0.374 0.401 Inf   0.933  0.4208
-##  YES Commercial - YES Green Area   -0.749 0.363 Inf  -2.062  0.0785
-##  NO Green Area - YES Green Area    -1.124 0.346 Inf  -3.250  0.0069
-## 
-## Results are averaged over the levels of: BAIT_PRESENCE 
-## Results are given on the log (not the response) scale. 
-## P value adjustment: fdr method for 6 tests
-```
+
 
 RESULTS Transitions from head down to pecking were significantly
 affected by the presence of bait, with more transitions occuring in the
@@ -2092,15 +2055,15 @@ alert behavior when in the presence of a sentinel (Estimate = -1.124, SE
 
 ```r
 PTWY.DOTPLOT.BAIT<-PTWY %>%
-  rename("Head Down to Peck" = "NB_HD.HDP"
-         , "Head Up to Head Down" = "NB_HU.HD"
-         , "Head Down to Head Up" = "NB_HD.HU"
-         , "Peck to Head Up" = "NB_HDP.HU"
+  rename("Foraging to Peck" = "NB_HD.HDP"
+         , "Alert to Foraging" = "NB_HU.HD"
+         , "Foraging to Alert" = "NB_HD.HU"
+         , "Peck to Alert" = "NB_HDP.HU"
          ) %>%
-  pivot_longer(., cols = c("Head Down to Peck"
-                           , "Head Up to Head Down"
-                           , "Head Down to Head Up"
-                           , "Peck to Head Up"
+  pivot_longer(., cols = c("Foraging to Peck"
+                           , "Alert to Foraging"
+                           , "Foraging to Alert"
+                           , "Peck to Alert"
                            )
                , names_to = "TRANSITION"
                , values_to = "PTWY"
@@ -2122,18 +2085,19 @@ PTWY.DOTPLOT.BAIT<-PTWY %>%
                     , ymax=(PTWY+se)
                     )
                 , width = 0.2
-                , position = position_dodge(width=0.9)
                 ) +
-    geom_text(aes(label = round(PTWY, 2))
-            , position = position_dodge2(width = 0.9)
+    geom_text(aes(label = scales::label_number(accuracy = 0.01)(PTWY)
+                  , x = BAIT_PRESENCE
+                  , colour = BAIT_PRESENCE)
+            , hjust = -0.1
             , show.legend = F) +
   theme_classic() +
   ylab("Number of Transitions") +
+  xlab("Bait Presence") +
   scale_color_manual(values = cbPalette) +
-  scale_x_discrete(labels = c("Bait Absent"
-                              , "Bait Present")) +
-  theme(axis.title.x = element_blank()
-        , legend.position = "none"
+  scale_x_discrete(labels = c("Absent"
+                              , "Present")) +
+  theme(legend.position = "none"
         , legend.box="vertical"
         , legend.margin=margin()
         , text = element_text(size = 12)

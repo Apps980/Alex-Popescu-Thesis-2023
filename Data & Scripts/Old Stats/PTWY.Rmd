@@ -30,45 +30,49 @@ PTWY<- PTWY.raw %>%
 
 ```
 
+Next, let's group together the transitions to vigilance, and transitions to vulnerability.
+ 
+```{r PTWY group}
+Vulnerable<-cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)
+Vigilant<-cbind(PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)
+# This does not work
 
+```
 
 Let's try fitting the model.
 
-## MANOVA
+## Vulnerable
 
-```{r PTWY MANOVA}
-PTWY.all<-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD, PTWY$PTWY_HD.HU, PTWY$PTWY_HDP.HU)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = PTWY, subject = "ID.", iter=1000)
+```{r PTWY MANOVA Vulnerable}
+PTWY.vuln<-MANOVA.wide(cbind(PTWY$PTWY_HD.HDP, PTWY$PTWY_HU.HD)~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, data = PTWY, subject = "ID.", iter=1000)
 summary(PTWY.vuln)
 ```
 
-Interesting... Generalized environment is marginally significant, and sentinel presence is no significant, yet their interaction is significant. Resampling p-values returns a significant effect by the interaction of the presence of a sentinel and generalized environment only.
+Interesting... While Sentinel presence and the interaction of sentinel presence and generalized environment had no significant effects, generalized environment had an effect on the frequency of transitions to vulnerability.
+
+**Figure out if you need to recalculate PTWY data to only include those 4 transitions. **
 
 Let's perform a pairwise comparison.
 
 ### Post Hoc
 
-```{r PTWY CR }
-simCI(PTWY.all, contrast = "pairwise", type = "Tukey", interaction  = T, factor = c("GENERALIZED_ENVIRONMENT", "SENTINEL_PRESENCE"))
+```{r PTWY CR Vuln GENV}
+simCI(PTWY.vuln, contrast = "pairwise", type = "Tukey", interaction  = F, factor = "GENERALIZED_ENVIRONMENT")
 
 ```
 
 HMMMM... Very weird... Now its not significant... Let's compute univariate comparisons.
 
 ```{r PTWY Vulnerable univar}
-PTWY.HD.HDP<-MANOVA.wide(PTWY_HD.HDP~GENERALIZED_ENVIRONMENT*SENTINEL_PRESENCE, data = PTWY, iter = 1000)
-PTWY.HU.HD<-MANOVA.wide(PTWY_HU.HD~GENERALIZED_ENVIRONMENT*SENTINEL_PRESENCE, data = PTWY, iter = 1000)
-PTWY.HDP.HU<-MANOVA.wide(PTWY_HDP.HU~GENERALIZED_ENVIRONMENT*SENTINEL_PRESENCE, data = PTWY, iter = 1000)
-PTWY.HD.HU<-MANOVA.wide(PTWY_HD.HU~GENERALIZED_ENVIRONMENT*SENTINEL_PRESENCE, data = PTWY, iter = 1000)
+PTWY.HD.HDP<-MANOVA.wide(PTWY_HD.HDP~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
+PTWY.HU.HD<-MANOVA.wide(PTWY_HU.HD~GENERALIZED_ENVIRONMENT, data = PTWY, iter = 1000)
 
-p.adjust(c(PTWY.HD.HDP$resampling[,1], PTWY.HU.HD$resampling[,1], PTWY.HDP.HU$resampling[,1], PTWY.HU.HD$resampling[,1]), method = "fdr")
+p.adjust(c(PTWY.HD.HDP$resampling[,1], PTWY.HU.HD$resampling[,1]), method = "bonferroni")
 #using the parametric bootstrap Wald-type statistic
 
 ```
 
-Bummer, when adjusting the p-values using the "FDR" method (or any other for that matter), all effects are not significant. When not correcting, some results are marginally significant (p-value = 0.051). 
-
-***Calculate effect sizes***
-
+Very cool! Turns out that only the transitions from head up to head down is significantly affected by the generalized environment. This is only if we use the Wald-type statistic and not the modified ANOVA-type statistic.
 
 ### Plots
 
