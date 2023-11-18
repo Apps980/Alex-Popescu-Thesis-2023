@@ -162,7 +162,8 @@ PROP.BARPLOT<-ggplot(PROP.SUMMARY
   geom_text(aes(label = paste0(formattable::digits(PROPORTION*100, dig=2)
                                , "%"))
             , position = position_stack(vjust = 0.5)
-            , size = 4) +
+            , size = 4
+            , family = "serif") +
   scale_y_continuous(labels = scales::percent) +
   theme_classic()+
   ylab("Proportion of time")+
@@ -173,7 +174,7 @@ PROP.BARPLOT<-ggplot(PROP.SUMMARY
                                                    , "Moving")
                     , name="")+
   theme(legend.position = "bottom"
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         , axis.title.x = element_blank()) +
   facet_grid(~SENTINEL_PRESENCE)
 PROP.BARPLOT
@@ -195,7 +196,7 @@ sjPlot::tab_model(PROP.MOD
                   , digits = 4
                   , show.re.var = T
                   , title = ""
-                  , dv.labels = " Effects on the proportion of behaviors"
+                  , dv.labels = ""
                   , file = "Proportion_Table.html")
 ```
 ```{r Save PROP Table, include = F}
@@ -270,7 +271,8 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
   geom_text(aes(label = round(DURATION, 2))
             , hjust = -0.2
             , size = 6
-            , show.legend = F) +
+            , show.legend = F
+            , family = "serif") +
   theme_classic() +
   ylab("Mean Bout Duration (s)") +
   scale_colour_manual(values = cbPalette
@@ -281,7 +283,7 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
         , legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         ) +
   facet_grid(~BEHAVIOR)
 
@@ -302,8 +304,8 @@ sjPlot::tab_model(BOUT.MOD
                   , show.se = T
                   , show.stat = T
                   , digits = 4
-                  , title = "Bout Robust Model  Output"
-                  , dv.labels = " Effects on duration of bouts of all behaviors")
+                  , title = ""
+                  , dv.labels = "")
 
 sjPlot::plot_model(BOUT.MOD
                   , axis.labels = labs.bout.1
@@ -313,8 +315,9 @@ sjPlot::plot_model(BOUT.MOD
                   , value.size = 3.5
                   , wrap.title = 48
                   , show.re.var = T
-                  , title = "Effects on duration of bouts of all behaviors"
-                  )
+                  , title = ""
+                  ) +
+  theme_sjplot(base_family = "serif" )
 ```
 
 I then visualized the data and ran a robust linear mixed model on the
@@ -394,7 +397,7 @@ BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
   xlab("Disturbance Frequency (per minute)") +
   ylab("Bout Duration (s)") +
   theme(legend.position = "none"
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         )
 
 BOUT.DOTPLOT.DISTURBANCES
@@ -411,8 +414,8 @@ sjPlot::tab_model(BOUT.MOD.HD
                   , show.se = T
                   , show.stat = T
                   , digits = 4
-                  , title = "Head Down"
-                  , dv.labels = " Effects on foraging bout duration")
+                  , title = ""
+                  , dv.labels = "")
 
 sjPlot::plot_model(BOUT.MOD.HD
                   , axis.labels = labs.bout.2
@@ -422,7 +425,8 @@ sjPlot::plot_model(BOUT.MOD.HD
                   , value.size = 3.5
                   , wrap.title = 48
                   , show.re.var = T
-                  , title = "Effects on foraging bout duration")
+                  , title = "") +
+  theme_sjplot(base_family = "serif")
 
 ```
 
@@ -477,7 +481,9 @@ BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
   geom_text(aes(label = round(DURATION, 2))
             , hjust = -0.2
             , size = 6
-            , show.legend = F) +
+            , show.legend = F
+            , family = "serif"
+            ) +
   theme_classic() +
   xlab("Group Size") +
   ylab("Mean Foraging Bout Duration (s)") +
@@ -489,7 +495,7 @@ BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
         , legend.position = "none"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         )
 
 BOUT.DOTPLOT.GROUP_SIZE
@@ -514,7 +520,8 @@ BOUT.DOTPLOT.BAIT<-BOUT %>%
   geom_text(aes(label = round(DURATION, 2))
             , hjust = -0.2
             , size = 6
-            , show.legend = F) +
+            , show.legend = F
+            , family = "serif") +
   theme_classic() +
   ylab("Mean Foraging Bout Duration (s)") +
   scale_color_manual(values = cbPalette) +
@@ -524,7 +531,7 @@ BOUT.DOTPLOT.BAIT<-BOUT %>%
         , legend.position = "none"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         )
 
 BOUT.DOTPLOT.BAIT
@@ -548,7 +555,7 @@ BOUT.DOTPLOT.DISTURBANCES.HD<-BOUT %>%
   xlab("Disturbance Frequency (per minute)") +
   ylab("Foraging Bout Duration (s)") +
   theme(legend.position = "none"
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         )
 
 BOUT.DOTPLOT.DISTURBANCES.HD
@@ -566,7 +573,8 @@ sjPlot::tab_model(BOUT.MOD.HU
                   , show.stat = T
                   , digits = 4
                   , title = "Head Up"
-                  , dv.labels = " Effects on alert bout duration")
+                  , dv.labels = " Effects on alert bout duration")+
+  theme_sjplot(base_family = "serif")
 
 sjPlot::plot_model(BOUT.MOD.HU
                   , axis.labels = labs.bout.2
@@ -576,7 +584,8 @@ sjPlot::plot_model(BOUT.MOD.HU
                   , value.size = 3.5
                   , wrap.title = 48
                   , show.re.var = T
-                  , title = "Effects on alert bout duration")
+                  , title = "Effects on alert bout duration") +
+  theme_sjplot(base_family = "serif")
 
 ```
 
@@ -651,6 +660,7 @@ PECK.DOTPLOT<-ggplot(data = PECK.SUMMARY
             , position = position_dodge(width = 0.4)
             , size = 6
             , show.legend = F
+            , family = "serif"
             ) +
   theme_classic() +
   ylab("Mean Peck Rate (per min)") +
@@ -663,7 +673,7 @@ PECK.DOTPLOT<-ggplot(data = PECK.SUMMARY
         , legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 18))
+        , text = element_text(size = 18, family = "serif"))
 
 PECK.DOTPLOT
 ```
@@ -686,7 +696,7 @@ sjPlot::tab_model(PECK.MOD
                   , show.stat = T
                   , digits = 4
                   , title = ""
-                  , dv.labels = " Effects on peck rate (per min)"
+                  , dv.labels = ""
                   , file = "Peck_Table.html")
 
 sjPlot::plot_model(PECK.MOD
@@ -697,7 +707,8 @@ sjPlot::plot_model(PECK.MOD
                   , value.size = 3.5
                   , wrap.title = 48
                   , show.re.var = T
-                  , title = "Effects on peck rate (per min)" )
+                  , title = "" ) +
+  theme_sjplot(base_family = "serif")
 ```
 ```{r Save Peck Table, include = F}
 webshot("Peck_Table.html", "Peck_Table.png")
@@ -728,7 +739,7 @@ PECK.DOTPLOT.DISTURBANCE<-PECK %>%
   labs(y="Peck Rate (per min)", x="Disturbance Frequency (per min)")+
   scale_x_continuous(n.breaks=14)+
   theme(legend.position = "bottom"
-        , text = element_text(size = 18))+
+        , text = element_text(size = 18, family = "serif"))+
   scale_color_manual(values = cbPalette
                     , labels = c("Commercial Area"
                                  , "Green Area")
@@ -761,7 +772,8 @@ PECK.DOTPLOT.BAIT<-PECK %>%
   geom_text(aes(label = round(PECK_RATE, 2))
             , hjust = -0.2
             , size = 6
-            , show.legend = F) +
+            , show.legend = F
+            , family = "serif") +
   theme_classic() +
   ylab("Mean Peck Rate (per min)") +
   scale_x_discrete(labels = c("Baited Absent"
@@ -771,7 +783,7 @@ PECK.DOTPLOT.BAIT<-PECK %>%
         , legend.position = "none"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 18))
+        , text = element_text(size = 18, family = "serif"))
 
 PECK.DOTPLOT.BAIT
 ```
@@ -799,7 +811,7 @@ SENT.SUMMARY <- summarySE(data = SENT
 SENT.SUMMARY
 ```
 
-##SENT Barplot
+## SENT Barplot
 
 ```{r SENT Barplot}
 SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
@@ -807,7 +819,11 @@ SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
                  , y = N
                  , group = SENTINEL_PRESENCE)) + 
   geom_bar(stat='identity', width=.5, position = "dodge") +
-  geom_text(aes(label = N, group = SENTINEL_PRESENCE), position = position_dodge(width = 0.5), vjust = 1.5, size = 8) +
+  geom_text(aes(label = N, group = SENTINEL_PRESENCE)
+            , position = position_dodge(width = 0.5)
+            , vjust = 1.5
+            , size = 8
+            , family = "serif") +
   ylab("Number of observations") +
   theme_classic() +
   scale_fill_manual(""
@@ -817,7 +833,7 @@ SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
   scale_x_discrete(labels = c("Commercial"
                               , "Green")) +
   theme(axis.title.x = element_blank()
-        , text = element_text(size = 18)
+        , text = element_text(size = 18, family = "serif")
         , legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin())
@@ -825,7 +841,7 @@ SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
 SENT.BARPLOT
 ```
 
-##SENT Chi-Squared
+## SENT Chi-Squared
 
 ```{r SENT Chi-Squared}
 SENT.CHISQ<-lapply(SENT[,c("GENERALIZED_ENVIRONMENT"
@@ -880,14 +896,12 @@ SENT.FREQ <- SENT %>%
   theme_classic() +
   theme(legend.position = "bottom"
         , axis.title.x = element_blank()
-        , text = element_text(size = 16))
+        , text = element_text(size = 18, family = "serif"))
 
 SENT.FREQ
 ```
 
 # Pathway Analysis
-
-## Pathway
 
 I calculated the likelihood of one behavior following another by
 dividing the number of transitions from one behavior to another by the
@@ -896,7 +910,8 @@ total number of transitions from that behavior.
 ```{r Subsetting PTWY}
 PTWY<- DATA.SR %>%
   dplyr::select(VIDEO_ID,ID, DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_NB_TRANSITIONS, TOTAL_FREQUENCY_OF_DISTURBANCES | starts_with("NB_")) %>%
-  rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES") %>%
+  rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES"
+         , "Transitions" = "TOTAL_NB_TRANSITIONS") %>%
   mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
                          , 'YES' = "Sentinel Present"
                          , 'NO' = "Sentinel Absent"))
@@ -976,7 +991,7 @@ PTWY.BOXPLOT<-PTWY %>%
         , legend.position = "bottom"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 12)
+        , text = element_text(size = 14, family = "serif")
         ) +
   facet_grid(~TRANSITION)
 
@@ -1001,7 +1016,7 @@ DV<-list("NB_HD.HU"
 
 
 for (y in DV){
-  formula<-formula(paste(y,"~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+DISTURBANCE_FREQUENCY+BAIT_PRESENCE+(1|TOTAL_NB_TRANSITIONS)"))
+  formula<-formula(paste(y,"~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+DISTURBANCE_FREQUENCY+BAIT_PRESENCE+(1|Transitions)"))
   PTWY.MODELS[[y]]<-glmer(formula, data = PTWY, family = "poisson", control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=100000)))
 }
 
@@ -1016,8 +1031,8 @@ tab_model(PTWY.MODELS
                                   , "Foraging to Peck"
                                   , "Alert to Foraging"
                                   , "Peck to Alert")
-          , file = "PTWY_Table.html")
-
+          )+
+  theme_sjplot(base_family = "serif")
 ```
 ```{r Save PTWY Table, include = F}
 webshot("PTWY_Table.html", "PTWY_Table.png")
@@ -1101,7 +1116,8 @@ PTWY.DOTPLOT.BAIT<-PTWY %>%
                   , x = BAIT_PRESENCE
                   , colour = BAIT_PRESENCE)
             , hjust = -0.1
-            , show.legend = F) +
+            , show.legend = F
+            , family = "serif") +
   theme_classic() +
   ylab("Number of Transitions") +
   xlab("Bait Presence") +
@@ -1111,7 +1127,7 @@ PTWY.DOTPLOT.BAIT<-PTWY %>%
   theme(legend.position = "none"
         , legend.box="vertical"
         , legend.margin=margin()
-        , text = element_text(size = 12)
+        , text = element_text(size = 18, family = "serif")
         ) +
   facet_grid(~TRANSITION)
 
@@ -1133,7 +1149,8 @@ PTWY.DOTPLOT.DISTURBANCE<- PTWY %>%
               ) +
   theme_classic() +
   xlab("Disturbance Frequency (per min)") +
-  ylab("Number of Transitions from Foraging to Alert")
+  ylab("Transitions from Foraging to Alert")+
+  theme(text = element_text(size = 18, family = "serif"))
 
 PTWY.DOTPLOT.DISTURBANCE
 ```

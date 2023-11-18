@@ -28,9 +28,18 @@
                 "currentVersion": "1.4.13"
               }
             }
+          },
+          {
+            "id": "39ac9f8136f6418e",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.4.14"
+              }
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -149,13 +158,11 @@
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -167,6 +174,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "13e8b63000472c8f",
-  "lastOpenFiles": []
+  "active": "2c8b92bcc684cb1c",
+  "lastOpenFiles": [
+    "Untitled.canvas",
+    "Table of contents.md",
+    "~WRL0005.tmp",
+    "~WRD0004.tmp"
+  ]
 }
