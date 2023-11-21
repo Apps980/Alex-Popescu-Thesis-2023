@@ -8,5 +8,5 @@ effect: Only certain species perform sentinel behavior in a mixed species flock
 [[Mixed flock]]
 Sentinel behavior primarily performed by Tawny Tit-Spinetail and occasionally by Rusty-vented Canastero.
 
-#Avian #MixedFlock #NoData 
+#Avian #MixedFlock #NoData #Reject 
 

@@ -7,5 +7,5 @@ effect:
 [[Mixed flock]]
 Presence of drongos increased foraging success in the pied babbler. The latter foraged differently in the presence of drongos.
 
-#Avian #MixedFlock 
+#Avian #MixedFlock #Reject 
 

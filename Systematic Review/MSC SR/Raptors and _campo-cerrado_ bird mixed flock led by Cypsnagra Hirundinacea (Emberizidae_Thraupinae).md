@@ -9,4 +9,4 @@ effect: Increased predation led to increased time with sentinel present.
 
 Time with sentinel was related to encounters with raptors <- [[predation]]
 
-#MixedFlock #Risk #Avian #NoData 
+#MixedFlock #Risk #Avian #NoData #Reject 

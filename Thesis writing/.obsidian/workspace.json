@@ -20,6 +20,16 @@
             }
           },
           {
+            "id": "c66422aceb8f220c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.4.16"
+              }
+            }
+          },
+          {
             "id": "13e8b63000472c8f",
             "type": "leaf",
             "state": {
@@ -39,7 +49,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -174,8 +185,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2c8b92bcc684cb1c",
+  "active": "c66422aceb8f220c",
   "lastOpenFiles": [
+    "roses.png",
+    "~$ex Popescu - ES - Methods & Results - 20231117.docx",
     "Untitled.canvas",
     "Table of contents.md",
     "~WRL0005.tmp",

@@ -14,4 +14,4 @@ In larger groups with drongos, individuals sentineled more than when a drongo wa
 Reliance to drongos decreased as group size increased. Benefits of having drongos likewise decreased as group size increased.
 
 
-#Avian #NoData #GroupSize #MixedFlock 
+#Avian #NoData #GroupSize #MixedFlock #Reject 

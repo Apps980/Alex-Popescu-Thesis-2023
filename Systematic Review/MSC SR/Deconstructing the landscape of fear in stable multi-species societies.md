@@ -10,4 +10,4 @@ Sentinel species provide social signals and greatly affect the structure of comm
 
 No effects tested on sentinel behavior
 
-#Avian #MixedFlock 
+#Avian #MixedFlock #Reject 

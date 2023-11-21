@@ -9,4 +9,4 @@ Sentinel behavior as male perched from prominent position and scanning the terri
 
 No effect of dulled epaulets on time on sentinel.
 
-#Reject #NoData 
+ #NoData 

@@ -12,4 +12,4 @@ No effect of group size on #ProportionOfTime or Seasonality
 
 Sentinel behavior often found in ground foraging birds of open country with small groups.
 
-#Avian #MixedFlock #Data 
+#Avian #MixedFlock #Data #Reject 
