@@ -11,8 +11,12 @@
             "id": "a358e9ad186c004a",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md"
+              }
             }
           },
           {
@@ -142,7 +150,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -157,6 +166,13 @@
   },
   "active": "a358e9ad186c004a",
   "lastOpenFiles": [
+    "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
+    "Experimental field evidence that out-group threats influence within-group behavior.md",
+    "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
+    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
+    "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
+    "The value of constant surveillance in a risky environment.md",
+    "Experimental evidence for delayed contingent cooperation among wild dwarf mongooses.md",
     "Testing for sentinel coordination in Smooth-billed Anis (Crotophaga ani).md",
     "FACULTATIVE COMMUNAL BROOD REARING IN CALIFORNIA QUAIL.md",
     "Diurnal pattern of pre-weaning den visits and nursing in breeding pairs of captive dingoes (Canis dingo).md",
@@ -173,15 +189,8 @@
     "SINGING FOR YOUR SUPPER_ SENTINEL CALLING BY KLEPTOPARASITES CAN MITIGATE THE COST TO VICTIMS.md",
     "Deconstructing the landscape of fear in stable multi-species societies.md",
     "SENTINEL BEHAVIOR, SEASONALITY, AND THE STRUCTURE OF BIRD FLOCKS IN A BRAZlLIAN SAVANNA.md",
-    "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
     "Negotiating a stable solution for vigilance behaviour.md",
     "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
-    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
-    "Social behaviour of a colony of the yellow-bellied marmot (Marmota flaviventris).md",
-    "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
-    "Social skew as a measure of the costs and benefits of group living in marmots.md",
-    "Biparental care and obligate monogamy in the rock-haunting possum, Petropseudes dahli, from tropical Australia.md",
-    "Call of duty_ Variation in use of the watchman's song by sentinel dwarf mongooses, Helogale parvula.md",
-    "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md"
+    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md"
   ]
 }
