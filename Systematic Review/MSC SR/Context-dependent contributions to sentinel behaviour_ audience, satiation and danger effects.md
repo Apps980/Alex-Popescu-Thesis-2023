@@ -13,7 +13,7 @@ Danger effects: increased [[predation]] leads to an increased need of antipredat
 
 Sentinel behavior as an individual who adopts a raised position to look out for danger while other groupmates continue with other activities such as foraging. Affected by fixed or relatively stable factors such as [[Sex]], [[Rank]], and [[Group Size]].
 
-[[Dwarf Mongoose]] can have context-dependent variations in behavior, such as differential responses to alarm calls based on signaller's position (height), receiver's [[satiation]], and prior information about their current predation risk ( less satiated = more risk tolerant)
+Dwarf Mongoose can have context-dependent variations in behavior, such as differential responses to alarm calls based on signaller's position (height), receiver's [[satiation]], and prior information about their current predation risk ( less satiated = more risk tolerant)
 
 Theoretically predicted by the risk allocation hypothesis, they expected to observe an interaction between [[satiation]] and [[predation]] levels. As costs and benefits of the foraging/vigilance tradeoff change with both satiation and danger levels, individuals are expected to have maximal vigilance past a critical energetic threshold.
 

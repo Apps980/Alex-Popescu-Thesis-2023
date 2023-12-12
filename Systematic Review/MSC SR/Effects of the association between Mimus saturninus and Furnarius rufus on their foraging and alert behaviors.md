@@ -17,4 +17,4 @@ Sentinel behavior as an individual who occupies an elevated position while other
 
 Presence of F. rufus led to Mockingbirds decreasing their time spent on sentinel behavior. 
 
-#Reject 
+#Reject #Avian #MixedFlock 

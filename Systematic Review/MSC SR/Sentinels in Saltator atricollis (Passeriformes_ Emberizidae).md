@@ -4,7 +4,7 @@ authors: J. Ragusa-Netto
 year: 2001
 species: Black-throated Saltator
 factor: [[Group Size]] 
-effect: [[No Effects]] on time with a sentinel
+effect: No Effects on time with a sentinel
 
 No coordination mentionned. Definition used is "individuals that interrupt foraging for extended periods to watch for predators"
 

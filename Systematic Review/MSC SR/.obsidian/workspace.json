@@ -8,11 +8,15 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a358e9ad186c004a",
+            "id": "9381a8af5256c6c5",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -73,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "42cb3ca589d774fc",
@@ -90,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md"
+              }
             }
           },
           {
@@ -142,7 +149,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 304.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -155,33 +162,33 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "a358e9ad186c004a",
+  "active": "9381a8af5256c6c5",
   "lastOpenFiles": [
-    "Testing for sentinel coordination in Smooth-billed Anis (Crotophaga ani).md",
-    "FACULTATIVE COMMUNAL BROOD REARING IN CALIFORNIA QUAIL.md",
-    "Diurnal pattern of pre-weaning den visits and nursing in breeding pairs of captive dingoes (Canis dingo).md",
-    "Facultative response to a kleptoparasite by the cooperatively breeding pied babbler.md",
-    "Raptors and _campo-cerrado_ bird mixed flock led by Cypsnagra Hirundinacea (Emberizidae_Thraupinae).md",
-    "The Sentinel Crow as an Extension of Parental Care.md",
-    "Habitat deterioration and efficiency of antipredator strategy in a meadow-breeding wader, Temminck's stint ( Calidris temminckii ).md",
-    "Selfish Sentinels.md",
-    "When are two heads better than one_ Visual perception and information transfer affect vigilance coordination in foraging groups.md",
-    "Adaptive, flexible responses towards avian predation threat by Arabian Babblers Turdoides squamiceps living at a migratory hotspot.md",
-    "Relatedness does not predict vigilance in a population of the social rodent Octodon degus.md",
-    "Group size and associative learning in the Australian magpie (Cracticus tibicen dorsalis).md",
-    "COMPOSITION AND STRUCTURE OF AVIAN MIXED-SPECIES FLOCKS IN A HIGH-ANDEAN POLYLEPIS FOREST IN BOLIVIA.md",
-    "SINGING FOR YOUR SUPPER_ SENTINEL CALLING BY KLEPTOPARASITES CAN MITIGATE THE COST TO VICTIMS.md",
-    "Deconstructing the landscape of fear in stable multi-species societies.md",
-    "SENTINEL BEHAVIOR, SEASONALITY, AND THE STRUCTURE OF BIRD FLOCKS IN A BRAZlLIAN SAVANNA.md",
-    "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
-    "Negotiating a stable solution for vigilance behaviour.md",
     "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
-    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
-    "Social behaviour of a colony of the yellow-bellied marmot (Marmota flaviventris).md",
-    "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
-    "Social skew as a measure of the costs and benefits of group living in marmots.md",
-    "Biparental care and obligate monogamy in the rock-haunting possum, Petropseudes dahli, from tropical Australia.md",
-    "Call of duty_ Variation in use of the watchman's song by sentinel dwarf mongooses, Helogale parvula.md",
-    "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md"
+    "Cooperative sentinel behaviour in the Arabian babbler.md",
+    "Breeding and Feeding Behaviour of Jungle Babbler(Turdiodes striata Dumont, 1923) in Agro-Ecological Zones of District Layyah, Pakistan.md",
+    "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
+    "Looking after your partner_ sentinel behaviour in a socially monogamous bird.md",
+    "Sentinel behavior in captive meerkats ( Suricata suricatta).md",
+    "Contributions of genetic and nongenetic sources to variation in cooperative behavior in a cooperative mammal.md",
+    "Sentinel behaviour in vervet monkeys_ Who sees whom first_.md",
+    "SOCIAL BEHAVIOUR WITHIN GROUPS OF JUNGLE BABBLERS (TURDOIDES STRIATUS).md",
+    "Urban cycles of human activity do not significantly alter the behaviour of a duetting bird.md",
+    "Selfish Sentinels in Cooperative Mammals.md",
+    "The Predator Early Warning System of Red-Winged Blackbirds.md",
+    "Habitat-use patterns in cooperative and non-cooperative breeding birds_ testing predictions with western scrub-jays.md",
+    "A Study of the Behaviour of the Chacma Baboon, Papio Ursinus.md",
+    "Florida Scrub-Jays Compensate for the Sentinel Behavior of Flockmates.md",
+    "Florida Scrub-Jays (Aphelocoma coerulescens) are Sentinels More When Well-Fed (Even with no Kin Nearby).md",
+    "Anti-predator behaviour of captive Grey partridges (Perdix perdix).md",
+    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
+    "Nest Guarding in Chesapeake Bay Bald Eagles.md",
+    "The Sentinel Crow as an Extension of Parental Care.md",
+    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
+    "SOCIAL-BEHAVIOR WITHIN GROUPS OF JUNGLE BABBLERS (TURDOIDES-STRIATUS).md",
+    "Effect of group size and experience on the ontogeny of sentinel calling behaviour in meerkats.md",
+    "Raptors and _campo-cerrado_ bird mixed flock led by Cypsnagra Hirundinacea (Emberizidae_Thraupinae).md",
+    "Lek behaviour in birds_ do displaying males reduce nest predation_.md",
+    "Leadership and Sentinel Behavior.md"
   ]
 }

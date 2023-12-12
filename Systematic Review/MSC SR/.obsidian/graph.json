@@ -8,7 +8,21 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "tag:#Reject",
+      "query": "tag:#Avian",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
+      }
+    },
+    {
+      "query": "tag:#Primate  ",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "tag:#Mongoose  ",
       "color": {
         "a": 1,
         "rgb": 14701138
@@ -25,6 +39,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.19131584069490606,
-  "close": true
+  "scale": 0.26822153672791643,
+  "close": false
 }
