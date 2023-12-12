@@ -13,7 +13,11 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
+=======
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+>>>>>>> c0bb00eb85e076be23005e123213690c46d48499
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +97,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
+=======
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+>>>>>>> c0bb00eb85e076be23005e123213690c46d48499
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +118,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md",
+=======
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+>>>>>>> c0bb00eb85e076be23005e123213690c46d48499
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +145,11 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AF FINIS JERDON.md"
+=======
+                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md"
+>>>>>>> c0bb00eb85e076be23005e123213690c46d48499
               }
             }
           },
@@ -149,7 +165,12 @@
       }
     ],
     "direction": "horizontal",
+<<<<<<< HEAD
     "width": 304.5
+=======
+    "width": 200,
+    "collapsed": true
+>>>>>>> c0bb00eb85e076be23005e123213690c46d48499
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -164,6 +185,7 @@
   },
   "active": "9381a8af5256c6c5",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
     "Cooperative sentinel behaviour in the Arabian babbler.md",
     "Breeding and Feeding Behaviour of Jungle Babbler(Turdiodes striata Dumont, 1923) in Agro-Ecological Zones of District Layyah, Pakistan.md",
@@ -190,5 +212,33 @@
     "Raptors and _campo-cerrado_ bird mixed flock led by Cypsnagra Hirundinacea (Emberizidae_Thraupinae).md",
     "Lek behaviour in birds_ do displaying males reduce nest predation_.md",
     "Leadership and Sentinel Behavior.md"
+=======
+    "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
+    "Experimental field evidence that out-group threats influence within-group behavior.md",
+    "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
+    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
+    "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
+    "The value of constant surveillance in a risky environment.md",
+    "Experimental evidence for delayed contingent cooperation among wild dwarf mongooses.md",
+    "Testing for sentinel coordination in Smooth-billed Anis (Crotophaga ani).md",
+    "FACULTATIVE COMMUNAL BROOD REARING IN CALIFORNIA QUAIL.md",
+    "Diurnal pattern of pre-weaning den visits and nursing in breeding pairs of captive dingoes (Canis dingo).md",
+    "Facultative response to a kleptoparasite by the cooperatively breeding pied babbler.md",
+    "Raptors and _campo-cerrado_ bird mixed flock led by Cypsnagra Hirundinacea (Emberizidae_Thraupinae).md",
+    "The Sentinel Crow as an Extension of Parental Care.md",
+    "Habitat deterioration and efficiency of antipredator strategy in a meadow-breeding wader, Temminck's stint ( Calidris temminckii ).md",
+    "Selfish Sentinels.md",
+    "When are two heads better than one_ Visual perception and information transfer affect vigilance coordination in foraging groups.md",
+    "Adaptive, flexible responses towards avian predation threat by Arabian Babblers Turdoides squamiceps living at a migratory hotspot.md",
+    "Relatedness does not predict vigilance in a population of the social rodent Octodon degus.md",
+    "Group size and associative learning in the Australian magpie (Cracticus tibicen dorsalis).md",
+    "COMPOSITION AND STRUCTURE OF AVIAN MIXED-SPECIES FLOCKS IN A HIGH-ANDEAN POLYLEPIS FOREST IN BOLIVIA.md",
+    "SINGING FOR YOUR SUPPER_ SENTINEL CALLING BY KLEPTOPARASITES CAN MITIGATE THE COST TO VICTIMS.md",
+    "Deconstructing the landscape of fear in stable multi-species societies.md",
+    "SENTINEL BEHAVIOR, SEASONALITY, AND THE STRUCTURE OF BIRD FLOCKS IN A BRAZlLIAN SAVANNA.md",
+    "Negotiating a stable solution for vigilance behaviour.md",
+    "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
+    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md"
+>>>>>>> c0bb00eb85e076be23005e123213690c46d48499
   ]
 }
