@@ -3,7 +3,7 @@ authors: Ramona Rauber, Marta B. Manser
 year: 2021
 species: Meerkats
 factor:[[Group Size]] and [[maturity]]
-effect:Younger individuals contributed less than adults, but decreased [[Group Size]] led to sentinel behavior being performed at a younger age.
+effect: Younger individuals contributed less than adults, but decreased [[Group Size]] led to sentinel behavior being performed at a younger age.
 
 Sentinel as coordinated vigilance behavior where one individual climbs to an elevated position and scans the surroundings for predators while the rest of the group is foraging.
 Foragers increase their foraging efficiency when a sentinel is present. Sentinel have greater visibility.

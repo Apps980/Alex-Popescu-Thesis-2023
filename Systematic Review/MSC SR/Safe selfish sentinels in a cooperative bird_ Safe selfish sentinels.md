@@ -36,7 +36,8 @@ Sentinel efforts did not increase in response to increased [[predation]], potent
 
 The larger the group, the greater number of individuals with enough energy to be sentinels. Therefore there is greater total sentinel coverage in larger groups.
 
-Sentinels were used when foraging groups were in more open habitats with clear lines of sight <- visibility
+Sentinels were used when foraging groups were in more open habitats with clear lines of sight <- [[visibility]]
+
 
 Sex differences could be the result of dominant males monitoring and calling to neighbouring groups <- [[contact calls]]
 

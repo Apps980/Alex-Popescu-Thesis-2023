@@ -15,7 +15,7 @@ Intrusion indirectly affects reproductive success by inflicting additonal stress
 Nest-guarding efforts varied with nesting stage [[Breeding Period]] 
 13.7% during pre-laying, 6.8% during incubation, 21.9% nestling
 
-#Males guarded the nest more than females during the nestling stage ([[Sex]]) #ProportionOfTime 
+#Males guarded the nest more than females during the nestling stage ([[Sex]] ) #ProportionOfTime 
 #BoutLength not affected by sex
 
 #Avian #Data #Sex #Males

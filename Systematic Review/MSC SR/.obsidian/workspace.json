@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "53c25c56351622a8",
+    "id": "8dbd070497beaf8d",
     "type": "split",
     "children": [
       {
-        "id": "21a57dfd0062c5f8",
+        "id": "4dc559884cce30db",
         "type": "tabs",
         "children": [
           {
-            "id": "a358e9ad186c004a",
+            "id": "06c9a12fe60db9fa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "49a01fecd3abd09f",
+    "id": "358d61b024b12f18",
     "type": "split",
     "children": [
       {
-        "id": "57133d11c707194a",
+        "id": "7e518a89d136410c",
         "type": "tabs",
         "children": [
           {
-            "id": "1b4b6f3087374aff",
+            "id": "b7c15ef02fbf8e4a",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,12 +43,12 @@
             }
           },
           {
-            "id": "081ebdd92a6d0346",
+            "id": "be094e02001d9700",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "context-de",
+                "query": "definition",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,67 +58,59 @@
             }
           },
           {
-            "id": "11553df94317ddbc",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "3e4dd65c251dece0",
+            "id": "ff9643d5166abcbf",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "42cb3ca589d774fc",
+    "id": "ac78b87d71a36048",
     "type": "split",
     "children": [
       {
-        "id": "7677863260bf4609",
+        "id": "dced12d71de58a3a",
         "type": "tabs",
         "children": [
           {
-            "id": "c2a4c6c245853cf0",
+            "id": "91ef1f19a808927d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": false
+                "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "def124ed4a383568",
+            "id": "f6b97b405b15bf7c",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md",
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "48fad06ead8c7e26",
+            "id": "7118649aa2108643",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -129,68 +121,60 @@
             }
           },
           {
-            "id": "3791f09d8e61fc28",
+            "id": "192438e586468e72",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Vigilance and its complex synchrony in the red-necked pademelon, Thylogale thetis.md"
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md"
               }
-            }
-          },
-          {
-            "id": "7a24a62913e57491",
-            "type": "leaf",
-            "state": {
-              "type": "advanced-tables-toolbar",
-              "state": {}
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "command-palette:Open command palette": false
     }
   },
-  "active": "a358e9ad186c004a",
+  "active": "be094e02001d9700",
   "lastOpenFiles": [
-    "Predator defense is shaped by risk, brood value and social group benefits in a cooperative breeder.md",
-    "Experimental field evidence that out-group threats influence within-group behavior.md",
-    "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
-    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
-    "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
-    "The value of constant surveillance in a risky environment.md",
-    "Experimental evidence for delayed contingent cooperation among wild dwarf mongooses.md",
-    "Testing for sentinel coordination in Smooth-billed Anis (Crotophaga ani).md",
-    "FACULTATIVE COMMUNAL BROOD REARING IN CALIFORNIA QUAIL.md",
-    "Diurnal pattern of pre-weaning den visits and nursing in breeding pairs of captive dingoes (Canis dingo).md",
-    "Facultative response to a kleptoparasite by the cooperatively breeding pied babbler.md",
-    "Raptors and _campo-cerrado_ bird mixed flock led by Cypsnagra Hirundinacea (Emberizidae_Thraupinae).md",
-    "The Sentinel Crow as an Extension of Parental Care.md",
-    "Habitat deterioration and efficiency of antipredator strategy in a meadow-breeding wader, Temminck's stint ( Calidris temminckii ).md",
-    "Selfish Sentinels.md",
-    "When are two heads better than one_ Visual perception and information transfer affect vigilance coordination in foraging groups.md",
-    "Adaptive, flexible responses towards avian predation threat by Arabian Babblers Turdoides squamiceps living at a migratory hotspot.md",
-    "Relatedness does not predict vigilance in a population of the social rodent Octodon degus.md",
-    "Group size and associative learning in the Australian magpie (Cracticus tibicen dorsalis).md",
-    "COMPOSITION AND STRUCTURE OF AVIAN MIXED-SPECIES FLOCKS IN A HIGH-ANDEAN POLYLEPIS FOREST IN BOLIVIA.md",
-    "SINGING FOR YOUR SUPPER_ SENTINEL CALLING BY KLEPTOPARASITES CAN MITIGATE THE COST TO VICTIMS.md",
-    "Deconstructing the landscape of fear in stable multi-species societies.md",
-    "SENTINEL BEHAVIOR, SEASONALITY, AND THE STRUCTURE OF BIRD FLOCKS IN A BRAZlLIAN SAVANNA.md",
-    "Negotiating a stable solution for vigilance behaviour.md",
     "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
-    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md"
+    "Antipredator Vigilance in Cooperatively Breeding Superb Fairy-wrens ( Malurus cyaneus).md",
+    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
+    "State-dependent sentinels_ an experimental study in the Arabian babbler.md",
+    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+    "Cooperative sentinel behaviour in the Arabian babbler.md",
+    "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
+    "Nest Guarding in Chesapeake Bay Bald Eagles.md",
+    "Effects of predation risk on foraging behaviour and group size_ adaptations in a social cooperative species.md",
+    "Effects of cortisol administration on cooperative behavior in meerkat helpers.md",
+    "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
+    "Effect of group size and experience on the ontogeny of sentinel calling behaviour in meerkats.md",
+    "Sentinels in Saltator atricollis (Passeriformes_ Emberizidae).md",
+    "Breeding and Feeding Behaviour of Jungle Babbler(Turdiodes striata Dumont, 1923) in Agro-Ecological Zones of District Layyah, Pakistan.md",
+    "On the self-regulation of sentinel activity among Arabian babbler groupmates.md",
+    "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
+    "The sentinel behaviour of Arabian babbler floaters.md",
+    "Experimental field evidence that out-group threats influence within-group behavior.md",
+    "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md",
+    "Looking after your partner_ sentinel behaviour in a socially monogamous bird.md",
+    "Disturbance and predation risk influence vigilance synchrony of black‐necked cranes (Grus nigricollis), but not as strongly as expected.md",
+    "Sentinel dominance status influences forager use of social information.md",
+    "Sentinel dwarf mongooses, Helogale parvula, exhibit flexible decision making in relation to predation risk.md",
+    "Sentinel behavior in captive meerkats ( Suricata suricatta).md",
+    "Contributions of genetic and nongenetic sources to variation in cooperative behavior in a cooperative mammal.md",
+    "Sentinel behaviour in vervet monkeys_ Who sees whom first_.md"
   ]
 }
