@@ -1,70 +1,35 @@
 {
   "main": {
-    "id": "2e16ea85d5b14831",
+    "id": "2b7d9fbb8853e417",
     "type": "split",
     "children": [
       {
-        "id": "f3ae3d559d45db5c",
+        "id": "33f28c01ee741fae",
         "type": "tabs",
         "children": [
           {
-            "id": "2c8b92bcc684cb1c",
+            "id": "016a908b80ed1fc2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Table of contents.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c66422aceb8f220c",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.16"
-              }
-            }
-          },
-          {
-            "id": "13e8b63000472c8f",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.13"
-              }
-            }
-          },
-          {
-            "id": "39ac9f8136f6418e",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.4.14"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "fd8d79d2d3338b53",
+    "id": "35f47aa9fc104d95",
     "type": "split",
     "children": [
       {
-        "id": "db6fe237caceec53",
+        "id": "8e090f5e1bb2e8b6",
         "type": "tabs",
         "children": [
           {
-            "id": "f2639785cb8f2f4a",
+            "id": "72fdbf427007b6c1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -74,7 +39,7 @@
             }
           },
           {
-            "id": "04adff896099426b",
+            "id": "a40bc98bd5ab5f37",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -89,15 +54,7 @@
             }
           },
           {
-            "id": "ae77fafd20165985",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "0f87f356fe8c4551",
+            "id": "ce6d1058a194c293",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -108,24 +65,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "88132f34a20d84a2",
+    "id": "77f5ac7cc4091c7e",
     "type": "split",
     "children": [
       {
-        "id": "1cc248a50ac2d043",
+        "id": "9b71b5815e5ce409",
         "type": "tabs",
         "children": [
           {
-            "id": "c5093ab63f721e49",
+            "id": "2f9cd3ee7758a5ed",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Table of contents.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,19 +92,18 @@
             }
           },
           {
-            "id": "7a3781a04d88618e",
+            "id": "2492cfa07b2bf8c2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Table of contents.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "30fa9c01a079ec10",
+            "id": "02bc4a34be655587",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -160,20 +114,19 @@
             }
           },
           {
-            "id": "c68e61a553338ded",
+            "id": "f8c0eb00eca2af84",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Table of contents.md"
-              }
+              "state": {}
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -185,18 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c66422aceb8f220c",
-  "lastOpenFiles": [
-<<<<<<< HEAD
-    "~WRL2504.tmp",
-=======
->>>>>>> e9f43053d8adc204cdac7e33e454af88f98f23dc
-    "~WRD2270.tmp",
-    "roses.png",
-    "~$ex Popescu - ES - Methods & Results - 20231117.docx",
-    "Untitled.canvas",
-    "Table of contents.md",
-    "~WRL0005.tmp",
-    "~WRD0004.tmp"
-  ]
+  "active": "016a908b80ed1fc2",
+  "lastOpenFiles": []
 }
