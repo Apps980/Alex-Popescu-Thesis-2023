@@ -13,7 +13,11 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
+=======
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md",
+>>>>>>> 702e717 (Pre departure)
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +52,15 @@
             "state": {
               "type": "search",
               "state": {
+<<<<<<< HEAD
+<<<<<<< HEAD
                 "query": "rival",
+=======
+                "query": "",
+>>>>>>> 702e717 (Pre departure)
+=======
+                "query": "definition",
+>>>>>>> 2121cf3 (Jan 5th)
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +98,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
+=======
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md",
+>>>>>>> 702e717 (Pre departure)
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +119,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
                 "file": "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
+=======
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md",
+>>>>>>> 702e717 (Pre departure)
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +146,11 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< HEAD
                 "file": "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md"
+=======
+                "file": "BEHAVIOUR OF THE WHITEHEADED BABBLER TURDOIDES AFFINIS JERDON.md"
+>>>>>>> 702e717 (Pre departure)
               }
             }
           }
@@ -148,6 +172,7 @@
       "command-palette:Open command palette": false
     }
   },
+<<<<<<< HEAD
   "active": "06c9a12fe60db9fa",
   "lastOpenFiles": [
     "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
@@ -159,6 +184,16 @@
     "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
     "State-dependent sentinels_ an experimental study in the Arabian babbler.md",
     "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+=======
+  "active": "be094e02001d9700",
+  "lastOpenFiles": [
+    "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
+    "Antipredator Vigilance in Cooperatively Breeding Superb Fairy-wrens ( Malurus cyaneus).md",
+    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
+    "State-dependent sentinels_ an experimental study in the Arabian babbler.md",
+    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+    "Cooperative sentinel behaviour in the Arabian babbler.md",
+>>>>>>> 702e717 (Pre departure)
     "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
     "Nest Guarding in Chesapeake Bay Bald Eagles.md",
     "Effects of predation risk on foraging behaviour and group size_ adaptations in a social cooperative species.md",
@@ -175,6 +210,13 @@
     "Looking after your partner_ sentinel behaviour in a socially monogamous bird.md",
     "Disturbance and predation risk influence vigilance synchrony of black‐necked cranes (Grus nigricollis), but not as strongly as expected.md",
     "Sentinel dominance status influences forager use of social information.md",
+<<<<<<< HEAD
     "Sentinel dwarf mongooses, Helogale parvula, exhibit flexible decision making in relation to predation risk.md"
+=======
+    "Sentinel dwarf mongooses, Helogale parvula, exhibit flexible decision making in relation to predation risk.md",
+    "Sentinel behavior in captive meerkats ( Suricata suricatta).md",
+    "Contributions of genetic and nongenetic sources to variation in cooperative behavior in a cooperative mammal.md",
+    "Sentinel behaviour in vervet monkeys_ Who sees whom first_.md"
+>>>>>>> 702e717 (Pre departure)
   ]
 }

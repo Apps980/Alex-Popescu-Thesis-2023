@@ -1,7 +1,7 @@
 ---
 title: "Alex Popescu - Final Stats"
 author: "Alex Popescu"
-date: "2023-11-17"
+date: "2024-01-25"
 output: 
   html_document: 
     keep_md: yes
@@ -240,8 +240,9 @@ BOUT<-BOUT.raw %>%
   filter(.
          , BEHAVIOR != "M") %>% #Remove "M"
   mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
+                                           , 'NO' = "Sentinel Absent"
                          , 'YES' = "Sentinel Present"
-                         , 'NO' = "Sentinel Absent"))
+                         ))
 BOUT$LDURATION<-log(BOUT$DURATION) #Transform data for normality
 str(BOUT)
 ```
@@ -259,7 +260,7 @@ str(BOUT)
 ##  $ GROUP_SIZE             : Factor w/ 2 levels "LARGE","SMALL": 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ BAIT_PRESENCE          : Factor w/ 2 levels "NO","YES": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ GENERALIZED_ENVIRONMENT: Factor w/ 2 levels "Commercial","Green Area": 2 2 2 2 2 2 2 2 2 2 ...
-##  $ SENTINEL_PRESENCE      : Factor w/ 2 levels "Sentinel Present",..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ SENTINEL_PRESENCE      : Factor w/ 2 levels "Sentinel Absent",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ DISTURBANCE_FREQUENCY  : num  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ BEHAVIOR               : Factor w/ 3 levels "HD","HU","M": 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ DURATION               : num  2.38 2.51 3.51 1.75 10.5 ...
@@ -293,23 +294,23 @@ BOUT.SUMMARY
 
 ```
 ##   GENERALIZED_ENVIRONMENT BEHAVIOR SENTINEL_PRESENCE   N DURATION       sd
-## 1              Commercial Foraging  Sentinel Present 503 1.760944 1.283057
-## 2              Commercial Foraging   Sentinel Absent 336 1.500423 1.136791
-## 3              Commercial    Alert  Sentinel Present 627 1.781003 2.173001
-## 4              Commercial    Alert   Sentinel Absent 422 1.431455 1.611098
-## 5              Green Area Foraging  Sentinel Present 673 2.010571 1.919007
-## 6              Green Area Foraging   Sentinel Absent 275 2.272862 1.882358
-## 7              Green Area    Alert  Sentinel Present 737 1.484700 2.025277
-## 8              Green Area    Alert   Sentinel Absent 324 1.993713 2.949379
+## 1              Commercial Foraging   Sentinel Absent 336 1.500423 1.136791
+## 2              Commercial Foraging  Sentinel Present 503 1.760944 1.283057
+## 3              Commercial    Alert   Sentinel Absent 422 1.431455 1.611098
+## 4              Commercial    Alert  Sentinel Present 627 1.781003 2.173001
+## 5              Green Area Foraging   Sentinel Absent 275 2.272862 1.882358
+## 6              Green Area Foraging  Sentinel Present 673 2.010571 1.919007
+## 7              Green Area    Alert   Sentinel Absent 324 1.993713 2.949379
+## 8              Green Area    Alert  Sentinel Present 737 1.484700 2.025277
 ##           se        ci
-## 1 0.05720870 0.1123980
-## 2 0.06201706 0.1219919
-## 3 0.08678130 0.1704177
-## 4 0.07842704 0.1541574
-## 5 0.07397229 0.1452446
-## 6 0.11351045 0.2234634
-## 7 0.07460204 0.1464582
-## 8 0.16385436 0.3223565
+## 1 0.06201706 0.1219919
+## 2 0.05720870 0.1123980
+## 3 0.07842704 0.1541574
+## 4 0.08678130 0.1704177
+## 5 0.11351045 0.2234634
+## 6 0.07397229 0.1452446
+## 7 0.16385436 0.3223565
+## 8 0.07460204 0.1464582
 ```
 
 ## BOUT Dot Plot
@@ -336,7 +337,6 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
   theme_classic() +
   ylab("Mean Bout Duration (s)") +
   scale_colour_manual(values = cbPalette
-                      , labels = c("Sentinel Absent", "Sentinel Present")
                       , name = "") +
   scale_x_discrete(labels = c("Commercial", "Green"))+
   theme(axis.title.x = element_blank()
@@ -383,35 +383,35 @@ sjPlot::tab_model(BOUT.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.5304</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0942</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3457&nbsp;&ndash;&nbsp;0.7151</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.6294</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3330</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1032</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1307&nbsp;&ndash;&nbsp;0.5354</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">3.2263</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3366</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0445</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4239&nbsp;&ndash;&nbsp;-0.2494</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;7.5589</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2557</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0511</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3559&nbsp;&ndash;&nbsp;-0.1555</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;5.0024</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1974</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1974</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0720</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3385&nbsp;&ndash;&nbsp;-0.0562</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.7406</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0562&nbsp;&ndash;&nbsp;0.3385</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.7406</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.006</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1010</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0802</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0561&nbsp;&ndash;&nbsp;0.2582</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2601</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.208</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3534</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0873</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1823&nbsp;&ndash;&nbsp;0.5245</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.0482</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
@@ -439,10 +439,10 @@ sjPlot::tab_model(BOUT.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior: Sentinel<br>Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0810</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0810</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0563</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0294&nbsp;&ndash;&nbsp;0.1913</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4382</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1913&nbsp;&ndash;&nbsp;0.0294</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.4382</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.150</td>
 </tr>
 <tr>
@@ -455,10 +455,10 @@ sjPlot::tab_model(BOUT.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2524</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2524</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0882</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0796&nbsp;&ndash;&nbsp;0.4251</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.8630</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4251&nbsp;&ndash;&nbsp;-0.0796</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.8630</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.004</strong></td>
 </tr>
 <tr>
@@ -625,27 +625,27 @@ sjPlot::tab_model(BOUT.MOD.HD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.5289</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0832</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3658&nbsp;&ndash;&nbsp;0.6920</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.3562</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.4370</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0929</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2548&nbsp;&ndash;&nbsp;0.6192</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.7017</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0919</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0919</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0718</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2327&nbsp;&ndash;&nbsp;0.0488</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.2799</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0488&nbsp;&ndash;&nbsp;0.2327</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2799</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.201</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1555</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0665</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0251&nbsp;&ndash;&nbsp;0.2858</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.3371</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.019</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3826</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0778</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2302&nbsp;&ndash;&nbsp;0.5351</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.9194</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
@@ -673,10 +673,10 @@ sjPlot::tab_model(BOUT.MOD.HD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2272</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2272</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0914</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0480&nbsp;&ndash;&nbsp;0.4063</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.4849</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4063&nbsp;&ndash;&nbsp;-0.0480</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.4849</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.013</strong></td>
 </tr>
 <tr>
@@ -1570,8 +1570,8 @@ PTWY<- DATA.SR %>%
   rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES"
          , "Transitions" = "TOTAL_NB_TRANSITIONS") %>%
   mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
-                         , 'YES' = "Sentinel Present"
-                         , 'NO' = "Sentinel Absent"))
+                                           , 'NO' = "Sentinel Absent"
+                                           , 'YES' = "Sentinel Present"))
 ```
 
 ### PTWY Plots
@@ -1638,9 +1638,8 @@ PTWY.BOXPLOT<-PTWY %>%
                                             )) +
   theme_classic() +
   ylab("Number of Transitions") +
+  ylim(0,100)+
   scale_colour_manual(values = cbPalette
-                      , labels = c("Sentinel Absent"
-                                   , "Sentinel Present")
                       , name = "") +
   scale_x_discrete(labels = c("Commercial", "Green")
                    )+
@@ -1653,6 +1652,14 @@ PTWY.BOXPLOT<-PTWY %>%
   facet_grid(~TRANSITION)
 
 PTWY.BOXPLOT
+```
+
+```
+## Warning: Removed 3 rows containing non-finite values (`stat_boxplot()`).
+```
+
+```
+## Warning: Removed 3 rows containing missing values (`geom_point()`).
 ```
 
 ![](Alex-Popescu---Final-Stats_files/figure-html/PTWY Plots-1.png)<!-- -->

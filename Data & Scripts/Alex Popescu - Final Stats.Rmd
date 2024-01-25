@@ -51,25 +51,25 @@ labs.prop<-c(
 
 labs.bout.1<-c(
   '(Intercept)' = "Intercept"
-  , 'SENTINEL_PRESENCESentinel Absent' = "Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Present' = "Sentinel Presence"
   , BEHAVIORHU = "Behavior"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , GROUP_SIZESMALL = "Group Size"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
   , 'BEHAVIORHU:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Generalized Environment"
-  , 'BEHAVIORHU:SENTINEL_PRESENCESentinel Absent' = "Behavior: Sentinel Presence"
-  , 'SENTINEL_PRESENCESentinel Absent:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  , 'BEHAVIORHU:SENTINEL_PRESENCESentinel Present' = "Behavior: Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Present:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
 )
 
 labs.bout.2<-c(
   '(Intercept)' = "Intercept"
-  , 'SENTINEL_PRESENCESentinel Absent' = "Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Present' = "Sentinel Presence"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , GROUP_SIZESMALL = "Group Size"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  ,'SENTINEL_PRESENCESentinel Absent:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  ,'SENTINEL_PRESENCESentinel Present:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
   )
 
 labs.peck<-c(
@@ -84,11 +84,11 @@ labs.peck<-c(
   )
 
 labs.ptwy<-c('(Intercept)' = "Intercept"
-  , 'SENTINEL_PRESENCESentinel Absent' = "Sentinel Presence"
+  , 'SENTINEL_PRESENCESentinel Present' = "Sentinel Presence"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  , 'SENTINEL_PRESENCESentinel Absent:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
+  , 'SENTINEL_PRESENCESentinel Present:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
   )
 ```
 
@@ -223,8 +223,9 @@ BOUT<-BOUT.raw %>%
   filter(.
          , BEHAVIOR != "M") %>% #Remove "M"
   mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
+                                           , 'NO' = "Sentinel Absent"
                          , 'YES' = "Sentinel Present"
-                         , 'NO' = "Sentinel Absent"))
+                         ))
 BOUT$LDURATION<-log(BOUT$DURATION) #Transform data for normality
 str(BOUT)
 ```
@@ -276,7 +277,6 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
   theme_classic() +
   ylab("Mean Bout Duration (s)") +
   scale_colour_manual(values = cbPalette
-                      , labels = c("Sentinel Absent", "Sentinel Present")
                       , name = "") +
   scale_x_discrete(labels = c("Commercial", "Green"))+
   theme(axis.title.x = element_blank()
@@ -913,8 +913,8 @@ PTWY<- DATA.SR %>%
   rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES"
          , "Transitions" = "TOTAL_NB_TRANSITIONS") %>%
   mutate(SENTINEL_PRESENCE = recode_factor(SENTINEL_PRESENCE
-                         , 'YES' = "Sentinel Present"
-                         , 'NO' = "Sentinel Absent"))
+                                           , 'NO' = "Sentinel Absent"
+                                           , 'YES' = "Sentinel Present"))
 
 ```
 
@@ -981,9 +981,8 @@ PTWY.BOXPLOT<-PTWY %>%
                                             )) +
   theme_classic() +
   ylab("Number of Transitions") +
+  ylim(0,100)+
   scale_colour_manual(values = cbPalette
-                      , labels = c("Sentinel Absent"
-                                   , "Sentinel Present")
                       , name = "") +
   scale_x_discrete(labels = c("Commercial", "Green")
                    )+

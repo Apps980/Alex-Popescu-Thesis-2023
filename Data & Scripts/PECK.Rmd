@@ -1,0 +1,265 @@
+---
+title: "PECK"
+author: "Alex Popescu"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r Packages, include = F}
+library("tidyverse")
+library("psych")
+library("car")
+library("ggplot2")
+library("ggpattern")
+library("lmerTest")
+library("robustlmm")
+library("sjPlot")
+library("effects")
+library("glmm")
+library("doBy")
+library("emmeans")
+```
+
+```{r Colorblind-friendly palette, include = F}
+# The palette with black:
+cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2", "#D55E00")
+```
+
+## Preamble
+
+This script will deal with analyzing the relationship between the peck rate of foragers and the presence of a sentinel, the presence of bait, the foraging environment, the group size and the frequency of disturbances.
+
+As random effects, I've chosen the video and individual ID
+
+This analysis will answer the following question:\
+Is the foraging efficiency of foraging individuals affected by the presence of a sentinel and the environment in which they forage in?
+
+To answer this question, I extracted the number of pecks at bait performed by each individual, then divided it by the total duration of time of behavior 'head down'. The reasoning for this is that individuals can't peck while having their heads up or while moving, therefore the duration of time spent foraging would better describe the foraging efficiency of the individual.
+
+I do expect that bait will have a significant effect on the foraging efficiency of individuals.
+
+I compiled these results in the dataset called 'DATA'.
+
+```{r Open Data}
+DATA<-read.csv("DATA.csv", stringsAsFactors = T)
+str(DATA)
+```
+Next, we'll compile the means of the peck rate by sentinel presence and generalized environment.
+
+```{r Peck Summary, echo = F}
+### Summarize
+PECK.MEAN<-summarySE(DATA, "PECK_RATE", c("GENERALIZED_ENVIRONMENT", "SENTINEL_PRESENCE"), na.rm=T)
+PECK.MEAN
+```
+
+At first glance, it seems like the peck rate when a sentinel is absent in commercial and green areas are similar (56 pecks per minute - 52 pecks per minute, respectively). The peck rate in green areas with a sentinel is somewhat lesser than in the absence of sentinels (47 pecks per minute), yet in the presence of a sentinel and in commercial areas the peck rate increases substantially (73 pecks per minute).
+
+Let's visualize this.
+
+## The Dot Plot
+
+```{r PECK Dot Plot}
+PECK.DOT<-ggplot(data = PECK.MEAN
+               , aes(x = SENTINEL_PRESENCE
+                     , y = PECK_RATE
+                     , color = SENTINEL_PRESENCE))+
+  geom_point(position = position_dodge(width = 0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PECK_RATE-se)
+                    , ymax=(PECK_RATE+se))
+                , width = 0.2
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Mean Pecks per Minute") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none") +
+  scale_x_discrete(labels = c("Sentinel Absent"
+                                  , "Sentinel Present")) +
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  facet_grid(~GENERALIZED_ENVIRONMENT)
+
+PECK.DOT
+```
+
+Very nice! Basically shows the results of the summary.
+
+So, it seems like the peck rate in commercial areas and in the presence of a sentinel is higher than in green areas (with or without a sentinel) and in commmercial areas without a sentinel.
+
+Onto the transformations!
+
+```{r Peck Per Minute Histograms Individual, include = F}
+Untransformed.PPM<-hist(DATA$PECK_RATE, na.rm=T, breaks = 25)
+Transformed.PPM<-hist(log(DATA$PECK_RATE), na.rm=T, breaks = 25)
+```
+
+```{r Peck Per Minute Histograms Combined, echo=F}
+op <- par(mfrow = c(1,2))
+plot(Untransformed.PPM, main="Untransformed", ylab="Frequency", xlab="Pecks per minute")
+plot(Transformed.PPM, main="Transformed", ylab="", xlab="Log(Pecks per minute)")
+par(op)
+```
+
+It looks like the untransformed data is more normal than the log-transformed data. For the subsequent analyses, I will use the **untransformed** data.
+
+Let's fit the models
+
+## The Models
+
+We are testing principally for the effects of the presence of a sentinel and the generalized environment. However, group size and the presence of bait could also affect the peck rate of foragers.
+
+The first model fitted will be a simple model with no interactions.
+
+```{r PECK MODEL 1}
+PECK.MOD1<-lmer(PECK_RATE~SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT+BAIT_PRESENCE+GROUP_SIZE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = DATA)
+
+sjPlot::tab_model(PECK.MOD1
+                  , show.re.var = T
+                  , title = "Peck Rate Model 1 Output"
+                  , dv.labels = " Effects on peck rate")
+```
+
+The intercept is significant, but none of the factors are. The disturbance frequency is marginally significant.
+
+Surprisingly, the random effects account for much more variance than in the proportion data. For the next model, I'll use the same formula as Model 2 for the bout duration and proportion datasets.
+
+```{r BOUT MODEL 2}
+PECK.MOD2<-lmer(PECK_RATE~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = DATA)
+
+sjPlot::tab_model(PECK.MOD2
+                  , show.re.var = T
+                  , title = "Peck Rate Model 2 Output"
+                  , dv.labels = " Effects on peck rate")
+```
+
+As in the simple model, none of the factors are significant, yet the disturbance frequency has a marginally significant effect on the peck rate.
+
+Let's try running the robust lmm.
+
+```{r Robust PECK MODEL 2}
+PECK.RMOD2<-rlmer(PECK_RATE~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = DATA)
+
+sjPlot::tab_model(PECK.MOD2
+                  , show.re.var = T
+                  , title = "Robust Peck Rate Model 2 Output"
+                  , dv.labels = " Effects on peck rate")
+```
+
+Still insignificant, with disturbance frequency being marginally significant. Let's try testing the AICs between the two non-robust models, and a simple lmm (no random effects).
+
+```{r BOUT AIC}
+PECK.MOD0<-lm(PECK_RATE~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY, data = DATA)
+anova(PECK.MOD1,PECK.MOD2,PECK.MOD0)
+```
+
+VERY WEIRD. Model 1 without the interactions is perferred over Model 2. However, the simple MOD0 is preferred. Let's see the outputs of that model.
+
+```{r Robust PECK MODEL 2}
+sjPlot::tab_model(PECK.MOD0
+                  , show.re.var = T
+                  , title = "Robust Peck Rate Model 0 Output"
+                  , dv.labels = " Effects on peck rate")
+```
+
+Disturbance frequency is now significant! From this, I can infer that the marginally significant effect of disturbance frequency in the LMMs would probably become significant were we to have an increased sample size.
+
+Let's plot these results
+
+## The plot(s) (thicken)
+
+### Disturbance Frequency
+
+```{r PECK Disturb}
+PK.DF.DOT1<-DATA %>%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+               , y = PECK_RATE))+
+  geom_point(size = 3) +
+  theme_classic() +
+  labs(y="Pecks per minute", x="Disturbances per Minute")+
+  scale_x_continuous(n.breaks=14)+
+  theme(legend.position = "bottom")
+  
+
+PK.DF.DOT1
+```
+
+Ok, I see where some issues may be. There are a number of points at 0. In other words, they did not forage. I'll quickly fit another model, this time using individuals with time spent with head down > 0s.
+
+```{r Robust PECK MODEL 4}
+PECK.RMOD4<-rlmer(PECK_RATE~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|VIDEO_ID/ID), data = DATA[which(DATA$BEHAVIOR == "HD" & DATA$BEHAVIOR_DURATION > 0),])
+
+sjPlot::tab_model(PECK.RMOD4
+                  , show.re.var = T
+                  , title = "Robust Peck Rate Model 4 Output"
+                  , dv.labels = " Effects on peck rate")
+```
+
+Won't you look at that! When I remove points with time spent foraging is greater than 0, the disturbance frequency becomes significant. However, the variance explained by the random factor is 0.
+
+Let's plot this again.
+
+```{r PECK Disturb}
+PK.DF.DOT2<-DATA[which(DATA$BEHAVIOR == "HD" & DATA$BEHAVIOR_DURATION > 0),] %>%
+    ggplot(aes(x = DISTURBANCE_FREQUENCY
+               , y = PECK_RATE)) +
+  geom_point(size = 3) +
+  geom_smooth(method="lm") +
+  theme_classic() +
+  labs(y="Pecks per minute", x="Disturbances per Minute")+
+  scale_x_continuous(n.breaks=14)+
+  theme(legend.position = "bottom")
+
+
+PK.DF.DOT2
+
+```
+
+Very nice! We can see that as the disturbance frequency increases, so does the peck rate. I believe this can be explained by a sense of 'urgency' in higher-risk environments.
+
+### Bait Presence
+
+I would have expected there to have been an increase in peck rate in baited sites. To better visualize this, I'll make a dot plot including sentinel presence and environment, as well as peck rate.
+
+```{r BOUT Dot Plot}
+PECK.ALL.DOT<-DATA[which(DATA$BEHAVIOR == "HD" & DATA$BEHAVIOR_DURATION > 0),] %>%
+  summarySE(measurevar = "PECK_RATE"
+            , groupvars = c("SENTINEL_PRESENCE", "GENERALIZED_ENVIRONMENT", "BAIT_PRESENCE")) %>%
+  ggplot(aes(x = SENTINEL_PRESENCE
+                     , y = PECK_RATE
+                     , color = BAIT_PRESENCE
+                     , shape = BAIT_PRESENCE))+
+  geom_point(position = position_dodge(width = 0.9)
+             , size = 3) +
+  geom_errorbar(aes(ymin=(PECK_RATE-se)
+                    , ymax=(PECK_RATE+se))
+                , width = 0.2
+                , position = position_dodge(width=0.9))+
+  theme_classic() +
+  ylab("Mean Peck Rate (s)") +
+  scale_colour_manual(values = cbPalette
+                      , guide="none"
+                      , labels = c("Bait Absent"
+                                   , "Bait Present")) +
+  scale_shape_manual(values = c(16,17)
+                     , labels = c("Bait Absent"
+                                  , "Bait Present")
+                     , name = "") +
+  scale_x_discrete(labels = c("Sentinel Absent"
+                                  , "Sentinel Present"))+
+  theme(axis.title.x = element_blank()
+        , legend.position = "bottom"
+        , legend.box="vertical"
+        , legend.margin=margin()) +
+  facet_grid(~GENERALIZED_ENVIRONMENT)
+
+PECK.ALL.DOT
+```
+
+So I have no data for non-baited sites in commercial areas with a sentinel being present. This is unfortunate.
+It does seem like there are differences caused by the presence of bait, yet more sampling would have been required.
+
+As for the other factors, there only seems to be a difference in green areas when a sentinel is absent. When bait is present, the peck rate increases. This could be explained as crows needing more time to find food in non-baited sites, yet the difference caused by bait is non-existent in the presence of a sentinel.
