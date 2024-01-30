@@ -42,7 +42,7 @@ cbPalette <- c("#E69F00", "#56B4E9", "#CC79A7", "#009E73", "#F0E442", "#0072B2",
 labs.prop<-c(
   '(Intercept)' = "Intercept"
   , SENTINEL_PRESENCEYES = "Sentinel Presence"
-  , BEHAVIORHU = "Behavior"
+  , BEHAVIORHU = "Behaviour"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , GROUP_SIZESMALL = "Group Size"
   , BAIT_PRESENCEYES = "Bait Presence"
@@ -52,13 +52,13 @@ labs.prop<-c(
 labs.bout.1<-c(
   '(Intercept)' = "Intercept"
   , 'SENTINEL_PRESENCESentinel Present' = "Sentinel Presence"
-  , BEHAVIORHU = "Behavior"
+  , BEHAVIORHU = "Behaviour"
   , 'GENERALIZED_ENVIRONMENTGreen Area' = "Generalized Environment"
   , GROUP_SIZESMALL = "Group Size"
   , BAIT_PRESENCEYES = "Bait Presence"
   , DISTURBANCE_FREQUENCY = "Disturbance Frequency"
-  , 'BEHAVIORHU:GENERALIZED_ENVIRONMENTGreen Area' = "Behavior: Generalized Environment"
-  , 'BEHAVIORHU:SENTINEL_PRESENCESentinel Present' = "Behavior: Sentinel Presence"
+  , 'BEHAVIORHU:GENERALIZED_ENVIRONMENTGreen Area' = "Behaviour: Generalized Environment"
+  , 'BEHAVIORHU:SENTINEL_PRESENCESentinel Present' = "Behaviour: Sentinel Presence"
   , 'SENTINEL_PRESENCESentinel Present:GENERALIZED_ENVIRONMENTGreen Area' = "Sentinel Presence: Generalized Environment"
 )
 
@@ -269,7 +269,7 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
                     , ymax=(DURATION+se))
                 , width = 0.1
                 , position = position_dodge(width=0.1))+
-  geom_text(aes(label = round(DURATION, 2))
+  geom_text(aes(label =  scales::label_number(accuracy=0.01)(DURATION))
             , hjust = -0.2
             , size = 6
             , show.legend = F

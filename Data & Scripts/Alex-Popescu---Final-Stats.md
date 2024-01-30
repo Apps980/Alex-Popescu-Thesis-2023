@@ -1,7 +1,7 @@
 ---
 title: "Alex Popescu - Final Stats"
 author: "Alex Popescu"
-date: "2024-01-25"
+date: "2024-01-30"
 output: 
   html_document: 
     keep_md: yes
@@ -184,7 +184,7 @@ sjPlot::tab_model(PROP.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behaviour</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0263</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0226</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0185&nbsp;&ndash;&nbsp;0.0710</td>
@@ -329,7 +329,7 @@ BOUT.DOTPLOT<-BOUT.SUMMARY %>%
                     , ymax=(DURATION+se))
                 , width = 0.1
                 , position = position_dodge(width=0.1))+
-  geom_text(aes(label = round(DURATION, 2))
+  geom_text(aes(label =  scales::label_number(accuracy=0.01)(DURATION))
             , hjust = -0.2
             , size = 6
             , show.legend = F
@@ -390,7 +390,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behaviour</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2557</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0511</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3559&nbsp;&ndash;&nbsp;-0.1555</td>
@@ -438,7 +438,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.003</strong></td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior: Sentinel<br>Presence</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behaviour: Sentinel<br>Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0810</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0563</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1913&nbsp;&ndash;&nbsp;0.0294</td>
@@ -446,7 +446,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.150</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behavior: Generalized<br>Environment</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behaviour: Generalized<br>Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2023</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0537</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3074&nbsp;&ndash;&nbsp;-0.0971</td>
