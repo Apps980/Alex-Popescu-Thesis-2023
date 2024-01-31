@@ -403,7 +403,7 @@ BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
 BOUT.DOTPLOT.DISTURBANCES
 ```
 
-##BOUT Model - Head Down
+## BOUT Model - Head Down
 
 ```{r BOUT Model - Head Down}
 BOUT.MOD.HD<-rlmer(LDURATION~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|ID), data = subset(BOUT, BEHAVIOR == "HD"))
@@ -573,8 +573,7 @@ sjPlot::tab_model(BOUT.MOD.HU
                   , show.stat = T
                   , digits = 4
                   , title = "Head Up"
-                  , dv.labels = " Effects on alert bout duration")+
-  theme_sjplot(base_family = "serif")
+                  , dv.labels = " Effects on alert bout duration")
 
 sjPlot::plot_model(BOUT.MOD.HU
                   , axis.labels = labs.bout.2
@@ -1030,8 +1029,7 @@ tab_model(PTWY.MODELS
                                   , "Foraging to Peck"
                                   , "Alert to Foraging"
                                   , "Peck to Alert")
-          )+
-  theme_sjplot(base_family = "serif")
+          )
 ```
 ```{r Save PTWY Table, include = F}
 webshot("PTWY_Table.html", "PTWY_Table.png")
