@@ -1029,6 +1029,7 @@ tab_model(PTWY.MODELS
                                   , "Foraging to Peck"
                                   , "Alert to Foraging"
                                   , "Peck to Alert")
+          , file = "PTWY_Table.html"
           )
 ```
 ```{r Save PTWY Table, include = F}

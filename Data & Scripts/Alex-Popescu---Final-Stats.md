@@ -1,7 +1,7 @@
 ---
 title: "Alex Popescu - Final Stats"
 author: "Alex Popescu"
-date: "2024-01-31"
+date: "2024-02-01"
 output: 
   html_document: 
     keep_md: yes
@@ -1794,6 +1794,7 @@ tab_model(PTWY.MODELS
                                   , "Foraging to Peck"
                                   , "Alert to Foraging"
                                   , "Peck to Alert")
+          , file = "PTWY_Table.html"
           )
 ```
 
