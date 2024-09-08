@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "coordination",
+                "query": "group size",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
