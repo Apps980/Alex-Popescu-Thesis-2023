@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
+                "file": "Effects of predation risk on foraging behaviour and group size_ adaptations in a social cooperative species.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ac29e9a72040fd29",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
+                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
+                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md"
+                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md"
               }
             }
           }
@@ -150,6 +163,14 @@
   },
   "active": "6326d14740f8a039",
   "lastOpenFiles": [
+    "Effects of predation risk on foraging behaviour and group size_ adaptations in a social cooperative species.md",
+    "Breeding and Feeding Behaviour of Jungle Babbler(Turdiodes striata Dumont, 1923) in Agro-Ecological Zones of District Layyah, Pakistan.md",
+    "SOCIAL BEHAVIOUR WITHIN GROUPS OF JUNGLE BABBLERS (TURDOIDES STRIATUS).md",
+    "Disturbance and predation risk influence vigilance synchrony of black‐necked cranes (Grus nigricollis), but not as strongly as expected.md",
+    "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
+    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
+    "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
+    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
     "Cooperative sentinel behaviour in the Arabian babbler.md",
     "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
     "Selfish Sentinels in Cooperative Mammals.md",
@@ -157,7 +178,6 @@
     "Florida Scrub-Jays Compensate for the Sentinel Behavior of Flockmates.md",
     "Florida Scrub-Jays (Aphelocoma coerulescens) are Sentinels More When Well-Fed (Even with no Kin Nearby).md",
     "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
-    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
     "Sentinel dwarf mongooses, Helogale parvula, exhibit flexible decision making in relation to predation risk.md",
     "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
     "Lek behaviour in birds_ do displaying males reduce nest predation_.md",
