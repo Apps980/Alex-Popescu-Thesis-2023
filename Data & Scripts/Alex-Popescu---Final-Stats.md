@@ -1,7 +1,7 @@
 ---
 title: "Alex Popescu - Final Stats"
 author: "Alex Popescu"
-date: "2024-02-01"
+date: "2024-09-25"
 output: 
   html_document: 
     keep_md: yes
@@ -18,8 +18,7 @@ editor_options:
 
 
 
-
-```r
+``` r
 DATA.SR<-read.csv("DATA.SR.csv", stringsAsFactors = T) %>%
   rename("VIDEO_ID" = "VIDEO_ID."
          , "ID" = "ID.")
@@ -29,7 +28,7 @@ BOUT.raw<-read.csv("BOUT.csv", stringsAsFactors = T)
 # Proportion Data
 
 
-```r
+``` r
 PROP<-DATA.SR[,c(1,2,15,17,19,22,30,36,41,46)] %>% 
   subset(.
          , HU_BEHAVIOR_PROPORTION_... != 0 
@@ -69,7 +68,7 @@ removed all observations with no time spent performing one or more
 behaviors (4 observations).
 
 
-```r
+``` r
 PROP.SUMMARY <- summarySE(data = PROP
             , measurevar = "PROPORTION"
             , groupvars = c("GENERALIZED_ENVIRONMENT"
@@ -94,27 +93,27 @@ PROP.SUMMARY
 
 ```
 ## # A tibble: 12 × 8
-##    GENERALIZED_ENVIRONMENT BEHAVIOR SENTINEL…¹     N PROPO…²    sd     se     ci
-##    <fct>                   <chr>    <fct>      <dbl>   <dbl> <dbl>  <dbl>  <dbl>
-##  1 Commercial              HD       Sentinel …    16   0.338 0.174 0.0434 0.0925
-##  2 Commercial              HD       Sentinel …    29   0.331 0.151 0.0280 0.0573
-##  3 Commercial              HU       Sentinel …    16   0.411 0.180 0.0450 0.0959
-##  4 Commercial              HU       Sentinel …    29   0.365 0.118 0.0219 0.0448
-##  5 Commercial              M        Sentinel …    16   0.251 0.181 0.0453 0.0965
-##  6 Commercial              M        Sentinel …    29   0.304 0.163 0.0302 0.0618
-##  7 Green Area              HD       Sentinel …    13   0.412 0.136 0.0376 0.0820
-##  8 Green Area              HD       Sentinel …    19   0.383 0.112 0.0258 0.0542
-##  9 Green Area              HU       Sentinel …    13   0.424 0.104 0.0289 0.0630
-## 10 Green Area              HU       Sentinel …    19   0.367 0.145 0.0333 0.0700
-## 11 Green Area              M        Sentinel …    13   0.164 0.108 0.0299 0.0651
-## 12 Green Area              M        Sentinel …    19   0.249 0.103 0.0237 0.0498
-## # … with abbreviated variable names ¹​SENTINEL_PRESENCE, ²​PROPORTION
+##    GENERALIZED_ENVIRONMENT BEHAVIOR SENTINEL_PRESENCE     N PROPORTION    sd
+##    <fct>                   <chr>    <fct>             <dbl>      <dbl> <dbl>
+##  1 Commercial              HD       Sentinel Absent      16      0.338 0.174
+##  2 Commercial              HD       Sentinel Present     29      0.331 0.151
+##  3 Commercial              HU       Sentinel Absent      16      0.411 0.180
+##  4 Commercial              HU       Sentinel Present     29      0.365 0.118
+##  5 Commercial              M        Sentinel Absent      16      0.251 0.181
+##  6 Commercial              M        Sentinel Present     29      0.304 0.163
+##  7 Green Area              HD       Sentinel Absent      13      0.412 0.136
+##  8 Green Area              HD       Sentinel Present     19      0.383 0.112
+##  9 Green Area              HU       Sentinel Absent      13      0.424 0.104
+## 10 Green Area              HU       Sentinel Present     19      0.367 0.145
+## 11 Green Area              M        Sentinel Absent      13      0.164 0.108
+## 12 Green Area              M        Sentinel Present     19      0.249 0.103
+## # ℹ 2 more variables: se <dbl>, ci <dbl>
 ```
 
 ## PROP Stacked barplot
 
 
-```r
+``` r
 PROP.BARPLOT<-ggplot(PROP.SUMMARY
                  , aes(x = GENERALIZED_ENVIRONMENT
                        , y = PROPORTION
@@ -151,7 +150,7 @@ a stacked barplot for each combination of factors.
 ## PROP Model
 
 
-```r
+``` r
 PROP.MOD<-lm(PROPORTION~BEHAVIOR+SENTINEL_PRESENCE+GENERALIZED_ENVIRONMENT, data = subset(PROP, PROP$BEHAVIOR != "M"))
 
 sjPlot::tab_model(PROP.MOD
@@ -233,7 +232,7 @@ proportion of time allocated to either alert or foraging behavior.
 # Bout Data
 
 
-```r
+``` r
 BOUT<-BOUT.raw %>%
   filter(.
          , DURATION > 0.01) %>% #Remove impossibly small values
@@ -276,7 +275,7 @@ they were not always recorded in their entirety (1173 observations
 removed).
 
 
-```r
+``` r
 BOUT.SUMMARY <- summarySE(data = BOUT
                       , measurevar = "DURATION"
                       , groupvars = c("GENERALIZED_ENVIRONMENT"
@@ -316,7 +315,7 @@ BOUT.SUMMARY
 ## BOUT Dot Plot
 
 
-```r
+``` r
 BOUT.DOTPLOT<-BOUT.SUMMARY %>%
            ggplot(.
                , aes(x = GENERALIZED_ENVIRONMENT
@@ -358,7 +357,7 @@ BOUT.DOTPLOT
 ## BOUT Model - All behaviors
 
 
-```r
+``` r
 BOUT.MOD<-rlmer(LDURATION~BEHAVIOR*SENTINEL_PRESENCE+BEHAVIOR*GENERALIZED_ENVIRONMENT+SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|ID), data = BOUT)
 
 sjPlot::tab_model(BOUT.MOD
@@ -401,7 +400,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1974</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0720</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0562&nbsp;&ndash;&nbsp;0.3385</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0562&nbsp;&ndash;&nbsp;0.3386</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.7406</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.006</strong></td>
 </tr>
@@ -409,7 +408,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3534</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0873</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1823&nbsp;&ndash;&nbsp;0.5245</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1822&nbsp;&ndash;&nbsp;0.5246</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.0482</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
@@ -417,7 +416,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0046</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0766</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1548&nbsp;&ndash;&nbsp;0.1455</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1548&nbsp;&ndash;&nbsp;0.1456</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0603</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.952</td>
 </tr>
@@ -433,7 +432,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Disturbance Frequency</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0878</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0295</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1457&nbsp;&ndash;&nbsp;-0.0300</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1457&nbsp;&ndash;&nbsp;-0.0299</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.9748</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.003</strong></td>
 </tr>
@@ -449,7 +448,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Behaviour: Generalized<br>Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2023</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0537</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3074&nbsp;&ndash;&nbsp;-0.0971</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3075&nbsp;&ndash;&nbsp;-0.0970</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;3.7690</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
@@ -457,7 +456,7 @@ sjPlot::tab_model(BOUT.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2524</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0882</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4251&nbsp;&ndash;&nbsp;-0.0796</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4252&nbsp;&ndash;&nbsp;-0.0795</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.8630</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.004</strong></td>
 </tr>
@@ -492,7 +491,7 @@ sjPlot::tab_model(BOUT.MOD
 
 </table>
 
-```r
+``` r
 sjPlot::plot_model(BOUT.MOD
                   , axis.labels = labs.bout.1
                   , show.values=T
@@ -545,7 +544,7 @@ of all bouts (Estimate = -0.0878, SE = 0.0295, t-stat = -2.9748, p =
 increased.
 
 
-```r
+``` r
 BOUT.DIFF.ALL_BEHAVIORS<-emmeans(BOUT.MOD, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
 kbl(test(pairs(BOUT.DIFF.ALL_BEHAVIORS), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Bout post hoc - All behaviors", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
   kable_classic(html_font = "Times New Roman") %>%
@@ -568,7 +567,7 @@ presence of a sentinel (Estimate = -0.157, SE = 0.0720, z-ratio =
 0.3430)
 
 
-```r
+``` r
 BOUT.DOTPLOT.DISTURBANCES<-BOUT %>%
            ggplot(.
                , aes(x = DISTURBANCE_FREQUENCY
@@ -600,7 +599,7 @@ BOUT.DOTPLOT.DISTURBANCES
 ## BOUT Model - Head Down
 
 
-```r
+``` r
 BOUT.MOD.HD<-rlmer(LDURATION~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|ID), data = subset(BOUT, BEHAVIOR == "HD"))
 
 sjPlot::tab_model(BOUT.MOD.HD
@@ -627,7 +626,7 @@ sjPlot::tab_model(BOUT.MOD.HD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.4370</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0929</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2548&nbsp;&ndash;&nbsp;0.6192</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2547&nbsp;&ndash;&nbsp;0.6193</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.7017</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
@@ -635,7 +634,7 @@ sjPlot::tab_model(BOUT.MOD.HD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0919</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0718</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0488&nbsp;&ndash;&nbsp;0.2327</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0489&nbsp;&ndash;&nbsp;0.2328</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2799</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.201</td>
 </tr>
@@ -643,7 +642,7 @@ sjPlot::tab_model(BOUT.MOD.HD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.3826</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0778</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2302&nbsp;&ndash;&nbsp;0.5351</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.2301&nbsp;&ndash;&nbsp;0.5352</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">4.9194</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
@@ -651,15 +650,15 @@ sjPlot::tab_model(BOUT.MOD.HD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1519</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0684</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2860&nbsp;&ndash;&nbsp;-0.0178</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2861&nbsp;&ndash;&nbsp;-0.0177</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.2205</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.026</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.027</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Bait Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1385</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0697</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2751&nbsp;&ndash;&nbsp;-0.0020</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2752&nbsp;&ndash;&nbsp;-0.0019</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.9885</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.047</strong></td>
 </tr>
@@ -667,7 +666,7 @@ sjPlot::tab_model(BOUT.MOD.HD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Disturbance Frequency</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1075</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0301</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1665&nbsp;&ndash;&nbsp;-0.0484</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1666&nbsp;&ndash;&nbsp;-0.0484</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;3.5664</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
@@ -675,7 +674,7 @@ sjPlot::tab_model(BOUT.MOD.HD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2272</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0914</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4063&nbsp;&ndash;&nbsp;-0.0480</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.4065&nbsp;&ndash;&nbsp;-0.0479</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.4849</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.013</strong></td>
 </tr>
@@ -710,7 +709,7 @@ sjPlot::tab_model(BOUT.MOD.HD
 
 </table>
 
-```r
+``` r
 sjPlot::plot_model(BOUT.MOD.HD
                   , axis.labels = labs.bout.2
                   , show.values=T
@@ -748,7 +747,7 @@ foraging bouts (Estimate = -0.1075, SE = 0.0301, t-stat = -3.5664, p =
 \<0.001).
 
 
-```r
+``` r
 BOUT.DIFF.HD<-emmeans(BOUT.MOD.HD, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT, pbkrtest.limit = 5070)
 kbl(test(pairs(BOUT.DIFF.HD), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Bout post hoc - Foraging", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
   kable_classic(html_font = "Times New Roman") %>%
@@ -757,7 +756,7 @@ kbl(test(pairs(BOUT.DIFF.HD), by = NULL, adjust="fdr"), format = "html", digits 
 
 
 
-```r
+``` r
 BOUT.DOTPLOT.GROUP_SIZE<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
   summarySE(., measurevar = "DURATION", groupvar = "GROUP_SIZE") %>%
@@ -799,7 +798,7 @@ BOUT.DOTPLOT.GROUP_SIZE
 ![](Alex-Popescu---Final-Stats_files/figure-html/BOUT HD - Group Size Figure-1.png)<!-- -->
 
 
-```r
+``` r
 BOUT.DOTPLOT.BAIT<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
   summarySE(., measurevar = "DURATION", groupvar = "BAIT_PRESENCE") %>%
@@ -838,7 +837,7 @@ BOUT.DOTPLOT.BAIT
 ![](Alex-Popescu---Final-Stats_files/figure-html/BOUT HD - BAIT_PRESENCE Figure-1.png)<!-- -->
 
 
-```r
+``` r
 BOUT.DOTPLOT.DISTURBANCES.HD<-BOUT %>%
   filter(., BEHAVIOR == "HD") %>%
            ggplot(.
@@ -871,7 +870,7 @@ BOUT.DOTPLOT.DISTURBANCES.HD
 ## BOUT Model - Head Up
 
 
-```r
+``` r
 BOUT.MOD.HU<-rlmer(LDURATION~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GROUP_SIZE+BAIT_PRESENCE+DISTURBANCE_FREQUENCY+(1|ID), data = subset(BOUT, BEHAVIOR == "HU"))
 
 sjPlot::tab_model(BOUT.MOD.HU
@@ -902,7 +901,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0165</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1530</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2833&nbsp;&ndash;&nbsp;0.3163</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2835&nbsp;&ndash;&nbsp;0.3164</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1078</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.914</td>
 </tr>
@@ -910,7 +909,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1480</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1005</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0489&nbsp;&ndash;&nbsp;0.3450</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0490&nbsp;&ndash;&nbsp;0.3451</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4733</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.141</td>
 </tr>
@@ -918,7 +917,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1619</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1258</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0847&nbsp;&ndash;&nbsp;0.4085</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0849&nbsp;&ndash;&nbsp;0.4086</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2866</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.198</td>
 </tr>
@@ -926,7 +925,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1057</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1186</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1268&nbsp;&ndash;&nbsp;0.3382</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1269&nbsp;&ndash;&nbsp;0.3384</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.8913</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.373</td>
 </tr>
@@ -934,7 +933,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Bait Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1378</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1180</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3690&nbsp;&ndash;&nbsp;0.0934</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3691&nbsp;&ndash;&nbsp;0.0936</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.1678</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.243</td>
 </tr>
@@ -942,7 +941,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Disturbance Frequency</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0624</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0453</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1513&nbsp;&ndash;&nbsp;0.0264</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1513&nbsp;&ndash;&nbsp;0.0265</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.3768</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.169</td>
 </tr>
@@ -950,7 +949,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.2736</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.1352</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.5385&nbsp;&ndash;&nbsp;-0.0087</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.5386&nbsp;&ndash;&nbsp;-0.0085</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.0243</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.043</strong></td>
 </tr>
@@ -985,7 +984,7 @@ sjPlot::tab_model(BOUT.MOD.HU
 
 </table>
 
-```r
+``` r
 sjPlot::plot_model(BOUT.MOD.HU
                   , axis.labels = labs.bout.2
                   , show.values=T
@@ -1016,7 +1015,7 @@ environment was significant (Estimate = -0.2736, SE = 0.1352, t-stat =
 #Peck Rate
 
 
-```r
+``` r
 PECK<-DATA.SR[,c(1,2,15,17,19,22,30,38,48)] %>%
   subset(., HD_BEHAVIOR_DURATION > 0) %>%
   rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES")
@@ -1058,7 +1057,7 @@ number of pecks at food performed by the total duration of foraging (or
 ## PECK Dot Plot
 
 
-```r
+``` r
 PECK.DOTPLOT<-ggplot(data = PECK.SUMMARY
                , aes(x = GENERALIZED_ENVIRONMENT
                      , y = PECK_RATE
@@ -1103,7 +1102,7 @@ were used as fixed effects, with the individual ID used as a random
 factor.
 
 
-```r
+``` r
 PECK.MOD<-rlmer(PECK_RATE~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT+GENERALIZED_ENVIRONMENT*DISTURBANCE_FREQUENCY+GROUP_SIZE+BAIT_PRESENCE+(1|ID), data = PECK)
 
 sjPlot::tab_model(PECK.MOD
@@ -1131,7 +1130,7 @@ sjPlot::tab_model(PECK.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">54.3410</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">7.5358</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">39.5710&nbsp;&ndash;&nbsp;69.1109</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">39.3112&nbsp;&ndash;&nbsp;69.3707</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">7.2110</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
@@ -1139,7 +1138,7 @@ sjPlot::tab_model(PECK.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.8275</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.4243</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;13.4190&nbsp;&ndash;&nbsp;11.7640</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;13.6404&nbsp;&ndash;&nbsp;11.9855</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.1288</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.898</td>
 </tr>
@@ -1147,49 +1146,49 @@ sjPlot::tab_model(PECK.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.7678</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">7.2437</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;16.9652&nbsp;&ndash;&nbsp;11.4295</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;17.2149&nbsp;&ndash;&nbsp;11.6792</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.3821</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.702</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.704</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Disturbance Frequency</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.2900</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.2877</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.8061&nbsp;&ndash;&nbsp;9.7739</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.7273&nbsp;&ndash;&nbsp;9.8527</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.3123</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.021</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.024</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Group Size</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;6.8477</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.7369</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;18.0918&nbsp;&ndash;&nbsp;4.3963</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;18.2895&nbsp;&ndash;&nbsp;4.5941</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.1936</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.233</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.237</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Bait Presence</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">13.9915</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.0294</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.1742&nbsp;&ndash;&nbsp;25.8089</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.9664&nbsp;&ndash;&nbsp;26.0167</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.3206</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.020</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.023</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Sentinel Presence:<br>Generalized Environment</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;13.1026</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">9.0853</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;30.9094&nbsp;&ndash;&nbsp;4.7042</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;31.2226&nbsp;&ndash;&nbsp;5.0174</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.4422</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.149</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.154</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Generalized Environment:<br>Disturbance Frequency</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">16.1482</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.3012</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.7580&nbsp;&ndash;&nbsp;26.5383</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">5.5752&nbsp;&ndash;&nbsp;26.7211</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">3.0461</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.002</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.003</strong></td>
 </tr>
 <tr>
 <td colspan="6" style="font-weight:bold; text-align:left; padding-top:.8em;">Random Effects</td>
@@ -1205,10 +1204,6 @@ sjPlot::tab_model(PECK.MOD
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.00</td>
 
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">ICC</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.00</td>
-
-<tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">N <sub>ID</sub></td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">64</td>
 <tr>
@@ -1217,12 +1212,12 @@ sjPlot::tab_model(PECK.MOD
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.395 / 0.395</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.395 / NA</td>
 </tr>
 
 </table>
 
-```r
+``` r
 sjPlot::plot_model(PECK.MOD
                   , axis.labels = labs.peck
                   , show.values=T
@@ -1253,7 +1248,7 @@ foragers (Estimate = 13.99, t = 2.231, p = 0.020).
 ## Disturbance Frequency x Generalized Environment
 
 
-```r
+``` r
 PECK.DOTPLOT.DISTURBANCE<-PECK %>%
     ggplot(aes(x = DISTURBANCE_FREQUENCY
                , y = PECK_RATE
@@ -1284,7 +1279,7 @@ RESULTS Green areas appear to have much fewer disturbances than
 commercial areas.
 
 
-```r
+``` r
 PECK.DOTPLOT.BAIT<-PECK %>%
   summarySE(.
             , measurevar = "PECK_RATE"
@@ -1325,7 +1320,7 @@ PECK.DOTPLOT.BAIT
 # Sentinel Likelihood
 
 
-```r
+``` r
 SENT<-DATA.SR[1:81,c(1,7,10,15,17,19,20,22,30,31)] %>%
   distinct()
 str(SENT)
@@ -1350,7 +1345,7 @@ environmental or social factors that affected the likelihood of a
 sentinel being present in our videos.
 
 
-```r
+``` r
 SENT.SUMMARY <- summarySE(data = SENT
                       , measurevar = "GROUP_SIZE" #Random
                       , groupvars = c("GENERALIZED_ENVIRONMENT"
@@ -1377,7 +1372,7 @@ SENT.SUMMARY
 ## SENT Barplot
 
 
-```r
+``` r
 SENT.BARPLOT <- ggplot(SENT.SUMMARY, aes(x=GENERALIZED_ENVIRONMENT
                  , fill = SENTINEL_PRESENCE
                  , y = N
@@ -1410,7 +1405,7 @@ SENT.BARPLOT
 ## SENT Chi-Squared
 
 
-```r
+``` r
 SENT.CHISQ<-lapply(SENT[,c("GENERALIZED_ENVIRONMENT"
                       , "GROUP_SIZE"
                       , "DISTURBANCE_FREQUENCY"
@@ -1444,7 +1439,7 @@ SENT.CHISQ<-lapply(SENT[,c("GENERALIZED_ENVIRONMENT"
 ## be incorrect
 ```
 
-```r
+``` r
 SENT.CHISQ
 ```
 
@@ -1617,7 +1612,7 @@ significantly affected the likelihood of a sentinel being present.
 ##SENT Plots - Continuous Variables
 
 
-```r
+``` r
 SENT.FREQ <- SENT %>% 
   rename("Temperature (deg. C)" = "TEMPERATURE"
          , "Decimal Time" = "DECIMAL_TIME"
@@ -1660,7 +1655,7 @@ dividing the number of transitions from one behavior to another by the
 total number of transitions from that behavior.
 
 
-```r
+``` r
 PTWY<- DATA.SR %>%
   dplyr::select(VIDEO_ID,ID, DECIMAL_TIME, GENERALIZED_ENVIRONMENT, SENTINEL_PRESENCE, BAIT_PRESENCE, NUMBER_OF_CROWS_RECORDED, GROUP_SIZE, TOTAL_NB_TRANSITIONS, TOTAL_FREQUENCY_OF_DISTURBANCES | starts_with("NB_")) %>%
   rename("DISTURBANCE_FREQUENCY" = "TOTAL_FREQUENCY_OF_DISTURBANCES"
@@ -1673,7 +1668,7 @@ PTWY<- DATA.SR %>%
 ### PTWY Plots
 
 
-```r
+``` r
 PTWY.SUMMARY<-PTWY %>%
   rename("Foraging to Peck" = "NB_HD.HDP"
          , "Alert to Foraging" = "NB_HU.HD"
@@ -1751,11 +1746,13 @@ PTWY.BOXPLOT
 ```
 
 ```
-## Warning: Removed 3 rows containing non-finite values (`stat_boxplot()`).
+## Warning: Removed 3 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).
 ```
 
 ```
-## Warning: Removed 3 rows containing missing values (`geom_point()`).
+## Warning: Removed 3 rows containing missing values or values outside the scale range
+## (`geom_point()`).
 ```
 
 ![](Alex-Popescu---Final-Stats_files/figure-html/PTWY Plots-1.png)<!-- -->
@@ -1769,7 +1766,7 @@ frequency and bait presence were used as fixed effects, with the total
 number of transitions as a random effect.
 
 
-```r
+``` r
 PTWY.MODELS<-list()
 DV<-list("NB_HD.HU"
          , "NB_HD.HDP"
@@ -1834,7 +1831,7 @@ tab_model(PTWY.MODELS
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">Intercept</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.9323</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.0694</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4348&nbsp;&ndash;&nbsp;5.9927</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.4348&nbsp;&ndash;&nbsp;5.9928</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.9499</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.003</strong></td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7">6.4572</td>
@@ -1941,7 +1938,7 @@ tab_model(PTWY.MODELS
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6">0.074</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">2.2037</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">0.5378</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">1.3659&nbsp;&ndash;&nbsp;3.5552</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">1.3659&nbsp;&ndash;&nbsp;3.5553</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0">3.2378</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"><strong>0.001</strong></td>
 </tr>
@@ -1974,10 +1971,10 @@ tab_model(PTWY.MODELS
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">&sigma;<sup>2</sup></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.40</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.08</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.09</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.10</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.23</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.04</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.04</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.05</td>
 </tr>
 
 <tr>
@@ -1989,10 +1986,10 @@ tab_model(PTWY.MODELS
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">ICC</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.71</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.94</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.94</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.93</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.81</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.96</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.97</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.97</td>
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">N</td>
@@ -2009,17 +2006,17 @@ tab_model(PTWY.MODELS
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.189 / 0.767</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.037 / 0.937</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.025 / 0.938</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.060 / 0.937</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.209 / 0.849</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.038 / 0.965</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.026 / 0.970</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.062 / 0.969</td>
 </tr>
 
 </table>
 
 
 
-```r
+``` r
 PTWY.DIFF<-emmeans(PTWY.MODELS$NB_HD.HU, ~SENTINEL_PRESENCE*GENERALIZED_ENVIRONMENT)
 kbl(test(pairs(PTWY.DIFF), by = NULL, adjust="fdr"), format = "html", digits = 4, caption = "Pathway analysis post hoc", col.names = c("Contrast", "Estimate", "SE", "df", "z-ratio", "p"), align = "lccccc" )%>%
   kable_classic(html_font = "Times New Roman") %>%
@@ -2059,7 +2056,7 @@ alert behavior when in the presence of a sentinel (Estimate = -1.124, SE
 = 0.346, z-ratio = -3.250, p = 0.0069).
 
 
-```r
+``` r
 PTWY.DOTPLOT.BAIT<-PTWY %>%
   rename("Foraging to Peck" = "NB_HD.HDP"
          , "Alert to Foraging" = "NB_HU.HD"
@@ -2117,7 +2114,7 @@ PTWY.DOTPLOT.BAIT
 ![](Alex-Popescu---Final-Stats_files/figure-html/PTWY Figures - Bait Presence-1.png)<!-- -->
 
 
-```r
+``` r
 PTWY.DOTPLOT.DISTURBANCE<- PTWY %>%
   ggplot(.
          , aes(x = DISTURBANCE_FREQUENCY
@@ -2143,3 +2140,130 @@ PTWY.DOTPLOT.DISTURBANCE
 ```
 
 ![](Alex-Popescu---Final-Stats_files/figure-html/PTWY Figures - Disturbance Frequency-1.png)<!-- -->
+
+## Habituation
+
+``` r
+Habit<-BOUT.raw %>%
+   filter(., BEHAVIOR == "HU", LATITUDE == "43.18262") %>%
+           ggplot(.
+               , aes(x = JULIAN_DATE
+                     , y = DURATION
+                     )) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  theme_classic() +
+  xlab("Sampling Date") +
+  ylab("Duration of bouts of alertness (s)") +
+  theme(text = element_text(size = 18, family = "serif"))
+Habit
+```
+
+```
+## `geom_smooth()` using formula = 'y ~ x'
+```
+
+![](Alex-Popescu---Final-Stats_files/figure-html/plot habituation-1.png)<!-- -->
+
+
+``` r
+Habit.MOD.opp<-lm(DURATION~JULIAN_DATE, data = subset(BOUT.raw, BOUT.raw$BEHAVIOR == "HU" & BOUT.raw$LATITUDE != "43.18262" & BOUT.raw$BAIT_PRESENCE == "YES"))
+
+sjPlot::tab_model(Habit.MOD.opp
+                  , show.stat = T
+                  , show.se = T
+                  , digits = 4
+                  , show.re.var = T
+                  , title = ""
+                  , dv.labels = ""
+)
+```
+
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;"></caption>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">std. Error</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">Statistic</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">p</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">65086.4871</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">83574.9341</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;98857.2108&nbsp;&ndash;&nbsp;229030.1849</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.7788</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.436</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">JULIAN DATE</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0032</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0041</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0113&nbsp;&ndash;&nbsp;0.0049</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.7788</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.436</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">Observations</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="5">1421</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.000 / -0.000</td>
+</tr>
+
+</table>
+
+
+``` r
+Habit.MOD.rec<-lm(DURATION~JULIAN_DATE, data = subset(BOUT.raw, BOUT.raw$BEHAVIOR == "HU" & BOUT.raw$LATITUDE == "43.18262" & BOUT.raw$BAIT_PRESENCE == "YES"))
+
+sjPlot::tab_model(Habit.MOD.rec
+                  , show.stat = T
+                  , show.se = T
+                  , digits = 4
+                  , show.re.var = T
+                  , title = ""
+                  , dv.labels = ""
+)
+```
+
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;"></caption>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">std. Error</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">Statistic</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;nodv  ">p</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">185816.3645</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">144078.7760</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;97451.9219&nbsp;&ndash;&nbsp;469084.6509</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.2897</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.198</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">JULIAN DATE</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0092</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.0071</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;0.0232&nbsp;&ndash;&nbsp;0.0048</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.2897</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.198</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">Observations</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="5">392</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="5">0.004 / 0.002</td>
+</tr>
+
+</table>
+                  

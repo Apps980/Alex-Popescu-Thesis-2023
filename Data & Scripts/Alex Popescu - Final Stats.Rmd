@@ -11,7 +11,6 @@ editor_options:
 ---
 
 # Bookkeeping
-
 ```{r Packages, include = F}
 library("tidyverse")
 library("psych")
@@ -1152,3 +1151,48 @@ PTWY.DOTPLOT.DISTURBANCE<- PTWY %>%
 
 PTWY.DOTPLOT.DISTURBANCE
 ```
+
+## Habituation
+```{r plot habituation}
+Habit<-BOUT.raw %>%
+   filter(., BEHAVIOR == "HU", LATITUDE == "43.18262") %>%
+           ggplot(.
+               , aes(x = JULIAN_DATE
+                     , y = DURATION
+                     )) +
+  geom_point() +
+  geom_smooth(method="lm") +
+  theme_classic() +
+  xlab("Sampling Date") +
+  ylab("Duration of bouts of alertness (s)") +
+  theme(text = element_text(size = 18, family = "serif"))
+Habit
+
+```
+
+```{r Habituation test - opportunistic sampling}
+Habit.MOD.opp<-lm(DURATION~JULIAN_DATE, data = subset(BOUT.raw, BOUT.raw$BEHAVIOR == "HU" & BOUT.raw$LATITUDE != "43.18262" & BOUT.raw$BAIT_PRESENCE == "YES"))
+
+sjPlot::tab_model(Habit.MOD.opp
+                  , show.stat = T
+                  , show.se = T
+                  , digits = 4
+                  , show.re.var = T
+                  , title = ""
+                  , dv.labels = ""
+)
+```  
+
+```{r Habituation test - recurrent sampling}
+Habit.MOD.rec<-lm(DURATION~JULIAN_DATE, data = subset(BOUT.raw, BOUT.raw$BEHAVIOR == "HU" & BOUT.raw$LATITUDE == "43.18262" & BOUT.raw$BAIT_PRESENCE == "YES"))
+
+sjPlot::tab_model(Habit.MOD.rec
+                  , show.stat = T
+                  , show.se = T
+                  , digits = 4
+                  , show.re.var = T
+                  , title = ""
+                  , dv.labels = ""
+)
+```
+                  
