@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "598665b55a04842f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -61,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "group size",
+                "query": "#sex",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
+                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md",
+                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Effects of the association between Mimus saturninus and Furnarius rufus on their foraging and alert behaviors.md"
+                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md"
               }
             }
           }
@@ -161,8 +173,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6326d14740f8a039",
+  "active": "598665b55a04842f",
   "lastOpenFiles": [
+    "Anti-predator behaviour of captive Grey partridges (Perdix perdix).md",
+    "A Study of the Behaviour of the Chacma Baboon, Papio Ursinus.md",
+    "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
     "Effects of predation risk on foraging behaviour and group size_ adaptations in a social cooperative species.md",
     "Breeding and Feeding Behaviour of Jungle Babbler(Turdiodes striata Dumont, 1923) in Agro-Ecological Zones of District Layyah, Pakistan.md",
     "SOCIAL BEHAVIOUR WITHIN GROUPS OF JUNGLE BABBLERS (TURDOIDES STRIATUS).md",
@@ -179,7 +194,6 @@
     "Florida Scrub-Jays (Aphelocoma coerulescens) are Sentinels More When Well-Fed (Even with no Kin Nearby).md",
     "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
     "Sentinel dwarf mongooses, Helogale parvula, exhibit flexible decision making in relation to predation risk.md",
-    "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
     "Lek behaviour in birds_ do displaying males reduce nest predation_.md",
     "Habitat-use patterns in cooperative and non-cooperative breeding birds_ testing predictions with western scrub-jays.md",
     "Diurnal pattern of pre-weaning den visits and nursing in breeding pairs of captive dingoes (Canis dingo).md",
