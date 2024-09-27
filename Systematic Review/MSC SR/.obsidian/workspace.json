@@ -42,9 +42,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "16c8f7c869abd993",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -73,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "#sex",
+                "query": "goshaw",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -111,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
+                "file": "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
+                "file": "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md"
+                "file": "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md"
               }
             }
           }
@@ -173,30 +185,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "598665b55a04842f",
+  "active": "16c8f7c869abd993",
   "lastOpenFiles": [
-    "Anti-predator behaviour of captive Grey partridges (Perdix perdix).md",
-    "A Study of the Behaviour of the Chacma Baboon, Papio Ursinus.md",
-    "Alert Calls of Male Red-Winged Blackbirds_ Do Females Listen_.md",
-    "Effects of predation risk on foraging behaviour and group size_ adaptations in a social cooperative species.md",
-    "Breeding and Feeding Behaviour of Jungle Babbler(Turdiodes striata Dumont, 1923) in Agro-Ecological Zones of District Layyah, Pakistan.md",
-    "SOCIAL BEHAVIOUR WITHIN GROUPS OF JUNGLE BABBLERS (TURDOIDES STRIATUS).md",
-    "Disturbance and predation risk influence vigilance synchrony of black‐necked cranes (Grus nigricollis), but not as strongly as expected.md",
     "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
-    "Anti-predator vigilance in the red-winged blackbird, Agelaius phoeniceus_ do males act as sentinels_.md",
-    "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
-    "Does sex affect both individual and collective vigilance in social mammalian herbivores_ the case of the eastern grey kangaroo_.md",
+    "Antipredator Vigilance in Cooperatively Breeding Superb Fairy-wrens ( Malurus cyaneus).md",
+    "Contributions of genetic and nongenetic sources to variation in cooperative behavior in a cooperative mammal.md",
+    "Territory and nest defence in polyandrous pale chanting goshawks_ do co-breeders Help_.md",
+    "Sexually selected sentinels_ Evidence of a role for intrasexual competition in sentinel behavior.md",
     "Cooperative sentinel behaviour in the Arabian babbler.md",
-    "Context-dependent contributions to sentinel behaviour_ audience, satiation and danger effects.md",
-    "Selfish Sentinels in Cooperative Mammals.md",
     "On the self-regulation of sentinel activity among Arabian babbler groupmates.md",
-    "Florida Scrub-Jays Compensate for the Sentinel Behavior of Flockmates.md",
-    "Florida Scrub-Jays (Aphelocoma coerulescens) are Sentinels More When Well-Fed (Even with no Kin Nearby).md",
-    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+    "SOCIAL BEHAVIOUR WITHIN GROUPS OF JUNGLE BABBLERS (TURDOIDES STRIATUS).md",
+    "The sentinel behaviour of Arabian babbler floaters.md",
+    "The sentineling-Foraging trade-off in dominant and subordinate Arabian babblers.md",
+    "Urban cycles of human activity do not significantly alter the behaviour of a duetting bird.md",
+    "The Predator Early Warning System of Red-Winged Blackbirds.md",
+    "State-dependent sentinels_ an experimental study in the Arabian babbler.md",
     "Sentinel dwarf mongooses, Helogale parvula, exhibit flexible decision making in relation to predation risk.md",
+    "Sentinel dominance status influences forager use of social information.md",
+    "Sentinel behaviour in vervet monkeys_ Who sees whom first_.md",
+    "SENTINEL BEHAVIOR, SEASONALITY, AND THE STRUCTURE OF BIRD FLOCKS IN A BRAZlLIAN SAVANNA.md",
+    "Selfish Sentinels in Cooperative Mammals.md",
+    "Safe selfish sentinels in a cooperative bird_ Safe selfish sentinels.md",
+    "Role of Helpers in the Sentinel Behaviour of the Florida Scrub Jay (Aphelocoma c. coerulescens).md",
+    "Nest Guarding in Chesapeake Bay Bald Eagles.md",
+    "Male Red-winged Blackbirds with experimentally dulled epaulets experience no disadvantage in sexual selection.md",
+    "Male anti‐predation services in primates as costly signalling_ A comparative analysis and review.md",
+    "Looking after your partner_ sentinel behaviour in a socially monogamous bird.md",
     "Lek behaviour in birds_ do displaying males reduce nest predation_.md",
-    "Habitat-use patterns in cooperative and non-cooperative breeding birds_ testing predictions with western scrub-jays.md",
-    "Diurnal pattern of pre-weaning den visits and nursing in breeding pairs of captive dingoes (Canis dingo).md",
-    "Effect of group size and experience on the ontogeny of sentinel calling behaviour in meerkats.md"
+    "Intrapopulation variation in the behavioral responses of dwarf mongooses to anthropogenic noise.md"
   ]
 }

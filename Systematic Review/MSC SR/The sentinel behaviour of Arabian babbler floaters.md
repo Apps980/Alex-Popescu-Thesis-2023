@@ -21,7 +21,7 @@ All floaters acted as sentinels, average 5.3+/-3.1 min.
 Upon becoming floaters, dominants reduced their sentinel activity more than subordinates, and males reduced their sentinel activity more than females.
 
 Dominant individuals sentinelled more than subordinates (sentinel duration & frequency) <- [[Rank]]
-Males sentinelled more than females (duration & frequency again) <- [[Sex]]
+#Males sentinelled more than females (duration & frequency again) <- [[Sex]]
 
 Dominant and subordinate floaters, as well as floaters of either sex did not have significant differences in sentinel duration or frequency. <- [[Membership]]
 

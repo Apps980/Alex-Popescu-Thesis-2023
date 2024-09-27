@@ -12,7 +12,7 @@ Cooperative behavior can be stable when based solely upon short-term individuall
 Social prestige as driver for sentinel behavior. Selfishly showing off to gain access to advantageous collaborations and reproductive opportunities.
 In exchange for missed foraging opportunities and greater predation risk.
 
-Sentinel behavior positively related with dominance [[Rank]] within each [[Sex]], with males > females of the same rank.
+Sentinel behavior positively related with dominance [[Rank]] within each [[Sex]], with #Males  > females of the same rank.
 Could be explained via [[Body Mass]]: Mass up = Dominance up = Sentinel up
 
 All birds in all groups appeared to act as sentinels using similar types of location: as high as possible but not super exposed.

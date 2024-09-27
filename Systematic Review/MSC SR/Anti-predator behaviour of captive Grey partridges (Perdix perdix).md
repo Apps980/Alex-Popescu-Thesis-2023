@@ -19,4 +19,4 @@ Sentinel activity as [[sexual display]]. [[Pair status]] (paired/unpaired) affec
 Uses mean score as data. Yet could be useful.
 Coordination is not mentioned
 
-#Data #Sex #PairStatus #Avian 
+#Data #Sex #PairStatus #Avian #Males 

@@ -30,7 +30,7 @@ Dominants act as sentinel more than subordinates in many taxa.
 Sentinel as climbed up in a tree and scanned for longer than 60s.
 
 The average duration of sentinel bouts were longer when individuals received supplemental feeding. When fed, dominant and subordinate adults sentinelled equally (duration)<- [[satiation]]
-Unfed, males sentineled longer than females <- [[Sex]] 
+Unfed, #Males sentineled longer than females <- [[Sex]] 
 Unfed, dominant individuals sentineled longer than subordinates. <- [[Rank]]
 In response to being fed, subordinates increased their sentinel duration more than dominant individuals. Explained by dominants already having longer bouts.
 

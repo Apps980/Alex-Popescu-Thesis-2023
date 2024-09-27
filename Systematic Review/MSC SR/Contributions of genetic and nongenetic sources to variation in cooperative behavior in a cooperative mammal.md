@@ -3,7 +3,7 @@ authors: Thomas M. Houslay, Johanna F. Nielsen, Tim H. Clutton‐Brock
 year: 2021
 species: Meerkats
 factor: [[Sex]] [[Rank]] [[maturity]] [[Maternal Effect]] [[Group Size]]
-effect: As in previous studies, dominant males sentinel for longer than any other individuals, with males sentineling more than females, and dominant males sentineling more than subordinate males. Genetic additive effects drove variations in cooperative behaviors, including sentinel behavior, with maternal effects of [[Body Mass]] on sentinel time. Increased group size led to decreases in individual sentinel contributions.
+effect: As in previous studies, dominant males sentinel for longer than any other individuals, with #Males  sentineling more than females, and dominant males sentineling more than subordinate males. Genetic additive effects drove variations in cooperative behaviors, including sentinel behavior, with maternal effects of [[Body Mass]] on sentinel time. Increased group size led to decreases in individual sentinel contributions.
 
 In cooperatively breeding species, some individuals forgo breeding in favor of helping breeding pairs with their offspring. Such individuals are called "Helpers".
 Why helpers exist is a very good questions. Traditional theory of natural selection is based on competition between individuals; helping should not be evolutionarily stable.
@@ -25,7 +25,7 @@ Individuals in larger groups spend less time on sentinel behavior than individua
 [[Maternal Effect]] of [[Body Mass]] on time spent on sentinel behavior.
 Across age categories, genetic variances are similar and positively correlated.
 Additive genetic variance in sentinel behavior, necessary for any response to selection.
-Variation caused by [[Sex]] in sentinel contribution (males more) may occur because of the male role to chase off intruders and acquisition of information on neighbouring groups.
+Variation caused by [[Sex]] in sentinel contribution ( #Males more) may occur because of the male role to chase off intruders and acquisition of information on neighbouring groups.
 [[Shared Litter]] effects was a significant source of variation for all cooperative behaviors. 
 Heritability of cooperative behaviors are particularly low and frequently non-significant.
 

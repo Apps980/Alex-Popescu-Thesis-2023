@@ -10,7 +10,7 @@ More time spent sentinel when nests contained eggs <-[[Breeding Period]] potenti
 Males spent more time on sentinel following presentation of predator model<-[[predation]]
 Males and females do not coordinate their sentinel efforts.
 
-#Avian #Sex #Risk #NoData 
+#Avian #Sex #Risk #NoData #Males 
 
 
 

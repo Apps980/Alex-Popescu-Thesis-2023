@@ -26,7 +26,7 @@ When controlling for age, same effects.
 No effect of body condition on sentinel contribution of males.
 Subjecting a dominant male to the solo song of a foreign male increased that individual's sentinel contribution.
 
-Dominant males display significantly more sentinel efforts than other groups members, and the difference in their contributions cannot be linked solely to variations in age or body condition.
+Dominant #Males display significantly more sentinel efforts than other groups members, and the difference in their contributions cannot be linked solely to variations in age or body condition.
 
 Results from playback experiment suggests that sentinel behavior may facilitate the rapid initiation of counter intruder responses by dominant males who might have their dominance challenged by intruders. Ergo, sentinel behavior may play a role in intra sexual competition.
 
