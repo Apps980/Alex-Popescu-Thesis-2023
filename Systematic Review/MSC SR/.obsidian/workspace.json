@@ -102,8 +102,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -185,7 +184,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "16c8f7c869abd993",
+  "active": "a172c15311bb7cb1",
   "lastOpenFiles": [
     "Meerkat helpers increase sentinel behaviour and bipedal vigilance in the presence of pups.md",
     "Antipredator Vigilance in Cooperatively Breeding Superb Fairy-wrens ( Malurus cyaneus).md",
